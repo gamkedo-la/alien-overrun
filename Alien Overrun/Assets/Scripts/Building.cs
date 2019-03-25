@@ -11,10 +11,13 @@ public class Building : MonoBehaviour
 {
 	[SerializeField] private GameObject indicator = null;
 	public string BuildingName { get { return buildingName; } private set { buildingName = value; } }
-	[SerializeField] private string buildingName = "Budynek";
+
+	[SerializeField] private string buildingName = "Building";
 	public int BuildCost { get { return buildCost; } private set { buildCost = value; } }
+
 	[SerializeField] private int buildCost = 100;
 	public float BuildTime { get { return buildTime; } private set { buildTime = value; } }
+
 	[SerializeField] private float buildTime = 1.0f;
 	[SerializeField] private Collider col = null;
 

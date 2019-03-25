@@ -40,6 +40,12 @@ public class ResourceManager : MonoBehaviour
 		Invoke( "ResourceTick", resourceTick );
 	}
 
+	private void FixedUpdate( )
+	{
+		if ( LevelManager.Instance.CreativeMode && Minerals < 10000 )
+			Minerals = 10000;
+	}
+
 	public void AddResources( ResourceType type, int amount )
 	{
 		switch ( type )
