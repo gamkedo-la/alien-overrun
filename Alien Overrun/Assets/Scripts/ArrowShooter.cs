@@ -41,13 +41,13 @@ public class ArrowShooter : MonoBehaviour
 	public void OnNewOponenet( Transform oponent )
 	{
 		target = oponent;
-		Debug.Log( name + " has new oponent: " + oponent.name );
+		//Debug.Log( name + " has new oponent: " + oponent.name );
 	}
 
 	public void OnOponenetLost( )
 	{
 		target = null;
-		Debug.Log( name + " lost oponent" );
+		//Debug.Log( name + " lost oponent" );
 	}
 
 	private void TryToShoot( )
