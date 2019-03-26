@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 1745960124}
   - component: {fileID: 1745960123}
   - component: {fileID: 1745960122}
-  - component: {fileID: 1745960121}
+  - component: {fileID: 8932429585097059654}
   m_Layer: 0
   m_Name: Archer Tower
   m_TagString: Building
@@ -234,6 +234,10 @@ MonoBehaviour:
   buildCost: 100
   buildTime: 1
   col: {fileID: 1745960126}
+  toEnableOnBuild:
+  - {fileID: 1745960123}
+  - {fileID: 1745960122}
+  - {fileID: 8932429585097059654}
 --- !u!114 &1745960123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,7 +245,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745960120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d90e5214cd2a643992e406092a0220, type: 3}
   m_Name: 
@@ -266,7 +270,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745960120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dacfc718e95bde14a8e72d38ece6eedb, type: 3}
   m_Name: 
@@ -277,7 +281,7 @@ MonoBehaviour:
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745960121}
+      - m_Target: {fileID: 8932429585097059654}
         m_MethodName: OnNewOponenet
         m_Mode: 0
         m_Arguments:
@@ -293,7 +297,7 @@ MonoBehaviour:
   onOponentNoLongetValid:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1745960121}
+      - m_Target: {fileID: 8932429585097059654}
         m_MethodName: OnOponenetLost
         m_Mode: 1
         m_Arguments:
@@ -306,23 +310,28 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1745960121
+--- !u!114 &8932429585097059654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745960120}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26429e515bb9abd48bb9aeafcdd6e680, type: 3}
+  m_Script: {fileID: 11500000, guid: f1d5f0433b8ecbb4292d2ecd270d9608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 2102829498}
-  reloadTime: 3
-  shootDuration: 0.5
-  damage: 15
-  shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
+  spawnPoint: {fileID: 2102829498}
+  projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
+    type: 3}
+  reloadTime: 2
+  ammoCost: 0
+  shootingForce: 100
+  upAngleCorrection: -90
+  arrowTimePerUnit: 0.09
+  verticalSpread: 5
+  horizontalSpread: 5
 --- !u!1 &2094386380
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2102829497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.207, z: 0}
+  m_LocalPosition: {x: 0, y: 2.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1745960127}
@@ -715,7 +724,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4912516646847825990}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.735, z: 0}
+  m_LocalPosition: {x: 0, y: 0.878, z: 0}
   m_LocalScale: {x: 0.35817608, y: 0.52222323, z: 0.35817608}
   m_Children:
   - {fileID: 3535963478706904601}

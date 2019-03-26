@@ -1,5 +1,5 @@
 /**
- * Description: Controls arrows that are shot by Arrow Shooters.
+ * Description: Controls arrows that are shot by towers.
  * Authors: Kornel
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
@@ -24,14 +24,14 @@ public class Arrow : MonoBehaviour
 
 	void Update ()
 	{
-		if ( rb.velocity != Vector3.zero )
+		if ( rb && rb.velocity != Vector3.zero )
 			transform.rotation = Quaternion.LookRotation( rb.velocity );
 	}
 
 	private void OnCollisionEnter( Collision collision )
 	{
-		if ( collision.transform.CompareTag( "Environment" ) )
-			IamStuck( collision.transform );
+		//if ( collision.transform.CompareTag( "Environment" ) )
+			//IamStuck( collision.transform );
 
 		if ( collision.transform.CompareTag( "Enemy" ) )
 		{
@@ -40,15 +40,22 @@ public class Arrow : MonoBehaviour
 				hp.ChangeHP( -damage );
 
 			IamStuck( collision.transform );
+			Utilities.DrawDebugText( collision.transform.position + Vector3.up, damage.ToString( ) );
+
+			return;
 		}
+
+		IamStuck( collision.transform );
 	}
 
 	private void IamStuck ( Transform collider )
 	{
-		GetComponent<Rigidbody>( ).velocity = Vector3.zero;
-		GetComponent<Rigidbody>( ).isKinematic = true;
+		//GetComponent<Rigidbody>( ).velocity = Vector3.zero;
+		//GetComponent<Rigidbody>( ).isKinematic = true;
+		Destroy( GetComponent<Rigidbody>( ) );
+		Destroy( GetComponent<BoxCollider>( ) );
 
 		transform.SetParent( collider );
-		// TODO: Make it disappear over few seconds
+		Destroy( gameObject, 5f ); // TODO: Make it disappear over few seconds?
 	}
 }

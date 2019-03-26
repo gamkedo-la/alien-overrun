@@ -300,12 +300,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2434195901128683337}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.207, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.4592079, y: -0, z: -0, w: 0.88832885}
+  m_LocalPosition: {x: 0, y: 1.88, z: -0.02}
+  m_LocalScale: {x: 1.4863913, y: 1.8876963, z: 1.9961812}
   m_Children: []
-  m_Father: {fileID: 2540046315759797672}
-  m_RootOrder: 2
+  m_Father: {fileID: 717307647445373466}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4620722214444196853
 GameObject:
@@ -337,7 +337,7 @@ Transform:
   m_Children:
   - {fileID: 1855736795606845242}
   m_Father: {fileID: 2540046315759797672}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8592934548225316135
 Animator:
@@ -586,7 +586,8 @@ Transform:
   m_LocalRotation: {x: 0.4592079, y: -0, z: -0, w: 0.88832885}
   m_LocalPosition: {x: 0.000000022122, y: -0.079, z: 0.106}
   m_LocalScale: {x: 0.51751566, y: 0.34153447, z: 0.51751566}
-  m_Children: []
+  m_Children:
+  - {fileID: 3991717196430304264}
   m_Father: {fileID: 499530041351838838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 54.672, y: 0, z: 0}
@@ -663,7 +664,7 @@ GameObject:
   - component: {fileID: 4325920223682474915}
   - component: {fileID: 3216330059626059734}
   - component: {fileID: 473719277194874614}
-  - component: {fileID: 141345819431816201}
+  - component: {fileID: 1922749780054760380}
   m_Layer: 0
   m_Name: Cannon Tower
   m_TagString: Building
@@ -684,7 +685,6 @@ Transform:
   m_Children:
   - {fileID: 499530041351838838}
   - {fileID: 2324176317622712846}
-  - {fileID: 3991717196430304264}
   - {fileID: 5271371738082589218}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -735,6 +735,11 @@ MonoBehaviour:
   buildCost: 100
   buildTime: 1
   col: {fileID: 2268137669346959139}
+  toEnableOnBuild:
+  - {fileID: 3216330059626059734}
+  - {fileID: 473719277194874614}
+  - {fileID: 1922749780054760380}
+  enableOnStart: 0
 --- !u!114 &3216330059626059734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -742,7 +747,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394160918541279847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06d90e5214cd2a643992e406092a0220, type: 3}
   m_Name: 
@@ -767,18 +772,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394160918541279847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dacfc718e95bde14a8e72d38ece6eedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   oponentType: 0
   oponentFindCooldown: 1
-  maxDistance: 5
+  maxDistance: 10
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 141345819431816201}
+      - m_Target: {fileID: 1922749780054760380}
         m_MethodName: OnNewOponenet
         m_Mode: 0
         m_Arguments:
@@ -794,7 +799,7 @@ MonoBehaviour:
   onOponentNoLongetValid:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 141345819431816201}
+      - m_Target: {fileID: 1922749780054760380}
         m_MethodName: OnOponenetLost
         m_Mode: 1
         m_Arguments:
@@ -807,20 +812,26 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &141345819431816201
+--- !u!114 &1922749780054760380
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8394160918541279847}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26429e515bb9abd48bb9aeafcdd6e680, type: 3}
+  m_Script: {fileID: 11500000, guid: 38d0854700b78b6458148bb73eadc59e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 3991717196430304264}
-  reloadTime: 3
-  shootDuration: 0.5
-  damage: 15
-  shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
+  spawnPoint: {fileID: 3991717196430304264}
+  projectile: {fileID: 5654902114113740134, guid: 3dac18b3be8fe94429f84adcf343599e,
+    type: 3}
+  cannon: {fileID: 499530041351838838}
+  reloadTime: 2
+  ammoCost: 0
+  shootingForcePerDistance: 5
+  upAngleCorrection: 0
+  arrowTimePerUnit: 0.09
+  verticalSpread: 5
+  horizontalSpread: 5

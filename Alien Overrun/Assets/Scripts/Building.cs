@@ -20,6 +20,8 @@ public class Building : MonoBehaviour
 
 	[SerializeField] private float buildTime = 1.0f;
 	[SerializeField] private Collider col = null;
+	[SerializeField] private Behaviour[] toEnableOnBuild = null;
+	[SerializeField] private bool enableOnStart = false;
 
 	private int collisions = 0;
 
@@ -27,8 +29,13 @@ public class Building : MonoBehaviour
 	{
 		Assert.IsNotNull( indicator );
 		Assert.IsNotNull( col );
+		Assert.IsNotNull( toEnableOnBuild );
+		Assert.AreNotEqual( toEnableOnBuild.Length, 0 );
 
 		indicator.SetActive( false );
+
+		if ( enableOnStart )
+			EnableBuilding( );
 	}
 
 	void Update ()
@@ -38,7 +45,7 @@ public class Building : MonoBehaviour
 
 	void OnEnable( )
 	{
-		BuildingManager.Instance.AddBuilding( this );
+
 	}
 
 	void OnDisable( )
@@ -77,7 +84,13 @@ public class Building : MonoBehaviour
 
 	public void EnableBuilding()
 	{
+		BuildingManager.Instance.AddBuilding( this );
 		col.isTrigger = false;
+
+		foreach ( var item in toEnableOnBuild )
+		{
+			item.enabled = true;
+		}
 	}
 
 	public bool CanBePaced()
