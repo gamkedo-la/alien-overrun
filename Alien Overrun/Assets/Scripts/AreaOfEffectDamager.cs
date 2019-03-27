@@ -37,7 +37,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 
 	private void OnCollisionEnter( Collision collision )
 	{
-		Debug.Log( "Collision damage with: " + collision.gameObject.name );
+		//Debug.Log( "Collision damage with: " + collision.gameObject.name );
 
 		if ( collision.transform.CompareTag( "Enemy" ) )
 		{
@@ -51,7 +51,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 
 	private void OnTriggerEnter( Collider other )
 	{
-		Debug.Log( "Trigger damage with: " + other.gameObject.name );
+		//Debug.Log( "Trigger damage with: " + other.gameObject.name );
 
 		if ( other.transform.CompareTag( "Enemy" ) )
 		{

@@ -10,6 +10,7 @@ using UnityEngine.Assertions;
 public class ArrowShooterStandard : MonoBehaviour
 {
 	[SerializeField] private Transform spawnPoint = null;
+	[SerializeField] private Transform spawnPointPivot = null;
 	[SerializeField] private GameObject projectile = null;
 	[Space]
 	[SerializeField] private float reloadTime = 2f;
@@ -28,6 +29,7 @@ public class ArrowShooterStandard : MonoBehaviour
 	{
 		Assert.IsNotNull( projectile );
 		Assert.IsNotNull( spawnPoint );
+		Assert.IsNotNull( spawnPointPivot );
 	}
 
 	void Update( )
@@ -77,6 +79,9 @@ public class ArrowShooterStandard : MonoBehaviour
 		standardEnemy.y = 0;
 
 		Vector3 dir = ( target.position - spawnPoint.position ).normalized;
+
+		float angle = Utilities.AngleBetweenVectors( new Vector2( transform.position.x, transform.position.z ), new Vector2( target.transform.position.x, target.transform.position.z ) );
+		spawnPointPivot.rotation = Quaternion.Euler( 0, angle + 180, 0 );
 
 		// Some randomness
 		dir = Quaternion.AngleAxis( Random.Range( -horizontalSpread, horizontalSpread ), Vector3.Cross( Vector3.down, dir ) ) * dir;

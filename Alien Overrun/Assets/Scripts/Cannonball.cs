@@ -12,7 +12,6 @@ public class Cannonball : MonoBehaviour
 	[SerializeField] private GameObject explosion = null;
 	[SerializeField] private GameObject aoeDamage = null;
 	[SerializeField] private GameObject trail = null;
-	[SerializeField] private int damage = 12;
 
 	void Start ()
 	{
@@ -23,18 +22,6 @@ public class Cannonball : MonoBehaviour
 
 	private void OnCollisionEnter( Collision collision )
 	{
-		//if ( collision.transform.CompareTag( "Environment" ) )
-		//IamStuck( collision.transform );
-
-		/*if ( collision.transform.CompareTag( "Enemy" ) )
-		{
-			HP hp = collision.gameObject.GetComponent<HP>( );
-			if ( hp != null )
-				hp.ChangeHP( -damage );
-
-			Utilities.DrawDebugText( collision.transform.position + Vector3.up, damage.ToString( ) );
-		}*/
-
 		Instantiate( explosion, collision.contacts[0].point, Quaternion.identity );
 		Instantiate( aoeDamage, collision.contacts[0].point, Quaternion.identity );
 

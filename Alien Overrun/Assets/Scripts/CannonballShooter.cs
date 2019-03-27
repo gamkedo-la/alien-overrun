@@ -108,20 +108,12 @@ public class CannonballShooter : MonoBehaviour
 
 		//Debug.DrawRay( spawnPoint.position, dir * 20, new Color( 1f, 0f, 0f, 0.9f ), 1f );
 
-		float angle = AngleBetweenVectors( new Vector2( transform.position.x, transform.position.z ), new Vector2( target.transform.position.x, target.transform.position.z ) );
-		cannon.rotation = Quaternion.Euler( 0, angle - 90, 0 );
+		float angle = Utilities.AngleBetweenVectors( new Vector2( transform.position.x, transform.position.z ), new Vector2( target.transform.position.x, target.transform.position.z ) );
+		cannon.rotation = Quaternion.Euler( 0, angle + 180, 0 );
 
 		// and blast off!
 		Vector3 force = dir * ( shootingForcePerDistance * currentDistanceToTarget );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force );
-	}
-
-	private float AngleBetweenVectors( Vector2 vector1, Vector2 vector2 )
-	{
-		Vector2 diference = vector2 - vector1;
-		float sign = ( vector2.y < vector1.y ) ? -1.0f : 1.0f;
-
-		return Vector2.Angle( Vector2.right, diference ) * sign;
 	}
 }

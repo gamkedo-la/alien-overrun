@@ -76,4 +76,18 @@ public class Utilities : MonoBehaviour
 
 		return canvasObj;
 	}
+
+	/// <summary>
+	/// Return a signed angle between 2 vectors.
+	/// </summary>
+	/// <param name="vector1">First vector.</param>
+	/// <param name="vector2">Second vector.</param>
+	/// <returns>Signed angle.</returns>
+	static public float AngleBetweenVectors( Vector2 vector1, Vector2 vector2 )
+	{
+		Vector2 diference = vector2 - vector1;
+		float sign = ( vector2.y < vector1.y ) ? -1.0f : 1.0f;
+
+		return Vector2.Angle( Vector2.right, diference ) * sign;
+	}
 }
