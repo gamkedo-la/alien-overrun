@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 674976518474313825}
   - component: {fileID: 8873945113037893997}
   - component: {fileID: 3521612538583266021}
+  - component: {fileID: 155927536}
   m_Layer: 0
   m_Name: Fast Enemy
   m_TagString: Enemy
@@ -172,7 +173,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -201,6 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb7da4b2fbf3f042af7c7d964b62fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 155927536}
   speed: 3
 --- !u!114 &674976518474313825
 MonoBehaviour:
@@ -241,12 +243,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oponentType: 1
   oponentFindCooldown: 0.2
-  maxDistance: 1.5
+  findDistance: 5
+  attackDistance: 1.5
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3521612538583266021}
-        m_MethodName: OnNewOponenet
+      - m_Target: {fileID: 4593521240196380841}
+        m_MethodName: SetDestination
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -254,8 +257,13 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
+    m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onInRange:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 4593521240196380841}
         m_MethodName: IsMoving
         m_Mode: 6
@@ -265,7 +273,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3521612538583266021}
+        m_MethodName: OnNewOponenet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -292,7 +311,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4593521240196380841}
+        m_MethodName: SetDestination
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -312,6 +342,28 @@ MonoBehaviour:
   attackDelay: 1
   damage: 2
   ammoCost: 0
+--- !u!195 &155927536
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6629040366295511491}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.25
+  m_Speed: 3
+  m_Acceleration: 10
+  avoidancePriority: 50
+  m_AngularSpeed: 500
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.45
+  m_BaseOffset: 0
+  m_WalkableMask: 5
+  m_ObstacleAvoidanceType: 2
 --- !u!1 &6703738158296170499
 GameObject:
   m_ObjectHideFlags: 0

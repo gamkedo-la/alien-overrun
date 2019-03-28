@@ -21,12 +21,15 @@ public class OponentFinder : MonoBehaviour
 
 	[SerializeField] private OponentType oponentType = OponentType.Building;
 	[SerializeField] private float oponentFindCooldown = 1f;
-	[SerializeField] private float maxDistance = 5f;
+	[SerializeField] private float findDistance = 4f;
+	[SerializeField] private float attackDistance = 2f;
 	[SerializeField] private UnityEventTransform onOponentFound = null;
+	[SerializeField] private UnityEventTransform onInRange = null;
 	[SerializeField] private UnityEvent onOponentNoLongetValid = null;
 
 	private GameObject currentOponent;
 	private bool hadOponent = false;
+	private bool wasInRange = false;
 
 	void Start ()
 	{
@@ -55,6 +58,16 @@ public class OponentFinder : MonoBehaviour
 			hadOponent = true;
 		else
 			hadOponent = false;
+
+		if (currentOponent && CheckIfRange(currentOponent))
+		{
+			if ( !wasInRange )
+				onInRange.Invoke( currentOponent.transform );
+		}
+		else
+		{
+			wasInRange = false;
+		}
 	}
 
 	private bool CheckIfOponentValid( GameObject oponent )
@@ -63,7 +76,18 @@ public class OponentFinder : MonoBehaviour
 			return false;
 
 		// Let's check all the requirements (one after another) and discard enemies that do not meet them
-		if ( Vector3.Distance( oponent.transform.position, transform.position ) > maxDistance )
+		if ( Vector3.Distance( oponent.transform.position, transform.position ) > findDistance )
+			return false;
+
+		return true;
+	}
+
+	private bool CheckIfRange( GameObject oponent )
+	{
+		if ( !oponent )
+			return false;
+
+		if ( Vector3.Distance( oponent.transform.position, transform.position ) > attackDistance )
 			return false;
 
 		return true;

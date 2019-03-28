@@ -32,6 +32,7 @@ public class MeleeAttacker : MonoBehaviour
 	public void OnNewOponenet( Transform oponent )
 	{
 		target = oponent;
+		transform.LookAt( oponent );
 	}
 
 	public void OnOponenetLost( )
@@ -41,6 +42,9 @@ public class MeleeAttacker : MonoBehaviour
 
 	public void ApplyDamage()
 	{
+		if ( !target )
+			return;
+
 		target.GetComponent<HP>( ).ChangeHP( -damage );
 		Utilities.DrawDebugText( target.position + Vector3.up, damage.ToString( ) );
 	}

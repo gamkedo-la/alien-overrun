@@ -17,8 +17,8 @@ public class ArrowShooterStandard : MonoBehaviour
 	[SerializeField] private int ammoCost = 0;
 	[Space]
 	[SerializeField, Range(0,300)] private float shootingForce = 3.7f;
-	[SerializeField] private float upAngleCorrection = -90f;
-	[SerializeField] private float arrowTimePerUnit = 0.09f;
+	//[SerializeField] private float upAngleCorrection = -90f;
+	//[SerializeField] private float arrowTimePerUnit = 0.09f;
 	[SerializeField] private float verticalSpread = 5f;
 	[SerializeField] private float horizontalSpread = 5f;
 

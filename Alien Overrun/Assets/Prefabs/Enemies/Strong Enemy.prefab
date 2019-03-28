@@ -102,7 +102,6 @@ GameObject:
   - component: {fileID: 4603431160201672296}
   - component: {fileID: 3010337811572996880}
   - component: {fileID: 7067870660644691831}
-  - component: {fileID: 3533742924406176253}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -169,19 +168,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &3533742924406176253
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1551196907236701081}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3104673761630165275
 GameObject:
   m_ObjectHideFlags: 0
@@ -197,6 +183,7 @@ GameObject:
   - component: {fileID: 8349732173415197882}
   - component: {fileID: 1726058197418733823}
   - component: {fileID: 4780077430331207101}
+  - component: {fileID: 3550478831664406969}
   m_Layer: 0
   m_Name: Strong Enemy
   m_TagString: Enemy
@@ -233,7 +220,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -262,6 +249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acb7da4b2fbf3f042af7c7d964b62fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 3550478831664406969}
   speed: 0.8
 --- !u!114 &8349732173415197882
 MonoBehaviour:
@@ -302,12 +290,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oponentType: 1
   oponentFindCooldown: 0.2
-  maxDistance: 2
+  findDistance: 5
+  attackDistance: 2
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4780077430331207101}
-        m_MethodName: OnNewOponenet
+      - m_Target: {fileID: 2033834348727225380}
+        m_MethodName: SetDestination
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -317,6 +306,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onInRange:
+    m_PersistentCalls:
+      m_Calls:
       - m_Target: {fileID: 2033834348727225380}
         m_MethodName: IsMoving
         m_Mode: 6
@@ -326,7 +320,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4780077430331207101}
+        m_MethodName: OnNewOponenet
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
@@ -353,7 +358,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2033834348727225380}
+        m_MethodName: SetDestination
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -373,6 +389,28 @@ MonoBehaviour:
   attackDelay: 3
   damage: 10
   ammoCost: 0
+--- !u!195 &3550478831664406969
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104673761630165275}
+  m_Enabled: 1
+  m_AgentTypeID: 1479372276
+  m_Radius: 0.65
+  m_Speed: 0.8
+  m_Acceleration: 4
+  avoidancePriority: 30
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.23
+  m_BaseOffset: 0
+  m_WalkableMask: 5
+  m_ObstacleAvoidanceType: 2
 --- !u!1 &3502259263116965987
 GameObject:
   m_ObjectHideFlags: 0

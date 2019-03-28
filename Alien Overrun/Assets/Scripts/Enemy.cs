@@ -5,10 +5,12 @@
  **/
 
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 public class Enemy : MonoBehaviour
 {
+	[SerializeField] private NavMeshAgent agent = null;
 	[SerializeField] private float speed = 10;
 
 	private Vector3 destination = Vector3.zero;
@@ -19,12 +21,15 @@ public class Enemy : MonoBehaviour
 	{
 		rb = GetComponent<Rigidbody>( );
 		Assert.IsNotNull( rb );
+		Assert.IsNotNull( agent );
+
+		agent.SetDestination( Vector3.zero );
 	}
 
 	void Update ()
 	{
-		Rotate( );
-		Move( );
+		//Rotate( );
+		//Move( );
 	}
 
 	void OnEnable( )
@@ -38,9 +43,27 @@ public class Enemy : MonoBehaviour
 			EnemyManager.Instance.RemoveEnemy( this );
 	}
 
-	public void SetDestination( Vector3 destination ) => this.destination = destination;
+	public void SetDestination( )
+	{
+		SetDestination( Vector3.zero );
+	}
 
-	public void IsMoving( bool isMoving ) => onTheMove = isMoving;
+	public void SetDestination( Transform target )
+	{
+		SetDestination( target.position );
+	}
+
+	public void SetDestination( Vector3 destination )
+	{
+		this.destination = destination;
+		agent.SetDestination( destination );
+	}
+
+	public void IsMoving( bool isMoving )
+	{
+		onTheMove = isMoving;
+		agent.isStopped = isMoving;
+	}
 
 	private void Rotate( )
 	{
