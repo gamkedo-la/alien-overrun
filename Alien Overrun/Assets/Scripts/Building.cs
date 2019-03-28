@@ -24,10 +24,12 @@ public class Building : MonoBehaviour
 	[SerializeField] private bool enableOnStart = false;
 
 	private int collisions = 0;
+    private LevelManager levelManager;
 
 	void Start ()
 	{
-		Assert.IsNotNull( indicator );
+        levelManager = GameObject.Find("Managers").GetComponent<LevelManager>();
+        Assert.IsNotNull( indicator );
 		Assert.IsNotNull( col );
 		Assert.IsNotNull( toEnableOnBuild );
 		Assert.AreNotEqual( toEnableOnBuild.Length, 0 );
@@ -58,12 +60,14 @@ public class Building : MonoBehaviour
 	{
 		//GetComponentInChildren<MeshRenderer>( ).material.color = Random.ColorHSV( );
 		Debug.Log( $"Clicked: {name}" );
-	}
+    }
 
 	void OnMouseEnter( )
 	{
+        if (!levelManager.Paused) { 
 		indicator.SetActive( true );
-	}
+        }
+    }
 
 	void OnMouseExit( )
 	{
