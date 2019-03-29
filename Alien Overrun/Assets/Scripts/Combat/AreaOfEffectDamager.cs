@@ -39,7 +39,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 	{
 		//Debug.Log( "Collision damage with: " + collision.gameObject.name );
 
-		if ( collision.transform.CompareTag( "Enemy" ) )
+		if ( collision.transform.CompareTag( Tags.Enemy ) )
 		{
 			HP hp = collision.gameObject.GetComponent<HP>( );
 			if ( hp != null )
@@ -53,7 +53,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 	{
 		//Debug.Log( "Trigger damage with: " + other.gameObject.name );
 
-		if ( other.transform.CompareTag( "Enemy" ) )
+		if ( other.transform.CompareTag( Tags.Enemy ) )
 		{
 			HP hp = other.gameObject.GetComponent<HP>( );
 			if ( hp != null )
