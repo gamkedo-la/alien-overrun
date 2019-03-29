@@ -785,9 +785,7 @@ MonoBehaviour:
   buildingNormalMat: {fileID: 2100000, guid: d3339cd7beeb494449c32fa5393896a9, type: 2}
   buildingBadMat: {fileID: 2100000, guid: c8593cf6051fd3e42915f8ae78d6511e, type: 2}
   buildingRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8015079812489371629}
 --- !u!1 &8015079813599566345
 GameObject:
   m_ObjectHideFlags: 0

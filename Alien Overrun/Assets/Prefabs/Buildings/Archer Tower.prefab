@@ -1277,7 +1277,7 @@ MonoBehaviour:
   onMat: {fileID: 2100000, guid: 906b8f7bfa5bbc44fb701aaf4b10d3bc, type: 2}
   offMat: {fileID: 2100000, guid: dda1798cdd566cf44b6db4d24526c096, type: 2}
   zoneMat: {fileID: 2100000, guid: efa33157334e0894781af38cc8bd304f, type: 2}
-  buildingNormalMat: {fileID: 2100000, guid: d3339cd7beeb494449c32fa5393896a9, type: 2}
+  buildingNormalMat: {fileID: 2100000, guid: 7b56bafc5b40bbb4bb113a65483519a0, type: 2}
   buildingBadMat: {fileID: 2100000, guid: c8593cf6051fd3e42915f8ae78d6511e, type: 2}
   buildingRenderers:
   - {fileID: 1717183530}
@@ -1286,6 +1286,7 @@ MonoBehaviour:
   - {fileID: 2944629361439770365}
   - {fileID: 1982762122292440354}
   - {fileID: 5634552648816834936}
+  - {fileID: 4208485051531391479}
 --- !u!1 &8719591449556498362
 GameObject:
   m_ObjectHideFlags: 0
