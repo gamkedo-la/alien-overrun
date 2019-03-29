@@ -64,7 +64,7 @@ public class OponentFinder : MonoBehaviour
 		if (currentOponent && CheckIfRange(currentOponent))
 		{
 			if ( !wasInRange )
-				onInRange.Invoke( currentOponent.transform );
+				onInRange.Invoke( (currentOponent as GameObject).transform );
 		}
 		else
 		{

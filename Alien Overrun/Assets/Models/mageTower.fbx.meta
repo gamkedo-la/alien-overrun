@@ -13,6 +13,17 @@ ModelImporter:
     400006: //RootNode
     2100000: Material.005
     2100002: Material.002
+    2100004: TowerTopPieceMat
+    2100006: TowerWindowSideMat
+    2100008: TowerTopSideMat
+    2100010: TowerWallMat
+    2100012: TowerDoorSidesMat
+    2100014: TowerDoorMat
+    2100016: TowerWindowMat
+    2100018: TowerTopMat
+    2100020: TowerWindowWoodMat
+    2100022: TowerWindowWootSideMat
+    2100024: ConeMat
     2300000: Cone
     2300002: Cone.001
     2300004: Cylinder
