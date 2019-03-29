@@ -36,6 +36,8 @@ public class OponentFinder : MonoBehaviour
 		InvokeRepeating( "DoSearch", oponentFindCooldown, oponentFindCooldown );
 	}
 
+	public float GetAttackDistance( ) => attackDistance;
+
 	private void DoSearch( )
 	{
 		bool validOponent = false;

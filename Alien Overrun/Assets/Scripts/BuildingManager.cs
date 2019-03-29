@@ -34,4 +34,21 @@ public class BuildingManager : MonoBehaviour
 	{
 		Buildings.Remove( building );
 	}
+
+	public void ShowZones( bool show )
+	{
+		foreach ( var building in Buildings )
+			building.ShowPlaceZone( show );
+	}
+
+	public bool CanPlaceBuiding( Building buildingToPlace )
+	{
+		foreach ( var building in Buildings )
+		{
+			if ( building.AreWeCloseEnough( buildingToPlace ) )
+				return true;
+		}
+
+		return false;
+	}
 }

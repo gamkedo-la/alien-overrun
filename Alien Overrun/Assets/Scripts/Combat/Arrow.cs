@@ -30,10 +30,10 @@ public class Arrow : MonoBehaviour
 
 	private void OnCollisionEnter( Collision collision )
 	{
-		//if ( collision.transform.CompareTag( "Environment" ) )
-			//IamStuck( collision.transform );
+		//if ( collision.transform.CompareTag( Tags.Environment ) )
+		//IamStuck( collision.transform );
 
-		if ( collision.transform.CompareTag( "Enemy" ) )
+		if ( collision.transform.CompareTag( Tags.Enemy ) )
 		{
 			HP hp = collision.gameObject.GetComponent<HP>( );
 			if ( hp != null )

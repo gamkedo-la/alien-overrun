@@ -11,7 +11,7 @@ public class FramesPerSecond : MonoBehaviour
     public Text fpsText;
     // Start is called before the first frame update
     void Start()
-    {   
+    {
         fpsCounter.alpha = 0f;
     }
 

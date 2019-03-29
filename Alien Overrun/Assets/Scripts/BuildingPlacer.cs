@@ -41,7 +41,24 @@ public class BuildingPlacer : MonoBehaviour
 	{
 		MoveBuilding( );
 		CheckIfCanPlaceBuilding( );
+		UpdateIndicator( );
 		TryPlaceBuilding( );
+	}
+
+	void FixedUpdate( )
+	{
+		CheckResourceRequirements( );
+	}
+
+	public void StartPlaceing( )
+	{
+		BuildingManager.Instance.ShowZones( true );
+		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>( );
+		ResourceManager.Instance.UseResources( ResourceType.Minerals, cost );
+
+		Vector3 upVector = Vector3.up;
+		plane = new Plane( upVector, pointOfPlane.position );
+		mouseOffset = Vector3.zero;
 	}
 
 	private void MoveBuilding( )
@@ -59,12 +76,19 @@ public class BuildingPlacer : MonoBehaviour
 		if ( buildingToPlace == null )
 			return;
 
-		// Here we can check things like min. distance to other buildings, etc. And visualize it
-		canPlace = true;
+		canPlace = BuildingManager.Instance.CanPlaceBuiding( buildingToPlace );
 		if ( !canPlace )
 			return;
 
 		canPlace = buildingToPlace.CanBePaced( );
+	}
+
+	private void UpdateIndicator( )
+	{
+		if ( buildingToPlace == null )
+			return;
+
+		buildingToPlace.ShowRange( canPlace );
 	}
 
 	private void TryPlaceBuilding( )
@@ -78,23 +102,10 @@ public class BuildingPlacer : MonoBehaviour
 		if ( !canPlace )
 			return;
 
+		buildingToPlace.HideRange( );
 		buildingToPlace.EnableBuilding( );
 		buildingToPlace = null;
-	}
-
-	void FixedUpdate( )
-	{
-		CheckResourceRequirements( );
-	}
-
-	public void StartPlaceing()
-	{
-		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>();
-		ResourceManager.Instance.UseResources( ResourceType.Minerals, cost );
-
-		Vector3 upVector = Vector3.up;
-		plane = new Plane( upVector, pointOfPlane.position );
-		mouseOffset = Vector3.zero;
+		BuildingManager.Instance.ShowZones( false );
 	}
 
 	private void CheckResourceRequirements( )
