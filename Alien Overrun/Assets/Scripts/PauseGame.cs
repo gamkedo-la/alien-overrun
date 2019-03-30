@@ -27,24 +27,43 @@ public class PauseGame : MonoBehaviour
         {
             if (levelManager.Paused == false)
             {
-                Pause();
+                Pause( false );
             }
             else
             {
                 Unpause();
             }
         }
+		else if ( Input.GetKeyDown( KeyCode.P ) )
+		{
+			if ( levelManager.Paused == false )
+				Pause( true );
+			else
+				Unpause( );
+		}
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            
+
         }
     }
-    public void Pause()
+
+	public void TogglePause()
+	{
+		if ( levelManager.Paused )
+			Unpause( );
+		else
+			Pause( true );
+	}
+
+    public void Pause( bool activePause )
     {
         levelManager.Paused = true;
         Time.timeScale = 0;
-        HideUI();
+
+		if ( !activePause )
+			HideUI();
     }
+
     public void Unpause()
     {
         levelManager.Paused = false;

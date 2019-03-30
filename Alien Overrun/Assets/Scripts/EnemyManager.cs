@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
 
 	public List<Enemy> Enemies { get; private set; }
 
-	[SerializeField] private GameObject enemy = null;
+	[SerializeField] private GameObject[] enemyPrefabs = null;
 	[SerializeField] private Transform spawnCenter = null;
 	[SerializeField] private float radius = 3f;
 
@@ -32,7 +32,8 @@ public class EnemyManager : MonoBehaviour
 
 	private void Start( )
 	{
-		Assert.IsNotNull( enemy );
+		Assert.IsNotNull( enemyPrefabs );
+		Assert.AreNotEqual( enemyPrefabs.Length, 0 );
 	}
 
 	public void AddEnemy( Enemy enemy )
@@ -45,7 +46,7 @@ public class EnemyManager : MonoBehaviour
 		Enemies.Remove( enemy );
 	}
 
-	public void SpawnNewEnemy( )
+	public void SpawnRandomEnemy( )
 	{
 		Vector3 enemyPos = Vector3.zero;
 		Vector2 circle = Random.insideUnitCircle * radius;
@@ -53,6 +54,17 @@ public class EnemyManager : MonoBehaviour
 		enemyPos.y = spawnCenter.position.y;
 		enemyPos.z = spawnCenter.position.z + circle.y;
 
-		Instantiate( enemy, enemyPos, Quaternion.identity );
+		Instantiate( enemyPrefabs[Random.Range( 0, enemyPrefabs.Length )], enemyPos, Quaternion.identity );
+	}
+
+	public void SpawnEnemy( int id )
+	{
+		Vector3 enemyPos = Vector3.zero;
+		Vector2 circle = Random.insideUnitCircle * radius;
+		enemyPos.x = spawnCenter.position.x + circle.x;
+		enemyPos.y = spawnCenter.position.y;
+		enemyPos.z = spawnCenter.position.z + circle.y;
+
+		Instantiate( enemyPrefabs[id], enemyPos, Quaternion.identity );
 	}
 }
