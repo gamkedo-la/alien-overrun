@@ -18,18 +18,27 @@ public class FramesPerSecond : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         fpsText.text = fps.ToString() + " FPS";
         fps = (int)(1f / Time.unscaledDeltaTime);
         if (Input.GetKeyDown(KeyCode.F3) && fpsCounter.alpha == 0f)
         {
             fpsCounter.alpha = 1f;
-            Debug.Log("FPS Counter Shown");
         }
         else if (Input.GetKeyDown(KeyCode.F3) && fpsCounter.alpha == 1f)
         {
             fpsCounter.alpha = 0f;
-            Debug.Log("FPS Counter Hidden");
         }
     }
+
+	public void ToggleFPSCounter( )
+	{
+		if ( fpsCounter.alpha == 0f)
+        {
+            fpsCounter.alpha = 1f;
+        }
+        else if ( fpsCounter.alpha == 1f)
+        {
+            fpsCounter.alpha = 0f;
+        }
+	}
 }
