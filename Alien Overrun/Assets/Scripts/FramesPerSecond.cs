@@ -6,27 +6,26 @@ using UnityEngine.UI;
 public class FramesPerSecond : MonoBehaviour
 {
 
-    public int fps;
+    public float fps;
+    private float sinceLastFrame;
     public CanvasGroup fpsCounter;
     public Text fpsText;
     // Start is called before the first frame update
     void Start()
     {
         fpsCounter.alpha = 0f;
+        sinceLastFrame = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        fpsText.text = fps.ToString() + " FPS";
-        fps = (int)(1f / Time.unscaledDeltaTime);
-        if (Input.GetKeyDown(KeyCode.F3) && fpsCounter.alpha == 0f)
+        sinceLastFrame += (Time.unscaledDeltaTime - sinceLastFrame) * 0.1f;
+        fps = 1f / sinceLastFrame;
+        fpsText.text = (int) fps + " FPS";
+        if (Input.GetKeyDown(KeyCode.F3))
         {
-            fpsCounter.alpha = 1f;
-        }
-        else if (Input.GetKeyDown(KeyCode.F3) && fpsCounter.alpha == 1f)
-        {
-            fpsCounter.alpha = 0f;
+            ToggleFPSCounter();
         }
     }
 
