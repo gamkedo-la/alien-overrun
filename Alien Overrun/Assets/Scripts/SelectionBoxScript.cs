@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class SelectionBoxScript : MonoBehaviour
 {
+	public GameObject selectionCube;
 	public Transform boxTransform;
+	[Space]
+
+	public CursorRaycast cursorRaycast;
+	public GameObject cursorIndicator;
+	[Space]
 
 	[SerializeField] private Transform pointOfPlane = null;
 	
@@ -30,6 +36,8 @@ public class SelectionBoxScript : MonoBehaviour
 		{
 			startPosition = Vector3.zero;
 			boxTransform.localScale = new Vector3(0f, boxTransform.localScale.y, 0f);
+			cursorIndicator.SetActive(true);
+			selectionCube.SetActive(false);
 		}
 		else if (startPosition != Vector3.zero)
 		{
@@ -50,6 +58,8 @@ public class SelectionBoxScript : MonoBehaviour
 		else if (Input.GetMouseButtonDown(0))
 		{
 			startPosition = boxTransform.position;
+			cursorIndicator.SetActive(false);
+			selectionCube.SetActive(true);
 		}
 	}
 

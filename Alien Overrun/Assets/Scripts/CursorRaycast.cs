@@ -20,12 +20,15 @@ public class CursorRaycast : MonoBehaviour
 	[SerializeField] private GameObject cursorIndicator;
 	[SerializeField] private Transform pointOfPlane = null;
 
-	private GameObject selectionIndicator = null;
+	private List<GameObject> selectionIndicator = new List<GameObject>();
 
 	private Plane plane;
 
 	private GameObject hoverSelection = null;
-	private GameObject lockedSelection = null;
+
+	public List<GameObject> LockedSelection() { return lockedSelection; }
+	private List<GameObject> lockedSelection = new List<GameObject>();
+
 	private MeshRenderer rend;
 
 	private TextMeshProUGUI hoverInfo1;
@@ -57,7 +60,7 @@ public class CursorRaycast : MonoBehaviour
 		{
 			hoverSelection = collision.gameObject;
 
-			if (lockedSelection == null)
+			if (lockedSelection.Count <= 0)
 			{
 				hoverSelectionInfoUI.SetActive(true);
 				rend.material = hoverCursorMaterial;
@@ -72,12 +75,22 @@ public class CursorRaycast : MonoBehaviour
 		{
 			hoverSelection = null;
 
-			if (lockedSelection == null)
+			if (lockedSelection.Count <= 0)
 			{
 				hoverSelectionInfoUI.SetActive(false);
 				rend.material = defaultCursorMaterial;
 			}
 		}
+	}
+
+
+
+	public bool IsObjectSelected( GameObject obj )
+	{
+		foreach (var sel in lockedSelection)
+			if (sel == obj) return true;
+
+		return false;
 	}
 
 
@@ -101,7 +114,7 @@ public class CursorRaycast : MonoBehaviour
 		{
 			transform.position = mRay.GetPoint(mouseDistance);
 
-			if (lockedSelection != null)
+			if (lockedSelection.Count > 0)
 			{
 				cursorIndicator.transform.position = mRay.GetPoint(mouseDistance);
 				SetInfo(true);
@@ -124,34 +137,28 @@ public class CursorRaycast : MonoBehaviour
 		{
 			if (hoverSelection != null)
 			{
-				if (lockedSelection != null)
-					lockedSelection.GetComponent<Building>().Indicator.HideRange();
+				if (lockedSelection.Count > 0)
+				{
+					foreach( var sel in lockedSelection )
+						sel.GetComponent<Building>().Indicator.HideRange();
 
-				lockedSelection = hoverSelection;
-				rend.material = lockedCursorMaterial;
+					lockedSelection.Clear();
+				}
 
-				hoverSelectionInfoUI.SetActive(false);
-				lockedSelectionInfoUI.SetActive(true);
+				if (selectionIndicator.Count > 0)
+				{
+					foreach (var ind in selectionIndicator)
+						Destroy(ind);
 
-				if (selectionIndicator != null)
-					DestroyImmediate(selectionIndicator);
-				selectionIndicator = null;
+					selectionIndicator.Clear();
+				}
 
-				selectionIndicator = Instantiate(lockedSelectionIndicator, lockedSelection.transform.position, Quaternion.Euler(0f, 0f, 0f));
-				lockedSelection.GetComponent<Building>().Indicator.ShowRange(true);
+				if(!IsObjectSelected( hoverSelection ))
+					AddToSelection( hoverSelection );
 			}
-			else if (lockedSelection != null)
+			else if (lockedSelection.Count > 0)
 			{
-				lockedSelection.GetComponent<Building>().Indicator.HideRange();
-
-				lockedSelection = null;
-				rend.material = defaultCursorMaterial;
-
-				lockedSelectionInfoUI.SetActive(false);
-
-				if (selectionIndicator != null)
-					DestroyImmediate(selectionIndicator);
-				selectionIndicator = null;
+				DeselectAll();
 			}
 		}
 	}
@@ -168,13 +175,88 @@ public class CursorRaycast : MonoBehaviour
 			hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
 			hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
 		}
-		else
+		else if (lockedSelection.Count <= 1)
 		{
-			Building building = lockedSelection.GetComponent<Building>();
-			HP hp = lockedSelection.GetComponent<HP>();
+			Building building = lockedSelection[0].GetComponent<Building>();
+			HP hp = lockedSelection[0].GetComponent<HP>();
 
 			lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
 			lockedInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
+		}
+		else if (lockedSelection.Count > 1)
+		{
+			int totalBuildCost = 0;
+			foreach (var sel in lockedSelection)
+				totalBuildCost += sel.GetComponent<Building>().BuildCost;
+
+			float avgMaxHP = 0f;
+			foreach (var sel in lockedSelection)
+				avgMaxHP += sel.GetComponent<HP>().MaxHP;
+			avgMaxHP /= lockedSelection.Count;
+
+			float avgCurrentHP = 0f;
+			foreach (var sel in lockedSelection)
+				avgCurrentHP += sel.GetComponent<HP>().CurrentHP;
+			avgCurrentHP /= lockedSelection.Count;
+
+			lockedInfo1.text = "Total Buildings: " + lockedSelection.Count + "\nBuild Cost: " + totalBuildCost;
+			lockedInfo2.text = "Avg. Hit Points: " + avgMaxHP + "/" + avgCurrentHP;
+		}
+	}
+
+
+
+	public void AddToSelection( GameObject addSel )
+	{
+		lockedSelection.Add(addSel);
+		rend.material = lockedCursorMaterial;
+
+		hoverSelectionInfoUI.SetActive(false);
+		lockedSelectionInfoUI.SetActive(true);
+
+		selectionIndicator.Add(Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f)));
+		addSel.GetComponent<Building>().Indicator.ShowRange(true);
+	}
+
+	public void RemoveFromSelection(GameObject remSel)
+	{
+		foreach (var ind in selectionIndicator)
+		{
+			if (ind.transform.position == remSel.transform.position)
+			{
+				selectionIndicator.Remove(ind);
+				Destroy(ind);
+				break;
+			}
+		}
+
+		remSel.GetComponent<Building>().Indicator.HideRange();
+		lockedSelection.Remove(remSel);
+
+		if (lockedSelection.Count <= 0)
+		{
+			rend.material = defaultCursorMaterial;
+			lockedSelectionInfoUI.SetActive(false);
+		}
+	}
+
+	public void DeselectAll()
+	{
+		foreach (var sel in lockedSelection)
+			sel.GetComponent<Building>().Indicator.HideRange();
+
+		lockedSelection.Clear();
+
+		rend.material = defaultCursorMaterial;
+
+		lockedSelectionInfoUI.SetActive(false);
+
+		if (selectionIndicator.Count > 0)
+		{
+			foreach (var ind in selectionIndicator)
+				Destroy(ind);
+
+			selectionIndicator.Clear();
 		}
 	}
 }
