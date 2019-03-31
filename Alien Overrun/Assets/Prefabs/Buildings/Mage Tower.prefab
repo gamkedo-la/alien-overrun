@@ -376,7 +376,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2142323573707984981
 Transform:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   - {fileID: 2872712207663432621}
   - {fileID: 4769867742874044301}
   - {fileID: 9217465849097275489}
-  enableOnStart: 0
+  enableOnStart: 1
 --- !u!114 &2872712207663432621
 MonoBehaviour:
   m_ObjectHideFlags: 0

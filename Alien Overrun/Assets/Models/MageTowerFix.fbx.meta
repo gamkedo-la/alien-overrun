@@ -31,6 +31,9 @@ ModelImporter:
     4300000: Cylinder
     4300002: Cone
     4300004: Cone.001
+    6400000: Cone
+    6400002: Cone.001
+    6400004: Cylinder
     2186277476908879412: ImportLogs
   externalObjects: {}
   materials:
@@ -65,7 +68,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 0.4
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
@@ -74,7 +77,7 @@ ModelImporter:
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
-    optimizeMeshForGPU: 0
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
     preserveHierarchy: 0

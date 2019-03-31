@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 
 public class Building : MonoBehaviour
 {
+	public Indicator Indicator { get { return indicator; } private set { indicator = value; } }
 	[SerializeField] private Indicator indicator = null;
 
 	public string BuildingName { get { return buildingName; } private set { buildingName = value; } }
@@ -54,15 +55,20 @@ public class Building : MonoBehaviour
 		Debug.Log( $"Clicked: {name}" );
 	}
 
+
 	void OnMouseEnter( )
 	{
+		//The Range is shown when selected (locked, not hover)
+		/*
 		if ( !LevelManager.Instance.Paused )
 			indicator.ShowRange( true );
+		*/
 	}
 
 	void OnMouseExit( )
 	{
-		indicator.HideRange( );
+		//The Range gets hidden when deselected (locked, not hover)
+		//indicator.HideRange( );
 	}
 
 	void OnTriggerEnter( Collider other )

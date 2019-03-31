@@ -6,6 +6,7 @@ using TMPro;
 public class CursorRaycast : MonoBehaviour
 {
 	public GameObject hoverSelectionInfoUI;
+	public GameObject lockedSelectionInfoUI;
 
 	public Material defaultCursorMaterial;
 	public Material goodCursorMaterial;
@@ -27,6 +28,9 @@ public class CursorRaycast : MonoBehaviour
 	private TextMeshProUGUI hoverInfo1;
 	private TextMeshProUGUI hoverInfo2;
 
+	private TextMeshProUGUI lockedInfo1;
+	private TextMeshProUGUI lockedInfo2;
+
 	void Start()
     {
 		Vector3 upVector = Vector3.up;
@@ -36,6 +40,9 @@ public class CursorRaycast : MonoBehaviour
 
 		hoverInfo1 = hoverSelectionInfoUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 		hoverInfo2 = hoverSelectionInfoUI.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+
+		lockedInfo1 = lockedSelectionInfoUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+		lockedInfo2 = lockedSelectionInfoUI.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
 	}
 	
     void Update()
@@ -53,8 +60,8 @@ public class CursorRaycast : MonoBehaviour
 				Building building = lockedSelection.GetComponent<Building>();
 				HP hp = lockedSelection.GetComponent<HP>();
 
-				hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
-				hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
+				lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
+				lockedInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
 			}
 			else if (hoverSelection != null)
 			{
@@ -76,23 +83,30 @@ public class CursorRaycast : MonoBehaviour
 		{
 			if (hoverSelection != null)
 			{
+				if(lockedSelection != null)
+					lockedSelection.GetComponent<Building>().Indicator.HideRange();
+
 				lockedSelection = hoverSelection;
 				rend.material = goodCursorMaterial;
 
-				hoverSelectionInfoUI.SetActive(true);
+				hoverSelectionInfoUI.SetActive(false);
+				lockedSelectionInfoUI.SetActive(true);
 
 				if(selectionIndicator != null)
 					DestroyImmediate(selectionIndicator);
 				selectionIndicator = null;
 
 				selectionIndicator = Instantiate(lockedSelectionIndicator, lockedSelection.transform.position, Quaternion.Euler(0f, 0f, 0f));
+				lockedSelection.GetComponent<Building>().Indicator.ShowRange(true);
 			}
-			else
+			else if(lockedSelection != null)
 			{
+				lockedSelection.GetComponent<Building>().Indicator.HideRange();
+
 				lockedSelection = null;
 				rend.material = defaultCursorMaterial;
-
-				hoverSelectionInfoUI.SetActive(false);
+				
+				lockedSelectionInfoUI.SetActive(false);
 
 				if (selectionIndicator != null)
 					DestroyImmediate(selectionIndicator);
