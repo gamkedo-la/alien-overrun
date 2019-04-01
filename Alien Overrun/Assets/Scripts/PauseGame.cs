@@ -67,6 +67,17 @@ public class PauseGame : MonoBehaviour
         ShowUI();
     }
 
+	public void ToggleSpeed()
+	{
+		if (Time.timeScale > 0.1f)
+		{
+			if (Time.timeScale == 8f)
+				Time.timeScale = 1f;
+			else
+				Time.timeScale *= 2f;
+		}
+	}
+
     void HideUI()
     {
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )

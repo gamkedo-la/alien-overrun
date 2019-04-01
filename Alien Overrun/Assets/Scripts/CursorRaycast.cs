@@ -38,7 +38,7 @@ public class CursorRaycast : MonoBehaviour
 	private TextMeshProUGUI lockedInfo2;
 
 	void Start()
-    {
+	{
 		Vector3 upVector = Vector3.up;
 		plane = new Plane(upVector, pointOfPlane.position);
 
@@ -46,9 +46,10 @@ public class CursorRaycast : MonoBehaviour
 
 		GetUIComponents();
 	}
-	
-    void Update()
-    {
+
+	void Update()
+	{
+		CheckSelectionExistence();
 		UpdateCursorPositionAndEntityInfo();
 		SelectionControl();
 	}
@@ -85,7 +86,7 @@ public class CursorRaycast : MonoBehaviour
 
 
 
-	public bool IsObjectSelected( GameObject obj )
+	public bool IsObjectSelected(GameObject obj)
 	{
 		foreach (var sel in lockedSelection)
 			if (sel == obj) return true;
@@ -102,6 +103,28 @@ public class CursorRaycast : MonoBehaviour
 
 		lockedInfo1 = lockedSelectionInfoUI.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 		lockedInfo2 = lockedSelectionInfoUI.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+	}
+
+
+
+	private void CheckSelectionExistence()
+	{
+		//Case: Hover selected building gets destroyed/removed
+		if (hoverSelection == null)
+		{
+			if (lockedSelection.Count <= 0)
+			{
+				hoverSelectionInfoUI.SetActive(false);
+				rend.material = defaultCursorMaterial;
+			}
+		}
+
+		//Case: Locked selected building gets destroyed/removed
+		for(int i = 0; i < lockedSelection.Count; i++)
+		{
+			if (lockedSelection[i] == null)
+				lockedSelection.Remove(lockedSelection[i]);
+		}
 	}
 
 
@@ -181,7 +204,7 @@ public class CursorRaycast : MonoBehaviour
 			HP hp = lockedSelection[0].GetComponent<HP>();
 
 			lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
-			lockedInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
+			lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt(hp.MaxHP) + "/" + Mathf.FloorToInt(hp.CurrentHP) + "\nBuild Time: " + building.BuildTime;
 		}
 		else if (lockedSelection.Count > 1)
 		{
@@ -200,7 +223,7 @@ public class CursorRaycast : MonoBehaviour
 			avgCurrentHP /= lockedSelection.Count;
 
 			lockedInfo1.text = "Total Buildings: " + lockedSelection.Count + "\nBuild Cost: " + totalBuildCost;
-			lockedInfo2.text = "Avg. Hit Points: " + avgMaxHP + "/" + avgCurrentHP;
+			lockedInfo2.text = "Avg. Hit Points: " + Mathf.FloorToInt(avgMaxHP) + "/" + Mathf.FloorToInt(avgCurrentHP);
 		}
 	}
 
@@ -214,7 +237,9 @@ public class CursorRaycast : MonoBehaviour
 		hoverSelectionInfoUI.SetActive(false);
 		lockedSelectionInfoUI.SetActive(true);
 
-		selectionIndicator.Add(Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f)));
+		GameObject newSelInd = Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f));
+		selectionIndicator.Add(newSelInd);
+		newSelInd.transform.parent = addSel.transform;
 		addSel.GetComponent<Building>().Indicator.ShowRange(true);
 	}
 
