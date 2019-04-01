@@ -5137,16 +5137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100002, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100004, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100006, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100008, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100010, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100012, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100014, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100016, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
-  - {fileID: 2100018, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
+  - {fileID: 2100000, guid: 7f2fa94fba6daec4ba8734f91be6aa5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5237,7 +5228,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100020, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
+  - {fileID: 2100000, guid: 7f2fa94fba6daec4ba8734f91be6aa5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5314,7 +5305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100020, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
+  - {fileID: 2100000, guid: 7f2fa94fba6daec4ba8734f91be6aa5d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5442,7 +5433,7 @@ MonoBehaviour:
   onMat: {fileID: 2100000, guid: 906b8f7bfa5bbc44fb701aaf4b10d3bc, type: 2}
   offMat: {fileID: 2100000, guid: dda1798cdd566cf44b6db4d24526c096, type: 2}
   zoneMat: {fileID: 2100000, guid: efa33157334e0894781af38cc8bd304f, type: 2}
-  buildingNormalMat: {fileID: 2100000, guid: d65c13eeec455f34e8dd339e6cf0e3ac, type: 3}
+  buildingNormalMat: {fileID: 2100000, guid: 7f2fa94fba6daec4ba8734f91be6aa5d, type: 2}
   buildingBadMat: {fileID: 2100000, guid: c8593cf6051fd3e42915f8ae78d6511e, type: 2}
   buildingRenderers:
   - {fileID: 1284071209368428010}

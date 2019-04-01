@@ -22,6 +22,7 @@ ModelImporter:
     2100016: TowerWindowWoodMat
     2100018: TowerWindowWootSideMat
     2100020: ConeMat
+    2100022: LowPolyTextureMaterial
     2300000: Cone
     2300002: Cone.001
     2300004: Cylinder
