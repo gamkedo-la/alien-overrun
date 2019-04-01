@@ -4,19 +4,71 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+[System.Serializable]
+public class Wave
+{
+	public int ID;
+	public float WaveDelay = 2f;
+	public float EnemiesDelay = 1f;
+	public int[] Enemies;
+	public int SpawnPointID;
+}
+
+[System.Serializable]
+public class Waves
+{
+	public List<Wave> EnemyWaves;
+}
+
 public class EnemyManager : MonoBehaviour
 {
+	private const string myWaves = @"
+{
+    ""EnemyWaves"":
+	[
+        {
+			""ID"": 1,
+            ""WaveDelay"": 3.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 0, 0, 0 ],
+			""SpawnPointID"": 0
+		},
+		{
+			""ID"": 2,
+            ""WaveDelay"": 10.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 1, 1 ],
+			""SpawnPointID"": 1
+		},
+		{
+			""ID"": 3,
+            ""WaveDelay"": 10.0,
+            ""EnemiesDelay"": 1.0,
+            ""Enemies"": [ 2, 2, 1, 1, 0, 0 ],
+			""SpawnPointID"": 1
+		}
+    ]
+}";
+
 	public static EnemyManager Instance { get; private set; }
 
 	public List<Enemy> Enemies { get; private set; }
 
 	[SerializeField] private GameObject[] enemyPrefabs = null;
-	[SerializeField] private Transform spawnCenter = null;
+	[SerializeField] private Transform crativeModeSpawnPoint = null;
+	[SerializeField] private Transform[] spawnPoints = null;
 	[SerializeField] private float radius = 3f;
+
+	private Waves waves;
+	private Wave currentWave;
+	private int currentWaveIndex = 0;
+	private bool endOfWaves = false;
+	private Coroutine coroutine;
 
 	private void Awake( )
 	{
@@ -34,6 +86,12 @@ public class EnemyManager : MonoBehaviour
 	{
 		Assert.IsNotNull( enemyPrefabs );
 		Assert.AreNotEqual( enemyPrefabs.Length, 0 );
+		Assert.IsNotNull( crativeModeSpawnPoint );
+		Assert.IsNotNull( spawnPoints );
+		Assert.AreNotEqual( spawnPoints.Length, 0 );
+
+		if ( !LevelManager.Instance.CreativeMode )
+			StartWaves( );
 	}
 
 	public void AddEnemy( Enemy enemy )
@@ -50,21 +108,69 @@ public class EnemyManager : MonoBehaviour
 	{
 		Vector3 enemyPos = Vector3.zero;
 		Vector2 circle = Random.insideUnitCircle * radius;
-		enemyPos.x = spawnCenter.position.x + circle.x;
-		enemyPos.y = spawnCenter.position.y;
-		enemyPos.z = spawnCenter.position.z + circle.y;
+		enemyPos.x = crativeModeSpawnPoint.position.x + circle.x;
+		enemyPos.y = crativeModeSpawnPoint.position.y;
+		enemyPos.z = crativeModeSpawnPoint.position.z + circle.y;
 
 		Instantiate( enemyPrefabs[Random.Range( 0, enemyPrefabs.Length )], enemyPos, Quaternion.identity );
 	}
 
 	public void SpawnEnemy( int id )
 	{
+		SpawnNewEnemy( id, crativeModeSpawnPoint );
+	}
+
+	public void NextWaveNow( )
+	{
+		StopCoroutine( coroutine );
+		currentWave.WaveDelay = 0;
+		coroutine = StartCoroutine( SpawnWaves( ) );
+	}
+
+	private void SpawnNewEnemy( int id, Transform spawnPoint )
+	{
 		Vector3 enemyPos = Vector3.zero;
 		Vector2 circle = Random.insideUnitCircle * radius;
-		enemyPos.x = spawnCenter.position.x + circle.x;
-		enemyPos.y = spawnCenter.position.y;
-		enemyPos.z = spawnCenter.position.z + circle.y;
+		enemyPos.x = spawnPoint.position.x + circle.x;
+		enemyPos.y = spawnPoint.position.y;
+		enemyPos.z = spawnPoint.position.z + circle.y;
 
 		Instantiate( enemyPrefabs[id], enemyPos, Quaternion.identity );
+	}
+
+	private void StartWaves( )
+	{
+		waves = JsonUtility.FromJson<Waves>( myWaves );
+
+		currentWave = waves.EnemyWaves[currentWaveIndex];
+		coroutine = StartCoroutine( SpawnWaves( ) );
+	}
+
+	private IEnumerator SpawnWaves( )
+	{
+		yield return new WaitForSeconds( currentWave.WaveDelay );
+
+		// TODO: Show message. Make button inactive.
+		//Debug.Log( "Spawning new wave: Wave " + currentWaveIndex );
+
+		for ( int i = 0; i < currentWave.Enemies.Length; i++ )
+		{
+			yield return new WaitForSeconds( currentWave.EnemiesDelay );
+
+			SpawnNewEnemy( currentWave.Enemies[i], spawnPoints[currentWave.SpawnPointID] );
+		}
+
+		currentWaveIndex++;
+		if ( currentWaveIndex < waves.EnemyWaves.Count )
+		{
+			currentWave = waves.EnemyWaves[currentWaveIndex];
+			// TODO: Make button active.
+			coroutine = StartCoroutine( SpawnWaves( ) );
+		}
+		else
+		{
+			endOfWaves = true;
+			//Debug.Log( "End of waves!" );
+		}
 	}
 }
