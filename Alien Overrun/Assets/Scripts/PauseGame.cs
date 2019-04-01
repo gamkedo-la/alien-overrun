@@ -1,26 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PauseGame : MonoBehaviour
 {
+    public CanvasGroup[] uiCanvasGroupsToHide;
     private GameObject managers;
     private LevelManager levelManager;
-    private CanvasGroup uiCanvasGroup;
     private CanvasGroup pauseCanvasGroup;
-    // Start is called before the first frame update
+
     void Start()
     {
-        managers = GameObject.Find("Managers");
-        levelManager = managers.GetComponent<LevelManager>();
-        uiCanvasGroup = GameObject.Find("UI").GetComponent<CanvasGroup>();
+        levelManager = LevelManager.Instance;
+
         pauseCanvasGroup = GetComponent<CanvasGroup>();
         pauseCanvasGroup.alpha = 0f;
         pauseCanvasGroup.blocksRaycasts = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -70,17 +66,27 @@ public class PauseGame : MonoBehaviour
         Time.timeScale = 1;
         ShowUI();
     }
+
     void HideUI()
     {
-        uiCanvasGroup.alpha = 0f;
-        uiCanvasGroup.blocksRaycasts = false;
+		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
+		{
+			uiCanvasGroup.alpha = 0f;
+			uiCanvasGroup.blocksRaycasts = false;
+		}
+
         pauseCanvasGroup.alpha = 1f;
         pauseCanvasGroup.blocksRaycasts = true;
     }
+
     void ShowUI()
     {
-        uiCanvasGroup.alpha = 1f;
-        uiCanvasGroup.blocksRaycasts = true;
+		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
+		{
+			uiCanvasGroup.alpha = 1f;
+			uiCanvasGroup.blocksRaycasts = true;
+		}
+
         pauseCanvasGroup.alpha = 0f;
         pauseCanvasGroup.blocksRaycasts = false;
     }
