@@ -5,6 +5,7 @@
  **/
 
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
@@ -41,6 +42,22 @@ public class BuildingManager : MonoBehaviour
 			building.ShowPlaceZone( show );
 	}
 
+	public Vector3 GetNearestCoreOrZero( Vector3 position )
+	{
+		Vector3 returnPos = Vector3.zero;
+
+		float distance = 100000000;
+		foreach ( var building in Buildings )
+			if ( building.BuildingType == BuildingType.Core &&
+				 Vector3.Distance( building.transform.position, position) < distance )
+			{
+				distance = Vector3.Distance( building.transform.position, position );
+				returnPos = building.transform.position;
+			}
+
+		return returnPos;
+	}
+
 	public bool CanPlaceBuiding( Building buildingToPlace )
 	{
 		foreach ( var building in Buildings )
@@ -50,5 +67,10 @@ public class BuildingManager : MonoBehaviour
 		}
 
 		return false;
+	}
+
+	public int CoresLeft( )
+	{
+		return Buildings.Select( b => b ).Where( b => b.BuildingType == BuildingType.Core ).Count( );
 	}
 }

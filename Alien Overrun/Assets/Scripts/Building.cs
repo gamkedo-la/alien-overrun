@@ -7,10 +7,19 @@
 using UnityEngine;
 using UnityEngine.Assertions;
 
+public enum BuildingType
+{
+	Tower,
+	Core
+}
+
 public class Building : MonoBehaviour
 {
 	public Indicator Indicator { get { return indicator; } private set { indicator = value; } }
 	[SerializeField] private Indicator indicator = null;
+
+	public BuildingType BuildingType { get { return buildingType; } private set { buildingType = value; } }
+	[SerializeField] private BuildingType buildingType = BuildingType.Tower;
 
 	public string BuildingName { get { return buildingName; } private set { buildingName = value; } }
 	[SerializeField] private string buildingName = "Building";

@@ -30,10 +30,30 @@ public class LevelManager : MonoBehaviour
 	void Start ()
 	{
 		//Assert.IsNotNull(  );
+
+		if ( !CreativeMode )
+			InvokeRepeating( "CheckGameEnd", 1, 0.5f );
 	}
 
 	void Update ()
 	{
 
+	}
+
+	private void CheckGameEnd()
+	{
+		// Lose
+		if ( BuildingManager.Instance.CoresLeft( ) <= 0 )
+		{
+			Debug.Log( "Game Over" );
+			CancelInvoke( "CheckGameEnd" );
+		}
+
+		// Win
+		if ( EnemyManager.Instance.EndOfWaves && EnemyManager.Instance.Enemies.Count == 0 )
+		{
+			Debug.Log( "Game WON!" );
+			CancelInvoke( "CheckGameEnd" );
+		}
 	}
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5927365912560694037}
   - component: {fileID: 5927365912560694034}
   - component: {fileID: 5927365912560694039}
+  - component: {fileID: 1919426548}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -88,7 +89,7 @@ BoxCollider:
   m_GameObject: {fileID: 5927365912560694032}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -105,6 +106,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cursorRaycast: {fileID: 5927365913565050168}
+--- !u!64 &1919426548
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5927365912560694032}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &5927365913111097886
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,7 +428,10 @@ MonoBehaviour:
   - {fileID: 6629040366295511491, guid: 549ee7e7576d0a34582ecaca32a9dc78, type: 3}
   - {fileID: 2578463307751837317, guid: d65ee05a2c50d5047aee72d5f8437e2c, type: 3}
   - {fileID: 3104673761630165275, guid: 1d6db34b3d5f2114c9c962445d21457f, type: 3}
-  spawnCenter: {fileID: 0}
+  crativeModeSpawnPoint: {fileID: 0}
+  spawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
   radius: 3
 --- !u!114 &8630490770266569268
 MonoBehaviour:

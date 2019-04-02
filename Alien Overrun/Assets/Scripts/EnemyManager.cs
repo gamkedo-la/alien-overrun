@@ -59,6 +59,9 @@ public class EnemyManager : MonoBehaviour
 
 	public List<Enemy> Enemies { get; private set; }
 
+	public bool EndOfWaves { get { return endOfWaves; } set { endOfWaves = value; } }
+	private bool endOfWaves = false;
+
 	[SerializeField] private GameObject[] enemyPrefabs = null;
 	[SerializeField] private Transform crativeModeSpawnPoint = null;
 	[SerializeField] private Transform[] spawnPoints = null;
@@ -67,7 +70,6 @@ public class EnemyManager : MonoBehaviour
 	private Waves waves;
 	private Wave currentWave;
 	private int currentWaveIndex = 0;
-	private bool endOfWaves = false;
 	private Coroutine coroutine;
 
 	private void Awake( )

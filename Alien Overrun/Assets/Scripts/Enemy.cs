@@ -23,7 +23,8 @@ public class Enemy : MonoBehaviour
 		Assert.IsNotNull( rb );
 		Assert.IsNotNull( agent );
 
-		agent.SetDestination( Vector3.zero );
+		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
+		agent.SetDestination( destination );
 	}
 
 	void Update ()
@@ -45,7 +46,7 @@ public class Enemy : MonoBehaviour
 
 	public void SetDestination( )
 	{
-		SetDestination( Vector3.zero );
+		SetDestination( BuildingManager.Instance.GetNearestCoreOrZero( transform.position ) );
 	}
 
 	public void SetDestination( Transform target )
