@@ -17,7 +17,7 @@ public class CursorRaycast : MonoBehaviour
 	public GameObject lockedSelectionIndicator;
 	[Space]
 
-	[SerializeField] private GameObject cursorIndicator;
+	[SerializeField] private GameObject cursorIndicator = null;
 	[SerializeField] private Transform pointOfPlane = null;
 
 	private List<GameObject> selectionIndicator = new List<GameObject>();
