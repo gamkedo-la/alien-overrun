@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class PauseGame : MonoBehaviour
 {
     public CanvasGroup[] uiCanvasGroupsToHide;
-    private GameObject managers;
+
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
 

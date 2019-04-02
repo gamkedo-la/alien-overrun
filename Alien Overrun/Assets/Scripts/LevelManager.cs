@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
@@ -14,6 +15,9 @@ public class LevelManager : MonoBehaviour
 
 	[SerializeField] private bool creativeMode = false;
 	public bool CreativeMode { get { return creativeMode; } set { creativeMode = value; } }
+
+	[SerializeField] private UnityEvent onWin = null;
+	[SerializeField] private UnityEvent onLose = null;
 
 	public static LevelManager Instance { get; private set; }
 
@@ -29,7 +33,7 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
 	{
-		//Assert.IsNotNull(  );
+		//Assert.IsNotNull( );
 
 		if ( !CreativeMode )
 			InvokeRepeating( "CheckGameEnd", 1, 0.5f );
@@ -45,15 +49,15 @@ public class LevelManager : MonoBehaviour
 		// Lose
 		if ( BuildingManager.Instance.CoresLeft( ) <= 0 )
 		{
-			Debug.Log( "Game Over" );
 			CancelInvoke( "CheckGameEnd" );
+			onLose.Invoke( );
 		}
 
 		// Win
 		if ( EnemyManager.Instance.EndOfWaves && EnemyManager.Instance.Enemies.Count == 0 )
 		{
-			Debug.Log( "Game WON!" );
 			CancelInvoke( "CheckGameEnd" );
+			onWin.Invoke( );
 		}
 	}
 }
