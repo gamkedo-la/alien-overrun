@@ -13,6 +13,7 @@ public class BuildWebGL : MonoBehaviour
 	static private string destinationFile = @"C:\!\Unity\Alien Overrun.zip";
 	static private string[] levels = new string[]
 	{
+		"Assets/Scenes/Main Menu.unity",
 		"Assets/Scenes/Main.unity",
 	};
 

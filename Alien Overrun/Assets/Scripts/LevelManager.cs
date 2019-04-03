@@ -10,6 +10,9 @@ using UnityEngine.Events;
 
 public class LevelManager : MonoBehaviour
 {
+	[SerializeField] private GameObject[] skirmishModeOnly = null;
+	[SerializeField] private GameObject[] creativeModeOnly = null;
+
 	[SerializeField] private bool paused = false;
 	public bool Paused { get { return paused; } set { paused = value; } }
 
@@ -33,10 +36,34 @@ public class LevelManager : MonoBehaviour
 
 	void Start ()
 	{
-		//Assert.IsNotNull( );
+		Assert.IsNotNull( skirmishModeOnly );
+		Assert.AreNotEqual( skirmishModeOnly.Length, 0 );
+		Assert.IsNotNull( creativeModeOnly );
+		Assert.AreNotEqual( creativeModeOnly.Length, 0 );
 
-		if ( !CreativeMode )
+		// "Load" info about selected mode
+		ModeSelection modeSelection = FindObjectOfType<ModeSelection>( );
+		if ( modeSelection )
+			CreativeMode = modeSelection.CreativeMode;
+
+		if ( CreativeMode )
+		{
+			foreach ( var go in skirmishModeOnly )
+				go.SetActive( false );
+
+			foreach ( var go in creativeModeOnly )
+				go.SetActive( true );
+		}
+		else
+		{
+			foreach ( var go in skirmishModeOnly )
+				go.SetActive( true );
+
+			foreach ( var go in creativeModeOnly )
+				go.SetActive( false );
+
 			InvokeRepeating( "CheckGameEnd", 1, 0.5f );
+		}
 	}
 
 	void Update ()
