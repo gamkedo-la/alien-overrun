@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
 
 	private Vector3 destination = Vector3.zero;
 	private Rigidbody rb = null;
-	private bool onTheMove = true;
 
 	void Start ()
 	{
@@ -29,8 +28,7 @@ public class Enemy : MonoBehaviour
 
 	void Update ()
 	{
-		//Rotate( );
-		//Move( );
+
 	}
 
 	void OnEnable( )
@@ -57,29 +55,13 @@ public class Enemy : MonoBehaviour
 	public void SetDestination( Vector3 destination )
 	{
 		this.destination = destination;
+
+		agent.isStopped = false;
 		agent.SetDestination( destination );
 	}
 
-	public void IsMoving( bool isMoving )
+	public void HoldPosition( )
 	{
-		onTheMove = isMoving;
-		agent.isStopped = isMoving;
-	}
-
-	private void Rotate( )
-	{
-		if ( !onTheMove )
-			return;
-
-		transform.LookAt( destination );
-	}
-
-	private void Move()
-	{
-		if ( !onTheMove )
-			return;
-
-		Vector3 dir = ( destination - rb.position ).normalized;
-		rb.MovePosition( rb.position + dir * speed * Time.deltaTime );
+		agent.isStopped = true;
 	}
 }
