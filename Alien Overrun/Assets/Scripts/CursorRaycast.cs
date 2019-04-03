@@ -162,7 +162,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				if (lockedSelection.Count > 0)
 				{
-					foreach( var sel in lockedSelection )
+					foreach (var sel in lockedSelection)
 						sel.GetComponent<Building>().Indicator.HideRange();
 
 					lockedSelection.Clear();
@@ -176,10 +176,20 @@ public class CursorRaycast : MonoBehaviour
 					selectionIndicator.Clear();
 				}
 
-				if(!IsObjectSelected( hoverSelection ))
-					AddToSelection( hoverSelection );
+				if (!IsObjectSelected(hoverSelection))
+					AddToSelection(hoverSelection);
 			}
+			//the left click is only for selection
+			/*
 			else if (lockedSelection.Count > 0)
+			{
+				DeselectAll();
+			}
+			*/
+		}
+		else if (Input.GetMouseButtonDown(1)) //deselects with right click
+		{
+			if (lockedSelection.Count > 0)
 			{
 				DeselectAll();
 			}
@@ -276,6 +286,24 @@ public class CursorRaycast : MonoBehaviour
 
 		lockedSelectionInfoUI.SetActive(false);
 
+		if (selectionIndicator.Count > 0)
+		{
+			foreach (var ind in selectionIndicator)
+				Destroy(ind);
+
+			selectionIndicator.Clear();
+		}
+	}
+
+	public void DestroySelection()
+	{
+		foreach (var sel in lockedSelection)
+			Destroy(sel);
+
+		lockedSelection.Clear();
+
+		rend.material = defaultCursorMaterial;
+		
 		if (selectionIndicator.Count > 0)
 		{
 			foreach (var ind in selectionIndicator)
