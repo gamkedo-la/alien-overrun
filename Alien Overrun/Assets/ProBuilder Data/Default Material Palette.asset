@@ -20,6 +20,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c169442e8d9c0ec4bab76bee966e2e56, type: 2}
   - {fileID: 2100000, guid: 24542f537f2c80746b578611ab98a498, type: 2}
   - {fileID: 2100000, guid: 621100ae0a944404d8c20ed1b74a1e9d, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 8d9b03f489bfb104889696bed02913b5, type: 2}
   - {fileID: 0}
   - {fileID: 0}
