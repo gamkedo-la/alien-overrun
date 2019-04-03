@@ -13,6 +13,7 @@ public class MeleeAttacker : MonoBehaviour
 	[SerializeField] private float attackDelay = 2f;
 	[SerializeField] private int damage = 10;
 	[SerializeField] private int ammoCost = 0;
+	[SerializeField] private DamageType damageType = DamageType.Physical;
 
 	private float timeToNextAttack = 0f;
 	private Transform target = null;
@@ -45,8 +46,11 @@ public class MeleeAttacker : MonoBehaviour
 		if ( !target )
 			return;
 
-		target.GetComponent<HP>( ).ChangeHP( -damage );
-		Utilities.DrawDebugText( target.position + Vector3.up, damage.ToString( ) );
+		HP hp = target.GetComponent<HP>( );
+		float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+
+		hp.ChangeHP( -damg );
+		Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
 	}
 
 	private void TryToAttack( )

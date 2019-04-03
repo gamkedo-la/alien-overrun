@@ -14,6 +14,7 @@ public class BeamShooter : MonoBehaviour
 	[SerializeField] private float shootDuration = 1f;
 	[SerializeField] private float damage = 5f;
 	[SerializeField] private Color shotColor = Color.red;
+	[SerializeField] private DamageType damageType = DamageType.Magical;
 
 	private Transform target = null;
 	private float timeToNextShot = 0;
@@ -30,9 +31,14 @@ public class BeamShooter : MonoBehaviour
 		if ( target && timeToNextShot <= 0 )
 		{
 			timeToNextShot = reloadTime;
+
 			Utilities.DrawLine( shootPoint.position, target.position, shotColor, 0.1f, shootDuration );
-			Utilities.DrawDebugText( target.position + Vector3.up, damage.ToString( ) );
-			target.GetComponent<HP>( ).ChangeHP( -damage );
+
+			HP hp = target.GetComponent<HP>( );
+			float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+
+			hp.ChangeHP( -damg );
+			Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
 		}
 	}
 

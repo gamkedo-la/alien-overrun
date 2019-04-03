@@ -219,6 +219,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHP: 20
   destroyOnNoHP: 1
+  resistance: 2
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -331,6 +332,7 @@ MonoBehaviour:
   attackDelay: 1
   damage: 2
   ammoCost: 0
+  damageType: 0
 --- !u!195 &155927536
 NavMeshAgent:
   m_ObjectHideFlags: 0

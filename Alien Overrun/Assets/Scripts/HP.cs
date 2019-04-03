@@ -19,6 +19,8 @@ public class HP : MonoBehaviour
 	[Header("Tweakable")]
 	[SerializeField] private float maxHP = 10;
 	[SerializeField] private bool destroyOnNoHP = false;
+	[SerializeField] private ResistanceType resistance = ResistanceType.Normal;
+	public ResistanceType Resistance { get { return resistance; } private set { resistance = value; } }
 
 	[Header("Events")]
 	[SerializeField] private UnityEvent onHealthChange = null;

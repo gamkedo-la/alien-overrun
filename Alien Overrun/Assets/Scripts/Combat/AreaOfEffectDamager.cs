@@ -14,6 +14,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 	[SerializeField] private float startSize = 1f;
 	[SerializeField] private float endSize = 5f;
 	[SerializeField] private float time = 2f;
+	[SerializeField] private DamageType damageType = DamageType.Fire;
 
 	private float currnetSize = 0;
 	private float currnetTime = 0;
@@ -43,9 +44,11 @@ public class AreaOfEffectDamager : MonoBehaviour
 		{
 			HP hp = collision.gameObject.GetComponent<HP>( );
 			if ( hp != null )
-				hp.ChangeHP( -damage );
-
-			Utilities.DrawDebugText( collision.transform.position + Vector3.up, damage.ToString( ) );
+			{
+				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+				hp.ChangeHP( -damg );
+				Utilities.DrawDebugText( collision.transform.position + Vector3.up, damg.ToString( ) );
+			}
 		}
 	}
 
@@ -57,9 +60,11 @@ public class AreaOfEffectDamager : MonoBehaviour
 		{
 			HP hp = other.gameObject.GetComponent<HP>( );
 			if ( hp != null )
-				hp.ChangeHP( -damage );
-
-			Utilities.DrawDebugText( other.transform.position + Vector3.up, damage.ToString( ) );
+			{
+				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+				hp.ChangeHP( -damg );
+				Utilities.DrawDebugText( other.transform.position + Vector3.up, damg.ToString( ) );
+			}
 		}
 	}
 }

@@ -11,6 +11,7 @@ public class Arrow : MonoBehaviour
 {
 	[SerializeField] private GameObject gfx = null;
 	[SerializeField] private int damage = 20;
+	[SerializeField] private DamageType damageType = DamageType.Physical;
 
 	private Rigidbody rb;
 
@@ -37,12 +38,11 @@ public class Arrow : MonoBehaviour
 		{
 			HP hp = collision.gameObject.GetComponent<HP>( );
 			if ( hp != null )
-				hp.ChangeHP( -damage );
-
-			IamStuck( collision.transform );
-			Utilities.DrawDebugText( collision.transform.position + Vector3.up, damage.ToString( ) );
-
-			return;
+			{
+				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+				hp.ChangeHP( -damg );
+				Utilities.DrawDebugText( collision.transform.position + Vector3.up, damg.ToString( ) );
+			}
 		}
 
 		IamStuck( collision.transform );
