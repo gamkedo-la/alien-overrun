@@ -72,9 +72,15 @@ public class PauseGame : MonoBehaviour
 		if (Time.timeScale > 0.1f)
 		{
 			if (Time.timeScale == 8f)
+			{
 				Time.timeScale = 1f;
+				Time.fixedDeltaTime = 0.02f * Time.timeScale;
+			}
 			else
+			{
 				Time.timeScale *= 2f;
+				Time.fixedDeltaTime = 0.02f * Time.timeScale;
+			}
 		}
 	}
 
