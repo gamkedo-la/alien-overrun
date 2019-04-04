@@ -37,6 +37,7 @@ public class ResourceManager : MonoBehaviour
 		Assert.IsNotNull( mineralsLabel );
 
 		Minerals = startMinerals;
+		UpdateLabels( );
 	}
 
 	private void FixedUpdate( )
