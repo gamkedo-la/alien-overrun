@@ -179,13 +179,10 @@ public class CursorRaycast : MonoBehaviour
 				if (!IsObjectSelected(hoverSelection))
 					AddToSelection(hoverSelection);
 			}
-			//the left click is only for selection
-			/*
 			else if (lockedSelection.Count > 0)
 			{
 				DeselectAll();
 			}
-			*/
 		}
 		else if (Input.GetMouseButtonDown(1)) //deselects with right click
 		{
@@ -303,7 +300,7 @@ public class CursorRaycast : MonoBehaviour
 		lockedSelection.Clear();
 
 		rend.material = defaultCursorMaterial;
-		
+
 		if (selectionIndicator.Count > 0)
 		{
 			foreach (var ind in selectionIndicator)

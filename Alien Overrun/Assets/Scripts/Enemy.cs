@@ -11,7 +11,7 @@ using UnityEngine.Assertions;
 public class Enemy : MonoBehaviour
 {
 	[SerializeField] private NavMeshAgent agent = null;
-	[SerializeField] private float speed = 10;
+	[SerializeField] private int mineralsForKill = 20;
 
 	private Vector3 destination = Vector3.zero;
 	private Rigidbody rb = null;
@@ -24,11 +24,6 @@ public class Enemy : MonoBehaviour
 
 		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
 		agent.SetDestination( destination );
-	}
-
-	void Update ()
-	{
-
 	}
 
 	void OnEnable( )
@@ -63,5 +58,13 @@ public class Enemy : MonoBehaviour
 	public void HoldPosition( )
 	{
 		agent.isStopped = true;
+	}
+
+	public void OnDeath( )
+	{
+		if ( ResourceManager.Instance )
+			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
+
+		Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
 	}
 }

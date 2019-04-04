@@ -20,8 +20,7 @@ public class ResourceManager : MonoBehaviour
 	public int Minerals { get; private set; }
 
 	[SerializeField] private TextMeshProUGUI mineralsLabel = null;
-	[SerializeField] private float resourceTick = 1f;
-	[SerializeField] private int resourcesPerTick = 10;
+	[SerializeField] private int startMinerals = 300;
 
 	private void Awake( )
 	{
@@ -37,13 +36,12 @@ public class ResourceManager : MonoBehaviour
 	{
 		Assert.IsNotNull( mineralsLabel );
 
-		Invoke( "ResourceTick", resourceTick );
+		Minerals = startMinerals;
 	}
 
 	private void FixedUpdate( )
 	{
-		if ( LevelManager.Instance.CreativeMode && Minerals < 10000 )
-			Minerals = 10000;
+		CreativeModeResourceCheck( );
 	}
 
 	public void AddResources( ResourceType type, int amount )
@@ -90,10 +88,10 @@ public class ResourceManager : MonoBehaviour
 		return false;
 	}
 
-	private void ResourceTick( )
+	private void CreativeModeResourceCheck( )
 	{
-		AddResources( ResourceType.Minerals, resourcesPerTick );
-		Invoke( "ResourceTick", resourceTick );
+		if ( LevelManager.Instance.CreativeMode && Minerals < 10000 )
+			Minerals = 10000;
 	}
 
 	private void UpdateLabels( )
