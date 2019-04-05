@@ -10,13 +10,17 @@ using UnityEngine.Assertions;
 public class CamControl : MonoBehaviour
 {
 	[SerializeField] private Transform cam = null;
-	[SerializeField] private float panSpeed = 8f;
+    [SerializeField] private Vector3 cameraPositionLock = new Vector3();
+    [SerializeField] private float cameraYZoomInLock = 4;
+    [SerializeField] private float cameraYZoomOutLock = 16;
+    [SerializeField] private float panSpeed = 8f;
 	[SerializeField] private float zoomSpeed = 200f;
 	[SerializeField] private float camRotation = -120f;
 	[SerializeField] private float mouseScreenBoundOffset = 50f;
 	[SerializeField] private bool useMouse = true;
+    [SerializeField] private bool zoomLockOn = false;
 
-	void Start ()
+    void Start ()
 	{
 		Assert.IsNotNull( cam );
 
@@ -52,10 +56,24 @@ public class CamControl : MonoBehaviour
 		if ( Input.GetAxis( "Mouse ScrollWheel" ) > 0f )
 		{
 			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime;
-		}
+            if (zoomLockOn && cam.position.y <= cameraYZoomInLock)
+            {
+                cameraPositionLock.x = cam.position.x;
+                cameraPositionLock.z = cam.position.z;
+                cameraPositionLock.y = cameraYZoomInLock;
+                cam.position = cameraPositionLock;
+            }
+        }
 		else if ( Input.GetAxis( "Mouse ScrollWheel" ) < 0f )
 		{
 			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime;
-		}
-	}
-}
+            if (zoomLockOn && cam.position.y >= cameraYZoomOutLock)
+            {
+                cameraPositionLock.x = cam.position.x;
+                cameraPositionLock.z = cam.position.z;
+                cameraPositionLock.y = cameraYZoomOutLock;
+                cam.position = cameraPositionLock;
+            } 
+        } // end of if MouseScrollWheel < 0
+	} // end of Update
+} // end of CamControlClass
