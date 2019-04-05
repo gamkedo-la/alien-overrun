@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 6108099635910821798}
-  panSpeed: 8
+  panSpeed: 25
   zoomSpeed: 200
   camRotation: -120
   mouseScreenBoundOffset: 50
