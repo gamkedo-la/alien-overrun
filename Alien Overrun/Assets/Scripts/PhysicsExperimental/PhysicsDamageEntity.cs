@@ -5,6 +5,7 @@ using UnityEngine;
 public class PhysicsDamageEntity : MonoBehaviour
 {
 	public float damageValue = 0.1f;
+	public float coreDamageValue = 0.01f;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class PhysicsDamageEntity : MonoBehaviour
 		if (health != null)
 		{
 			health.hp -= damageValue;
+			health.coreHp.SubtractHp(coreDamageValue);
 			Destroy(this);
 		}
 	}

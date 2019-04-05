@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PhysicsHealth : MonoBehaviour
 {
+	public EntityCoreHealth coreHp;
 	public float hp = 1f;
 
 	public float defMass = 100f;
@@ -19,6 +20,6 @@ public class PhysicsHealth : MonoBehaviour
     {
 		rb.mass = defMass * hp;
 
-		if (hp <= 0.01f) Destroy(gameObject);
+		if (hp <= 0f) Destroy(gameObject);
     }
 }
