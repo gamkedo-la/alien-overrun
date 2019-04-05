@@ -418,6 +418,7 @@ MonoBehaviour:
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1358882027215378604}
+  colP: {fileID: 1358882027402909774}
   toEnableOnBuild:
   - {fileID: 1358882027215378607}
   - {fileID: 1358882027215378603}
@@ -468,6 +469,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
+  resistance: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []

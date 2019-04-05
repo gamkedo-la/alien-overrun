@@ -39,6 +39,7 @@ public class BuildingPlacer : MonoBehaviour
 
 	void Update ()
 	{
+		CheckCancelBuild( );
 		MoveBuilding( );
 		CheckIfCanPlaceBuilding( );
 		UpdateIndicator( );
@@ -52,6 +53,8 @@ public class BuildingPlacer : MonoBehaviour
 
 	public void StartPlaceing( )
 	{
+		BuildingManager.Instance.Building = true;
+
 		BuildingManager.Instance.ShowZones( true );
 		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>( );
 		ResourceManager.Instance.UseResources( ResourceType.Minerals, cost );
@@ -59,6 +62,27 @@ public class BuildingPlacer : MonoBehaviour
 		Vector3 upVector = Vector3.up;
 		plane = new Plane( upVector, pointOfPlane.position );
 		mouseOffset = Vector3.zero;
+	}
+
+	private void CheckCancelBuild( )
+	{
+		if ( !BuildingManager.Instance.Building || buildingToPlace == null )
+			return;
+
+		// Cancel only on RMB or Esc
+		if ( ! ( Input.GetMouseButtonDown( 1 ) || Input.GetKeyDown( KeyCode.Escape ) ) )
+			return;
+
+		ResourceManager.Instance.AddResources( ResourceType.Minerals, cost );
+		Destroy( buildingToPlace.gameObject );
+		buildingToPlace = null;
+		BuildingManager.Instance.ShowZones( false );
+		Invoke( "CanBuild", 0.01f );
+	}
+
+	private void CanBuild( )
+	{
+		BuildingManager.Instance.Building = false;
 	}
 
 	private void MoveBuilding( )
@@ -106,11 +130,13 @@ public class BuildingPlacer : MonoBehaviour
 		buildingToPlace.EnableBuilding( );
 		buildingToPlace = null;
 		BuildingManager.Instance.ShowZones( false );
+		BuildingManager.Instance.Building = false;
 	}
 
 	private void CheckResourceRequirements( )
 	{
-		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, cost ) )
+		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, cost ) &&
+			 !BuildingManager.Instance.Building )
 			button.interactable = true;
 		else
 			button.interactable = false;

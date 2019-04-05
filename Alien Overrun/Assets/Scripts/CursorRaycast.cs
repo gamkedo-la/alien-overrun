@@ -200,6 +200,8 @@ public class CursorRaycast : MonoBehaviour
 		if (!isLocked)
 		{
 			Building building = hoverSelection.GetComponent<Building>();
+			if ( !building )
+				return;
 			HP hp = hoverSelection.GetComponent<HP>();
 
 			hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
@@ -208,6 +210,8 @@ public class CursorRaycast : MonoBehaviour
 		else if (lockedSelection.Count <= 1)
 		{
 			Building building = lockedSelection[0].GetComponent<Building>();
+			if ( !building )
+				return;
 			HP hp = lockedSelection[0].GetComponent<HP>();
 
 			lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;

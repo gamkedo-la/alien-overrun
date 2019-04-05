@@ -4974,11 +4974,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 1284071209839644544}
+  buildingType: 0
   buildingName: Mage Tower
   buildCost: 100
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1284071209366225711}
+  colP: {fileID: 1284071209366225698}
   toEnableOnBuild:
   - {fileID: 1284071209366225697}
   - {fileID: 1284071209366225696}
@@ -4999,6 +5001,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
+  resistance: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -5079,6 +5082,7 @@ MonoBehaviour:
   shootDuration: 0.5
   damage: 15
   shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
+  damageType: 1
 --- !u!1 &1284071209366225706
 GameObject:
   m_ObjectHideFlags: 0
@@ -5166,7 +5170,7 @@ MeshCollider:
   m_GameObject: {fileID: 1284071209366225706}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14

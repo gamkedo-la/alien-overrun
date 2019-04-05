@@ -14,6 +14,9 @@ public class BuildingManager : MonoBehaviour
 
 	public List<Building> Buildings { get; private set; }
 
+	[SerializeField] private bool building = false;
+	public bool Building { get { return building; } set { building = value; } }
+
 	private void Awake( )
 	{
 		Buildings = new List<Building>( );

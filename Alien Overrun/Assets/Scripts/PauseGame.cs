@@ -53,6 +53,9 @@ public class PauseGame : MonoBehaviour
 
     public void Pause( bool activePause )
     {
+		if ( BuildingManager.Instance.Building )
+			return;
+
         levelManager.Paused = true;
         Time.timeScale = 0;
 

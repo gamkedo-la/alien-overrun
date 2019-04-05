@@ -242,7 +242,7 @@ BoxCollider:
   m_GameObject: {fileID: 887957958716917069}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -958,11 +958,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 2244787881376772045}
+  buildingType: 0
   buildingName: Cannon Tower
   buildCost: 100
   placeDistance: 6
   buildTime: 1
   col: {fileID: 2268137669346959139}
+  colP: {fileID: 3748084660068183371}
   toEnableOnBuild:
   - {fileID: 3216330059626059734}
   - {fileID: 473719277194874614}
@@ -983,6 +985,7 @@ MonoBehaviour:
   hpBar: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
+  resistance: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
