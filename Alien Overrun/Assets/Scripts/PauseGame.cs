@@ -5,6 +5,8 @@ public class PauseGame : MonoBehaviour
 {
     public CanvasGroup[] uiCanvasGroupsToHide;
 
+	public GameObject postProcessObject;
+
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
 
@@ -85,6 +87,11 @@ public class PauseGame : MonoBehaviour
 				Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			}
 		}
+	}
+
+	public void TogglePostProcess()
+	{
+		postProcessObject.SetActive(!postProcessObject.activeSelf);
 	}
 
     void HideUI()
