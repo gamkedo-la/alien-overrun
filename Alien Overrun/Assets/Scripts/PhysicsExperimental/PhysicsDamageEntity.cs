@@ -23,7 +23,7 @@ public class PhysicsDamageEntity : MonoBehaviour
 		if (health != null)
 		{
 			health.hp -= damageValue;
-			health.coreHp.SubtractHp(coreDamageValue);
+			health.coreHp.ChangeHP(-coreDamageValue);
 			Destroy(this);
 		}
 	}

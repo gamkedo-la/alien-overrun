@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PhysicsHealth : MonoBehaviour
 {
-	public EntityCoreHealth coreHp;
+	public HP coreHp;
 	public float hp = 1f;
 
 	public float defMass = 100f;
