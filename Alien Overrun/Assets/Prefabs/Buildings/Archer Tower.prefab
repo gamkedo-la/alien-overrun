@@ -181,7 +181,7 @@ MonoBehaviour:
   indicator: {fileID: 5192442636434570255}
   buildingType: 0
   buildingName: Archer Tower
-  buildCost: 100
+  buildCost: 80
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1745960126}

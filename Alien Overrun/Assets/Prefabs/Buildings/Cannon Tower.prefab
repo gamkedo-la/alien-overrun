@@ -960,7 +960,7 @@ MonoBehaviour:
   indicator: {fileID: 2244787881376772045}
   buildingType: 0
   buildingName: Cannon Tower
-  buildCost: 100
+  buildCost: 130
   placeDistance: 6
   buildTime: 1
   col: {fileID: 2268137669346959139}

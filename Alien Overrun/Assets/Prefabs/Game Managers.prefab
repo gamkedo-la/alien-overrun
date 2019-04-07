@@ -444,7 +444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mineralsLabel: {fileID: 0}
-  startMinerals: 300
+  startMinerals: 200
 --- !u!114 &8630490770266569226
 MonoBehaviour:
   m_ObjectHideFlags: 0

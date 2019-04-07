@@ -33,23 +33,72 @@ public class EnemyManager : MonoBehaviour
 	[
         {
 			""ID"": 1,
-            ""WaveDelay"": 3.0,
+            ""WaveDelay"": 5.0,
             ""EnemiesDelay"": 0.5,
             ""Enemies"": [ 0, 0, 0 ],
 			""SpawnPointID"": 0
 		},
 		{
 			""ID"": 2,
-            ""WaveDelay"": 10.0,
+            ""WaveDelay"": 6.0,
             ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 1, 1 ],
+            ""Enemies"": [ 0, 0, 0 ],
 			""SpawnPointID"": 1
 		},
 		{
 			""ID"": 3,
-            ""WaveDelay"": 10.0,
+            ""WaveDelay"": 6.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 0, 0, 0 ],
+			""SpawnPointID"": 2
+		},
+		{
+			""ID"": 4,
+            ""WaveDelay"": 15.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 1, 1 ],
+			""SpawnPointID"": 0
+		},
+		{
+			""ID"": 5,
+            ""WaveDelay"": 15.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 1, 1, 0, 0 ],
+			""SpawnPointID"": 1
+		},
+		{
+			""ID"": 6,
+            ""WaveDelay"": 5.0,
+            ""EnemiesDelay"": 1.0,
+            ""Enemies"": [ 2, 0, 0 ],
+			""SpawnPointID"": 2
+		},
+		{
+			""ID"": 7,
+            ""WaveDelay"": 20.0,
             ""EnemiesDelay"": 1.0,
             ""Enemies"": [ 2, 2, 1, 1, 0, 0 ],
+			""SpawnPointID"": 1
+		},
+		{
+			""ID"": 8,
+            ""WaveDelay"": 15.0,
+            ""EnemiesDelay"": 0.5,
+            ""Enemies"": [ 2, 2, 1, 1, 1, 1 ],
+			""SpawnPointID"": 0
+		},
+		{
+			""ID"": 9,
+            ""WaveDelay"": 20.0,
+            ""EnemiesDelay"": 1.5,
+            ""Enemies"": [ 1, 1, 0, 0, 2, 2, 1, 1, 0, 0, 1, 1 ],
+			""SpawnPointID"": 1
+		},
+		{
+			""ID"": 10,
+            ""WaveDelay"": 1.0,
+            ""EnemiesDelay"": 1.5,
+            ""Enemies"": [ 1, 1, 0, 0, 2, 2, 1, 1, 0, 0, 1, 1 ],
 			""SpawnPointID"": 1
 		}
     ]
