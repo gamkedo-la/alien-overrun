@@ -53,7 +53,7 @@ MonoBehaviour:
   camRotation: -120
   mouseScreenBoundOffset: 50
   useMouse: 0
-  zoomLockOn: 0
+  zoomLockOn: 1
 --- !u!1 &6108099635910821802
 GameObject:
   m_ObjectHideFlags: 0

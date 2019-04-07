@@ -18,7 +18,7 @@ public class CamControl : MonoBehaviour
 	[SerializeField] private float camRotation = -120f;
 	[SerializeField] private float mouseScreenBoundOffset = 50f;
 	[SerializeField] private bool useMouse = true;
-    [SerializeField] private bool zoomLockOn = false;
+    [SerializeField] private bool zoomLockOn = true;
 
     void Start ()
 	{
@@ -73,7 +73,7 @@ public class CamControl : MonoBehaviour
                 cameraPositionLock.z = cam.position.z;
                 cameraPositionLock.y = cameraYZoomOutLock;
                 cam.position = cameraPositionLock;
-            } 
+            }
         } // end of if MouseScrollWheel < 0
 	} // end of Update
 } // end of CamControlClass
