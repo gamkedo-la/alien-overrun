@@ -123,8 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07245dd4a53095478c6a5550d4ad066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageValue: 0.25
-  coreDamageValue: 0.05
+  damageValue: 0.075
+  coreDamageValue: 0.0375
 --- !u!114 &4031462232916645279
 MonoBehaviour:
   m_ObjectHideFlags: 0
