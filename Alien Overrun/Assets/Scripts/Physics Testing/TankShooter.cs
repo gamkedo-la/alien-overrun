@@ -17,18 +17,43 @@ public class TankShooter : MonoBehaviour
 
 	private float timeForNextShot = 0f;
 	private int magSizeCurrent = 0;
+	private bool autoShooting = true;
 
 	void Start ()
 	{
 		Assert.IsNotNull( projctile );
 
 		magSizeCurrent = magSize;
+
+		MessageService.Instance.ShowMessage( "WSAD: move, Arrows: aim, V: toggles modes, Spacebar: shoot", 5f, Color.white );
 	}
 
 	void Update ()
 	{
 		timeForNextShot -= Time.deltaTime;
 
+		if ( Input.GetKeyDown( KeyCode.V ) )
+		{
+			if ( autoShooting )
+			{
+				autoShooting = false;
+				MessageService.Instance.ShowMessage( "Manual tank shooting mode" );
+			}
+			else
+			{
+				autoShooting = true;
+				MessageService.Instance.ShowMessage( "Automatic tank shooting mode" );
+			}
+		}
+
+		if ( autoShooting )
+			AutoShoot( );
+		else
+			ManualShoot( );
+	}
+
+	private void AutoShoot( )
+	{
 		if ( timeForNextShot <= 0 && magSizeCurrent > 0 )
 		{
 			GameObject go = Instantiate( projctile, transform.position, Quaternion.identity );
@@ -44,6 +69,16 @@ public class TankShooter : MonoBehaviour
 			{
 				timeForNextShot = dalayBetweenShots;
 			}
+		}
+	}
+
+	private void ManualShoot( )
+	{
+		if ( timeForNextShot <= 0 && Input.GetKey(KeyCode.Space) )
+		{
+			GameObject go = Instantiate( projctile, transform.position, Quaternion.identity );
+			go.GetComponent<Rigidbody>( ).AddForce( transform.forward * shootingForce );
+			timeForNextShot = dalayBetweenShots;
 		}
 	}
 }
