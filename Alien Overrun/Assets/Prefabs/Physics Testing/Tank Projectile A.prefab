@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7058505935518085316}
   - component: {fileID: 2796421555714784688}
   - component: {fileID: 8782592645593074194}
-  - component: {fileID: 5657384416372070202}
   - component: {fileID: 7417541214245992633}
   m_Layer: 0
   m_Name: Tank Projectile A
@@ -124,20 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageValue: 0.075
-  coreDamageValue: 0.0375
---- !u!114 &5657384416372070202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 332890810868888735}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42a3c7978e58ad449aad258a709fcd03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: {x: 0, y: 0, z: 0}
+  coreDamageValue: 0.015
 --- !u!114 &7417541214245992633
 MonoBehaviour:
   m_ObjectHideFlags: 0
