@@ -9,6 +9,8 @@ public class PhysicsHealth : MonoBehaviour
 
 	public float defMass = 100f;
 
+	public GameObject destroyParticles;
+
 	public PhysicsDestroyCondition condition;
 
 	private Rigidbody rb;
@@ -22,7 +24,11 @@ public class PhysicsHealth : MonoBehaviour
     {
 		rb.mass = defMass * coreHp.CurrentHP;
 
-		if (hp <= 0f) Destroy(gameObject);
+		if (hp <= 0f)
+		{
+			Instantiate(destroyParticles, transform.position, transform.rotation);
+			Destroy(gameObject);
+		}
     }
 
 	private void OnCollisionEnter(Collision other)

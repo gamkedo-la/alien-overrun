@@ -5,6 +5,8 @@ using UnityEngine;
 public class PhysicsDestroyCondition : MonoBehaviour
 {
 	public int totalPhysicsEntitiesOnGround = 10;
+	public float destroyDelay = 5f;
+	public float sinkRate = -0.5f;
 	private int count = 0;
 
 	private HP coreHp;
@@ -23,9 +25,9 @@ public class PhysicsDestroyCondition : MonoBehaviour
 			Destroy(fallInObject.GetComponent<Collider>());
 
 			TimeDestroy ddelay = fallInObject.AddComponent<TimeDestroy>();
-			ddelay.delay = 20f;
+			ddelay.delay = destroyDelay;
 			ConstantMove cmove = fallInObject.AddComponent<ConstantMove>();
-			cmove.moveValue = new Vector3(0f, -0.2f, 0f);
+			cmove.moveValue = new Vector3(0f, sinkRate, 0f);
 
 			for (int i = 0; i < fallInObject.transform.childCount; i++)
 			{
