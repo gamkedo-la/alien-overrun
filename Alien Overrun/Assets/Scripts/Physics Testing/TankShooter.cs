@@ -18,6 +18,7 @@ public class Ammunition
 public class TankShooter : MonoBehaviour
 {
 	[SerializeField] private Ammunition[] ammo = null;
+	[SerializeField] private GameObject shootEffect = null;
 	[SerializeField] private float dalayBetweenShots = 0.3f;
 	[SerializeField] private float reloadTime = 1.5f;
 	[SerializeField] private int magSize = 5;
@@ -30,6 +31,7 @@ public class TankShooter : MonoBehaviour
 
 	void Start ()
 	{
+		Assert.IsNotNull( shootEffect );
 		Assert.IsNotNull( ammo );
 		Assert.AreNotEqual( ammo.Length, 0 );
 
@@ -75,8 +77,7 @@ public class TankShooter : MonoBehaviour
 	{
 		if ( timeForNextShot <= 0 && magSizeCurrent > 0 )
 		{
-			GameObject go = Instantiate( ammo[currentAmmoID].Projectile, transform.position, Quaternion.identity );
-			go.GetComponent<Rigidbody>( ).AddForce( transform.forward * ammo[currentAmmoID].ShootingForce );
+			MakeTheShot( );
 			magSizeCurrent--;
 
 			if ( magSizeCurrent <= 0 )
@@ -95,9 +96,15 @@ public class TankShooter : MonoBehaviour
 	{
 		if ( timeForNextShot <= 0 && Input.GetKey(KeyCode.Space) )
 		{
-			GameObject go = Instantiate( ammo[currentAmmoID].Projectile, transform.position, Quaternion.identity );
-			go.GetComponent<Rigidbody>( ).AddForce( transform.forward * ammo[currentAmmoID].ShootingForce );
+			MakeTheShot( );
 			timeForNextShot = dalayBetweenShots;
 		}
+	}
+
+	private void MakeTheShot( )
+	{
+		Instantiate( shootEffect, transform.position + transform.forward * 0.3f, transform.rotation );
+		GameObject go = Instantiate( ammo[currentAmmoID].Projectile, transform.position, Quaternion.identity );
+		go.GetComponent<Rigidbody>( ).AddForce( transform.forward * ammo[currentAmmoID].ShootingForce );
 	}
 }

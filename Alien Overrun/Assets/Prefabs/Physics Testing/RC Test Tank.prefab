@@ -678,6 +678,8 @@ MonoBehaviour:
     Projectile: {fileID: 4237009128506507968, guid: ec3c56e7fd1587a4da72654eb6d60651,
       type: 3}
     ShootingForce: 3000
+  shootEffect: {fileID: 5581974584226724963, guid: 661a7d26fc7cc714eb989a6792adaffa,
+    type: 3}
   dalayBetweenShots: 0.2
   reloadTime: 0.6
   magSize: 5
