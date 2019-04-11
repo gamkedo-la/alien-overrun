@@ -5,8 +5,6 @@ public class PauseGame : MonoBehaviour
 {
     public CanvasGroup[] uiCanvasGroupsToHide;
 
-	public GameObject postProcessObject;
-
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
 
@@ -89,11 +87,6 @@ public class PauseGame : MonoBehaviour
 		}
 	}
 
-	public void TogglePostProcess()
-	{
-		postProcessObject.SetActive(!postProcessObject.activeSelf);
-	}
-
     void HideUI()
     {
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
@@ -104,6 +97,8 @@ public class PauseGame : MonoBehaviour
 
         pauseCanvasGroup.alpha = 1f;
         pauseCanvasGroup.blocksRaycasts = true;
+
+		EventSystem.current.SetSelectedGameObject( null );
     }
 
     void ShowUI()
@@ -116,6 +111,8 @@ public class PauseGame : MonoBehaviour
 
         pauseCanvasGroup.alpha = 0f;
         pauseCanvasGroup.blocksRaycasts = false;
+
+		EventSystem.current.SetSelectedGameObject( null );
     }
 }
 

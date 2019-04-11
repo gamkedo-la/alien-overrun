@@ -21,8 +21,8 @@ public class PhysicsHP : MonoBehaviour
 	[Header("Tweakable")]
 	[SerializeField] private float maxHP = 10;
 	[SerializeField] private float hpLosePerVelSqr = 0.01f;
-	[SerializeField] private float minDamageVelSqr = 50f;
-	[SerializeField] private bool destroyOnNoHP = false;
+	[SerializeField] private float minDamageVelSqr = 1f;
+	[SerializeField] private bool destroyOnNoHP = true;
 	[SerializeField] private ResistanceType resistance = ResistanceType.Normal;
 	public ResistanceType Resistance { get { return resistance; } private set { resistance = value; } }
 
