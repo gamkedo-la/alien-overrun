@@ -287,4 +287,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsCounter: {fileID: 9020003772424362354}
   fpsText: {fileID: 7362511859191113702}
-  fps: 0
+  fpsUpdatePeriod: 0.3

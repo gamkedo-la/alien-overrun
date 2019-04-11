@@ -9,11 +9,15 @@ using UnityEngine;
 public class GraphiscSettings : MonoBehaviour
 {
 	[SerializeField] private GameObject postProcessObject = null;
+	[SerializeField] private bool vSyncOffonStart = true;
 
 	void Start ()
 	{
 		if ( !postProcessObject )
 			postProcessObject = GameObject.Find( "Post-process Volume" );
+
+		if ( vSyncOffonStart )
+			Off( );
 	}
 
 	public void On ()

@@ -3,27 +3,29 @@ using UnityEngine;
 
 public class FramesPerSecond : MonoBehaviour
 {
-    public CanvasGroup fpsCounter;
-    public TextMeshProUGUI fpsText;
-    public float fps;
+	[SerializeField] private  CanvasGroup fpsCounter = null;
+	[SerializeField] private  TextMeshProUGUI fpsText = null;
+	[SerializeField] private float fpsUpdatePeriod = 1f;
 
-    private float sinceLastFrame;
+	private int framesCount = 0;
+    private float sinceLast = 0f;
 
-    void Start()
+	void Update()
     {
-        fpsCounter.alpha = 0f;
-        sinceLastFrame = 0f;
-    }
+		framesCount++;
+		sinceLast += Time.unscaledDeltaTime;
 
-    void Update()
-    {
-        sinceLastFrame += (Time.unscaledDeltaTime - sinceLastFrame) * 0.1f;
-        fps = 1f / sinceLastFrame;
-        fpsText.text = (int) fps + " FPS";
+		if ( sinceLast >= fpsUpdatePeriod )
+		{
+			float fps = (framesCount / fpsUpdatePeriod);
+			fpsText.text = $"{(int)fps} FPS";
+
+			sinceLast = 0;
+			framesCount = 0;
+		}
+
         if (Input.GetKeyDown(KeyCode.F3))
-        {
             ToggleFPSCounter();
-        }
     }
 
 	public void ToggleFPSCounter( )
