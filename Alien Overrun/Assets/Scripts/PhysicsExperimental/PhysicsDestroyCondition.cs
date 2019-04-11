@@ -6,10 +6,12 @@ public class PhysicsDestroyCondition : MonoBehaviour
 {
 	public int totalPhysicsEntitiesOnGround = 10;
 	public float destroyDelay = 5f;
+	public float sinkDelay = 2f;
 	public float sinkRate = -0.5f;
 	private int count = 0;
 
 	private HP coreHp;
+	private bool sink = false;
 
 	void Start()
     {
@@ -18,7 +20,7 @@ public class PhysicsDestroyCondition : MonoBehaviour
 	
     void Update()
     {
-		if (count >= totalPhysicsEntitiesOnGround)
+		if (sink == true && sinkDelay <= 0f)
 		{
 			GameObject fallInObject = Instantiate(this.gameObject, transform.position, transform.rotation);
 			Destroy(fallInObject.GetComponent<Rigidbody>());
@@ -46,7 +48,16 @@ public class PhysicsDestroyCondition : MonoBehaviour
 			}
 			coreHp.ChangeHP(-10f);
 		}
-    }
+		else if (sink == true)
+		{
+			sinkDelay -= Time.deltaTime;
+		}
+		else if (count >= totalPhysicsEntitiesOnGround)
+		{
+			sink = true;
+		}
+	}
 
 	public void IncrementCount() { if(coreHp.CurrentHP < 0.99f) count++; }
+	public bool IsDestroyed() { return sink; }
 }
