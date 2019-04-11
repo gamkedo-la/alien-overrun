@@ -71,7 +71,9 @@ MonoBehaviour:
 
     Spacebar: shoot
 
-    V: modes
+    B: change ammo
+
+    V: change modes
 
     R: reset'
   m_isRightToLeft: 0
@@ -142,12 +144,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 915506268892014506}
-    characterCount: 56
+    characterCount: 78
     spriteCount: 0
-    spaceCount: 9
-    wordCount: 10
+    spaceCount: 13
+    wordCount: 14
     linkCount: 0
-    lineCount: 5
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -194,14 +196,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6268909346558572319}
-  m_LocalRotation: {x: 0.6518537, y: -0, z: -0, w: 0.7583448}
-  m_LocalPosition: {x: -0.044025898, y: 0.086, z: 0.3977}
+  m_LocalRotation: {x: 0.6846744, y: 0, z: 0, w: 0.7288491}
+  m_LocalPosition: {x: -0.044025898, y: 0.04, z: 0.3977}
   m_LocalScale: {x: 0.4, y: 0.31885603, z: 0.4}
   m_Children:
   - {fileID: 6268909347250030785}
   m_Father: {fileID: 6268909346703924333}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 81.36301, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 86.42, y: 0, z: 0}
 --- !u!33 &6268909346558572307
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -376,14 +378,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6268909346703924332}
-  m_LocalRotation: {x: 0.05381742, y: 0, z: 0, w: 0.99855083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.16, z: 0.299}
   m_LocalScale: {x: 1.150612, y: 2.1645021, z: 1.250088}
   m_Children:
   - {fileID: 6268909346558572316}
   m_Father: {fileID: 6268909346677389103}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 6.17, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6268909346867424391
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +625,7 @@ MonoBehaviour:
   speed: 9
   turnSpeed: 120
   turretTurnSpeed: 120
-  turretElevationDeltaMax: 20
+  turretElevationDeltaMax: 15
 --- !u!1 &6268909347250030784
 GameObject:
   m_ObjectHideFlags: 0
@@ -667,9 +669,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a23a8da423bb474882d8cc2c2c015e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projctile: {fileID: 332890810868888735, guid: e367a7b43be72f74d9ffa57e415daa70,
-    type: 3}
-  shootingForce: 6000
+  ammo:
+  - Name: Cannonball
+    Projectile: {fileID: 332890810868888735, guid: e367a7b43be72f74d9ffa57e415daa70,
+      type: 3}
+    ShootingForce: 5000
+  - Name: Nerf-ball
+    Projectile: {fileID: 4237009128506507968, guid: ec3c56e7fd1587a4da72654eb6d60651,
+      type: 3}
+    ShootingForce: 3000
   dalayBetweenShots: 0.2
   reloadTime: 0.6
   magSize: 5

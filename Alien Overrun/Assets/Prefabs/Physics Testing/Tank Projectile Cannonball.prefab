@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8782592645593074194}
   - component: {fileID: 7417541214245992633}
   m_Layer: 0
-  m_Name: Tank Projectile A
+  m_Name: Tank Projectile Cannonball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -88,7 +88,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332890810868888735}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f29021335faf07147858c57732ecdf40, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07245dd4a53095478c6a5550d4ad066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 1129252795189245504, guid: bd11a3cf771708e48b73c37f6164e295, type: 3}
+  minSqrMag: 10
   damageValue: 1
   coreDamageValue: 0.05
 --- !u!114 &7417541214245992633

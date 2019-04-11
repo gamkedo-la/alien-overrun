@@ -1,24 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PhysicsDamageEntity : MonoBehaviour
 {
-	public float damageValue = 0.1f;
-	public float coreDamageValue = 0.01f;
-
-    void Start()
-    {
-        
-    }
-	
-    void Update()
-    {
-        
-    }
+	[Header("Dust")]
+	[SerializeField] private GameObject dust = null;
+	[SerializeField] private float minSqrMag = 10f;
+	[Header("Damage")]
+	[SerializeField] private float damageValue = 0.1f;
+	[SerializeField] private float coreDamageValue = 0.01f;
 
 	private void OnCollisionEnter(Collision other)
 	{
+		if ( dust && other.relativeVelocity.sqrMagnitude >= minSqrMag )
+			Instantiate( dust, transform.position, Quaternion.identity );
+
 		PhysicsHealth health = other.gameObject.GetComponent<PhysicsHealth>();
 		if (health != null)
 		{
