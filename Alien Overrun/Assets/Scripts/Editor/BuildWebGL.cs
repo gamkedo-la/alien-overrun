@@ -15,6 +15,8 @@ public class BuildWebGL : MonoBehaviour
 	{
 		"Assets/Scenes/Main Menu.unity",
 		"Assets/Scenes/Main.unity",
+		"Assets/Scenes/Main_PhysicsExperiment.unity",
+		"Assets/Scenes/Main_PhysicsTesting.unity",
 	};
 
 	[MenuItem( "Builds/Build WebGL and zip it" )]

@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 public class Tank : MonoBehaviour
 {
@@ -43,9 +44,9 @@ public class Tank : MonoBehaviour
 			turn += turnSpeed * Time.deltaTime;
 
 		if ( Input.GetKey( KeyCode.UpArrow ) )
-			turretRotation.x -= turretTurnSpeed * Time.deltaTime * 0.3f;
+			turretRotation.x -= turretTurnSpeed * Time.deltaTime * 0.5f;
 		if ( Input.GetKey( KeyCode.DownArrow ) )
-			turretRotation.x += turretTurnSpeed * Time.deltaTime * 0.3f;
+			turretRotation.x += turretTurnSpeed * Time.deltaTime * 0.5f;
 
 		turretRotation.x = Mathf.Clamp( turretRotation.x, -turretElevationDeltaMax, turretElevationDeltaMax );
 
@@ -53,6 +54,9 @@ public class Tank : MonoBehaviour
 			turretRotation.y -= turretTurnSpeed * Time.deltaTime;
 		if ( Input.GetKey( KeyCode.RightArrow ) )
 			turretRotation.y += turretTurnSpeed * Time.deltaTime;
+
+		if ( Input.GetKeyDown( KeyCode.R ) )
+			SceneManager.LoadScene( gameObject.scene.buildIndex );
 
 		cannonPivot.localRotation = Quaternion.Euler( turretRotation.x, 0, 0 );
 		turret.localRotation = Quaternion.Euler( 0, turretRotation.y, 0 );

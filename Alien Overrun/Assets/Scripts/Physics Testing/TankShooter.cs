@@ -17,15 +17,13 @@ public class TankShooter : MonoBehaviour
 
 	private float timeForNextShot = 0f;
 	private int magSizeCurrent = 0;
-	private bool autoShooting = true;
+	private bool autoShooting = false;
 
 	void Start ()
 	{
 		Assert.IsNotNull( projctile );
 
 		magSizeCurrent = magSize;
-
-		MessageService.Instance.ShowMessage( "WSAD: move, Arrows: aim, V: toggles modes, Spacebar: shoot", 5f, Color.white );
 	}
 
 	void Update ()
