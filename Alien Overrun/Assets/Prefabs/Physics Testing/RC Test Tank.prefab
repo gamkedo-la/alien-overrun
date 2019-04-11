@@ -651,7 +651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6268909347250030784}
   m_LocalRotation: {x: -0.7144116, y: 0, z: 0, w: 0.6997257}
-  m_LocalPosition: {x: -0.083143234, y: 1.4, z: -0.018}
+  m_LocalPosition: {x: -0.083143234, y: 1.75, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6268909346558572316}
@@ -678,6 +678,10 @@ MonoBehaviour:
     Projectile: {fileID: 4237009128506507968, guid: ec3c56e7fd1587a4da72654eb6d60651,
       type: 3}
     ShootingForce: 3000
+  - Name: Fireball
+    Projectile: {fileID: 5654902114113740134, guid: e9fa62eff50cdef4ca0d16585fb1098c,
+      type: 3}
+    ShootingForce: 50
   shootEffect: {fileID: 5581974584226724963, guid: 661a7d26fc7cc714eb989a6792adaffa,
     type: 3}
   dalayBetweenShots: 0.2
