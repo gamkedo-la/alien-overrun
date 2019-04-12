@@ -16,8 +16,8 @@ public enum BuildingPhysicsType
 
 public class Building_Physics : MonoBehaviour
 {
-	public Indicator Indicator { get { return indicator; } private set { indicator = value; } }
-	[SerializeField] private Indicator indicator = null;
+	public GameObject Indicator { get { return indicator; } private set { indicator = value; } }
+	[SerializeField] private GameObject indicator = null;
 
 	public BuildingPhysicsType BuildingType { get { return buildingType; } private set { buildingType = value; } }
 	[SerializeField] private BuildingPhysicsType buildingType = BuildingPhysicsType.Tower;
@@ -34,8 +34,8 @@ public class Building_Physics : MonoBehaviour
 	public float BuildTime { get { return buildTime; } private set { buildTime = value; } }
 	[SerializeField] private float buildTime = 1.0f;
 
-	[SerializeField] private Collider col = null;
-	[SerializeField] private Collider colP = null;
+	[SerializeField] private Collider buildingTrigger = null;
+	[SerializeField] private Collider[] buildingMesh = null;
 	[SerializeField] private Behaviour[] toEnableOnBuild = null;
 	[SerializeField] private bool enableOnStart = false;
 
@@ -44,12 +44,15 @@ public class Building_Physics : MonoBehaviour
 	void Start()
 	{
 		Assert.IsNotNull(indicator);
-		Assert.IsNotNull(col);
-		Assert.IsNotNull(colP);
-		Assert.IsNotNull(toEnableOnBuild);
-		Assert.AreNotEqual(toEnableOnBuild.Length, 0);
+		Assert.IsNotNull(buildingTrigger);
+		Assert.AreNotEqual(buildingMesh.Length, 0);
+		//Assert.IsNotNull(toEnableOnBuild);
+		//Assert.AreNotEqual(toEnableOnBuild.Length, 0);
 
-		indicator.HideAll();
+		indicator.SetActive(false);
+
+		foreach (var m in buildingMesh)
+			m.enabled = false;
 
 		if (enableOnStart)
 			EnableBuilding();
@@ -75,12 +78,14 @@ public class Building_Physics : MonoBehaviour
 		if ( !LevelManager.Instance.Paused )
 			indicator.ShowRange( true );
 		*/
+		indicator.SetActive(true);
 	}
 
 	void OnMouseExit()
 	{
 		//The Range gets hidden when deselected (locked, not hover)
 		//indicator.HideRange( );
+		indicator.SetActive(false);
 	}
 
 	void OnTriggerEnter(Collider other)
@@ -98,21 +103,17 @@ public class Building_Physics : MonoBehaviour
 	public void EnableBuilding()
 	{
 		BuildingManager_Physics.Instance.AddBuilding(this);
-		col.isTrigger = false;
+		//buildingTrigger.isTrigger = false;
 
 		foreach (var item in toEnableOnBuild)
 			item.enabled = true;
 
-		colP.enabled = true;
+		foreach (var m in buildingMesh)
+			m.enabled = true;
 	}
 
 	public bool CanBePaced() => collisions == 0;
-
-	public void ShowPlaceZone(bool show) => indicator.ShowZone(show);
-
-	public void ShowRange(bool canBuild) => indicator.ShowRange(canBuild);
-	public void HideRange() => indicator.HideRange();
-
+	
 	public bool AreWeCloseEnough(Building_Physics anotherBuilding)
 		=> Vector3.Distance(transform.position, anotherBuilding.gameObject.transform.position) <= placeDistance;
 

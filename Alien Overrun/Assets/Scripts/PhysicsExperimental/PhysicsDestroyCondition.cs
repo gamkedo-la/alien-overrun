@@ -10,6 +10,8 @@ public class PhysicsDestroyCondition : MonoBehaviour
 	public float sinkRate = -0.5f;
 	private int count = 0;
 
+	private float setupTimer = 1f;
+
 	private HP coreHp;
 	private bool sink = false;
 
@@ -56,8 +58,10 @@ public class PhysicsDestroyCondition : MonoBehaviour
 		{
 			sink = true;
 		}
+
+		setupTimer -= Time.deltaTime;
 	}
 
-	public void IncrementCount() { if(coreHp.CurrentHP < 0.99f) count++; }
+	public void IncrementCount() { if(setupTimer <= 0f) count++; }
 	public bool IsDestroyed() { return sink; }
 }

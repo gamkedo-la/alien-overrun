@@ -26,7 +26,7 @@ public class BuildingManager_Physics : MonoBehaviour
 		else
 			Instance = this;
 	}
-
+	
 	private void OnDestroy() { if (this == Instance) { Instance = null; } }
 
 	public void AddBuilding(Building_Physics building)
@@ -38,13 +38,7 @@ public class BuildingManager_Physics : MonoBehaviour
 	{
 		Buildings.Remove(building);
 	}
-
-	public void ShowZones(bool show)
-	{
-		foreach (var building in Buildings)
-			building.ShowPlaceZone(show);
-	}
-
+	
 	public Vector3 GetNearestCoreOrZero(Vector3 position)
 	{
 		Vector3 returnPos = Vector3.zero;
