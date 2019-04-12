@@ -13,16 +13,12 @@ public class MinimapControls : MonoBehaviour
     //Toggle
     private CanvasGroup cg;
     //Pan
-    public float panSpeed;
-    private Vector3 camFirstPos;
-    private Vector3 camCurrentPos;
+    public RectTransform minimapRect;
 
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
         cameraSlider.value = startZoom;
-        camFirstPos = minimapCamera.transform.position;
-        camCurrentPos = minimapCamera.transform.position;
     }
     void Update()
     {
@@ -52,30 +48,12 @@ public class MinimapControls : MonoBehaviour
     }
     public void MoveCamera()
     {
-        if(EventSystem.current.currentSelectedGameObject.name == "Left")
-        {
-            minimapCamera.transform.position = new Vector3(camCurrentPos.x - 5, camCurrentPos.y, camCurrentPos.z);
-            camCurrentPos = minimapCamera.transform.position;
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == "Right")
-        {
-            minimapCamera.transform.position = new Vector3(camCurrentPos.x + 5, camCurrentPos.y, camCurrentPos.z);
-            camCurrentPos = minimapCamera.transform.position;
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == "Top")
-        {
-            minimapCamera.transform.position = new Vector3(camCurrentPos.x, camCurrentPos.y, camCurrentPos.z + 5);
-            camCurrentPos = minimapCamera.transform.position;
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == "Bottom")
-        {
-            minimapCamera.transform.position = new Vector3(camCurrentPos.x, camCurrentPos.y, camCurrentPos.z - 5);
-            camCurrentPos = minimapCamera.transform.position;
-        }
-        else if (EventSystem.current.currentSelectedGameObject.name == "Reset")
-        {
-            minimapCamera.transform.position = camFirstPos;
-            camCurrentPos = minimapCamera.transform.position;
-        }
+        Vector3 mousePos = Input.mousePosition;
+        Rect tempRect = minimapRect.rect;
+        //tempRect.y = Screen.height - tempRect.y;
+        float distanceX = mousePos.x - tempRect.x;
+
+        minimapCamera.transform.position = new Vector3(distanceX, minimapCamera.transform.position.y, minimapCamera.transform.position.z);
+
     }
 }
