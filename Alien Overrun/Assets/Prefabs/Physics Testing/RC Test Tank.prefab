@@ -670,14 +670,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ammo:
+  - Name: Softball
+    Projectile: {fileID: 4237009128506507968, guid: ec3c56e7fd1587a4da72654eb6d60651,
+      type: 3}
+    ShootingForce: 3000
   - Name: Cannonball
     Projectile: {fileID: 332890810868888735, guid: e367a7b43be72f74d9ffa57e415daa70,
       type: 3}
     ShootingForce: 5000
-  - Name: Nerf-ball
-    Projectile: {fileID: 4237009128506507968, guid: ec3c56e7fd1587a4da72654eb6d60651,
-      type: 3}
-    ShootingForce: 3000
   - Name: Fireball
     Projectile: {fileID: 5654902114113740134, guid: e9fa62eff50cdef4ca0d16585fb1098c,
       type: 3}
