@@ -313,8 +313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSlider: {fileID: 5352926302161766990}
   minimapCamera: {fileID: 5352926302709132956}
-  startZoom: 11
-  panSpeed: 0
+  camZoom: 0
+  minimapRectTransform: {fileID: 0}
 --- !u!1 &5352926301293059048
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,7 +586,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 50, y: -50.00006}
+  m_AnchoredPosition: {x: 50, y: -52}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5352926301737320868

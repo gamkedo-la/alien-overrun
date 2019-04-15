@@ -9,16 +9,30 @@ public class MinimapControls : MonoBehaviour
     //Zoom controls
     public Slider cameraSlider;
     public Camera minimapCamera;
-    public float startZoom;
+    public GameObject minimapCameraObj;
+    public float camZoom;
     //Toggle
     private CanvasGroup cg;
     //Pan
-    public RectTransform minimapRect;
+    private Rect minimapRect;
+    private RectTransform minimapRectTransform;
+    private bool cameraMoving;
+    private Vector3 mouseLastPos;
+    private Vector3 camFirstPos;
+    public float sensitivity;
+    //Reset
+    private int clickCount;
 
     private void Start()
     {
+        camFirstPos = minimapCamera.transform.position;
+        sensitivity = 0.002f;
+        minimapRect = minimapRectTransform.rect;
+        cameraMoving = false;
+        clickCount = 0;
         cg = GetComponent<CanvasGroup>();
-        cameraSlider.value = startZoom;
+        cameraSlider.value = camZoom;
+
     }
     void Update()
     {
@@ -26,6 +40,20 @@ public class MinimapControls : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             ToggleMinimap();
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            mouseLastPos = Input.mousePosition;
+        }
+        if (cameraMoving == true)
+        {
+            Vector3 mousePos = Input.mousePosition;
+            Vector3 vectorResult = mouseLastPos - mousePos;
+            minimapCameraObj.transform.Translate(-vectorResult.x * sensitivity, -vectorResult.y * sensitivity, -vectorResult.z * sensitivity);
+            if(minimapCamera.transform.position.z > 100 || minimapCamera.transform.position.x < -100 || minimapCamera.transform.position.x > 200 || minimapCamera.transform.position.z < -130)
+            {
+                ResetMinimapCam();
+            }
         }
     }
 
@@ -48,12 +76,15 @@ public class MinimapControls : MonoBehaviour
     }
     public void MoveCamera()
     {
-        Vector3 mousePos = Input.mousePosition;
-        Rect tempRect = minimapRect.rect;
-        //tempRect.y = Screen.height - tempRect.y;
-        float distanceX = mousePos.x - tempRect.x;
-
-        minimapCamera.transform.position = new Vector3(distanceX, minimapCamera.transform.position.y, minimapCamera.transform.position.z);
-
+        cameraMoving = true;
     }
+    public void StopMovingCamera()
+    {
+        cameraMoving = false;
+    }
+    public void ResetMinimapCam()
+    {
+        minimapCamera.transform.position = camFirstPos;
+    }
+
 }
