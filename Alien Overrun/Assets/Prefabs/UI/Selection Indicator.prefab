@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 798140757140215630}
   - component: {fileID: 798140757140215631}
   - component: {fileID: 798140757140215616}
-  m_Layer: 0
-  m_Name: SelectionIndicator
+  m_Layer: 5
+  m_Name: Selection Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

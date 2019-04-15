@@ -19,10 +19,14 @@ public class SelectionBoxScript : MonoBehaviour
 	private Vector3 startPosition = Vector3.zero;
 	private Vector3 endPosition = Vector3.zero;
 
+	static public SelectionBoxScript instance;
+	
 	void Start()
     {
 		Vector3 upVector = Vector3.up;
 		plane = new Plane(upVector, pointOfPlane.position);
+
+		instance = this;
 	}
 
 	void Update()
@@ -34,10 +38,7 @@ public class SelectionBoxScript : MonoBehaviour
 
 		if (Input.GetMouseButtonUp(0))
 		{
-			startPosition = Vector3.zero;
-			boxTransform.localScale = new Vector3(0f, boxTransform.localScale.y, 0f);
-			cursorIndicator.SetActive(true);
-			selectionCube.SetActive(false);
+			ResetSelectBox();
 		}
 		else if (startPosition != Vector3.zero)
 		{
@@ -61,6 +62,14 @@ public class SelectionBoxScript : MonoBehaviour
 			cursorIndicator.SetActive(false);
 			selectionCube.SetActive(true);
 		}
+	}
+
+	public void ResetSelectBox()
+	{
+		startPosition = Vector3.zero;
+		boxTransform.localScale = new Vector3(0f, boxTransform.localScale.y, 0f);
+		cursorIndicator.SetActive(true);
+		selectionCube.SetActive(false);
 	}
 
 }

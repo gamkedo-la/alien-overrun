@@ -47,7 +47,7 @@ public class MinimapControls : MonoBehaviour
         }
         if (cameraMoving == true)
         {
-            Vector3 mousePos = Input.mousePosition;
+			Vector3 mousePos = Input.mousePosition;
             Vector3 vectorResult = mouseLastPos - mousePos;
             minimapCameraObj.transform.Translate(-vectorResult.x * sensitivity, -vectorResult.y * sensitivity, -vectorResult.z * sensitivity);
             if(minimapCamera.transform.position.z > 100 || minimapCamera.transform.position.x < -100 || minimapCamera.transform.position.x > 200 || minimapCamera.transform.position.z < -130)
@@ -57,7 +57,7 @@ public class MinimapControls : MonoBehaviour
         }
     }
 
-    void ControlCameraZoom()
+	void ControlCameraZoom()
     {
         minimapCamera.orthographicSize = cameraSlider.value;
     }
@@ -77,11 +77,16 @@ public class MinimapControls : MonoBehaviour
     public void MoveCamera()
     {
         cameraMoving = true;
-    }
+
+		SelectionBoxScript.instance.enabled = false;
+	}
     public void StopMovingCamera()
     {
         cameraMoving = false;
-    }
+
+		SelectionBoxScript.instance.enabled = true;
+		SelectionBoxScript.instance.ResetSelectBox();
+	}
     public void ResetMinimapCam()
     {
         minimapCamera.transform.position = camFirstPos;
