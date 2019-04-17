@@ -6,6 +6,7 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -114,12 +115,15 @@ public class EnemyManager : MonoBehaviour
 	[SerializeField] private GameObject[] enemyPrefabs = null;
 	[SerializeField] private Transform crativeModeSpawnPoint = null;
 	[SerializeField] private Transform[] spawnPoints = null;
+	[SerializeField] private TextMeshProUGUI enemyCount = null;
 	[SerializeField] private float radius = 3f;
+	[SerializeField] private float autoSpawningDelay = 0.1f;
 
 	private Waves waves;
 	private Wave currentWave;
 	private int currentWaveIndex = 0;
 	private Coroutine coroutine;
+	private bool autoSpawning = false;
 
 	private void Awake( )
 	{
@@ -140,6 +144,7 @@ public class EnemyManager : MonoBehaviour
 		Assert.IsNotNull( crativeModeSpawnPoint );
 		Assert.IsNotNull( spawnPoints );
 		Assert.AreNotEqual( spawnPoints.Length, 0 );
+		Assert.IsNotNull( enemyCount );
 
 		if ( !LevelManager.Instance.CreativeMode )
 			StartWaves( );
@@ -148,11 +153,13 @@ public class EnemyManager : MonoBehaviour
 	public void AddEnemy( Enemy enemy )
 	{
 		Enemies.Add( enemy );
+		enemyCount.text = "Enemy count: " + Enemies.Count;
 	}
 
 	public void RemoveEnemy( Enemy enemy )
 	{
 		Enemies.Remove( enemy );
+		enemyCount.text = "Enemy count: " + Enemies.Count;
 	}
 
 	public void SpawnRandomEnemy( )
@@ -164,6 +171,20 @@ public class EnemyManager : MonoBehaviour
 		enemyPos.z = crativeModeSpawnPoint.position.z + circle.y;
 
 		Instantiate( enemyPrefabs[Random.Range( 0, enemyPrefabs.Length )], enemyPos, Quaternion.identity );
+
+		if ( autoSpawning )
+			Invoke( "SpawnRandomEnemy", autoSpawningDelay );
+	}
+
+	public void SpawnRandomEnemyStart( )
+	{
+		autoSpawning = true;
+		Invoke( "SpawnRandomEnemy", autoSpawningDelay );
+	}
+
+	public void SpawnRandomEnemyEnd( )
+	{
+		autoSpawning = false;
 	}
 
 	public void SpawnEnemy( int id )

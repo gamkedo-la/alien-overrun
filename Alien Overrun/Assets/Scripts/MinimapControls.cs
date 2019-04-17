@@ -14,8 +14,6 @@ public class MinimapControls : MonoBehaviour
     //Toggle
     private CanvasGroup cg;
     //Pan
-    private Rect minimapRect;
-    private RectTransform minimapRectTransform;
     private bool cameraMoving;
     private Vector3 mouseLastPos;
     private Vector3 camFirstPos;
@@ -27,7 +25,6 @@ public class MinimapControls : MonoBehaviour
     {
         camFirstPos = minimapCamera.transform.position;
         sensitivity = 0.002f;
-        minimapRect = minimapRectTransform.rect;
         cameraMoving = false;
         clickCount = 0;
         cg = GetComponent<CanvasGroup>();
