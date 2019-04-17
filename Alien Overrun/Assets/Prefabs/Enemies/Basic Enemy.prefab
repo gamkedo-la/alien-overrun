@@ -360,6 +360,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3269484800892902431}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -414,11 +419,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}

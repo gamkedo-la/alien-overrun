@@ -23,6 +23,7 @@ public class BuildingPlacer : MonoBehaviour
 	private Plane plane;
 	private string buildingName;
 	private bool canPlace = false;
+	private Camera cam = null;
 
 	void Start ()
 	{
@@ -35,6 +36,8 @@ public class BuildingPlacer : MonoBehaviour
 		buildingName = building.BuildingName;
 		cost = building.BuildCost;
 		buttonText.text = string.Format( "{0} [{1}]", buildingName, cost );
+
+		cam = Camera.main;
 	}
 
 	void Update ()
@@ -90,7 +93,7 @@ public class BuildingPlacer : MonoBehaviour
 		if ( buildingToPlace == null )
 			return;
 
-		Ray mRay = Camera.main.ScreenPointToRay( Input.mousePosition );
+		Ray mRay = cam.ScreenPointToRay( Input.mousePosition );
 		if ( plane.Raycast( mRay, out float mouseDistance ) )
 			buildingToPlace.transform.position = mRay.GetPoint( mouseDistance ) + mouseOffset;
 	}

@@ -13,25 +13,27 @@ public class SelectionBoxScript : MonoBehaviour
 	[Space]
 
 	[SerializeField] private Transform pointOfPlane = null;
-	
+
 	private Plane plane;
 
 	private Vector3 startPosition = Vector3.zero;
 	private Vector3 endPosition = Vector3.zero;
+	private Camera cam = null;
 
 	static public SelectionBoxScript instance;
-	
+
 	void Start()
     {
 		Vector3 upVector = Vector3.up;
 		plane = new Plane(upVector, pointOfPlane.position);
+		cam = Camera.main;
 
 		instance = this;
 	}
 
 	void Update()
 	{
-		Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray mRay = cam.ScreenPointToRay(Input.mousePosition);
 
 		if (plane.Raycast(mRay, out float mouseDistance))
 			boxTransform.position = mRay.GetPoint(mouseDistance);

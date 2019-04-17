@@ -25,7 +25,6 @@ public class CursorRaycast : MonoBehaviour
 	private Plane plane;
 
 	private GameObject hoverSelection = null;
-
 	public List<GameObject> LockedSelection() { return lockedSelection; }
 	private List<GameObject> lockedSelection = new List<GameObject>();
 
@@ -37,16 +36,17 @@ public class CursorRaycast : MonoBehaviour
 	private TextMeshProUGUI lockedInfo1;
 	private TextMeshProUGUI lockedInfo2;
 
+	private Camera cam = null;
+
 	void Start()
 	{
 		Vector3 upVector = Vector3.up;
 		plane = new Plane(upVector, pointOfPlane.position);
-
+		cam = Camera.main;
 		rend = cursorIndicator.GetComponent<MeshRenderer>();
 
 		GetUIComponents();
 	}
-
 	void Update()
 	{
 		CheckSelectionExistence();
@@ -84,8 +84,6 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
-
-
 	public bool IsObjectSelected(GameObject obj)
 	{
 		foreach (var sel in lockedSelection)
@@ -93,8 +91,6 @@ public class CursorRaycast : MonoBehaviour
 
 		return false;
 	}
-
-
 
 	private void GetUIComponents()
 	{
@@ -127,11 +123,9 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
-
-
 	private void UpdateCursorPositionAndEntityInfo()
 	{
-		Ray mRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+		Ray mRay = cam.ScreenPointToRay(Input.mousePosition);
 
 		if (plane.Raycast(mRay, out float mouseDistance))
 		{

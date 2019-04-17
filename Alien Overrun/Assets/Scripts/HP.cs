@@ -34,6 +34,8 @@ public class HP : MonoBehaviour
 		{
 			hpBar.maxValue = maxHP;
 			hpBar.value = maxHP;
+
+			SetHPBarVisability( );
 		}
 	}
 
@@ -50,7 +52,10 @@ public class HP : MonoBehaviour
 		onHealthChange.Invoke( );
 
 		if ( hpBar )
+		{
 			hpBar.value = CurrentHP;
+			SetHPBarVisability( );
+		}
 
 		if ( CurrentHP <= 0 )
 			DestroyMe( );
@@ -62,5 +67,13 @@ public class HP : MonoBehaviour
 
 		if ( destroyOnNoHP )
 			Destroy( gameObject );
+	}
+
+	private void SetHPBarVisability( )
+	{
+		if ( CurrentHP == maxHP )
+			hpBar.transform.parent.gameObject.SetActive( false );
+		else
+			hpBar.transform.parent.gameObject.SetActive( true );
 	}
 }

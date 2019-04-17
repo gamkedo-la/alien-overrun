@@ -9,12 +9,16 @@ using UnityEngine.Assertions;
 
 public class Billboard : MonoBehaviour
 {
+	[SerializeField] private Canvas canvas = null;
 	private Camera cam = null;
 
 	void Start ()
 	{
 		cam = Camera.main;
 		Assert.IsNotNull( cam );
+		Assert.IsNotNull( canvas );
+
+		canvas.worldCamera = cam;
 	}
 
 	void LateUpdate( )

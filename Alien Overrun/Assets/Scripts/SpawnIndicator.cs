@@ -21,6 +21,7 @@ public class SpawnIndicator : MonoBehaviour
 	private bool placing = false;
 	private bool canPlace = false;
 	private int collisions = 0;
+	private Camera cam = null;
 
 	void Start( )
 	{
@@ -30,6 +31,8 @@ public class SpawnIndicator : MonoBehaviour
 		Assert.AreNotEqual( renderers.Length, 0 );
 		Assert.IsNotNull( goodMat );
 		Assert.IsNotNull( badMat );
+
+		cam = Camera.main;
 	}
 
 	void Update( )
@@ -64,7 +67,7 @@ public class SpawnIndicator : MonoBehaviour
 		if ( !placing )
 			return;
 
-		Ray mRay = Camera.main.ScreenPointToRay( Input.mousePosition );
+		Ray mRay = cam.ScreenPointToRay( Input.mousePosition );
 		if ( plane.Raycast( mRay, out float mouseDistance ) )
 			transform.position = mRay.GetPoint( mouseDistance ) + mouseOffset;
 	}
