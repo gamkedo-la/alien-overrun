@@ -33,29 +33,29 @@ public class CamControl : MonoBehaviour
 	{
 		if ( Input.GetKey( KeyCode.D ) || ( Input.mousePosition.x >= Screen.width - mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.right * panSpeed * Time.deltaTime;
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.right * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 		else if ( Input.GetKey( KeyCode.A ) || ( Input.mousePosition.x <= mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.left * panSpeed * Time.deltaTime;
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.left * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 
 		if ( Input.GetKey( KeyCode.W ) || ( Input.mousePosition.y >= Screen.height - mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.forward * panSpeed * Time.deltaTime;
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.forward * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 		else if ( Input.GetKey( KeyCode.S ) || ( Input.mousePosition.y <= mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.back * panSpeed * Time.deltaTime;
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.back * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 
 		if ( Input.GetAxis( "Mouse ScrollWheel" ) > 0f )
 		{
-			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime;
+			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime * ( cam.position.y * 0.1f );
             if (zoomLockOn && cam.position.y <= cameraYZoomInLock)
             {
                 cameraPositionLock.x = cam.position.x;
@@ -66,8 +66,8 @@ public class CamControl : MonoBehaviour
         }
 		else if ( Input.GetAxis( "Mouse ScrollWheel" ) < 0f )
 		{
-			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime;
-            if (zoomLockOn && cam.position.y >= cameraYZoomOutLock)
+			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime * ( cam.position.y * 0.1f );
+			if (zoomLockOn && cam.position.y >= cameraYZoomOutLock)
             {
                 cameraPositionLock.x = cam.position.x;
                 cameraPositionLock.z = cam.position.z;
