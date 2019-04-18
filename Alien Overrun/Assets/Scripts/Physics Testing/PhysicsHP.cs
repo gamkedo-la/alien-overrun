@@ -39,13 +39,15 @@ public class PhysicsHP : MonoBehaviour
 			hpBar.maxValue = maxHP;
 			hpBar.value = maxHP;
 		}
+
+		GetComponent<Rigidbody>( ).isKinematic = true;
 	}
 
 	private void OnCollisionEnter( Collision other )
 	{
 		if ( other.relativeVelocity.sqrMagnitude <= minDamageVelSqr )
 			return;
-
+		GetComponent<Rigidbody>( ).isKinematic = false;
 		float damage = other.relativeVelocity.sqrMagnitude * hpLosePerVelSqr;
 		//Debug.Log( other.relativeVelocity.sqrMagnitude );
 		//Debug.Log( damage );
