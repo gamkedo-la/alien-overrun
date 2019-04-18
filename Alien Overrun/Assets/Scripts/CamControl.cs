@@ -16,6 +16,7 @@ public class CamControl : MonoBehaviour
     [SerializeField] private float panSpeed = 8f;
 	[SerializeField] private float zoomSpeed = 200f;
 	[SerializeField] private float camRotation = -120f;
+	[SerializeField] private float camRotationSpeed = 10f;
 	[SerializeField] private float mouseScreenBoundOffset = 50f;
 	[SerializeField] private bool useMouse = true;
     [SerializeField] private bool zoomLockOn = true;
@@ -53,6 +54,17 @@ public class CamControl : MonoBehaviour
 			transform.Translate( translation );
 		}
 
+		if ( Input.GetKey( KeyCode.Q ) )
+		{
+			float rotation = transform.localRotation.eulerAngles.y + camRotationSpeed * Time.deltaTime;// * ( cam.position.y * 0.1f );
+			transform.localRotation = Quaternion.Euler( 0, rotation, 0 );
+		}
+		else if ( Input.GetKey( KeyCode.E ) )
+		{
+			float rotation = transform.localRotation.eulerAngles.y - camRotationSpeed * Time.deltaTime;// * ( cam.position.y * 0.1f );
+			transform.localRotation = Quaternion.Euler( 0, rotation, 0 );
+		}
+
 		if ( Input.GetAxis( "Mouse ScrollWheel" ) > 0f )
 		{
 			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime * ( cam.position.y * 0.1f );
@@ -75,5 +87,7 @@ public class CamControl : MonoBehaviour
                 cam.position = cameraPositionLock;
             }
         } // end of if MouseScrollWheel < 0
+
+		cam.LookAt( transform );
 	} // end of Update
 } // end of CamControlClass
