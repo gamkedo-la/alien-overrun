@@ -19,8 +19,8 @@ TagManager:
   - PostProcessing
   - NonNavMesh
   - Enemy
-  - 
-  - 
+  - Player
+  - PlayerProjectile
   - 
   - 
   - 

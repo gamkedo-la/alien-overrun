@@ -45,6 +45,10 @@ public class PhysicsDestroyCondition : MonoBehaviour
 						Destroy(meshPiece.GetComponent<Rigidbody>());
 						Destroy(meshPiece.GetComponent<Collider>());
 					}
+				}
+				else if (mesh.name == "Functions")
+				{
+					Destroy(mesh);
 					break;
 				}
 			}

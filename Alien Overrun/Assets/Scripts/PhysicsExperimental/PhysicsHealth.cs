@@ -28,6 +28,7 @@ public class PhysicsHealth : MonoBehaviour
 		{
 			Instantiate(destroyParticles, transform.position, transform.rotation);
 			Destroy(gameObject);
+			condition.IncrementCount();
 		}
     }
 
@@ -35,5 +36,7 @@ public class PhysicsHealth : MonoBehaviour
 	{
 		if (other.gameObject.tag == "Environment")
 			condition.IncrementCount();
+		else if (other.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+			hp -= 0.5f;
 	}
 }

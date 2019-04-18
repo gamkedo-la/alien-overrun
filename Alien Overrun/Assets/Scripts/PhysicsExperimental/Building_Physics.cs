@@ -51,8 +51,10 @@ public class Building_Physics : MonoBehaviour
 
 		indicator.SetActive(false);
 
+		/*
 		foreach (var m in buildingMesh)
 			m.enabled = false;
+		*/
 
 		if (enableOnStart)
 			EnableBuilding();
@@ -107,9 +109,11 @@ public class Building_Physics : MonoBehaviour
 
 		foreach (var item in toEnableOnBuild)
 			item.enabled = true;
-
+		
+		/*
 		foreach (var m in buildingMesh)
 			m.enabled = true;
+		*/
 	}
 
 	public bool CanBePaced() => collisions == 0;

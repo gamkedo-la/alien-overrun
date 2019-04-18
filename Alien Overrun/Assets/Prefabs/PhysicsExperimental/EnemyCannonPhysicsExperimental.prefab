@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4031462232916645278}
   - component: {fileID: 4031462232916645279}
   - component: {fileID: 526604546202447288}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: EnemyCannonPhysicsExperimental
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,6 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b07245dd4a53095478c6a5550d4ad066, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dust: {fileID: 0}
+  minSqrMag: 10
   damageValue: 0.075
   coreDamageValue: 0.025
 --- !u!114 &4031462232916645279

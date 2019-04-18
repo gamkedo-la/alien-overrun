@@ -21,5 +21,8 @@ public class PhysicsDamageEntity : MonoBehaviour
 			health.coreHp.ChangeHP(-coreDamageValue);
 			Destroy(this);
 		}
+
+		if(other.gameObject.tag == "Environment")
+			Destroy(this);
 	}
 }

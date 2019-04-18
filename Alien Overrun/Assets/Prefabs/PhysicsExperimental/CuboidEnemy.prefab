@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1c01c537bf9653e44a1e5a135a41ecca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 1c01c537bf9653e44a1e5a135a41ecca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -262,6 +262,7 @@ GameObject:
   - component: {fileID: 5285035104680234291}
   - component: {fileID: 5285035104680234288}
   - component: {fileID: 5285035104680234293}
+  - component: {fileID: 1702154184}
   m_Layer: 10
   m_Name: MainPiece
   m_TagString: Enemy
@@ -308,7 +309,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e24f8b1e51446844bb92a823c9c64b22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -353,10 +354,24 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1702154184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5285035104680234302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a74b3b8a2c6146b41b49d2d1c05aac38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyParticles: {fileID: 4547429264111961000, guid: 197464a1bebae9d49a278ecaf3eed343,
+    type: 3}
 --- !u!1 &5285035104708929826
 GameObject:
   m_ObjectHideFlags: 0
@@ -369,7 +384,7 @@ GameObject:
   - component: {fileID: 145663380}
   - component: {fileID: 46204128}
   - component: {fileID: 46204129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CuboidEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +516,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: dda1798cdd566cf44b6db4d24526c096, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -545,8 +560,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -561,7 +576,7 @@ GameObject:
   - component: {fileID: 5285035104800588639}
   - component: {fileID: 1716707474}
   - component: {fileID: 839086452382731073}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Functions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -619,7 +634,7 @@ GameObject:
   - component: {fileID: 5285035105670591724}
   - component: {fileID: 5285035105670591725}
   - component: {fileID: 5285035105670591722}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -707,7 +722,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5285035105905932487}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
