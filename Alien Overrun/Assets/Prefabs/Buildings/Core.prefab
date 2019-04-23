@@ -246,7 +246,7 @@ GameObject:
   - component: {fileID: 1358882027139276733}
   - component: {fileID: 1358882027139276732}
   - component: {fileID: 1358882027139276735}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Dome
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -756,7 +756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358882027474032599}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1358882027517736749}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Place Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1358882027609322587}
   - component: {fileID: 1358882027609322584}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +880,7 @@ GameObject:
   - component: {fileID: 1358882027830205773}
   - component: {fileID: 1358882027830205775}
   - component: {fileID: 1358882027830205772}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -957,7 +957,7 @@ GameObject:
   - component: {fileID: 1358882027958391437}
   - component: {fileID: 1358882027958391434}
   - component: {fileID: 1358882027958391435}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
