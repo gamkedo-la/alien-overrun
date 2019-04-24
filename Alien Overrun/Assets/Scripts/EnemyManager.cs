@@ -221,8 +221,7 @@ public class EnemyManager : MonoBehaviour
 	{
 		yield return new WaitForSeconds( currentWave.WaveDelay );
 
-		// TODO: Show message. Make button inactive.
-		//Debug.Log( "Spawning new wave: Wave " + currentWaveIndex );
+		MessageService.Instance.ShowMessage( "New enemies approaching...", 1f, Color.red );
 
 		for ( int i = 0; i < currentWave.Enemies.Length; i++ )
 		{
