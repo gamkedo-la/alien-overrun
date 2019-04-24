@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Froganim : MonoBehaviour
-{
-
-    static Animator anim;
+{static Animator anim;
     public float speed = 10.0F;
     public float rotationSpeed = 100.0F;
     

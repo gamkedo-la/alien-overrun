@@ -77,5 +77,5 @@ public class MeleeAttacker : MonoBehaviour
 
 		ResourceManager.Instance.UseResources( ResourceType.Minerals, ammoCost );
 		animator.SetTrigger( "Attack" );
-	}
+			}
 }
