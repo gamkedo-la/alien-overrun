@@ -4,9 +4,12 @@ using UnityEngine.EventSystems;
 public class PauseGame : MonoBehaviour
 {
     public CanvasGroup[] uiCanvasGroupsToHide;
+	[SerializeField] private float maxSpeed = 4f;
+	[SerializeField] private float minSpeed = 0.2f;
 
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
+	private float currentSpeed = 1f;
 
     void Start()
     {
@@ -17,7 +20,17 @@ public class PauseGame : MonoBehaviour
         pauseCanvasGroup.blocksRaycasts = false;
     }
 
-    void Update()
+	void OnEnable( )
+	{
+		NormalSpeed( );
+	}
+
+	void OnDisable( )
+	{
+		NormalSpeed( );
+	}
+
+	void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -66,7 +79,7 @@ public class PauseGame : MonoBehaviour
     public void Unpause()
     {
         levelManager.Paused = false;
-        Time.timeScale = 1;
+        Time.timeScale = currentSpeed;
         ShowUI();
     }
 
@@ -77,17 +90,40 @@ public class PauseGame : MonoBehaviour
 			if (Time.timeScale == 8f)
 			{
 				Time.timeScale = 1f;
+				currentSpeed = Time.timeScale;
 				Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			}
 			else
 			{
 				Time.timeScale *= 2f;
+				currentSpeed = Time.timeScale;
 				Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			}
 		}
 	}
 
-    void HideUI()
+	public void NormalSpeed( )
+	{
+		Time.timeScale = 1f;
+		currentSpeed = Time.timeScale;
+		Time.fixedDeltaTime = 0.02f * Time.timeScale;
+	}
+
+	public void SlowSpeed( )
+	{
+		Time.timeScale = minSpeed;
+		currentSpeed = Time.timeScale;
+		Time.fixedDeltaTime = 0.02f * Time.timeScale;
+	}
+
+	public void FastSpeed( )
+	{
+		Time.timeScale = maxSpeed;
+		currentSpeed = Time.timeScale;
+		Time.fixedDeltaTime = 0.02f * Time.timeScale;
+	}
+
+	void HideUI()
     {
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
 		{
