@@ -79,7 +79,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5261447030928263552, guid: 278d0b464204bda4c930d04e64ef069d, type: 3}
+  - {fileID: 2100000, guid: 2c83a2eebbdbe754caa0831137091130, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -988,6 +988,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6181470027277486603}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1058,15 +1068,30 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.3754585
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
-      propertyPath: m_Name
-      value: HP Bar (1)
+      propertyPath: m_AnchorMin.x
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
@@ -1082,31 +1107,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.26
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
