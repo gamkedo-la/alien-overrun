@@ -11,10 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 8b02e70a439517b49982ee3755dd3c82
-  - enabled: 1
-    path: Assets/Scenes/Main_PhysicsExperiment.unity
-    guid: 04297b0631bcd0544a78cabf70a25550
-  - enabled: 1
-    path: Assets/Scenes/Main_PhysicsTesting.unity
-    guid: a95ccef52815dae4faa9cfeae82e3817
   m_configObjects: {}
