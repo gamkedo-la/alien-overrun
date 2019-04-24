@@ -5080,8 +5080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oponentType: 0
   oponentFindCooldown: 1
-  findDistance: 6
-  attackDistance: 5
+  findDistance: 8
+  attackDistance: 7
   onOponentFound:
     m_PersistentCalls:
       m_Calls: []
@@ -5132,9 +5132,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1284071210338740561}
-  reloadTime: 3
-  shootDuration: 0.5
-  damage: 15
+  reloadTime: 0.7
+  shootDuration: 0.2
+  damage: 10
   shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
   damageType: 1
 --- !u!1 &1284071209366225706
