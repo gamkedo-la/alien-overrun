@@ -17,7 +17,15 @@ public class LevelManager : MonoBehaviour
 	public bool Paused { get { return paused; } set { paused = value; } }
 
 	[SerializeField] private bool creativeMode = false;
-	public bool CreativeMode { get { return creativeMode; } set { creativeMode = value; } }
+	public bool CreativeMode
+	{
+		get { return creativeMode; }
+		set
+		{
+			creativeMode = value;
+			SwitchMode( );
+		}
+	}
 
 	[SerializeField] private UnityEvent onWin = null;
 	[SerializeField] private UnityEvent onLose = null;
@@ -46,24 +54,7 @@ public class LevelManager : MonoBehaviour
 		if ( modeSelection )
 			CreativeMode = modeSelection.CreativeMode;
 
-		if ( CreativeMode )
-		{
-			foreach ( var go in skirmishModeOnly )
-				go.SetActive( false );
-
-			foreach ( var go in creativeModeOnly )
-				go.SetActive( true );
-		}
-		else
-		{
-			foreach ( var go in skirmishModeOnly )
-				go.SetActive( true );
-
-			foreach ( var go in creativeModeOnly )
-				go.SetActive( false );
-
-			InvokeRepeating( "CheckGameEnd", 1, 0.5f );
-		}
+		SwitchMode( );
 	}
 
 	void Update ()
@@ -85,6 +76,28 @@ public class LevelManager : MonoBehaviour
 		{
 			CancelInvoke( "CheckGameEnd" );
 			onWin.Invoke( );
+		}
+	}
+
+	private void SwitchMode( )
+	{
+		if ( CreativeMode )
+		{
+			foreach ( var go in skirmishModeOnly )
+				go.SetActive( false );
+
+			foreach ( var go in creativeModeOnly )
+				go.SetActive( true );
+		}
+		else
+		{
+			foreach ( var go in skirmishModeOnly )
+				go.SetActive( true );
+
+			foreach ( var go in creativeModeOnly )
+				go.SetActive( false );
+
+			InvokeRepeating( "CheckGameEnd", 1, 0.5f );
 		}
 	}
 }

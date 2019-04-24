@@ -146,8 +146,7 @@ public class EnemyManager : MonoBehaviour
 		Assert.AreNotEqual( spawnPoints.Length, 0 );
 		Assert.IsNotNull( enemyCount );
 
-		if ( !LevelManager.Instance.CreativeMode )
-			StartWaves( );
+		StartWaves( );
 	}
 
 	public void AddEnemy( Enemy enemy )
@@ -228,6 +227,9 @@ public class EnemyManager : MonoBehaviour
 		for ( int i = 0; i < currentWave.Enemies.Length; i++ )
 		{
 			yield return new WaitForSeconds( currentWave.EnemiesDelay );
+
+			while ( LevelManager.Instance.CreativeMode )
+				yield return new WaitForSeconds( 1 );
 
 			SpawnNewEnemy( currentWave.Enemies[i], spawnPoints[currentWave.SpawnPointID] );
 		}

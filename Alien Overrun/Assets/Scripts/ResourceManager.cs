@@ -40,9 +40,14 @@ public class ResourceManager : MonoBehaviour
 		UpdateLabels( );
 	}
 
-	private void FixedUpdate( )
+	/*private void FixedUpdate( )
 	{
 		CreativeModeResourceCheck( );
+	}*/
+
+	public void CheatAddResources( )
+	{
+		AddResources( ResourceType.Minerals, 10000 );
 	}
 
 	public void AddResources( ResourceType type, int amount )
