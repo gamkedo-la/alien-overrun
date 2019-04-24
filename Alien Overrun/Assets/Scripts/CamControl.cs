@@ -14,12 +14,16 @@ public class CamControl : MonoBehaviour
     [SerializeField] private float cameraYZoomInLock = 4;
     [SerializeField] private float cameraYZoomOutLock = 16;
     [SerializeField] private float panSpeed = 8f;
+    [SerializeField] private float mousePanSpeed = 0.01f;
 	[SerializeField] private float zoomSpeed = 200f;
 	[SerializeField] private float camRotation = -120f;
 	[SerializeField] private float camRotationSpeed = 10f;
 	[SerializeField] private float mouseScreenBoundOffset = 50f;
 	[SerializeField] private bool useMouse = true;
     [SerializeField] private bool zoomLockOn = true;
+
+	private bool panning = false;
+	private Vector3 oldMousePos;
 
     void Start ()
 	{
@@ -87,6 +91,27 @@ public class CamControl : MonoBehaviour
                 cam.position = cameraPositionLock;
             }
         } // end of if MouseScrollWheel < 0
+
+		if ( Input.GetMouseButtonDown( 1 ) )
+		{
+			oldMousePos = Input.mousePosition;
+			panning = true;
+		}
+		if ( Input.GetMouseButtonUp( 1 ) )
+			panning = false;
+
+		if ( panning )
+		{
+			Vector3 mousePos = Input.mousePosition;
+			Vector3 offset = oldMousePos - mousePos;
+			offset.z = offset.y;
+			offset.y = 0;
+
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * offset * mousePanSpeed * ( cam.position.y * 0.1f );
+			transform.Translate( translation );
+
+			oldMousePos = Input.mousePosition;
+		}
 
 		cam.LookAt( transform );
 	} // end of Update
