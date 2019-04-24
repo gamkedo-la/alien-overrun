@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
 {
@@ -121,6 +122,11 @@ public class PauseGame : MonoBehaviour
 		Time.timeScale = maxSpeed;
 		currentSpeed = Time.timeScale;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale;
+	}
+
+	public void Reset( )
+	{
+		SceneManager.LoadScene( gameObject.scene.name );
 	}
 
 	void HideUI()
