@@ -21,6 +21,7 @@ public class CamControl : MonoBehaviour
 	[SerializeField] private float mouseScreenBoundOffset = 50f;
 	[SerializeField] private bool useMouse = true;
     [SerializeField] private bool zoomLockOn = true;
+    [SerializeField] private bool useScaledTime = false;
 
 	private bool panning = false;
 	private Vector3 oldMousePos;
@@ -36,42 +37,50 @@ public class CamControl : MonoBehaviour
 
 	void Update ()
 	{
+		if ( Input.GetKeyDown( KeyCode.Y ) )
+		{
+			useScaledTime = !useScaledTime;
+			MessageService.Instance.ShowMessage( "Camera deltaTime mode toggled. Scaled time: " + useScaledTime );
+		}
+
+		float time = useScaledTime ? Time.deltaTime : Time.unscaledDeltaTime;
+
 		if ( Input.GetKey( KeyCode.D ) || ( Input.mousePosition.x >= Screen.width - mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.right * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.right * panSpeed * time * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 		else if ( Input.GetKey( KeyCode.A ) || ( Input.mousePosition.x <= mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.left * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.left * panSpeed * time * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 
 		if ( Input.GetKey( KeyCode.W ) || ( Input.mousePosition.y >= Screen.height - mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.forward * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.forward * panSpeed * time * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 		else if ( Input.GetKey( KeyCode.S ) || ( Input.mousePosition.y <= mouseScreenBoundOffset && useMouse ) )
 		{
-			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.back * panSpeed * Time.deltaTime * ( cam.position.y * 0.1f );
+			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.back * panSpeed * time * ( cam.position.y * 0.1f );
 			transform.Translate( translation );
 		}
 
 		if ( Input.GetKey( KeyCode.Q ) )
 		{
-			float rotation = transform.localRotation.eulerAngles.y + camRotationSpeed * Time.deltaTime;// * ( cam.position.y * 0.1f );
+			float rotation = transform.localRotation.eulerAngles.y + camRotationSpeed * time;// * ( cam.position.y * 0.1f );
 			transform.localRotation = Quaternion.Euler( 0, rotation, 0 );
 		}
 		else if ( Input.GetKey( KeyCode.E ) )
 		{
-			float rotation = transform.localRotation.eulerAngles.y - camRotationSpeed * Time.deltaTime;// * ( cam.position.y * 0.1f );
+			float rotation = transform.localRotation.eulerAngles.y - camRotationSpeed * time;// * ( cam.position.y * 0.1f );
 			transform.localRotation = Quaternion.Euler( 0, rotation, 0 );
 		}
 
 		if ( Input.GetAxis( "Mouse ScrollWheel" ) > 0f )
 		{
-			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime * ( cam.position.y * 0.1f );
+			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * time * ( cam.position.y * 0.1f );
             if (zoomLockOn && cam.position.y <= cameraYZoomInLock)
             {
                 cameraPositionLock.x = cam.position.x;
@@ -82,7 +91,7 @@ public class CamControl : MonoBehaviour
         }
 		else if ( Input.GetAxis( "Mouse ScrollWheel" ) < 0f )
 		{
-			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * Time.deltaTime * ( cam.position.y * 0.1f );
+			cam.position += Vector3.down * zoomSpeed * Input.GetAxis( "Mouse ScrollWheel" ) * time * ( cam.position.y * 0.1f );
 			if (zoomLockOn && cam.position.y >= cameraYZoomOutLock)
             {
                 cameraPositionLock.x = cam.position.x;
