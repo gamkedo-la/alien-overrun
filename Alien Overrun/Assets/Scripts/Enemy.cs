@@ -81,6 +81,7 @@ public class Enemy : MonoBehaviour
 		Debug.Log( "DisableNavMesh: " + name );
 		agent.isStopped = true;
 		agent.velocity = Vector3.zero;
+		agent.enabled = false;
 		rb.isKinematic = false;
 		isDynamic = true;
 
@@ -102,8 +103,10 @@ public class Enemy : MonoBehaviour
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 
+		agent.enabled = enabled;
 		rb.isKinematic = true;
 		agent.isStopped = false;
+		agent.SetDestination( destination );
 		isDynamic = false;
 	}
 }
