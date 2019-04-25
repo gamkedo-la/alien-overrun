@@ -28,12 +28,6 @@ public class Enemy : MonoBehaviour
 		agent.SetDestination( destination );
 	}
 
-	/*void FixedUpdate( )
-	{
-		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable )
-			EnableNavMesh( );
-	}*/
-
 	void OnEnable( )
 	{
 		EnemyManager.Instance.AddEnemy( this );
@@ -59,12 +53,18 @@ public class Enemy : MonoBehaviour
 	{
 		this.destination = destination;
 
+		if ( isDynamic )
+			return;
+
 		agent.isStopped = false;
 		agent.SetDestination( destination );
 	}
 
 	public void HoldPosition( )
 	{
+		if ( isDynamic )
+			return;
+
 		agent.isStopped = true;
 	}
 
@@ -78,8 +78,14 @@ public class Enemy : MonoBehaviour
 
 	public void DisableNavMesh( )
 	{
-		Debug.Log( "DisableNavMesh: " + name );
-		agent.isStopped = true;
+		if ( isDynamic )
+			return;
+
+		//Debug.Log( "DisableNavMesh: " + name );
+
+		if ( agent.isOnNavMesh && !agent.isStopped )
+			agent.isStopped = true;
+
 		agent.velocity = Vector3.zero;
 		agent.enabled = false;
 		rb.isKinematic = false;
@@ -90,7 +96,7 @@ public class Enemy : MonoBehaviour
 
 	private void CheckEnableNavMesh()
 	{
-		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable )
+		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable && IsOnGround( ) )
 		{
 			CancelInvoke( "CheckEnableNavMesh" );
 			EnableNavMesh( );
@@ -99,7 +105,7 @@ public class Enemy : MonoBehaviour
 
 	private void EnableNavMesh( )
 	{
-		Debug.Log( "EnableNavMesh: " + name );
+		//Debug.Log( "EnableNavMesh: " + name );
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 
@@ -108,5 +114,24 @@ public class Enemy : MonoBehaviour
 		agent.isStopped = false;
 		agent.SetDestination( destination );
 		isDynamic = false;
+	}
+
+	private bool IsOnGround( )
+	{
+		RaycastHit[] hits = Physics.BoxCastAll( transform.position, Vector3.one * 0.2f, -transform.up * 0.1f );
+		if ( hits.Length > 0 )
+		{
+			foreach ( var hit in hits )
+			{
+				//Debug.Log( hit.collider.name );
+				if ( hit.collider.CompareTag( Tags.Environment ) )
+				{
+					//Debug.Log( hit.collider.name );
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 }
