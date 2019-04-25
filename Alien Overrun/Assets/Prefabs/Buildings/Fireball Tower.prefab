@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 473719277194874614}
   - component: {fileID: 1922749780054760380}
   m_Layer: 0
-  m_Name: Cannon Tower
+  m_Name: Fireball Tower
   m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -959,7 +959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   indicator: {fileID: 2244787881376772045}
   buildingType: 0
-  buildingName: Cannon Tower
+  buildingName: Fireball Tower
   buildCost: 130
   placeDistance: 6
   buildTime: 1
@@ -1062,7 +1062,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 3991717196430304264}
-  projectile: {fileID: 5654902114113740134, guid: 3dac18b3be8fe94429f84adcf343599e,
+  projectile: {fileID: 5654902114113740134, guid: e9fa62eff50cdef4ca0d16585fb1098c,
     type: 3}
   cannon: {fileID: 499530041351838838}
   reloadTime: 2

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2271213051320492973}
   - component: {fileID: 5045186054421790635}
   m_Layer: 0
-  m_Name: Cannonball AoE
+  m_Name: Fireball AoE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,9 +104,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c58643c3bba1e4faf0cdc642d5240d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 12
   damageType: 2
   startSize: 0.1
   endSize: 6
   time: 0.3
-  explosionForce: 1000
+  explosionForce: 50
