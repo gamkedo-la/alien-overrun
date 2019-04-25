@@ -109,4 +109,4 @@ MonoBehaviour:
   startSize: 0.1
   endSize: 6
   time: 0.3
-  explosionForce: 50
+  explosionForce: 20

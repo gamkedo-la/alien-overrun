@@ -12,9 +12,11 @@ public class Enemy : MonoBehaviour
 {
 	[SerializeField] private NavMeshAgent agent = null;
 	[SerializeField] private int mineralsForKill = 20;
+	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 
 	private Vector3 destination = Vector3.zero;
 	private Rigidbody rb = null;
+	private bool isDynamic = false;
 
 	void Start ()
 	{
@@ -25,6 +27,12 @@ public class Enemy : MonoBehaviour
 		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
 		agent.SetDestination( destination );
 	}
+
+	/*void FixedUpdate( )
+	{
+		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable )
+			EnableNavMesh( );
+	}*/
 
 	void OnEnable( )
 	{
@@ -66,5 +74,36 @@ public class Enemy : MonoBehaviour
 			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
 
 		Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
+	}
+
+	public void DisableNavMesh( )
+	{
+		Debug.Log( "DisableNavMesh: " + name );
+		agent.isStopped = true;
+		agent.velocity = Vector3.zero;
+		rb.isKinematic = false;
+		isDynamic = true;
+
+		InvokeRepeating( "CheckEnableNavMesh", 1, 1 );
+	}
+
+	private void CheckEnableNavMesh()
+	{
+		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable )
+		{
+			CancelInvoke( "CheckEnableNavMesh" );
+			EnableNavMesh( );
+		}
+	}
+
+	private void EnableNavMesh( )
+	{
+		Debug.Log( "EnableNavMesh: " + name );
+		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
+
+		rb.isKinematic = true;
+		agent.isStopped = false;
+		isDynamic = false;
 	}
 }

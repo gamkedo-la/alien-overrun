@@ -234,7 +234,7 @@ public class EnemyManager : MonoBehaviour
 		}
 
 		currentWaveIndex++;
-		if ( currentWaveIndex < waves.EnemyWaves.Count )
+		if ( currentWaveIndex < waves.EnemyWaves.Count && enabled )
 		{
 			currentWave = waves.EnemyWaves[currentWaveIndex];
 			// TODO: Make button active.

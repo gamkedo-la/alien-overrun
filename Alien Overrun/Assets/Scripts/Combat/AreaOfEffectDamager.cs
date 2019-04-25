@@ -63,12 +63,16 @@ public class AreaOfEffectDamager : MonoBehaviour
 
 	private void ApplyForce( GameObject other )
 	{
+		Enemy enemy = other.gameObject.GetComponent<Enemy>( );
+		if ( enemy )
+			enemy.DisableNavMesh( );
+
 		Rigidbody rb = other.gameObject.GetComponent<Rigidbody>( );
 		if ( rb )
 		{
 			// Force decreases with distance (current size of the explosion)
 			//float force = maxForce * ( 1.1f - transform.localScale.x / endSize );
-			rb.AddExplosionForce( explosionForce, transform.position, endSize, 0, ForceMode.Impulse );
+			rb.AddExplosionForce( explosionForce, transform.position - transform.up, endSize, 1, ForceMode.Impulse );
 		}
 	}
 
