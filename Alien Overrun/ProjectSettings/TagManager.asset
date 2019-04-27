@@ -7,6 +7,7 @@ TagManager:
   - Environment
   - Building
   - Enemy
+  - Resource
   layers:
   - Default
   - TransparentFX

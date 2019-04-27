@@ -72,7 +72,7 @@ public class LevelManager : MonoBehaviour
 		}
 
 		// Win
-		if ( EnemyManager.Instance.EndOfWaves && EnemyManager.Instance.Enemies.Count == 0 )
+		if ( EnemyManager.Instance.EndOfWaves && EnemyManager.Instance.ItemsList.Count == 0 )
 		{
 			CancelInvoke( "CheckGameEnd" );
 			onWin.Invoke( );

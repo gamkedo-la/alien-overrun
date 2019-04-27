@@ -8,18 +8,16 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BuildingManager : MonoBehaviour
+public class BuildingManager : AbstractListManager
 {
 	public static BuildingManager Instance { get; private set; }
-
-	public List<Building> Buildings { get; private set; }
 
 	[SerializeField] private bool building = false;
 	public bool Building { get { return building; } set { building = value; } }
 
-	private void Awake( )
+	private protected override void Awake( )
 	{
-		Buildings = new List<Building>( );
+		base.Awake( );
 
 		if ( Instance != null && Instance != this )
 			Destroy( gameObject );
@@ -29,19 +27,9 @@ public class BuildingManager : MonoBehaviour
 
 	private void OnDestroy( ) { if ( this == Instance ) { Instance = null; } }
 
-	public void AddBuilding( Building building )
-	{
-		Buildings.Add( building );
-	}
-
-	public void RemoveBuilding( Building building )
-	{
-		Buildings.Remove( building );
-	}
-
 	public void ShowZones( bool show )
 	{
-		foreach ( var building in Buildings )
+		foreach ( Building building in ItemsList )
 			building.ShowPlaceZone( show );
 	}
 
@@ -50,7 +38,7 @@ public class BuildingManager : MonoBehaviour
 		Vector3 returnPos = Vector3.zero;
 
 		float distance = 100000000;
-		foreach ( var building in Buildings )
+		foreach ( Building building in ItemsList )
 			if ( building.BuildingType == BuildingType.Core &&
 				 Vector3.Distance( building.transform.position, position) < distance )
 			{
@@ -63,7 +51,7 @@ public class BuildingManager : MonoBehaviour
 
 	public bool CanPlaceBuiding( Building buildingToPlace )
 	{
-		foreach ( var building in Buildings )
+		foreach ( Building building in ItemsList )
 		{
 			if ( building.AreWeCloseEnough( buildingToPlace ) )
 				return true;
@@ -74,6 +62,6 @@ public class BuildingManager : MonoBehaviour
 
 	public int CoresLeft( )
 	{
-		return Buildings.Select( b => b ).Where( b => b.BuildingType == BuildingType.Core ).Count( );
+		return ItemsList.Cast<Building>( ).Select( b => b ).Where( b => b.BuildingType == BuildingType.Core ).Count( );
 	}
 }

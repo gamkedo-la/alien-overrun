@@ -6,6 +6,7 @@
 
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -27,16 +28,24 @@ public class OponentFinder : MonoBehaviour
 	[SerializeField] private UnityEventTransform onInRange = null;
 	[SerializeField] private UnityEvent onOponentNoLongetValid = null;
 
+	private AbstractListManager oponentListManager;
+
 	private GameObject currentOponent;
 	private bool hadOponent = false;
 	private bool wasInRange = false;
 
 	void Start ()
 	{
+		Assert.IsNotNull( oponentListManager );
 		InvokeRepeating( "DoSearch", oponentFindCooldown, oponentFindCooldown );
 	}
 
 	public float GetAttackDistance( ) => attackDistance;
+
+	public void SetOponentListManager(AbstractListManager listManager)
+	{
+		oponentListManager = listManager;
+	}
 
 	private void DoSearch( )
 	{
@@ -97,10 +106,7 @@ public class OponentFinder : MonoBehaviour
 
 	private GameObject TryFindNewOponent( )
 	{
-		// Select type (building o enemy)
-		GameObject[] oponents = oponentType == OponentType.Building ?
-			BuildingManager.Instance.Buildings.Select( b => b.gameObject ).ToArray( ) :
-			EnemyManager.Instance.Enemies.Select( e => e.gameObject ).ToArray( );
+		GameObject[] oponents = oponentListManager.GetGameObjects( );
 
 		// Let's sort the list
 		oponents = oponents.OrderBy( o => Vector3.Distance( o.transform.position, transform.position ) ).ToArray( );

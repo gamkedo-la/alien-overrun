@@ -8,7 +8,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
 
-public class Enemy : MonoBehaviour
+[RequireComponent(typeof(OponentFinder))]
+public class Enemy : AbstractListableItem
 {
 	[SerializeField] private NavMeshAgent agent = null;
 	[SerializeField] private int mineralsForKill = 20;
@@ -26,17 +27,20 @@ public class Enemy : MonoBehaviour
 
 		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
 		agent.SetDestination( destination );
+
+		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
+		oponentFinder.SetOponentListManager( BuildingManager.Instance );
 	}
 
 	void OnEnable( )
 	{
-		EnemyManager.Instance.AddEnemy( this );
+		EnemyManager.Instance.AddItem( this );
 	}
 
 	void OnDisable( )
 	{
 		if ( EnemyManager.Instance )
-			EnemyManager.Instance.RemoveEnemy( this );
+			EnemyManager.Instance.RemoveItem( this );
 	}
 
 	public void SetDestination( )

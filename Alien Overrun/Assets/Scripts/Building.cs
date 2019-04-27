@@ -13,7 +13,8 @@ public enum BuildingType
 	Core
 }
 
-public class Building : MonoBehaviour
+[RequireComponent(typeof(OponentFinder))]
+public class Building : AbstractListableItem
 {
 	public Indicator Indicator { get { return indicator; } private set { indicator = value; } }
 	[SerializeField] private Indicator indicator = null;
@@ -50,6 +51,9 @@ public class Building : MonoBehaviour
 
 		indicator.HideAll( );
 
+		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
+		oponentFinder.SetOponentListManager( EnemyManager.Instance );
+
 		if ( enableOnStart )
 			EnableBuilding( );
 	}
@@ -57,7 +61,7 @@ public class Building : MonoBehaviour
 	void OnDisable( )
 	{
 		if ( BuildingManager.Instance )
-			BuildingManager.Instance.RemoveBuilding( this );
+			BuildingManager.Instance.RemoveItem( this );
 	}
 
 	void OnMouseDown( )
@@ -96,11 +100,13 @@ public class Building : MonoBehaviour
 
 	public void EnableBuilding( )
 	{
-		BuildingManager.Instance.AddBuilding( this );
+		BuildingManager.Instance.AddItem( this );
 		col.isTrigger = false;
 
 		foreach ( var item in toEnableOnBuild )
+		{
 			item.enabled = true;
+		}
 
 		colP.enabled = true;
 	}

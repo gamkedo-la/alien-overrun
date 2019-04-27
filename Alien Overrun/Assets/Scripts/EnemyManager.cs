@@ -26,7 +26,7 @@ public class Waves
 	public List<Wave> EnemyWaves;
 }
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : AbstractListManager
 {
 	private const string myWaves = @"
 {
@@ -107,8 +107,6 @@ public class EnemyManager : MonoBehaviour
 
 	public static EnemyManager Instance { get; private set; }
 
-	public List<Enemy> Enemies { get; private set; }
-
 	public bool EndOfWaves { get { return endOfWaves; } set { endOfWaves = value; } }
 	private bool endOfWaves = false;
 
@@ -125,9 +123,9 @@ public class EnemyManager : MonoBehaviour
 	private Coroutine coroutine;
 	private bool autoSpawning = false;
 
-	private void Awake( )
+	private protected override void Awake( )
 	{
-		Enemies = new List<Enemy>( );
+		base.Awake( );
 
 		if ( Instance != null && Instance != this )
 			Destroy( gameObject );
@@ -149,16 +147,16 @@ public class EnemyManager : MonoBehaviour
 		StartWaves( );
 	}
 
-	public void AddEnemy( Enemy enemy )
+	public void AddItem( Enemy enemy )
 	{
-		Enemies.Add( enemy );
-		enemyCount.text = "Enemy count: " + Enemies.Count;
+		base.AddItem( enemy );
+		enemyCount.text = "Enemy count: " + ItemsList.Count;
 	}
 
-	public void RemoveEnemy( Enemy enemy )
+	public void RemoveItem( Enemy enemy )
 	{
-		Enemies.Remove( enemy );
-		enemyCount.text = "Enemy count: " + Enemies.Count;
+		base.RemoveItem( enemy );
+		enemyCount.text = "Enemy count: " + ItemsList.Count;
 	}
 
 	public void SpawnRandomEnemy( )
