@@ -1,6 +1,6 @@
 ﻿/**
  * Description: Manages player's resources.
- * Authors: Kornel
+ * Authors: Kornel, SpadXIII
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
@@ -13,7 +13,7 @@ public enum ResourceType
 	Minerals,
 }
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : AbstractListManager
 {
 	public static ResourceManager Instance { get; private set; }
 
@@ -22,8 +22,10 @@ public class ResourceManager : MonoBehaviour
 	[SerializeField] private TextMeshProUGUI mineralsLabel = null;
 	[SerializeField] private int startMinerals = 300;
 
-	private void Awake( )
+	private protected override void Awake( )
 	{
+		base.Awake( );
+
 		if ( Instance != null && Instance != this )
 			Destroy( gameObject );
 		else

@@ -1,6 +1,6 @@
 ﻿/**
  * Description: Main class of all buildings. Responsible for core behaviors.
- * Authors: Kornel
+ * Authors: Kornel, SpadXIII
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
@@ -51,11 +51,16 @@ public class Building : AbstractListableItem
 
 		indicator.HideAll( );
 
-		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
-		oponentFinder.SetOponentListManager( EnemyManager.Instance );
+		SetOponentListManager( );
 
 		if ( enableOnStart )
 			EnableBuilding( );
+	}
+
+	protected private virtual void SetOponentListManager( )
+	{
+		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
+		oponentFinder.SetOponentListManager( EnemyManager.Instance );
 	}
 
 	void OnDisable( )
