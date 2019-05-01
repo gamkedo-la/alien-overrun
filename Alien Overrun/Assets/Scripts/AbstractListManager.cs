@@ -12,9 +12,9 @@ abstract public class AbstractListManager : MonoBehaviour
 		ItemsList = new List<AbstractListableItem>( );
     }
 
-    public GameObject[] GetGameObjects( )
+    public IEnumerable<GameObject> GetGameObjects( )
     {
-        return ItemsList.Select( b => b.gameObject ).ToArray( );
+        return ItemsList.Select( b => b.gameObject );
     }
 
 	public void AddItem( AbstractListableItem item )

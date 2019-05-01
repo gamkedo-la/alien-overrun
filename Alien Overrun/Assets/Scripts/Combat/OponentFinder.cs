@@ -4,6 +4,7 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -14,13 +15,6 @@ public class UnityEventTransform: UnityEvent<Transform> { }
 
 public class OponentFinder : MonoBehaviour
 {
-	enum OponentType
-	{
-		Enemy,
-		Building
-	}
-
-	[SerializeField] private OponentType oponentType = OponentType.Building;
 	[SerializeField] private float oponentFindCooldown = 1f;
 	[SerializeField] private float findDistance = 4f;
 	[SerializeField] private float attackDistance = 2f;
@@ -106,10 +100,10 @@ public class OponentFinder : MonoBehaviour
 
 	private GameObject TryFindNewOponent( )
 	{
-		GameObject[] oponents = oponentListManager.GetGameObjects( );
+		IEnumerable<GameObject> oponents = oponentListManager.GetGameObjects( );
 
 		// Let's sort the list
-		oponents = oponents.OrderBy( o => Vector3.Distance( o.transform.position, transform.position ) ).ToArray( );
+		oponents = oponents.OrderBy( o => Vector3.Distance( o.transform.position, transform.position ) );
 
 		// Find first oponent that meets all of our requirements
 		foreach ( var o in oponents )
