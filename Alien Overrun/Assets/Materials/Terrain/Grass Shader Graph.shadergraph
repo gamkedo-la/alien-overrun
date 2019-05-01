@@ -16,7 +16,7 @@
             "typeInfo": {
                 "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
             },
-            "JSONnodeData": "{\n    \"m_Name\": \"Wind Density\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"98195f5b-8edb-4c9e-af89-cc0fca7be871\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_8A67466\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Value\": 2.0,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    },\n    \"m_Hidden\": false\n}"
+            "JSONnodeData": "{\n    \"m_Name\": \"Wind Density\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"98195f5b-8edb-4c9e-af89-cc0fca7be871\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_8A67466\",\n    \"m_OverrideReferenceName\": \"\",\n    \"m_Value\": 0.30000001192092898,\n    \"m_FloatType\": 0,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 1.0\n    },\n    \"m_Hidden\": false\n}"
         },
         {
             "typeInfo": {
@@ -306,7 +306,7 @@
     "m_PreviewData": {
         "serializedMesh": {
             "m_SerializedMesh": "",
-            "m_Guid": "b8c17470d5c929a4998566aba9fc9304"
+            "m_Guid": "0000000000000000e000000000000000"
         }
     },
     "m_Path": "Shader Graphs"
