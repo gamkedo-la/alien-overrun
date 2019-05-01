@@ -5,16 +5,38 @@
  **/
 
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.Assertions;
 
 public class Resource : AbstractListableItem
 {
-	[SerializeField] private int amountOfMinerals = 2000;
+	public int currentResources { get; private set; }
+
+	[SerializeField] private int totalResources = 2000;
+	[SerializeField] private UnityEvent onChange = null;
+	[SerializeField] private UnityEvent onDeath = null;
+
+	public void CollectResources( int amount )
+	{
+		currentResources -= Mathf.Abs(amount);
+
+		ResourceManager.Instance.AddResources( ResourceType.Minerals, amount );
+
+		onChange.Invoke( );
+
+		if ( currentResources <= 0 )
+			DestroyMe( );
+	}
+
+	private void DestroyMe( )
+	{
+		onDeath.Invoke( );
+	}
 
 	void OnEnable( )
 	{
-		ResourceManager.Instance.AddItem( this );
+		if ( ResourceManager.Instance )
+			ResourceManager.Instance.AddItem( this );
 	}
 
 	void OnDisable( )

@@ -74,10 +74,10 @@ public class Enemy : AbstractListableItem
 
 	public void OnDeath( )
 	{
-		if ( ResourceManager.Instance )
-			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
+		// if ( ResourceManager.Instance )
+		// 	ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
 
-		Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
+		// Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
 	}
 
 	public void DisableNavMesh( )

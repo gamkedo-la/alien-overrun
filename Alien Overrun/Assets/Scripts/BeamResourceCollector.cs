@@ -1,23 +1,22 @@
 ﻿/**
- * Description: Beam shooter component of Towers - shoots a beam.
- * Authors: Kornel
+ * Description: Beam resource collector component of Towers - shoots a beam to collect resources.
+ * Authors: SpadXIII
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public class BeamShooter : MonoBehaviour
+public class BeamResourceCollector : MonoBehaviour
 {
 	[SerializeField] private Transform shootPoint = null;
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private float shootDuration = 1f;
-	[SerializeField] private float damage = 5f;
+	[SerializeField] private int damage = 5;
 	[SerializeField] private Color shotColor = Color.red;
-	[SerializeField] private DamageType damageType = DamageType.Magical;
 
 	private Transform target = null;
-	private HP targetHP = null;
+	private Resource targetResource = null;
 	private float timeToNextShot = 0;
 
 	void Start( )
@@ -29,30 +28,28 @@ public class BeamShooter : MonoBehaviour
 	{
 		timeToNextShot -= Time.deltaTime;
 
-		if ( target && targetHP && timeToNextShot <= 0 )
+		if ( target && targetResource && timeToNextShot <= 0 )
 		{
 			timeToNextShot = reloadTime;
 
 			Utilities.DrawLine( shootPoint.position, target.position, shotColor, 0.1f, shootDuration );
 
-			float damg = damage * Interactions.GetMultiplier( damageType, targetHP.Resistance );
-
-			targetHP.ChangeHP( -damg );
-			Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
+			targetResource.CollectResources( damage );
+			Utilities.DrawDebugText( target.position + Vector3.up, damage.ToString( ) );
 		}
 	}
 
 	public void OnNewOponenet ( Transform oponent )
 	{
 		target = oponent;
-		targetHP = target.GetComponent<HP>( );
+		targetResource = target.GetComponent<Resource>( );
 		//Debug.Log( name + " has new oponent: " + oponent.name );
 	}
 
 	public void OnOponenetLost ( )
 	{
 		target = null;
-		targetHP = null;
+		targetResource = null;
 		//Debug.Log( name + " lost oponent" );
 	}
 }
