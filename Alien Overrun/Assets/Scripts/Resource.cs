@@ -16,7 +16,8 @@ public class Resource : AbstractListableItem
 	[SerializeField] private ResourceType resourceType = ResourceType.Minerals;
 	[SerializeField] private int minResources = 100;
 	[SerializeField] private int maxResources = 1000;
-	[SerializeField] private float scaleFactor = 0.001f;
+	[SerializeField] private float scaleFactor = 0.003f;
+	[SerializeField] private float minNodeSize = 0.4f;
 	[SerializeField] private UnityEvent onChange = null;
 	[SerializeField] private UnityEvent onDeath = null;
 
@@ -72,7 +73,7 @@ public class Resource : AbstractListableItem
 
 	private void ScaleVisuals( )
 	{
-		float newScale = currentResources * scaleFactor;
+		float newScale = ( currentResources * scaleFactor ) + minNodeSize;
 		transform.localScale = new Vector3( newScale, newScale, newScale );
 	}
 }

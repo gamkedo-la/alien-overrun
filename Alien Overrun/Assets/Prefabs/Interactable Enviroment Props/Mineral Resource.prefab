@@ -51,6 +51,7 @@ MonoBehaviour:
   minResources: 100
   maxResources: 1000
   scaleFactor: 0.003
+  minNodeSize: 0.4
   onChange:
     m_PersistentCalls:
       m_Calls: []
