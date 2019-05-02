@@ -56,7 +56,7 @@ public class CursorRaycast : MonoBehaviour
 
 	private void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.tag == "Building"
+		if ( ( collision.gameObject.CompareTag (Tags.Building) /*|| collision.gameObject.CompareTag( Tags.Resource )*/ )
 			&& hoverSelection == null)
 		{
 			hoverSelection = collision.gameObject;
@@ -71,7 +71,7 @@ public class CursorRaycast : MonoBehaviour
 
 	private void OnTriggerExit(Collider collision)
 	{
-		if (collision.gameObject.tag == "Building"
+		if ( ( collision.gameObject.CompareTag( Tags.Building ) /*|| collision.gameObject.CompareTag( Tags.Resource )*/ )
 			&& hoverSelection == collision.gameObject)
 		{
 			hoverSelection = null;

@@ -130,6 +130,7 @@ public class Building : AbstractListableItem
 	{
 		return gameObject.CompareTag( Tags.Building ) ||
 			   gameObject.CompareTag( Tags.Enemy ) ||
+			   gameObject.CompareTag( Tags.Resource ) ||
 			   gameObject.CompareTag( Tags.Environment );
 	}
 }
