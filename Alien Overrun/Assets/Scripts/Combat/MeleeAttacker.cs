@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Events;
 
 public class MeleeAttacker : MonoBehaviour
 {
@@ -13,7 +14,10 @@ public class MeleeAttacker : MonoBehaviour
 	[SerializeField] private float attackDelay = 2f;
 	[SerializeField] private int damage = 10;
 	[SerializeField] private int ammoCost = 0;
+	[SerializeField] private bool autoApplyDamage = false;
+	[SerializeField] private float applyDamageDelay = 1.04f;
 	[SerializeField] private DamageType damageType = DamageType.Physical;
+	//[SerializeField] private UnityEvent onAttck = null;
 
 	private float timeToNextAttack = 0f;
 	private Transform target = null;
@@ -77,5 +81,7 @@ public class MeleeAttacker : MonoBehaviour
 
 		ResourceManager.Instance.UseResources( ResourceType.Minerals, ammoCost );
 		animator.SetTrigger( "Attack" );
-			}
+		if (autoApplyDamage)
+			Invoke( "ApplyDamage", applyDamageDelay );
+	}
 }
