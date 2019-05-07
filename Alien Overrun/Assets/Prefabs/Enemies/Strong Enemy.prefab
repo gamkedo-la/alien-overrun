@@ -209,11 +209,13 @@ GameObject:
   - component: {fileID: 1831573034012823685}
   - component: {fileID: 8334858304196651992}
   - component: {fileID: 8871798478893744808}
+  - component: {fileID: 961699518881042785}
   - component: {fileID: 2033834348727225380}
   - component: {fileID: 8349732173415197882}
   - component: {fileID: 1726058197418733823}
   - component: {fileID: 4780077430331207101}
   - component: {fileID: 3550478831664406969}
+  - component: {fileID: 3476121783768081407}
   m_Layer: 0
   m_Name: Strong Enemy
   m_TagString: Enemy
@@ -269,6 +271,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 1.2, z: 0.9}
   m_Center: {x: 0, y: 0.6, z: 0}
+--- !u!65 &961699518881042785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104673761630165275}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3, z: 1}
+  m_Center: {x: 0, y: 0.6, z: 0}
 --- !u!114 &2033834348727225380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,7 +297,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 3550478831664406969}
-  mineralsForKill: 40
+  detector: {fileID: 3476121783768081407}
+  mineralsForKill: 0
   thresholdForNavMeshReEnable: 10
 --- !u!114 &8349732173415197882
 MonoBehaviour:
@@ -422,7 +438,14 @@ MonoBehaviour:
   attackDelay: 3
   damage: 10
   ammoCost: 0
+  autoApplyDamage: 0
+  applyDamageDelay: 1.04
   damageType: 0
+  onAttck:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!195 &3550478831664406969
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -445,6 +468,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 2
+--- !u!114 &3476121783768081407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3104673761630165275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16a0bb89933666459d2fd7b5221d87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3502259263116965987
 GameObject:
   m_ObjectHideFlags: 0

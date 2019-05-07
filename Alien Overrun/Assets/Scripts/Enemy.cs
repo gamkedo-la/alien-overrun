@@ -12,6 +12,7 @@ using UnityEngine.Assertions;
 public class Enemy : AbstractListableItem
 {
 	[SerializeField] private NavMeshAgent agent = null;
+	[SerializeField] private GroundDetect detector = null;
 	[SerializeField] private int mineralsForKill = 20;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 
@@ -24,6 +25,7 @@ public class Enemy : AbstractListableItem
 		rb = GetComponent<Rigidbody>( );
 		Assert.IsNotNull( rb );
 		Assert.IsNotNull( agent );
+		Assert.IsNotNull( detector );
 
 		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
 		agent.SetDestination( destination );
@@ -74,18 +76,19 @@ public class Enemy : AbstractListableItem
 
 	public void OnDeath( )
 	{
-		// if ( ResourceManager.Instance )
-		// 	ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
-
-		// Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
+		if ( ResourceManager.Instance && mineralsForKill != 0 )
+		{
+			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
+			Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
+		}
 	}
 
 	public void DisableNavMesh( )
 	{
+		CancelInvoke( "EnableNavMesh" );
+
 		if ( isDynamic )
 			return;
-
-		//Debug.Log( "DisableNavMesh: " + name );
 
 		if ( agent.isOnNavMesh && !agent.isStopped )
 			agent.isStopped = true;
@@ -100,16 +103,15 @@ public class Enemy : AbstractListableItem
 
 	private void CheckEnableNavMesh()
 	{
-		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable && IsOnGround( ) )
+		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable && detector.IsOnGround )
 		{
 			CancelInvoke( "CheckEnableNavMesh" );
-			EnableNavMesh( );
+			Invoke( "EnableNavMesh", 0.3f );
 		}
 	}
 
 	private void EnableNavMesh( )
 	{
-		//Debug.Log( "EnableNavMesh: " + name );
 		rb.velocity = Vector3.zero;
 		rb.angularVelocity = Vector3.zero;
 
@@ -118,24 +120,5 @@ public class Enemy : AbstractListableItem
 		agent.isStopped = false;
 		agent.SetDestination( destination );
 		isDynamic = false;
-	}
-
-	private bool IsOnGround( )
-	{
-		RaycastHit[] hits = Physics.BoxCastAll( transform.position, Vector3.one * 0.2f, -transform.up * 0.1f );
-		if ( hits.Length > 0 )
-		{
-			foreach ( var hit in hits )
-			{
-				//Debug.Log( hit.collider.name );
-				if ( hit.collider.CompareTag( Tags.Environment ) )
-				{
-					//Debug.Log( hit.collider.name );
-					return true;
-				}
-			}
-		}
-
-		return false;
 	}
 }

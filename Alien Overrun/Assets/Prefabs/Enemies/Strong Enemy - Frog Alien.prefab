@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 6181470027277486603}
   - component: {fileID: 2467093980108026590}
   - component: {fileID: 5635488418250230984}
+  - component: {fileID: 4283023906130891504}
   - component: {fileID: 7175263236576491549}
   - component: {fileID: 7175263236576491548}
   - component: {fileID: 7175263236576491547}
@@ -461,6 +462,7 @@ GameObject:
   - component: {fileID: 7175263236576491545}
   - component: {fileID: 4270254657681352561}
   - component: {fileID: 7175263236576491550}
+  - component: {fileID: 4009376468429224405}
   m_Layer: 0
   m_Name: Strong Enemy - Frog Alien
   m_TagString: Enemy
@@ -492,8 +494,8 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7175263236576491544}
   serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 0.1
+  m_Mass: 4
+  m_Drag: 0.05
   m_AngularDrag: 0.15
   m_UseGravity: 1
   m_IsKinematic: 1
@@ -513,6 +515,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.962035, y: 2.29, z: 1.9664339}
   m_Center: {x: -0.07381114, y: 1.05, z: 0.22}
+--- !u!65 &4283023906130891504
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175263236576491544}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2, y: 2.4, z: 2.2}
+  m_Center: {x: -0.07381114, y: 1.05, z: 0.22}
 --- !u!114 &7175263236576491549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,7 +541,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 7175263236576491545}
-  mineralsForKill: 40
+  detector: {fileID: 4009376468429224405}
+  mineralsForKill: 0
   thresholdForNavMeshReEnable: 10
 --- !u!114 &7175263236576491548
 MonoBehaviour:
@@ -758,6 +774,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff47f48edd79c6a41a1c50873a79210b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4009376468429224405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175263236576491544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16a0bb89933666459d2fd7b5221d87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7546205091141767172
