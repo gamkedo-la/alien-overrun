@@ -542,6 +542,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 7175263236576491545}
   detector: {fileID: 4009376468429224405}
+  minPhysicsReactVelSqr: 3
+  getUpSpeed: 0.1
   mineralsForKill: 0
   thresholdForNavMeshReEnable: 10
 --- !u!114 &7175263236576491548

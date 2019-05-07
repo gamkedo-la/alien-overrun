@@ -4,6 +4,7 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
@@ -13,6 +14,9 @@ public class Enemy : AbstractListableItem
 {
 	[SerializeField] private NavMeshAgent agent = null;
 	[SerializeField] private GroundDetect detector = null;
+	[SerializeField] private float minPhysicsReactVelSqr = 3f;
+	[SerializeField] private float getUpSpeed = 0.1f;
+	[SerializeField] private float getUpTimeMax = 2f;
 	[SerializeField] private int mineralsForKill = 20;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 
@@ -83,12 +87,21 @@ public class Enemy : AbstractListableItem
 		}
 	}
 
+	private void OnCollisionEnter( Collision collision )
+	{
+		if ( collision.relativeVelocity.sqrMagnitude <= minPhysicsReactVelSqr )
+			return;
+
+		DisableNavMesh( );
+		rb.AddForce( collision.contacts[0].normal * -collision.relativeVelocity.sqrMagnitude * 20 );
+	}
+
 	public void DisableNavMesh( )
 	{
-		CancelInvoke( "EnableNavMesh" );
-
 		if ( isDynamic )
 			return;
+
+		StopCoroutine( FlipBack( ) );
 
 		if ( agent.isOnNavMesh && !agent.isStopped )
 			agent.isStopped = true;
@@ -106,7 +119,7 @@ public class Enemy : AbstractListableItem
 		if ( isDynamic && rb.velocity.sqrMagnitude <= thresholdForNavMeshReEnable && detector.IsOnGround )
 		{
 			CancelInvoke( "CheckEnableNavMesh" );
-			Invoke( "EnableNavMesh", 0.3f );
+			StartCoroutine( FlipBack( ) );
 		}
 	}
 
@@ -120,5 +133,43 @@ public class Enemy : AbstractListableItem
 		agent.isStopped = false;
 		agent.SetDestination( destination );
 		isDynamic = false;
+	}
+
+	private IEnumerator FlipBack()
+	{
+		RaycastHit[] hits = Physics.RaycastAll( new Ray( transform.position, Vector3.down ), 5 );
+		Vector3? point = null;
+		foreach ( var hit in hits )
+		{
+			if ( hit.collider.gameObject.CompareTag( Tags.Environment ) )
+			{
+				point = hit.point;
+				break;
+			}
+		}
+
+		if ( point != null )
+		{
+			Vector3 goodPosition = (Vector3)point;
+			Quaternion goodRotation = Quaternion.Euler( 0, transform.localEulerAngles.y, 0 );
+
+			float breakTime = getUpTimeMax;
+
+			while ( Vector3.Distance( transform.position, goodPosition) > 0.2f &&
+					Quaternion.Angle( transform.localRotation, goodRotation ) > 10f &&
+					breakTime > 0)
+			{
+				breakTime -= Time.fixedDeltaTime;
+				Quaternion newRotation = Quaternion.Lerp( transform.localRotation, goodRotation, getUpSpeed );
+				Vector3 newPosition = Vector3.Lerp( transform.position, goodPosition, getUpSpeed );
+
+				rb.MoveRotation( newRotation );
+				rb.MovePosition( newPosition );
+
+				yield return new WaitForFixedUpdate( );
+			}
+		}
+
+		EnableNavMesh( );
 	}
 }

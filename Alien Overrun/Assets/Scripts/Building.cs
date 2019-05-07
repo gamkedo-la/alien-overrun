@@ -72,9 +72,8 @@ public class Building : AbstractListableItem
 	void OnMouseDown( )
 	{
 		//GetComponentInChildren<MeshRenderer>( ).material.color = Random.ColorHSV( );
-		Debug.Log( $"Clicked: {name}" );
+		//Debug.Log( $"Clicked: {name}" );
 	}
-
 
 	void OnMouseEnter( )
 	{
