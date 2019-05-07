@@ -219,6 +219,9 @@ public class EnemyManager : AbstractListManager
 	{
 		yield return new WaitForSeconds( currentWave.WaveDelay );
 
+		while ( LevelManager.Instance.CreativeMode )
+			yield return new WaitForSeconds( 1 );
+
 		MessageService.Instance.ShowMessage( "New enemies approaching...", 1f, Color.red );
 
 		for ( int i = 0; i < currentWave.Enemies.Length; i++ )
@@ -235,7 +238,6 @@ public class EnemyManager : AbstractListManager
 		if ( currentWaveIndex < waves.EnemyWaves.Count && enabled )
 		{
 			currentWave = waves.EnemyWaves[currentWaveIndex];
-			// TODO: Make button active.
 			coroutine = StartCoroutine( SpawnWaves( ) );
 		}
 		else
