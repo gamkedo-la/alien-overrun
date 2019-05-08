@@ -109,7 +109,7 @@ public class Building_Physics : MonoBehaviour
 
 		foreach (var item in toEnableOnBuild)
 			item.enabled = true;
-		
+
 		/*
 		foreach (var m in buildingMesh)
 			m.enabled = true;
@@ -117,7 +117,7 @@ public class Building_Physics : MonoBehaviour
 	}
 
 	public bool CanBePaced() => collisions == 0;
-	
+
 	public bool AreWeCloseEnough(Building_Physics anotherBuilding)
 		=> Vector3.Distance(transform.position, anotherBuilding.gameObject.transform.position) <= placeDistance;
 
@@ -125,6 +125,7 @@ public class Building_Physics : MonoBehaviour
 	{
 		return gameObject.CompareTag(Tags.Building) ||
 			   gameObject.CompareTag(Tags.Enemy) ||
+			   gameObject.CompareTag( Tags.Resource ) ||
 			   gameObject.CompareTag(Tags.Environment);
 	}
 }

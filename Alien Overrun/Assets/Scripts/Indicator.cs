@@ -83,7 +83,7 @@ public class Indicator : MonoBehaviour
 		range.SetActive( true );
 		foreach ( var item in rangeRenderers )
 			item.material = offMat;
-		
+
 		foreach ( var item in buildingRenderers )
 			item.material = buildingBadMat;
 	}

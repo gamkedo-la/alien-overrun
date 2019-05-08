@@ -100,19 +100,23 @@ public class CannonballShooter : MonoBehaviour
 		standardEnemy.y = 0;
 
 		Vector3 dir = ( standardEnemy - standardTower ).normalized;
+		//Debug.DrawLine( transform.position + Vector3.up, transform.position + dir * 3 + Vector3.up, Color.red, 1f );
 		dir = Quaternion.AngleAxis( upAngle, Vector3.Cross( Vector3.down, dir ) ) * dir;
+		//Debug.DrawLine( transform.position + Vector3.up, transform.position + dir * 3 + Vector3.up, Color.green, 1f );
 
 		// Some randomness
 		dir = Quaternion.AngleAxis( Random.Range( -horizontalSpread, horizontalSpread ), Vector3.Cross( Vector3.down, dir ) ) * dir;
 		dir = Quaternion.AngleAxis( Random.Range( -verticalSpread, verticalSpread ), Vector3.Cross( Vector3.right, dir ) ) * dir;
-
 		//Debug.DrawRay( spawnPoint.position, dir * 20, new Color( 1f, 0f, 0f, 0.9f ), 1f );
 
-		float angle = Utilities.AngleBetweenVectors( new Vector2( transform.position.x, transform.position.z ), new Vector2( target.transform.position.x, target.transform.position.z ) );
-		cannon.rotation = Quaternion.Euler( 0, angle + 180, 0 );
+		// Cannon rotation
+		Vector3 rotationDir = target.transform.position - transform.position;
+		Quaternion newCannonRotation = Quaternion.LookRotation( rotationDir );
+		cannon.rotation = Quaternion.Euler( 0, newCannonRotation.eulerAngles.y, 0 );
 
 		// and blast off!
 		Vector3 force = dir * ( shootingForcePerDistance * currentDistanceToTarget );
+		//Debug.DrawLine( spawnPoint.position, spawnPoint.position + dir, Color.yellow, 1f );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force );
 	}

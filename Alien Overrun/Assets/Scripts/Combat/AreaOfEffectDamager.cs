@@ -18,6 +18,8 @@ public class AreaOfEffectDamager : MonoBehaviour
 	[SerializeField] private float time = 2f;
 	[Header("Force")]
 	[SerializeField] private float explosionForce = 1000f;
+	[Header("Other")]
+	[SerializeField] private LayerMask ignoreLayer;
 
 	private float currnetSize = 0;
 	private float currnetTime = 0;
@@ -63,6 +65,9 @@ public class AreaOfEffectDamager : MonoBehaviour
 
 	private void ApplyForce( GameObject other )
 	{
+		if ( other.transform.CompareTag( Tags.BigProjectile ) )
+			return;
+
 		Enemy enemy = other.gameObject.GetComponent<Enemy>( );
 		if ( enemy )
 			enemy.DisableNavMesh( );

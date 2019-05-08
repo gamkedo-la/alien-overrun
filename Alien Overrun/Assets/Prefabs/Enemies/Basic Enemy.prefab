@@ -118,11 +118,13 @@ GameObject:
   - component: {fileID: 3269484800892902431}
   - component: {fileID: 8950940414473388166}
   - component: {fileID: 6019514503612645510}
+  - component: {fileID: 7251873992087307}
   - component: {fileID: 7000499071068758914}
   - component: {fileID: 8012022718709648990}
   - component: {fileID: 2459271496769841148}
   - component: {fileID: 516044640403601521}
   - component: {fileID: 1053492210859718432}
+  - component: {fileID: 3346716050418216574}
   m_Layer: 0
   m_Name: Basic Enemy
   m_TagString: Enemy
@@ -156,13 +158,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2578463307751837317}
   serializedVersion: 2
-  m_Mass: 2
-  m_Drag: 0
+  m_Mass: 3
+  m_Drag: 0.05
   m_AngularDrag: 0.3
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!65 &6019514503612645510
 BoxCollider:
@@ -177,6 +179,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 0.8, z: 0.8}
   m_Center: {x: 0, y: 0.4, z: 0}
+--- !u!65 &7251873992087307
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578463307751837317}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9, y: 0.9, z: 0.9}
+  m_Center: {x: 0, y: 0.4, z: 0}
 --- !u!114 &7000499071068758914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 1053492210859718432}
-  mineralsForKill: 30
+  detector: {fileID: 3346716050418216574}
+  minPhysicsReactVelSqr: 3
+  getUpSpeed: 0.1
+  getUpTimeMax: 2
+  mineralsForKill: 0
+  maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
 --- !u!114 &8012022718709648990
 MonoBehaviour:
@@ -241,7 +261,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dacfc718e95bde14a8e72d38ece6eedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oponentType: 1
   oponentFindCooldown: 0.2
   findDistance: 7
   attackDistance: 4
@@ -355,6 +374,18 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 2
+--- !u!114 &3346716050418216574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2578463307751837317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b16a0bb89933666459d2fd7b5221d87d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8452363622917666928
 GameObject:
   m_ObjectHideFlags: 0

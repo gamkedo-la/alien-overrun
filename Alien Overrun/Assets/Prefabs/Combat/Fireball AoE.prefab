@@ -110,3 +110,6 @@ MonoBehaviour:
   endSize: 6
   time: 0.3
   explosionForce: 20
+  ignoreLayer:
+    serializedVersion: 2
+    m_Bits: 16384

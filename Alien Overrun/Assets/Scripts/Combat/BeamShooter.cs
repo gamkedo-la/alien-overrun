@@ -17,6 +17,7 @@ public class BeamShooter : MonoBehaviour
 	[SerializeField] private DamageType damageType = DamageType.Magical;
 
 	private Transform target = null;
+	private HP targetHP = null;
 	private float timeToNextShot = 0;
 
 	void Start( )
@@ -28,16 +29,15 @@ public class BeamShooter : MonoBehaviour
 	{
 		timeToNextShot -= Time.deltaTime;
 
-		if ( target && timeToNextShot <= 0 )
+		if ( target && targetHP && timeToNextShot <= 0 )
 		{
 			timeToNextShot = reloadTime;
 
 			Utilities.DrawLine( shootPoint.position, target.position, shotColor, 0.1f, shootDuration );
 
-			HP hp = target.GetComponent<HP>( );
-			float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+			float damg = damage * Interactions.GetMultiplier( damageType, targetHP.Resistance );
 
-			hp.ChangeHP( -damg );
+			targetHP.ChangeHP( -damg );
 			Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
 		}
 	}
@@ -45,12 +45,14 @@ public class BeamShooter : MonoBehaviour
 	public void OnNewOponenet ( Transform oponent )
 	{
 		target = oponent;
+		targetHP = target.GetComponent<HP>( );
 		//Debug.Log( name + " has new oponent: " + oponent.name );
 	}
 
 	public void OnOponenetLost ( )
 	{
 		target = null;
+		targetHP = null;
 		//Debug.Log( name + " lost oponent" );
 	}
 }

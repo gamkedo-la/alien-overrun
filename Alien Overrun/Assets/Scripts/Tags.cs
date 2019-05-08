@@ -13,4 +13,5 @@ static public class Tags
 	static public string Enemy = "Enemy";
 	static public string Environment = "Environment";
 	static public string Resource = "Resource";
+	static public string BigProjectile = "BigProjectile";
 }

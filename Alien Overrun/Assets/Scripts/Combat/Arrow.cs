@@ -21,6 +21,8 @@ public class Arrow : MonoBehaviour
 
 		Assert.IsNotNull( rb );
 		Assert.IsNotNull( gfx );
+
+		Destroy( gameObject, 10f ); // Emergency cleanup
 	}
 
 	void Update ()
