@@ -450,7 +450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &219973097
 Transform:
   m_ObjectHideFlags: 0
@@ -3359,6 +3359,55 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9040e7501ba6f8f45ab0ce1f8f1b4ba0, type: 3}
+--- !u!1 &1649030960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1649030962}
+  - component: {fileID: 1649030961}
+  m_Layer: 0
+  m_Name: Grass Bundle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1649030961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649030960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4430fc5dc990f4fbfa74b3d53f399c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grassInstance: {fileID: 8254687373856176130, guid: d033126e388a4114282cef0103981fd9,
+    type: 3}
+  grassMaterial: {fileID: 2100000, guid: cce89bf530dd3894cba29bba267cbe97, type: 2}
+  noiseInterval: 0.05
+  density: 0.3
+  spread: 3
+--- !u!4 &1649030962
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1649030960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1653712815 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1310289841426945242, guid: 9040e7501ba6f8f45ab0ce1f8f1b4ba0,
