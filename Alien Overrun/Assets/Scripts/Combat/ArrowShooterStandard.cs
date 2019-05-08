@@ -80,8 +80,10 @@ public class ArrowShooterStandard : MonoBehaviour
 
 		Vector3 dir = ( target.position - spawnPoint.position ).normalized;
 
-		float angle = Utilities.AngleBetweenVectors( new Vector2( transform.position.x, transform.position.z ), new Vector2( target.transform.position.x, target.transform.position.z ) );
-		spawnPointPivot.rotation = Quaternion.Euler( 0, angle + 180, 0 );
+		// Pivot rotation
+		Vector3 rotationDir = target.transform.position - transform.position;
+		Quaternion newCannonRotation = Quaternion.LookRotation( rotationDir );
+		spawnPointPivot.rotation = Quaternion.Euler( 0, newCannonRotation.eulerAngles.y, 0 );
 
 		// Some randomness
 		dir = Quaternion.AngleAxis( Random.Range( -horizontalSpread, horizontalSpread ), Vector3.Cross( Vector3.down, dir ) ) * dir;

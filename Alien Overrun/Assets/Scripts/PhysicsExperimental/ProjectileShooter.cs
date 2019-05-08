@@ -14,14 +14,14 @@ public class ProjectileShooter : MonoBehaviour
 	[SerializeField] private GameObject projectile = null;
 	[Space]
 	[SerializeField] private float reloadTime = 2f;
-	[SerializeField] private int ammoCost = 0;
+	//[SerializeField] private int ammoCost = 0;
 	[Space]
 	[SerializeField] private float shootingForce = 3.7f;
 	//[SerializeField] private float upAngleCorrection = -90f;
 	//[SerializeField] private float arrowTimePerUnit = 0.09f;
 	[SerializeField] private float verticalSpread = 5f;
 	[SerializeField] private float horizontalSpread = 5f;
-	
+
 	private float timeToNextShot = 0f;
 	private Transform target = null;
 
@@ -88,7 +88,7 @@ public class ProjectileShooter : MonoBehaviour
 		// Some randomness
 		dir = Quaternion.AngleAxis(Random.Range(-horizontalSpread, horizontalSpread), Vector3.Cross(Vector3.down, dir)) * dir;
 		dir = Quaternion.AngleAxis(Random.Range(-verticalSpread, verticalSpread), Vector3.Cross(Vector3.right, dir)) * dir;
-		
+
 		Vector3 force = dir * (shootingForce);
 		var go = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
 		go.GetComponent<Rigidbody>().AddForce(force);

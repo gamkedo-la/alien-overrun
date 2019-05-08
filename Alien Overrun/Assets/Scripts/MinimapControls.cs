@@ -19,14 +19,13 @@ public class MinimapControls : MonoBehaviour
     private Vector3 camFirstPos;
     public float sensitivity;
     //Reset
-    private int clickCount;
+    //private int clickCount = 0;
 
     private void Start()
     {
         camFirstPos = minimapCamera.transform.position;
         sensitivity = 0.002f;
         cameraMoving = false;
-        clickCount = 0;
         cg = GetComponent<CanvasGroup>();
         cameraSlider.value = camZoom;
 

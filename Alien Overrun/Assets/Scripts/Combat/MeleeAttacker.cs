@@ -17,7 +17,6 @@ public class MeleeAttacker : MonoBehaviour
 	[SerializeField] private bool autoApplyDamage = false;
 	[SerializeField] private float applyDamageDelay = 1.04f;
 	[SerializeField] private DamageType damageType = DamageType.Physical;
-	[SerializeField] private UnityEvent onAttck = null;
 
 	private float timeToNextAttack = 0f;
 	private Transform target = null;
