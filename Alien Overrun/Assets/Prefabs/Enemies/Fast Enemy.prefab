@@ -253,7 +253,9 @@ MonoBehaviour:
   detector: {fileID: 9081147030354896693}
   minPhysicsReactVelSqr: 3
   getUpSpeed: 0.1
+  getUpTimeMax: 2
   mineralsForKill: 0
+  maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
 --- !u!114 &674976518474313825
 MonoBehaviour:
@@ -396,11 +398,6 @@ MonoBehaviour:
   autoApplyDamage: 0
   applyDamageDelay: 1.04
   damageType: 0
-  onAttck:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!195 &155927536
 NavMeshAgent:
   m_ObjectHideFlags: 0

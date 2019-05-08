@@ -18,6 +18,7 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float getUpSpeed = 0.1f;
 	[SerializeField] private float getUpTimeMax = 2f;
 	[SerializeField] private int mineralsForKill = 20;
+	[SerializeField] private float maxVelocityMag = 150f;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 
 	private Vector3 destination = Vector3.zero;
@@ -36,6 +37,15 @@ public class Enemy : AbstractListableItem
 
 		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
 		oponentFinder.SetOponentListManager( BuildingManager.Instance );
+	}
+
+	void FixedUpdate( )
+	{
+		if ( isDynamic && rb.velocity.magnitude >  maxVelocityMag)
+		{
+			//Debug.Log( "E " + rb.velocity.magnitude );
+			rb.velocity = rb.velocity.normalized * maxVelocityMag;
+		}
 	}
 
 	void OnEnable( )

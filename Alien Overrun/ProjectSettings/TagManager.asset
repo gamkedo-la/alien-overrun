@@ -8,6 +8,7 @@ TagManager:
   - Building
   - Enemy
   - Resource
+  - BigProjectile
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - Player
   - PlayerProjectile
   - EnemyToEnemyDetect
-  - 
+  - BigProjectiles
   - 
   - 
   - 
