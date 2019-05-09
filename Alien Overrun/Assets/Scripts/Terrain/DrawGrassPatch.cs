@@ -15,6 +15,8 @@ public class DrawGrassPatch : MonoBehaviour
     float prevDensity;
     public float spread;
     float prevSpread;
+    public float scaleFactor;
+    float prevScaleFactor;
 
     List<Matrix4x4> matrices;
     List<Vector3> positions;
@@ -36,6 +38,7 @@ public class DrawGrassPatch : MonoBehaviour
         prevNoiseInterval = noiseInterval;
         prevDensity = density;
         prevSpread = spread;
+        prevScaleFactor = scaleFactor;
         matrices.Clear();
 
         int limit = 1023;
@@ -47,9 +50,10 @@ public class DrawGrassPatch : MonoBehaviour
                 float sample = Mathf.PerlinNoise(x, z);
                 if (sample >= density && matrices.Count < limit)
                 {
-                    //Debug.Log("add position");
-                    Vector3 position = transform.position + new Vector3((x - 0.5f) * spread, 0, (z - 0.5f) * spread);
-                    matrices.Add(Matrix4x4.TRS(position, Quaternion.identity, transform.localScale));
+                    float offset = Random.Range(-1f, 1f) * noiseInterval * spread;
+                    Vector3 scale = transform.localScale * Mathf.Pow(sample + .3f, scaleFactor);
+                    Vector3 position = transform.position + new Vector3((x - 0.5f) * spread + offset, (0.5f * scale.y), (z - 0.5f) * spread + offset);
+                    matrices.Add(Matrix4x4.TRS(position, Quaternion.identity, scale));
                 }
             }
         }
@@ -67,7 +71,8 @@ public class DrawGrassPatch : MonoBehaviour
         // Re-compute instance data if parameters have changed
         if (!Mathf.Approximately(noiseInterval, prevNoiseInterval) ||
             !Mathf.Approximately(spread, prevSpread) ||
-            !Mathf.Approximately(density, prevDensity))
+            !Mathf.Approximately(density, prevDensity) ||
+            !Mathf.Approximately(scaleFactor, prevScaleFactor))
         {
             ComputeInstanceData();
         }

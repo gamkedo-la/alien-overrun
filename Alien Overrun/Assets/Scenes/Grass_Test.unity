@@ -3145,13 +3145,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1618401214}
-  m_LocalRotation: {x: 0.23911712, y: 0.3696441, z: -0.099045664, w: 0.89239913}
-  m_LocalPosition: {x: -4.38, y: 3.328, z: -4.49}
+  m_LocalRotation: {x: 0.16101964, y: -0.8198881, z: 0.27889222, w: 0.4733659}
+  m_LocalPosition: {x: 5.95, y: 4.55, z: 3.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 30.000002, y: 45.000004, z: 0}
+  m_LocalEulerAnglesHint: {x: 37.572002, y: -120.00001, z: 0}
 --- !u!1001 &1622753454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3388,12 +3388,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd4430fc5dc990f4fbfa74b3d53f399c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grassInstance: {fileID: 8254687373856176130, guid: d033126e388a4114282cef0103981fd9,
-    type: 3}
+  grassInstance: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
   grassMaterial: {fileID: 2100000, guid: cce89bf530dd3894cba29bba267cbe97, type: 2}
   noiseInterval: 0.05
   density: 0.3
-  spread: 3
+  spread: 10
+  scaleFactor: 3
 --- !u!4 &1649030962
 Transform:
   m_ObjectHideFlags: 0
