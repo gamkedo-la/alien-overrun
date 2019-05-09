@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 7704856354930529642}
   cameraPositionLock: {x: 0, y: 0, z: 0}
-  cameraYZoomInLock: 10
+  cameraYZoomInLock: 5
   cameraYZoomOutLock: 30
   panSpeed: 20
   mousePanSpeed: 0.07
