@@ -31,23 +31,23 @@ public class Arrow : MonoBehaviour
 			transform.rotation = Quaternion.LookRotation( rb.velocity );
 	}
 
-	private void OnCollisionEnter( Collision collision )
+	private void OnTriggerEnter( Collider other )
 	{
 		//if ( collision.transform.CompareTag( Tags.Environment ) )
 		//IamStuck( collision.transform );
 
-		if ( collision.transform.CompareTag( Tags.Enemy ) )
+		if ( other.transform.CompareTag( Tags.Enemy ) )
 		{
-			HP hp = collision.gameObject.GetComponent<HP>( );
+			HP hp = other.gameObject.GetComponent<HP>( );
 			if ( hp != null )
 			{
 				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 				hp.ChangeHP( -damg );
-				Utilities.DrawDebugText( collision.transform.position + Vector3.up, damg.ToString( ) );
+				Utilities.DrawDebugText( other.transform.position + Vector3.up, damg.ToString( ) );
 			}
 		}
 
-		IamStuck( collision.transform );
+		IamStuck( other.transform );
 	}
 
 	private void IamStuck ( Transform collider )

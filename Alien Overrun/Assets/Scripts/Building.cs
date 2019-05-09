@@ -10,10 +10,10 @@ using UnityEngine.Assertions;
 public enum BuildingType
 {
 	Tower,
-	Core
+	Core,
+	Castle
 }
 
-[RequireComponent(typeof(OponentFinder))]
 public class Building : AbstractListableItem
 {
 	public Indicator Indicator { get { return indicator; } private set { indicator = value; } }
@@ -59,8 +59,10 @@ public class Building : AbstractListableItem
 
 	protected private virtual void SetOponentListManager( )
 	{
-		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
-		oponentFinder.SetOponentListManager( EnemyManager.Instance );
+		OponentFinder[] oponentFinders = gameObject.GetComponentsInChildren<OponentFinder>( );
+
+		foreach ( var oF in oponentFinders )
+			oF.SetOponentListManager( EnemyManager.Instance );
 	}
 
 	void OnDisable( )
@@ -105,7 +107,7 @@ public class Building : AbstractListableItem
 	public void EnableBuilding( )
 	{
 		BuildingManager.Instance.AddItem( this );
-		col.isTrigger = false;
+		col.enabled = false;
 
 		foreach ( var item in toEnableOnBuild )
 		{

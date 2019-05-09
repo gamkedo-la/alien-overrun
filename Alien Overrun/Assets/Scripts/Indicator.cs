@@ -10,6 +10,7 @@ using UnityEngine.Assertions;
 public class Indicator : MonoBehaviour
 {
 	[SerializeField] private OponentFinder oponentFinder = null;
+	[SerializeField] private float addedDistance = 0f;
 	[SerializeField] private Building building = null;
 	[Space]
 	[SerializeField] private GameObject zone = null;
@@ -40,7 +41,7 @@ public class Indicator : MonoBehaviour
 		Assert.IsNotNull( buildingRenderers );
 		Assert.AreNotEqual( buildingRenderers.Length, 0 );
 
-		range.transform.localScale = Vector3.one * ( oponentFinder.GetAttackDistance( ) * 2f );
+		range.transform.localScale = Vector3.one * ( ( oponentFinder.GetAttackDistance( ) + addedDistance ) * 2f );
 		zone.transform.localScale = Vector3.one * ( building.PlaceDistance * 2f );
 	}
 
