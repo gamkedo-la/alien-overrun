@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1717183529}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745960127}
   - component: {fileID: 1745960126}
+  - component: {fileID: 5930089240187001908}
   - component: {fileID: 1745960125}
   - component: {fileID: 1745960124}
   - component: {fileID: 1745960123}
@@ -149,8 +150,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.42, z: 1}
+  m_Size: {x: 1.27, y: 1.42, z: 1.28}
   m_Center: {x: 0, y: 0.71, z: 0}
+--- !u!65 &5930089240187001908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745960120}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.6, z: 1}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!54 &1745960125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -183,10 +197,11 @@ MonoBehaviour:
   buildingType: 0
   buildingName: Archer Tower
   buildCost: 80
+  threat: 10
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1745960126}
-  colP: {fileID: 1717183529}
+  colP: {fileID: 5930089240187001908}
   toEnableOnBuild:
   - {fileID: 1745960123}
   - {fileID: 1745960122}
@@ -215,7 +230,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1745960124}
+        m_MethodName: BuildingDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1745960122
@@ -640,7 +666,7 @@ BoxCollider:
   m_GameObject: {fileID: 3881895964149245231}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -731,7 +757,7 @@ BoxCollider:
   m_GameObject: {fileID: 4622352097366410993}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1008,7 +1034,7 @@ BoxCollider:
   m_GameObject: {fileID: 6393290586188941422}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1099,7 +1125,7 @@ BoxCollider:
   m_GameObject: {fileID: 6495152338046013830}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1221,7 +1247,7 @@ BoxCollider:
   m_GameObject: {fileID: 6920316384009537646}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1271,6 +1297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFinder: {fileID: 1745960122}
+  addedDistance: 0
   building: {fileID: 1745960124}
   zone: {fileID: 5841226471190744090}
   range: {fileID: 8719591449556498362}
@@ -1409,7 +1436,7 @@ BoxCollider:
   m_GameObject: {fileID: 9180166945061493088}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -1557,6 +1584,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846127159593, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1565,11 +1602,6 @@ PrefabInstance:
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846127159593, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
@@ -1586,11 +1618,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}

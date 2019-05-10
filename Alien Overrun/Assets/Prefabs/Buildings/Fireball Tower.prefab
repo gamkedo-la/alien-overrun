@@ -87,7 +87,7 @@ BoxCollider:
   m_GameObject: {fileID: 132235249051020439}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -137,6 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFinder: {fileID: 473719277194874614}
+  addedDistance: 0
   building: {fileID: 4325920223682474915}
   zone: {fileID: 2859705688549284629}
   range: {fileID: 7349330683505537539}
@@ -166,7 +167,7 @@ GameObject:
   - component: {fileID: 3748084660068183371}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,7 +334,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1301575733917049532}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
@@ -748,7 +749,7 @@ BoxCollider:
   m_GameObject: {fileID: 6652382966419160661}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -763,7 +764,6 @@ GameObject:
   - component: {fileID: 717307647445373466}
   - component: {fileID: 8152883028436141392}
   - component: {fileID: 1116261716614850090}
-  - component: {fileID: 2314358335925949490}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -831,20 +831,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2314358335925949490
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7145597522066657232}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &7349330683505537539
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +873,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2540046315759797672}
   - component: {fileID: 2268137669346959139}
+  - component: {fileID: 7044298823807578478}
   - component: {fileID: 5804571147695845192}
   - component: {fileID: 4325920223682474915}
   - component: {fileID: 3216330059626059734}
@@ -928,8 +915,21 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.42, z: 1}
+  m_Size: {x: 1.56, y: 1.42, z: 1.55}
   m_Center: {x: 0, y: 0.71, z: 0}
+--- !u!65 &7044298823807578478
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8394160918541279847}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.4, y: 1.6, z: 1.4}
+  m_Center: {x: 0, y: 0.8, z: 0}
 --- !u!54 &5804571147695845192
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -962,10 +962,11 @@ MonoBehaviour:
   buildingType: 0
   buildingName: Fireball Tower
   buildCost: 130
+  threat: 10
   placeDistance: 6
   buildTime: 1
   col: {fileID: 2268137669346959139}
-  colP: {fileID: 3748084660068183371}
+  colP: {fileID: 7044298823807578478}
   toEnableOnBuild:
   - {fileID: 3216330059626059734}
   - {fileID: 473719277194874614}
@@ -994,7 +995,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4325920223682474915}
+        m_MethodName: BuildingDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &473719277194874614
@@ -1139,6 +1151,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1163,11 +1180,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}

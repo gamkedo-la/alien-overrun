@@ -242,7 +242,6 @@ GameObject:
   - component: {fileID: 6132915251640712104}
   - component: {fileID: 6132915251640712103}
   - component: {fileID: 6132915251640712102}
-  - component: {fileID: 6132915251640712105}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -309,19 +308,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &6132915251640712105
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6132915251640712107}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6132915251682192579
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,10 +470,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6132915252289007574}
-  - component: {fileID: 6132915252289007575}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,19 +496,6 @@ Transform:
   m_Father: {fileID: 8559134306675559109}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &6132915252289007575
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6132915252289007577}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 4, z: 4}
-  m_Center: {x: 0, y: 0.27, z: 0}
 --- !u!1 &6132915252722487313
 GameObject:
   m_ObjectHideFlags: 0
@@ -1255,6 +1227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8559134306675559109}
   - component: {fileID: 8559134306675857122}
+  - component: {fileID: 988790643365765924}
   - component: {fileID: 8559134306675857120}
   - component: {fileID: 8559134306675857126}
   - component: {fileID: 8559134306675857132}
@@ -1295,6 +1268,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4, y: 4, z: 4}
   m_Center: {x: 0, y: 2, z: 0}
+--- !u!65 &988790643365765924
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559134306675857125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 3.5, y: 3, z: 3.5}
+  m_Center: {x: 0, y: 1.5, z: 0}
 --- !u!54 &8559134306675857120
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1327,10 +1313,11 @@ MonoBehaviour:
   buildingType: 2
   buildingName: Castle
   buildCost: 0
+  threat: 10
   placeDistance: 8
   buildTime: 1
   col: {fileID: 8559134306675857122}
-  colP: {fileID: 6132915252289007575}
+  colP: {fileID: 988790643365765924}
   toEnableOnBuild:
   - {fileID: 8559134306675857132}
   - {fileID: 6132915251682192444}
@@ -1365,7 +1352,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8559134306675857126}
+        m_MethodName: BuildingDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &8559134307129628778

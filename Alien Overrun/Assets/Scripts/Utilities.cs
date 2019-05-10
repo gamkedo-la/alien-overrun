@@ -90,4 +90,10 @@ public class Utilities : MonoBehaviour
 
 		return Vector2.Angle( Vector2.right, diference ) * sign;
 	}
+
+	static public float ConvertRange( float originalStart, float originalEnd, float newStart, float newEnd, float value )
+	{
+		float scale = ( newEnd - newStart ) / ( originalEnd - originalStart );
+		return ( newStart + ( ( value - originalStart ) * scale ) );
+	}
 }

@@ -4956,6 +4956,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1284071209366134536}
   - component: {fileID: 1284071209366225711}
+  - component: {fileID: 1031866837802472670}
   - component: {fileID: 1284071209366225709}
   - component: {fileID: 1284071209366225707}
   - component: {fileID: 1284071209366225697}
@@ -4998,6 +4999,19 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
+  m_Size: {x: 1.52, y: 2, z: 1.52}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &1031866837802472670
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284071209366225704}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
   m_Size: {x: 1.2, y: 2, z: 1.2}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &1284071209366225709
@@ -5032,10 +5046,11 @@ MonoBehaviour:
   buildingType: 0
   buildingName: Mage Tower
   buildCost: 100
+  threat: 10
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1284071209366225711}
-  colP: {fileID: 1284071209366225698}
+  colP: {fileID: 1031866837802472670}
   toEnableOnBuild:
   - {fileID: 1284071209366225697}
   - {fileID: 1284071209366225696}
@@ -5064,7 +5079,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1284071209366225707}
+        m_MethodName: BuildingDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1284071209366225696
@@ -5151,7 +5177,7 @@ GameObject:
   - component: {fileID: 1284071209366225698}
   m_Layer: 0
   m_Name: Mesh
-  m_TagString: Untagged
+  m_TagString: Building
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

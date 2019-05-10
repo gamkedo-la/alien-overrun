@@ -28,6 +28,9 @@ public class Building : AbstractListableItem
 	public int BuildCost { get { return buildCost; } private set { buildCost = value; } }
 	[SerializeField] private int buildCost = 100;
 
+	public int Threat { get { return threat; } private set { threat = value; } }
+	[SerializeField] private int threat = 10;
+
 	public float PlaceDistance { get { return placeDistance; } private set { placeDistance = value; } }
 	[SerializeField] private float placeDistance = 6;
 
@@ -115,6 +118,8 @@ public class Building : AbstractListableItem
 		}
 
 		colP.enabled = true;
+
+		AIProgressManager.Instance.AddThreat( Threat );
 	}
 
 	public bool CanBePaced( ) => collisions == 0;
@@ -126,6 +131,11 @@ public class Building : AbstractListableItem
 
 	public bool AreWeCloseEnough( Building anotherBuilding )
 		=> Vector3.Distance(transform.position, anotherBuilding.gameObject.transform.position) <= placeDistance;
+
+	public void BuildingDestroyed()
+	{
+		AIProgressManager.Instance.RemoveThreat( Threat / 2 );
+	}
 
 	private bool CollidesWithTags( GameObject gameObject )
 	{

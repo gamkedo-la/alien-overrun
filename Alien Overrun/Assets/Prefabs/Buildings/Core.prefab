@@ -230,7 +230,7 @@ MeshCollider:
   m_GameObject: {fileID: 1358882027088586128}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -323,6 +323,7 @@ GameObject:
   - component: {fileID: 1358882027215378601}
   - component: {fileID: 1358882027215378600}
   - component: {fileID: 1358882027215378604}
+  - component: {fileID: 8076900290576602935}
   - component: {fileID: 1358882027215378605}
   - component: {fileID: 1358882027215378602}
   - component: {fileID: 1358882027215378607}
@@ -383,6 +384,20 @@ CapsuleCollider:
   m_Height: 2.4635854
   m_Direction: 1
   m_Center: {x: 0, y: 0.7317927, z: 0}
+--- !u!136 &8076900290576602935
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358882027215378614}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 2.4635854
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.7317927, z: 0}
 --- !u!54 &1358882027215378605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -415,10 +430,11 @@ MonoBehaviour:
   buildingType: 1
   buildingName: Core
   buildCost: 100
+  threat: 10
   placeDistance: 6
   buildTime: 1
   col: {fileID: 1358882027215378604}
-  colP: {fileID: 1358882027402909774}
+  colP: {fileID: 8076900290576602935}
   toEnableOnBuild:
   - {fileID: 1358882027215378607}
   - {fileID: 1358882027215378603}
@@ -476,7 +492,18 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   onDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1358882027215378602}
+        m_MethodName: BuildingDestroyed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!1 &1358882027325190168
@@ -742,7 +769,7 @@ MeshCollider:
   m_GameObject: {fileID: 1358882027402909772}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
@@ -856,6 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFinder: {fileID: 1358882027215378607}
+  addedDistance: 0
   building: {fileID: 1358882027215378602}
   zone: {fileID: 1358882027517736746}
   range: {fileID: 1358882027474032596}
@@ -1090,6 +1118,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1114,11 +1147,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
