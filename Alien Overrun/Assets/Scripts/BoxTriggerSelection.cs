@@ -17,7 +17,7 @@ public class BoxTriggerSelection : MonoBehaviour
 	
 	private void OnTriggerEnter(Collider collision)
 	{
-		if (collision.gameObject.tag == "Building"
+		if ((collision.gameObject.CompareTag(Tags.Building) || collision.gameObject.CompareTag(Tags.Resource))
 			&& !cursorRaycast.IsObjectSelected(collision.gameObject))
 		{
 			cursorRaycast.AddToSelection(collision.gameObject);
@@ -26,7 +26,7 @@ public class BoxTriggerSelection : MonoBehaviour
 
 	private void OnTriggerExit(Collider collision)
 	{
-		if (collision.gameObject.tag == "Building"
+		if ((collision.gameObject.CompareTag(Tags.Building) || collision.gameObject.CompareTag(Tags.Resource))
 			&& cursorRaycast.IsObjectSelected(collision.gameObject))
 		{
 			cursorRaycast.RemoveFromSelection(collision.gameObject);

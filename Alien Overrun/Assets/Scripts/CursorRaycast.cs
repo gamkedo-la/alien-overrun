@@ -56,7 +56,7 @@ public class CursorRaycast : MonoBehaviour
 
 	private void OnTriggerEnter(Collider collision)
 	{
-		if ( ( collision.gameObject.CompareTag (Tags.Building) /*|| collision.gameObject.CompareTag( Tags.Resource )*/ )
+		if ( (collision.gameObject.CompareTag (Tags.Building) || collision.gameObject.CompareTag( Tags.Resource ))
 			&& hoverSelection == null)
 		{
 			hoverSelection = collision.gameObject;
@@ -71,7 +71,7 @@ public class CursorRaycast : MonoBehaviour
 
 	private void OnTriggerExit(Collider collision)
 	{
-		if ( ( collision.gameObject.CompareTag( Tags.Building ) /*|| collision.gameObject.CompareTag( Tags.Resource )*/ )
+		if ( (collision.gameObject.CompareTag( Tags.Building ) || collision.gameObject.CompareTag( Tags.Resource ))
 			&& hoverSelection == collision.gameObject)
 		{
 			hoverSelection = null;
@@ -157,7 +157,11 @@ public class CursorRaycast : MonoBehaviour
 				if (lockedSelection.Count > 0)
 				{
 					foreach (var sel in lockedSelection)
-						sel.GetComponent<Building>().Indicator.HideRange();
+					{
+						Building building = sel.GetComponent<Building>();
+						if(building != null)
+							building.Indicator.HideRange();
+					}
 
 					lockedSelection.Clear();
 				}
@@ -194,41 +198,65 @@ public class CursorRaycast : MonoBehaviour
 		if (!isLocked)
 		{
 			Building building = hoverSelection.GetComponent<Building>();
-			if ( !building )
-				return;
-			HP hp = hoverSelection.GetComponent<HP>();
+			if (building != null)
+			{
+				HP hp = hoverSelection.GetComponent<HP>();
 
-			hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
-			hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
+				hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
+				hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
+			}
+			else
+			{
+				//Resource Info
+				hoverInfo1.text = "Resource";
+			}
 		}
 		else if (lockedSelection.Count <= 1)
 		{
 			Building building = lockedSelection[0].GetComponent<Building>();
-			if ( !building )
-				return;
-			HP hp = lockedSelection[0].GetComponent<HP>();
+			if (building != null)
+			{
+				HP hp = lockedSelection[0].GetComponent<HP>();
 
-			lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
-			lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt(hp.MaxHP) + "/" + Mathf.FloorToInt(hp.CurrentHP) + "\nBuild Time: " + building.BuildTime;
+				lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
+				lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt(hp.MaxHP) + "/" + Mathf.FloorToInt(hp.CurrentHP) + "\nBuild Time: " + building.BuildTime;
+			}
+			else
+			{
+				//Resource Info
+				hoverInfo1.text = "Resource";
+			}
 		}
 		else if (lockedSelection.Count > 1)
 		{
+			int totalBuilding = 0;
+			int totalResources = 0;
 			int totalBuildCost = 0;
-			foreach (var sel in lockedSelection)
-				totalBuildCost += sel.GetComponent<Building>().BuildCost;
-
 			float avgMaxHP = 0f;
-			foreach (var sel in lockedSelection)
-				avgMaxHP += sel.GetComponent<HP>().MaxHP;
-			avgMaxHP /= lockedSelection.Count;
-
 			float avgCurrentHP = 0f;
 			foreach (var sel in lockedSelection)
-				avgCurrentHP += sel.GetComponent<HP>().CurrentHP;
+			{
+				Building building = sel.GetComponent<Building>();
+				if (building != null)
+				{
+					totalBuilding++;
+					totalBuildCost += building.BuildCost;
+
+					avgMaxHP += sel.GetComponent<HP>().MaxHP;
+					avgCurrentHP += sel.GetComponent<HP>().CurrentHP;
+				}
+				else
+				{
+					totalResources++;
+				}
+			}
+			
+			avgMaxHP /= lockedSelection.Count;
 			avgCurrentHP /= lockedSelection.Count;
 
 			lockedInfo1.text = "Total Buildings: " + lockedSelection.Count + "\nBuild Cost: " + totalBuildCost;
 			lockedInfo2.text = "Avg. Hit Points: " + Mathf.FloorToInt(avgMaxHP) + "/" + Mathf.FloorToInt(avgCurrentHP);
+			//Find a way to show resources and their total amount
 		}
 	}
 
@@ -245,7 +273,9 @@ public class CursorRaycast : MonoBehaviour
 		GameObject newSelInd = Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f));
 		selectionIndicator.Add(newSelInd);
 		newSelInd.transform.parent = addSel.transform;
-		addSel.GetComponent<Building>().Indicator.ShowRange(true);
+		Building building = addSel.GetComponent<Building>();
+		if(building != null)
+			building.Indicator.ShowRange(true);
 	}
 
 	public void RemoveFromSelection(GameObject remSel)
@@ -260,7 +290,9 @@ public class CursorRaycast : MonoBehaviour
 			}
 		}
 
-		remSel.GetComponent<Building>().Indicator.HideRange();
+		Building building = remSel.GetComponent<Building>();
+		if(building != null)
+			building.Indicator.HideRange();
 		lockedSelection.Remove(remSel);
 
 		if (lockedSelection.Count <= 0)
@@ -273,7 +305,11 @@ public class CursorRaycast : MonoBehaviour
 	public void DeselectAll()
 	{
 		foreach (var sel in lockedSelection)
-			sel.GetComponent<Building>().Indicator.HideRange();
+		{
+			Building building = sel.GetComponent<Building>();
+			if (building != null)
+				building.Indicator.HideRange();
+		}
 
 		lockedSelection.Clear();
 
