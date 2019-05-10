@@ -13,6 +13,10 @@ public class CamControl : MonoBehaviour
     [SerializeField] private Vector3 cameraPositionLock = new Vector3();
     [SerializeField] private float cameraYZoomInLock = 4;
     [SerializeField] private float cameraYZoomOutLock = 16;
+    [SerializeField] private float cameraXMin = -50.0f;
+    [SerializeField] private float cameraXMax = 30.0f;
+    [SerializeField] private float cameraZMin = -30.0f;
+    [SerializeField] private float cameraZMax = 40.0f;
     [SerializeField] private float panSpeed = 8f;
     [SerializeField] private float mousePanSpeed = 0.01f;
 	[SerializeField] private float zoomSpeed = 200f;
@@ -23,7 +27,7 @@ public class CamControl : MonoBehaviour
     [SerializeField] private bool zoomLockOn = true;
     [SerializeField] private bool useScaledTime = false;
 
-	private bool panning = false;
+    private bool panning = false;
 	private Vector3 oldMousePos;
 
     void Start ()
@@ -48,7 +52,7 @@ public class CamControl : MonoBehaviour
 		if ( Input.GetKey( KeyCode.D ) || ( Input.mousePosition.x >= Screen.width - mouseScreenBoundOffset && useMouse ) )
 		{
 			Vector3 translation = Quaternion.Euler( 0, camRotation, 0 ) * Vector3.right * panSpeed * time * ( cam.position.y * 0.1f );
-			transform.Translate( translation );
+            transform.Translate( translation );
 		}
 		else if ( Input.GetKey( KeyCode.A ) || ( Input.mousePosition.x <= mouseScreenBoundOffset && useMouse ) )
 		{
@@ -122,6 +126,12 @@ public class CamControl : MonoBehaviour
 			oldMousePos = Input.mousePosition;
 		}
 
-		cam.LookAt( transform );
+        // Clamp position within boundaries
+        Vector3 check = transform.position;
+        check.x = Mathf.Clamp(check.x, cameraXMin, cameraXMax);
+        check.z = Mathf.Clamp(check.z, cameraZMin, cameraZMax);
+        transform.position = check;
+
+        cam.LookAt( transform );
 	} // end of Update
 } // end of CamControlClass
