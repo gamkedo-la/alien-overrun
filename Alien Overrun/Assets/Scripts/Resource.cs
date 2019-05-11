@@ -76,4 +76,6 @@ public class Resource : AbstractListableItem
 		float newScale = ( currentResources * scaleFactor ) + minNodeSize;
 		transform.localScale = new Vector3( newScale, newScale, newScale );
 	}
+
+	public int GetCurrentResources() { return currentResources; }
 }

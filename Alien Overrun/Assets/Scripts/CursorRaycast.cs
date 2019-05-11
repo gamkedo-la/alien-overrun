@@ -207,8 +207,14 @@ public class CursorRaycast : MonoBehaviour
 			}
 			else
 			{
-				//Resource Info
-				hoverInfo1.text = "Resource";
+				string typeString = "";
+				int type = (int)hoverSelection.transform.parent.gameObject.GetComponent<Resource>().ResourceType;
+
+				if (type == 0) typeString = "Mineral";
+				//Set Type Info here when there are more resources types
+
+				hoverInfo1.text = "Resource Type: " + typeString;
+				hoverInfo2.text = "Amount: " + hoverSelection.transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}
 		}
 		else if (lockedSelection.Count <= 1)
@@ -223,14 +229,21 @@ public class CursorRaycast : MonoBehaviour
 			}
 			else
 			{
-				//Resource Info
-				hoverInfo1.text = "Resource";
+				string typeString = "";
+				int type = (int)lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().ResourceType;
+
+				if (type == 0) typeString = "Mineral";
+				//Set Type Info here when there are more resources types
+
+				hoverInfo1.text = "Resource Type: " + typeString;
+				hoverInfo2.text = "Amount: " + lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}
 		}
 		else if (lockedSelection.Count > 1)
 		{
-			int totalBuilding = 0;
+			int totalBuildings = 0;
 			int totalResources = 0;
+			int totalResourceAmount = 0;
 			int totalBuildCost = 0;
 			float avgMaxHP = 0f;
 			float avgCurrentHP = 0f;
@@ -239,7 +252,7 @@ public class CursorRaycast : MonoBehaviour
 				Building building = sel.GetComponent<Building>();
 				if (building != null)
 				{
-					totalBuilding++;
+					totalBuildings++;
 					totalBuildCost += building.BuildCost;
 
 					avgMaxHP += sel.GetComponent<HP>().MaxHP;
@@ -248,14 +261,15 @@ public class CursorRaycast : MonoBehaviour
 				else
 				{
 					totalResources++;
+					totalResourceAmount += sel.transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 				}
 			}
 			
 			avgMaxHP /= lockedSelection.Count;
 			avgCurrentHP /= lockedSelection.Count;
 
-			lockedInfo1.text = "Total Buildings: " + lockedSelection.Count + "\nBuild Cost: " + totalBuildCost;
-			lockedInfo2.text = "Avg. Hit Points: " + Mathf.FloorToInt(avgMaxHP) + "/" + Mathf.FloorToInt(avgCurrentHP);
+			lockedInfo1.text = (totalBuildings > 0 ? "Total Buildings: " + totalBuildings + "\nBuild Cost: " + totalBuildCost + "\n" : "") + (totalResources > 0 ? "Total Resources: " + totalResources + "\n" : "");
+			lockedInfo2.text = (totalBuildings > 0 ? "Avg. Hit Points: " + Mathf.FloorToInt(avgMaxHP) + "/" + Mathf.FloorToInt(avgCurrentHP) + "\n" : "") + (totalResources > 0 ? "Total Res. Amount: " + totalResourceAmount + "\n" : "");
 			//Find a way to show resources and their total amount
 		}
 	}
