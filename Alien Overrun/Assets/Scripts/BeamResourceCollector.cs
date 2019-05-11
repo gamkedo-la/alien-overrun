@@ -34,7 +34,7 @@ public class BeamResourceCollector : MonoBehaviour
 
 			Utilities.DrawLine( shootPoint.position, target.position, shotColor, 0.1f, shootDuration );
 
-			targetResource.CollectResources( damage );
+			targetResource.CollectResources( damage, transform.position );
 			Utilities.DrawDebugText( target.position + Vector3.up, damage.ToString( ) );
 		}
 	}

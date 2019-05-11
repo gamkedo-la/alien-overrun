@@ -47,6 +47,8 @@ MonoBehaviour:
   visuals: {fileID: 5628667632897929820}
   destroyEffect: {fileID: 1756962277497222885, guid: 27becad68983a7a4ebc9fd8c71807122,
     type: 3}
+  miniMineral: {fileID: 6260873649032731697, guid: ebe57c88eed84ce41bba4e5648a97328,
+    type: 3}
   resourceType: 0
   minResources: 100
   maxResources: 1000

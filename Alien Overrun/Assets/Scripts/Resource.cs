@@ -12,6 +12,7 @@ public class Resource : AbstractListableItem
 {
 	[SerializeField] private GameObject visuals = null;
 	[SerializeField] private GameObject destroyEffect = null;
+    [SerializeField] private GameObject miniMineral = null;
 	public ResourceType ResourceType { get { return resourceType; } private set { resourceType = value; } }
 	[SerializeField] private ResourceType resourceType = ResourceType.Minerals;
 	[SerializeField] private int minResources = 100;
@@ -51,14 +52,16 @@ public class Resource : AbstractListableItem
 			ResourceManager.Instance.RemoveItem( this );
 	}
 
-	public void CollectResources( int amount )
+	public void CollectResources( int amount, Vector3 source )
 	{
 		currentResources -= Mathf.Abs(amount);
 
 		ResourceManager.Instance.AddResources( resourceType, amount );
 		ScaleVisuals( );
 
-		onChange.Invoke( );
+        Instantiate(miniMineral, source, Quaternion.identity);
+
+        onChange.Invoke( );
 
 		if ( currentResources <= 0 )
 			DestroyMe( );
