@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5927365912560694034}
   - component: {fileID: 5927365912560694039}
   - component: {fileID: 1919426548}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5927365913111098081}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selection Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +180,7 @@ Transform:
   m_GameObject: {fileID: 5927365913303916986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.05, z: 2}
+  m_LocalScale: {x: 1, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 5927365913111098081}
   m_RootOrder: 0
@@ -257,7 +257,7 @@ Transform:
   m_GameObject: {fileID: 5927365913565050169}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 0.05, z: 2}
+  m_LocalScale: {x: 1, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 5927365913111098081}
   m_RootOrder: 1
@@ -309,7 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5927365913701553531}
   - component: {fileID: 5927365913701553530}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Selection Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -395,8 +395,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b43a90c22fce2d41a0c1e3fdfe88150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skirmishModeOnly: []
-  creativeModeOnly: []
+  skirmishModeOnly:
+  - {fileID: 0}
+  - {fileID: 0}
+  creativeModeOnly:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   paused: 0
   creativeMode: 0
   onWin:
@@ -485,6 +490,7 @@ MonoBehaviour:
   - {fileID: 7175263236576491544, guid: 6dd4b3b5a72f8184f8dec6d461011d49, type: 3}
   crativeModeSpawnPoint: {fileID: 0}
   spawnPoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   enemyCount: {fileID: 0}

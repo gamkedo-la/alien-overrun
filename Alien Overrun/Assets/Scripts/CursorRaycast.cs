@@ -182,6 +182,7 @@ public class CursorRaycast : MonoBehaviour
 				DeselectAll();
 			}
 		}
+		/*
 		else if (Input.GetMouseButtonDown(1)) //deselects with right click
 		{
 			if (lockedSelection.Count > 0)
@@ -189,12 +190,18 @@ public class CursorRaycast : MonoBehaviour
 				DeselectAll();
 			}
 		}
+		*/
 	}
 
 
 
 	private void SetInfo( bool isLocked = false )
 	{
+		hoverInfo1.text = "";
+		hoverInfo2.text = "";
+		lockedInfo1.text = "";
+		lockedInfo2.text = "";
+
 		if (!isLocked)
 		{
 			Building building = hoverSelection.GetComponent<Building>();
@@ -235,8 +242,8 @@ public class CursorRaycast : MonoBehaviour
 				if (type == 0) typeString = "Mineral";
 				//Set Type Info here when there are more resources types
 
-				hoverInfo1.text = "Resource Type: " + typeString;
-				hoverInfo2.text = "Amount: " + lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
+				lockedInfo1.text = "Resource Type: " + typeString;
+				lockedInfo2.text = "Amount: " + lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}
 		}
 		else if (lockedSelection.Count > 1)
