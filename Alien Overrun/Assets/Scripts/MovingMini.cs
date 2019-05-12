@@ -8,7 +8,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// MovingResource was already defined
 public class MovingMini : MonoBehaviour
 {
     [SerializeField] private Vector3 destination = new Vector3(5.0f, 5.0f, 5.0f);
@@ -18,6 +17,7 @@ public class MovingMini : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.position += new Vector3(0.0f, 1.0f, 0.0f);
         currentPos = transform.position;
     }
 
