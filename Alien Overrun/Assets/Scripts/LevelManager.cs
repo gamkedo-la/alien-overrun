@@ -65,7 +65,7 @@ public class LevelManager : MonoBehaviour
 	private void CheckGameEnd()
 	{
 		// Lose
-		if ( BuildingManager.Instance.CoresLeft( ) <= 0 )
+		if ( BuildingManager.Instance.CastlesLeft( ) <= 0 && AIProgressManager.Instance.FistTheasholdReached )
 		{
 			CancelInvoke( "CheckGameEnd" );
 			onLose.Invoke( );
@@ -88,6 +88,8 @@ public class LevelManager : MonoBehaviour
 
 			foreach ( var go in creativeModeOnly )
 				go.SetActive( true );
+
+			CancelInvoke( "CheckGameEnd" );
 		}
 		else
 		{

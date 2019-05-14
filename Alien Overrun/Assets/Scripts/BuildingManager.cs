@@ -60,8 +60,8 @@ public class BuildingManager : AbstractListManager
 		return false;
 	}
 
-	public int CoresLeft( )
+	public int CastlesLeft( )
 	{
-		return ItemsList.Cast<Building>( ).Select( b => b ).Where( b => b.BuildingType == BuildingType.Core ).Count( );
+		return ItemsList.Cast<Building>( ).Select( b => b ).Where( b => b.BuildingType == BuildingType.Castle ).Count( );
 	}
 }

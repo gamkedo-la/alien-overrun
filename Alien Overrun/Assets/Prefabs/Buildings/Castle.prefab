@@ -458,7 +458,7 @@ MonoBehaviour:
     type: 3}
   reloadTime: 1
   ammoCost: 0
-  shootingForce: 80
+  shootingForce: 120
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &6132915252289007577
@@ -646,7 +646,7 @@ MonoBehaviour:
     type: 3}
   reloadTime: 1
   ammoCost: 0
-  shootingForce: 80
+  shootingForce: 120
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &6132915252753396749
@@ -799,7 +799,7 @@ MonoBehaviour:
     type: 3}
   reloadTime: 1
   ammoCost: 0
-  shootingForce: 80
+  shootingForce: 120
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &6132915252927691478
@@ -952,7 +952,7 @@ MonoBehaviour:
     type: 3}
   reloadTime: 1
   ammoCost: 0
-  shootingForce: 80
+  shootingForce: 120
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &8398871711375113237
@@ -1246,7 +1246,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8559134306675857125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.95, y: 6.0302625e-17, z: -2.7157886}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6132915252289007574}
@@ -1313,7 +1313,7 @@ MonoBehaviour:
   buildingType: 2
   buildingName: Castle
   buildCost: 0
-  threat: 10
+  threat: 20
   placeDistance: 8
   buildTime: 1
   col: {fileID: 8559134306675857122}

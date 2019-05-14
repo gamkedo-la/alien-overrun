@@ -134,7 +134,8 @@ public class Building : AbstractListableItem
 
 	public void BuildingDestroyed()
 	{
-		AIProgressManager.Instance.RemoveThreat( Threat / 2 );
+		if (BuildingType != BuildingType.Castle)
+			AIProgressManager.Instance.RemoveThreat( Threat );
 	}
 
 	private bool CollidesWithTags( GameObject gameObject )

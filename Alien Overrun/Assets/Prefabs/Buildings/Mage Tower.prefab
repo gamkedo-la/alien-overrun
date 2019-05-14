@@ -5047,7 +5047,7 @@ MonoBehaviour:
   buildingName: Mage Tower
   buildCost: 100
   threat: 10
-  placeDistance: 6
+  placeDistance: 0.1
   buildTime: 1
   col: {fileID: 1284071209366225711}
   colP: {fileID: 1031866837802472670}

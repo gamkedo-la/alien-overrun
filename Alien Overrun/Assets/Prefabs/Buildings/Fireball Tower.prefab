@@ -963,7 +963,7 @@ MonoBehaviour:
   buildingName: Fireball Tower
   buildCost: 130
   threat: 10
-  placeDistance: 6
+  placeDistance: 0.1
   buildTime: 1
   col: {fileID: 2268137669346959139}
   colP: {fileID: 7044298823807578478}

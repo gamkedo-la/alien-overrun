@@ -16,6 +16,7 @@ public class BuildingPlacer : MonoBehaviour
 	[SerializeField] private Building building = null;
 	[SerializeField] private GameObject buildingPlacer = null;
 	[SerializeField] private Transform pointOfPlane = null;
+	[SerializeField] private bool requiresFirstThreshold = true;
 
 	private int cost = 50;
 	private Building buildingToPlace;
@@ -51,7 +52,7 @@ public class BuildingPlacer : MonoBehaviour
 
 	void FixedUpdate( )
 	{
-		CheckResourceRequirements( );
+		CheckRequirements( );
 	}
 
 	public void StartPlaceing( )
@@ -103,7 +104,10 @@ public class BuildingPlacer : MonoBehaviour
 		if ( buildingToPlace == null )
 			return;
 
-		canPlace = BuildingManager.Instance.CanPlaceBuiding( buildingToPlace );
+		if ( building.BuildingType != BuildingType.Castle )
+			canPlace = BuildingManager.Instance.CanPlaceBuiding( buildingToPlace );
+		else
+			canPlace = true;
 		if ( !canPlace )
 			return;
 
@@ -136,12 +140,19 @@ public class BuildingPlacer : MonoBehaviour
 		BuildingManager.Instance.Building = false;
 	}
 
-	private void CheckResourceRequirements( )
+	private void CheckRequirements( )
 	{
-		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, cost ) &&
-			 !BuildingManager.Instance.Building )
-			button.interactable = true;
-		else
-			button.interactable = false;
+		bool canBuild = false;
+
+		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, cost ) && !BuildingManager.Instance.Building )
+			canBuild = true;
+
+		if ( requiresFirstThreshold && !AIProgressManager.Instance.FistTheasholdReached )
+			canBuild = false;
+
+		if ( !requiresFirstThreshold && AIProgressManager.Instance.FistTheasholdReached )
+			canBuild = false;
+
+		button.interactable = canBuild;
 	}
 }

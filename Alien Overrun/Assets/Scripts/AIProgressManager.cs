@@ -30,7 +30,7 @@ public class AIProgressManager : MonoBehaviour
 	[SerializeField] private float minPos = -191f;
 	[SerializeField] private float maxPos = 191f;
 	[Header( "Threat" )]
-	[SerializeField] private Thresholds[] thresholds;
+	[SerializeField] private Thresholds[] thresholds = null;
 	[SerializeField] private int threatCurrent = 0;
 
 	private List<ProgressMarker> progressMarkers = new List<ProgressMarker>();
@@ -39,6 +39,7 @@ public class AIProgressManager : MonoBehaviour
 	public static AIProgressManager Instance { get; private set; }
 
 	public int Threat { get; private set; }
+	public bool FistTheasholdReached { get; private set; } = false;
 
 	private void Awake( )
 	{
@@ -102,6 +103,8 @@ public class AIProgressManager : MonoBehaviour
 				pm.Activate( );
 				progressImage.color = pm.ActiveColor;
 				largestColor = pm.ActiveColor;
+
+				FistTheasholdReached = true;
 			}
 		}
 
@@ -112,6 +115,5 @@ public class AIProgressManager : MonoBehaviour
 				pm.ActiveColor = largestColor;
 				pm.Activate( );
 			}
-
 	}
 }

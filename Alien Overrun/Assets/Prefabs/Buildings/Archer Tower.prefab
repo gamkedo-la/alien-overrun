@@ -198,7 +198,7 @@ MonoBehaviour:
   buildingName: Archer Tower
   buildCost: 80
   threat: 10
-  placeDistance: 6
+  placeDistance: 0.1
   buildTime: 1
   col: {fileID: 1745960126}
   colP: {fileID: 5930089240187001908}

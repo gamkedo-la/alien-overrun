@@ -322,8 +322,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1358882027215378601}
   - component: {fileID: 1358882027215378600}
-  - component: {fileID: 1358882027215378604}
-  - component: {fileID: 8076900290576602935}
+  - component: {fileID: 4275637041035347146}
+  - component: {fileID: 1654759920721376047}
   - component: {fileID: 1358882027215378605}
   - component: {fileID: 1358882027215378602}
   - component: {fileID: 1358882027215378607}
@@ -343,7 +343,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358882027215378614}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1358882027325190171}
@@ -370,8 +370,8 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!136 &1358882027215378604
-CapsuleCollider:
+--- !u!65 &4275637041035347146
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -380,12 +380,11 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.4635854
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7317927, z: 0}
---- !u!136 &8076900290576602935
-CapsuleCollider:
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!65 &1654759920721376047
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -393,11 +392,10 @@ CapsuleCollider:
   m_GameObject: {fileID: 1358882027215378614}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 2.4635854
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.7317927, z: 0}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!54 &1358882027215378605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -433,12 +431,12 @@ MonoBehaviour:
   threat: 10
   placeDistance: 6
   buildTime: 1
-  col: {fileID: 1358882027215378604}
-  colP: {fileID: 8076900290576602935}
+  col: {fileID: 4275637041035347146}
+  colP: {fileID: 1654759920721376047}
   toEnableOnBuild:
   - {fileID: 1358882027215378607}
   - {fileID: 1358882027215378603}
-  enableOnStart: 1
+  enableOnStart: 0
 --- !u!114 &1358882027215378607
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,8 +450,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFindCooldown: 100000
-  findDistance: 0.1
-  attackDistance: 0.1
+  findDistance: 0.001
+  attackDistance: 0.001
   onOponentFound:
     m_PersistentCalls:
       m_Calls: []
