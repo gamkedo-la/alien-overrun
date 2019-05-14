@@ -95,25 +95,23 @@ public class AIProgressManager : MonoBehaviour
 		bar.value = threatCurrent;
 		threatLabel.text = threatCurrent.ToString( );
 
-		Color largestColor = Color.white;
 		foreach ( var pm in progressMarkers )
 		{
 			if ( !pm.Reached && pm.Theashold <= threatCurrent )
 			{
 				pm.Activate( );
 				progressImage.color = pm.ActiveColor;
-				largestColor = pm.ActiveColor;
+				Color largestColor = pm.ActiveColor;
 
 				FistTheasholdReached = true;
+
+				foreach ( var p in progressMarkers ) // A bit of duplicate code but just changes the color off all markers
+					if ( p.Reached )
+					{
+						p.ActiveColor = largestColor;
+						p.Activate( );
+					}
 			}
 		}
-
-		// A bit of duplicate code. Just change the color off all markers
-		foreach ( var pm in progressMarkers )
-			if ( pm.Reached )
-			{
-				pm.ActiveColor = largestColor;
-				pm.Activate( );
-			}
 	}
 }
