@@ -33,13 +33,13 @@ public class BuildingManager : AbstractListManager
 			building.ShowPlaceZone( show );
 	}
 
-	public Vector3 GetNearestCoreOrZero( Vector3 position )
+	public Vector3 GetNearestCoreCastleOrZero( Vector3 position )
 	{
 		Vector3 returnPos = Vector3.zero;
 
 		float distance = 100000000;
 		foreach ( Building building in ItemsList )
-			if ( building.BuildingType == BuildingType.Core &&
+			if ( ( building.BuildingType == BuildingType.Core || building.BuildingType == BuildingType.Castle ) &&
 				 Vector3.Distance( building.transform.position, position) < distance )
 			{
 				distance = Vector3.Distance( building.transform.position, position );
@@ -47,6 +47,22 @@ public class BuildingManager : AbstractListManager
 			}
 
 		return returnPos;
+	}
+
+	public Building GetNearestCoreCastleOrNull( Vector3 position )
+	{
+		Building buildingToReturn = null;
+
+		float distance = 100000000;
+		foreach ( Building building in ItemsList )
+			if ( ( building.BuildingType == BuildingType.Core || building.BuildingType == BuildingType.Castle ) &&
+				 Vector3.Distance( building.transform.position, position ) < distance )
+			{
+				distance = Vector3.Distance( building.transform.position, position );
+				buildingToReturn = building;
+			}
+
+		return buildingToReturn;
 	}
 
 	public bool CanPlaceBuiding( Building buildingToPlace )

@@ -32,7 +32,7 @@ public class Enemy : AbstractListableItem
 		Assert.IsNotNull( agent );
 		Assert.IsNotNull( detector );
 
-		destination = BuildingManager.Instance.GetNearestCoreOrZero( transform.position );
+		destination = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position );
 		agent.SetDestination( destination );
 
 		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
@@ -61,7 +61,7 @@ public class Enemy : AbstractListableItem
 
 	public void SetDestination( )
 	{
-		SetDestination( BuildingManager.Instance.GetNearestCoreOrZero( transform.position ) );
+		SetDestination( BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position ) );
 	}
 
 	public void SetDestination( Transform target )

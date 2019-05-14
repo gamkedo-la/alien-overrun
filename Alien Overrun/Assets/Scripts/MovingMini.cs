@@ -1,27 +1,27 @@
 ﻿/**
- * Description: Glowing resource cube that travels to a location
- * Authors: Dominick Aiudi
+ * Description: Glowing resource cube that travels to a location.
+ * Authors: Dominick Aiudi, Kornel
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MovingMini : MonoBehaviour
 {
-    [SerializeField] private Vector3 destination = new Vector3(5.0f, 5.0f, 5.0f);
+	[SerializeField] private Vector3 posOffset = new Vector3(0, 0.3f, 0);
     [SerializeField] private float speed = 0.1f;
+
+	private Vector3 destination;
     private Vector3 currentPos;
 
-    // Start is called before the first frame update
     void Start()
     {
-        transform.position += new Vector3(0.0f, 1.0f, 0.0f);
+        transform.position += posOffset;
         currentPos = transform.position;
-    }
 
-    // Update is called once per frame
+		destination = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position ) + posOffset;
+	}
+
     void Update()
     {
         transform.position = currentPos;
