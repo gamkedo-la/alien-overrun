@@ -217,6 +217,9 @@ public class EnemyManager : AbstractListManager
 
 	private IEnumerator SpawnWaves( )
 	{
+		while ( !AIProgressManager.Instance.FistTheasholdReached )
+			yield return new WaitForSeconds( 1 );
+
 		yield return new WaitForSeconds( currentWave.WaveDelay );
 
 		while ( LevelManager.Instance.CreativeMode )
@@ -243,7 +246,6 @@ public class EnemyManager : AbstractListManager
 		else
 		{
 			endOfWaves = true;
-			//Debug.Log( "End of waves!" );
 		}
 	}
 }

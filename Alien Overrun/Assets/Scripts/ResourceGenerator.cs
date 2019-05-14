@@ -13,7 +13,7 @@ public class ResourceGenerator : MonoBehaviour
 
 	private void GenerateResources( )
 	{
-		ResourceManager.Instance.AddResources( ResourceType.Minerals, amount );
+		ResourceManager.Instance.AddResources( resourceType, amount );
 
 		Invoke( "GenerateResources", interval );
 	}
