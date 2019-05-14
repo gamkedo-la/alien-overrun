@@ -1231,6 +1231,7 @@ GameObject:
   - component: {fileID: 8559134306675857120}
   - component: {fileID: 8559134306675857126}
   - component: {fileID: 8559134306675857132}
+  - component: {fileID: 3239986954101085908}
   m_Layer: 0
   m_Name: Castle
   m_TagString: Building
@@ -1328,6 +1329,7 @@ MonoBehaviour:
   - {fileID: 6132915252927691474}
   - {fileID: 6132915252722487306}
   - {fileID: 6132915252722487310}
+  - {fileID: 3239986954101085908}
   enableOnStart: 0
 --- !u!114 &8559134306675857132
 MonoBehaviour:
@@ -1366,6 +1368,21 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &3239986954101085908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559134306675857125}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 599b0372f936b314f9af91eead15f53f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resourceType: 0
+  amount: 5
+  interval: 3
 --- !u!1 &8559134307129628778
 GameObject:
   m_ObjectHideFlags: 0
