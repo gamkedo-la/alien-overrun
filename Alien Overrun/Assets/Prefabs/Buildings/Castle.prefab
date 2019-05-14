@@ -1328,7 +1328,7 @@ MonoBehaviour:
   - {fileID: 6132915252927691474}
   - {fileID: 6132915252722487306}
   - {fileID: 6132915252722487310}
-  enableOnStart: 1
+  enableOnStart: 0
 --- !u!114 &8559134306675857132
 MonoBehaviour:
   m_ObjectHideFlags: 0
