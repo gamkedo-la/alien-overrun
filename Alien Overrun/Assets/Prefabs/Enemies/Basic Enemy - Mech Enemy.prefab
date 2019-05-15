@@ -333,10 +333,10 @@ BoxCollider:
   m_GameObject: {fileID: 1894772762418121630}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.962035, y: 2.29, z: 1.9664339}
-  m_Center: {x: -0.07381114, y: 1.05, z: 0.22}
+  m_Size: {x: 2.25, y: 2.07, z: 2.41}
+  m_Center: {x: -0.07381114, y: 1.1, z: 0.22}
 --- !u!65 &4803205141752390006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -348,8 +348,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.2, y: 2.4, z: 2.2}
-  m_Center: {x: -0.07381114, y: 1.05, z: 0.22}
+  m_Size: {x: 2.36, y: 2.3, z: 2.68}
+  m_Center: {x: -0.07381114, y: 1.1, z: 0.22}
 --- !u!114 &1894772762418121627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -566,7 +566,7 @@ NavMeshAgent:
   m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 0.9
-  m_BaseOffset: 0
+  m_BaseOffset: -0.25
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!95 &4799376847786136823
@@ -13796,21 +13796,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.375459
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -13825,6 +13810,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
