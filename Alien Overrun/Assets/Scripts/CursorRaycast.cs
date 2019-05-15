@@ -236,12 +236,7 @@ public class CursorRaycast : MonoBehaviour
 			}
 			else
 			{
-				string typeString = "";
-				int type = (int)lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().ResourceType;
-
-				if (type == 0) typeString = "Mineral";
-				//Set Type Info here when there are more resources types
-
+				string typeString = lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().ResourceType.ToString( );
 				lockedInfo1.text = "Resource Type: " + typeString;
 				lockedInfo2.text = "Amount: " + lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}

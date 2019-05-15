@@ -109,7 +109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -33.14, y: -29.21}
+  m_AnchoredPosition: {x: -33.14, y: -29.210022}
   m_SizeDelta: {x: 400.29, y: 46.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2366229994111764284
@@ -743,7 +743,7 @@ GameObject:
   - component: {fileID: 2366229995960240384}
   - component: {fileID: 2366229995960240447}
   m_Layer: 0
-  m_Name: AI Progress_Agression Bar
+  m_Name: AI Progress Agression Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -865,14 +865,14 @@ MonoBehaviour:
   thresholds:
   - Value: 20
     Color: {r: 1, g: 0.78683865, b: 0, a: 0.9019608}
-    Message: Enemies have noticed your presence.
+    Message: Enemies have noticed your presence
   - Value: 100
     Color: {r: 1, g: 0.59063005, b: 0, a: 0.9019608}
-    Message: Enemies are getting much stronger.
+    Message: Enemies are getting much stronger
   - Value: 500
     Color: {r: 1, g: 0.36017132, b: 0, a: 0.9019608}
-    Message: Enemies are getting serious.
+    Message: Enemies are getting serious
   - Value: 1000
     Color: {r: 1, g: 0, b: 0.049137115, a: 0.9019608}
-    Message: The final wave approaches.
+    Message: The final wave approaches!
   threatCurrent: 0
