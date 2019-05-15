@@ -74,27 +74,6 @@ public class Building : AbstractListableItem
 			BuildingManager.Instance.RemoveItem( this );
 	}
 
-	void OnMouseDown( )
-	{
-		//GetComponentInChildren<MeshRenderer>( ).material.color = Random.ColorHSV( );
-		//Debug.Log( $"Clicked: {name}" );
-	}
-
-	void OnMouseEnter( )
-	{
-		//The Range is shown when selected (locked, not hover)
-		/*
-		if ( !LevelManager.Instance.Paused )
-			indicator.ShowRange( true );
-		*/
-	}
-
-	void OnMouseExit( )
-	{
-		//The Range gets hidden when deselected (locked, not hover)
-		//indicator.HideRange( );
-	}
-
 	void OnTriggerEnter( Collider other )
 	{
 		if ( CollidesWithTags( other.gameObject ) )
@@ -127,6 +106,7 @@ public class Building : AbstractListableItem
 	public void ShowPlaceZone( bool show ) => indicator.ShowZone( show );
 
 	public void ShowRange( bool canBuild ) => indicator.ShowRange( canBuild );
+
 	public void HideRange( ) => indicator.HideRange( );
 
 	public bool AreWeCloseEnough( Building anotherBuilding )

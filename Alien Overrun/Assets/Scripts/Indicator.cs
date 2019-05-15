@@ -74,7 +74,7 @@ public class Indicator : MonoBehaviour
 		range.SetActive( true );
 		foreach ( var item in rangeRenderers )
 			item.material = onMat;
-			
+
 		foreach (var item in buildingRenderers)
 			item.material = buildingNormalMat;
 	}
@@ -86,6 +86,6 @@ public class Indicator : MonoBehaviour
 			item.material = offMat;
 
 		foreach (var item in buildingRenderers)
-			item.material = buildingNormalMat;
+			item.material = buildingBadMat;
 	}
 }

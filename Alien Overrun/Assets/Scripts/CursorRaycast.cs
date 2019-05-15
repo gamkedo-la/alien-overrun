@@ -231,7 +231,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				HP hp = lockedSelection[0].GetComponent<HP>();
 
-				lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance:" + building.PlaceDistance;
+				lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance: " + building.PlaceDistance;
 				lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt(hp.MaxHP) + "/" + Mathf.FloorToInt(hp.CurrentHP) + "\nBuild Time: " + building.BuildTime;
 			}
 			else
@@ -271,7 +271,7 @@ public class CursorRaycast : MonoBehaviour
 					totalResourceAmount += sel.transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
 				}
 			}
-			
+
 			avgMaxHP /= lockedSelection.Count;
 			avgCurrentHP /= lockedSelection.Count;
 
