@@ -13,11 +13,7 @@ using UnityEngine.Assertions;
 [System.Serializable]
 public class Wave
 {
-	public int ID;
-	public float WaveDelay = 2f;
-	public float EnemiesDelay = 1f;
-	public int[] Enemies;
-	public int SpawnPointID;
+
 }
 
 [System.Serializable]
@@ -28,98 +24,29 @@ public class Waves
 
 public class EnemyManager : AbstractListManager
 {
-	private const string myWaves = @"
-{
-    ""EnemyWaves"":
-	[
-        {
-			""ID"": 1,
-            ""WaveDelay"": 5.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 0, 0, 0, 0, 0, 0, 0 ],
-			""SpawnPointID"": 0
-		},
-		{
-			""ID"": 2,
-            ""WaveDelay"": 20.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 0, 0, 0, 0, 0, 0, 0 ],
-			""SpawnPointID"": 1
-		},
-		{
-			""ID"": 3,
-            ""WaveDelay"": 20.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 0, 0, 0, 0, 0, 0, 0 ],
-			""SpawnPointID"": 2
-		},
-		{
-			""ID"": 4,
-            ""WaveDelay"": 25.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 1, 1, 1, 1, 1 ],
-			""SpawnPointID"": 0
-		},
-		{
-			""ID"": 5,
-            ""WaveDelay"": 25.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 1, 1, 0, 0, 1, 1, 0, 0 ],
-			""SpawnPointID"": 1
-		},
-		{
-			""ID"": 6,
-            ""WaveDelay"": 10.0,
-            ""EnemiesDelay"": 0.2,
-            ""Enemies"": [ 2, 0, 0, 2, 0, 0, 2, 0, 0 ],
-			""SpawnPointID"": 2
-		},
-		{
-			""ID"": 7,
-            ""WaveDelay"": 20.0,
-            ""EnemiesDelay"": 1.0,
-            ""Enemies"": [ 2, 2, 1, 1, 0, 0 ],
-			""SpawnPointID"": 1
-		},
-		{
-			""ID"": 8,
-            ""WaveDelay"": 15.0,
-            ""EnemiesDelay"": 0.5,
-            ""Enemies"": [ 2, 2, 1, 1, 1, 1 ],
-			""SpawnPointID"": 0
-		},
-		{
-			""ID"": 9,
-            ""WaveDelay"": 20.0,
-            ""EnemiesDelay"": 1.5,
-            ""Enemies"": [ 1, 1, 0, 0, 2, 2, 1, 1, 0, 0, 1, 1 ],
-			""SpawnPointID"": 1
-		},
-		{
-			""ID"": 10,
-            ""WaveDelay"": 1.0,
-            ""EnemiesDelay"": 1.5,
-            ""Enemies"": [ 1, 1, 0, 0, 2, 2, 1, 1, 0, 0, 1, 1 ],
-			""SpawnPointID"": 1
-		}
-    ]
-}";
-
 	public static EnemyManager Instance { get; private set; }
 
-	public bool EndOfWaves { get { return endOfWaves; } set { endOfWaves = value; } }
-	private bool endOfWaves = false;
+	public bool EndOfWaves { get; private set; }
 
+	[Header("Objects")]
 	[SerializeField] private GameObject[] enemyPrefabs = null;
 	[SerializeField] private Transform crativeModeSpawnPoint = null;
 	[SerializeField] private Transform[] spawnPoints = null;
 	[SerializeField] private TextMeshProUGUI enemyCount = null;
+	[Header("Current Wave Parameters")]
+	[SerializeField] private int waveNum = 0;
+	[SerializeField] private float waveDelay = 2f;
+	[SerializeField] private float spawnDelayMaxOffsetPercent = 20f;
+	[SerializeField] private float delayBetweenEnemies = 1f;
+	[SerializeField] private float delayBetweenEnemiesMaxOffsetPercent = 20f;
+	[SerializeField] private int enemiesInWave = 5;
+	[SerializeField] private float enemiesInWaveMaxOffsetPercent = 20f;
+	[SerializeField] private float[] enemyTypePercentChance = {0.34f, 0.33f, 0.33f };
+	[SerializeField] private float[] spawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
+	[Header("Spawn Options")]
 	[SerializeField] private float radius = 3f;
 	[SerializeField] private float autoSpawningDelay = 0.1f;
 
-	private Waves waves;
-	private Wave currentWave;
-	private int currentWaveIndex = 0;
 	private Coroutine coroutine;
 	private bool autoSpawning = false;
 
@@ -191,9 +118,10 @@ public class EnemyManager : AbstractListManager
 
 	public void NextWaveNow( )
 	{
-		StopCoroutine( coroutine );
+		/*StopCoroutine( coroutine );
 		currentWave.WaveDelay = 0;
-		coroutine = StartCoroutine( SpawnWaves( ) );
+		coroutine = StartCoroutine( SpawnWaves( ) );*/
+		Debug.LogError( "NextWaveNow should not be called anymore." );
 	}
 
 	private void SpawnNewEnemy( int id, Transform spawnPoint )
@@ -209,43 +137,74 @@ public class EnemyManager : AbstractListManager
 
 	private void StartWaves( )
 	{
-		waves = JsonUtility.FromJson<Waves>( myWaves );
-
-		currentWave = waves.EnemyWaves[currentWaveIndex];
 		coroutine = StartCoroutine( SpawnWaves( ) );
 	}
 
 	private IEnumerator SpawnWaves( )
 	{
+		// Waiting till we build a Castle
 		while ( !AIProgressManager.Instance.FistTheasholdReached )
 			yield return new WaitForSeconds( 1 );
 
-		yield return new WaitForSeconds( currentWave.WaveDelay );
+		// Waiting between waves
+		float waveOffset = waveDelay * ( spawnDelayMaxOffsetPercent / 100 );
+		yield return new WaitForSeconds( waveDelay + Random.Range( -waveOffset, waveOffset ) );
 
+		// Pause if we enter Creative Mode
 		while ( LevelManager.Instance.CreativeMode )
 			yield return new WaitForSeconds( 1 );
 
+		// Next wave
 		MessageService.Instance.ShowMessage( "New enemies approaching...", 1f, Color.red );
+		waveNum++;
 
-		for ( int i = 0; i < currentWave.Enemies.Length; i++ )
+		// Spawn enemies in current wave
+		int enemyNumOffset = Mathf.CeilToInt( enemiesInWave * ( enemiesInWaveMaxOffsetPercent / 100 ) );
+		int enemisToSpawn = enemiesInWave + Random.Range( -enemyNumOffset, enemyNumOffset );
+		for ( int i = 0; i < enemisToSpawn; i++ )
 		{
-			yield return new WaitForSeconds( currentWave.EnemiesDelay );
+			// Wait between spawning each enemy
+			float enemyDelayOffet = delayBetweenEnemies * ( delayBetweenEnemiesMaxOffsetPercent / 100 );
+			yield return new WaitForSeconds( delayBetweenEnemies + Random.Range( -enemyDelayOffet, enemyDelayOffet ) );
 
+			// Pause if we enter Creative Mode
 			while ( LevelManager.Instance.CreativeMode )
 				yield return new WaitForSeconds( 1 );
 
-			SpawnNewEnemy( currentWave.Enemies[i], spawnPoints[currentWave.SpawnPointID] );
-		}
+			// Pick enemy using set probabilities
+			int enemyID = 0;
+			float rnd = Random.Range( 0f, 1f );
+			float sum = 0;
+			for ( int j = 0; j < enemyTypePercentChance.Length; j++ )
+			{
+				sum += enemyTypePercentChance[j];
+				if (sum >= rnd)
+				{
+					enemyID = j;
+					break;
+				}
+			}
 
-		currentWaveIndex++;
-		if ( currentWaveIndex < waves.EnemyWaves.Count && enabled )
-		{
-			currentWave = waves.EnemyWaves[currentWaveIndex];
-			coroutine = StartCoroutine( SpawnWaves( ) );
+			// Pick spawn point using set probabilities
+			int spawnPointID = 0;
+			rnd = Random.Range( 0f, 1f );
+			sum = 0;
+			for ( int j = 0; j < spawnPointIDPercentChance.Length; j++ )
+			{
+				sum += spawnPointIDPercentChance[j];
+				if ( sum >= rnd )
+				{
+					spawnPointID = j;
+					break;
+				}
+			}
+
+			SpawnNewEnemy( enemyID, spawnPoints[spawnPointID] );
 		}
-		else
-		{
-			endOfWaves = true;
-		}
+		coroutine = StartCoroutine( SpawnWaves( ) );
+
+		// TODO: Once LastTheasholdReached start checking after a delay:
+		// if ( AIProgressManager.Instance.LastTheasholdReached && ItemsList.Count == 0)
+		// and set EndOfWaves = true; if true
 	}
 }
