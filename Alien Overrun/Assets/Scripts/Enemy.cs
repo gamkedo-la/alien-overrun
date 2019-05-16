@@ -46,6 +46,10 @@ public class Enemy : AbstractListableItem
 			//Debug.Log( "E " + rb.velocity.magnitude );
 			rb.velocity = rb.velocity.normalized * maxVelocityMag;
 		}
+
+		// Just in case enemy drops outside of the map
+		if ( transform.position.y < -1000f )
+			Destroy( gameObject );
 	}
 
 	void OnEnable( )

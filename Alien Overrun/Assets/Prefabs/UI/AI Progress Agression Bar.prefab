@@ -866,13 +866,100 @@ MonoBehaviour:
   - Value: 20
     Color: {r: 1, g: 0.78683865, b: 0, a: 0.9019608}
     Message: Enemies have noticed your presence
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 10
+      SpawnDelayMaxOffsetPercent: 10
+      DelayBetweenEnemies: 2
+      DelayBetweenEnemiesMaxOffsetPercent: 10
+      EnemiesInWave: 5
+      EnemiesInWaveMaxOffsetPercent: 20
+      EnemyTypePercentChance:
+      - 1
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - 1
+      - 0
+      - 0
+    ParametersChangePerPoint:
+      DelayBeforeWave: -0.02
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: -0.003
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 0.05
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 0
   - Value: 100
-    Color: {r: 1, g: 0.59063005, b: 0, a: 0.9019608}
+    Color: {r: 1, g: 0.38475227, b: 0, a: 0.9019608}
     Message: Enemies are getting much stronger
-  - Value: 500
-    Color: {r: 1, g: 0.36017132, b: 0, a: 0.9019608}
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 5
+      SpawnDelayMaxOffsetPercent: 20
+      DelayBetweenEnemies: 1
+      DelayBetweenEnemiesMaxOffsetPercent: 20
+      EnemiesInWave: 12
+      EnemiesInWaveMaxOffsetPercent: 20
+      EnemyTypePercentChance:
+      - 0.5
+      - 0.5
+      - 0
+      SpawnPointIDPercentChance:
+      - 0.5
+      - 0.5
+      - 0
+    ParametersChangePerPoint:
+      DelayBeforeWave: -0.005
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: -0.001
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 0.04
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - -0.00025
+      - -0.00025
+      - 0.0005
+  - Value: 300
+    Color: {r: 1, g: 0, b: 0.13088799, a: 0.9019608}
     Message: Enemies are getting serious
-  - Value: 1000
-    Color: {r: 1, g: 0, b: 0.049137115, a: 0.9019608}
-    Message: The final wave approaches!
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 30
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: 0.3
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 40
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0.34
+      - 0.33
+      - 0.33
+      SpawnPointIDPercentChance:
+      - 0.34
+      - 0.33
+      - 0.33
+    ParametersChangePerPoint:
+      DelayBeforeWave: 0
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: 0
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 0
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 0
   threatCurrent: 0
