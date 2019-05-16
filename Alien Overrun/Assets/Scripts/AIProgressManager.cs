@@ -13,7 +13,7 @@ using UnityEngine.UI;
 [System.Serializable]
 public class WaveParameters
 {
-	public float WaveDelay = 2f;
+	public float DelayBeforeWave = 2f;
 	public float SpawnDelayMaxOffsetPercent = 20f;
 	public float DelayBetweenEnemies = 1f;
 	public float DelayBetweenEnemiesMaxOffsetPercent = 20f;

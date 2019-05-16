@@ -22,7 +22,7 @@ public class EnemyManager : AbstractListManager
 	[SerializeField] private TextMeshProUGUI enemyCount = null;
 	[Header("Current Wave Parameters")]
 	[SerializeField] private int waveNum = 0;
-	[SerializeField] private float waveDelay = 2f;
+	[SerializeField] private float delayBeforeWave = 2f;
 	[SerializeField] private float spawnDelayMaxOffsetPercent = 20f;
 	[SerializeField] private float delayBetweenEnemies = 1f;
 	[SerializeField] private float delayBetweenEnemiesMaxOffsetPercent = 20f;
@@ -135,8 +135,8 @@ public class EnemyManager : AbstractListManager
 			yield return new WaitForSeconds( 1 );
 
 		// Waiting between waves
-		float waveOffset = waveDelay * ( spawnDelayMaxOffsetPercent / 100 );
-		yield return new WaitForSeconds( waveDelay + Random.Range( -waveOffset, waveOffset ) );
+		float waveOffset = delayBeforeWave * ( spawnDelayMaxOffsetPercent / 100 );
+		yield return new WaitForSeconds( delayBeforeWave + Random.Range( -waveOffset, waveOffset ) );
 
 		// Pause if we enter Creative Mode
 		while ( LevelManager.Instance.CreativeMode )
@@ -205,7 +205,7 @@ public class EnemyManager : AbstractListManager
 	{
 		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
 
-		waveDelay = newParameters.WaveDelay * difficulty;
+		delayBeforeWave = newParameters.DelayBeforeWave * difficulty;
 		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent * difficulty;
 		delayBetweenEnemies = newParameters.DelayBetweenEnemies * difficulty;
 		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent * difficulty;
@@ -223,7 +223,7 @@ public class EnemyManager : AbstractListManager
 	{
 		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
 
-		waveDelay += parametersIncrease.WaveDelay * increase;
+		delayBeforeWave += parametersIncrease.DelayBeforeWave * increase;
 		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase * difficulty;
 		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase * difficulty;
 		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase * difficulty;
