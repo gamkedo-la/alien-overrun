@@ -11,11 +11,26 @@ using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 [System.Serializable]
-public struct Thresholds
+public class WaveParameters
+{
+	public float WaveDelay = 2f;
+	public float SpawnDelayMaxOffsetPercent = 20f;
+	public float DelayBetweenEnemies = 1f;
+	public float DelayBetweenEnemiesMaxOffsetPercent = 20f;
+	public float EnemiesInWave = 5;
+	public float EnemiesInWaveMaxOffsetPercent = 20f;
+	public float[] EnemyTypePercentChance = {0.34f, 0.33f, 0.33f };
+	public float[] SpawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
+}
+
+[System.Serializable]
+public class Threshold
 {
 	public int Value;
 	public Color Color;
 	public string Message;
+	public WaveParameters ParametersChangeOnThreshold;
+	public WaveParameters ParametersChangePerPoint;
 }
 
 public class AIProgressManager : MonoBehaviour
@@ -30,7 +45,7 @@ public class AIProgressManager : MonoBehaviour
 	[SerializeField] private float minPos = -191f;
 	[SerializeField] private float maxPos = 191f;
 	[Header( "Threat" )]
-	[SerializeField] private Thresholds[] thresholds = null;
+	[SerializeField] private Threshold[] thresholds = null;
 	[SerializeField] private int threatCurrent = 0;
 
 	private List<ProgressMarker> progressMarkers = new List<ProgressMarker>();

@@ -5,22 +5,9 @@
  **/
 
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
-
-[System.Serializable]
-public class Wave
-{
-
-}
-
-[System.Serializable]
-public class Waves
-{
-	public List<Wave> EnemyWaves;
-}
 
 public class EnemyManager : AbstractListManager
 {
@@ -39,7 +26,7 @@ public class EnemyManager : AbstractListManager
 	[SerializeField] private float spawnDelayMaxOffsetPercent = 20f;
 	[SerializeField] private float delayBetweenEnemies = 1f;
 	[SerializeField] private float delayBetweenEnemiesMaxOffsetPercent = 20f;
-	[SerializeField] private int enemiesInWave = 5;
+	[SerializeField] private float enemiesInWave = 5;
 	[SerializeField] private float enemiesInWaveMaxOffsetPercent = 20f;
 	[SerializeField] private float[] enemyTypePercentChance = {0.34f, 0.33f, 0.33f };
 	[SerializeField] private float[] spawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
@@ -160,7 +147,7 @@ public class EnemyManager : AbstractListManager
 
 		// Spawn enemies in current wave
 		int enemyNumOffset = Mathf.CeilToInt( enemiesInWave * ( enemiesInWaveMaxOffsetPercent / 100 ) );
-		int enemisToSpawn = enemiesInWave + Random.Range( -enemyNumOffset, enemyNumOffset );
+		int enemisToSpawn = (int)( enemiesInWave + Random.Range( -enemyNumOffset, enemyNumOffset ) );
 		for ( int i = 0; i < enemisToSpawn; i++ )
 		{
 			// Wait between spawning each enemy
@@ -178,7 +165,7 @@ public class EnemyManager : AbstractListManager
 			for ( int j = 0; j < enemyTypePercentChance.Length; j++ )
 			{
 				sum += enemyTypePercentChance[j];
-				if (sum >= rnd)
+				if ( sum >= rnd )
 				{
 					enemyID = j;
 					break;
@@ -206,5 +193,33 @@ public class EnemyManager : AbstractListManager
 		// TODO: Once LastTheasholdReached start checking after a delay:
 		// if ( AIProgressManager.Instance.LastTheasholdReached && ItemsList.Count == 0)
 		// and set EndOfWaves = true; if true
+	}
+
+	public void ChangeParametersOnThresholdChange( WaveParameters newParameters )
+	{
+		waveDelay = newParameters.WaveDelay;
+		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent;
+		delayBetweenEnemies = newParameters.DelayBetweenEnemies;
+		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent;
+		enemiesInWave = newParameters.EnemiesInWave;
+		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent;
+		enemyTypePercentChance = newParameters.EnemyTypePercentChance;
+		spawnPointIDPercentChance = newParameters.SpawnPointIDPercentChance;
+	}
+
+	public void ChangeParametersOnThreatChange( WaveParameters parametersIncrease, int increase )
+	{
+		waveDelay += parametersIncrease.WaveDelay * increase;
+		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase;
+		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase;
+		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase;
+		enemiesInWave += parametersIncrease.EnemiesInWave * increase;
+		enemiesInWaveMaxOffsetPercent += parametersIncrease.EnemiesInWaveMaxOffsetPercent * increase;
+		enemyTypePercentChance[0] += parametersIncrease.EnemyTypePercentChance[0] * increase;
+		enemyTypePercentChance[1] += parametersIncrease.EnemyTypePercentChance[1] * increase;
+		enemyTypePercentChance[2] += parametersIncrease.EnemyTypePercentChance[2] * increase;
+		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase;
+		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase;
+		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase;
 	}
 }
