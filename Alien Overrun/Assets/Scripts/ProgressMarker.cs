@@ -14,6 +14,8 @@ public class ProgressMarker : MonoBehaviour
 	public int Theashold { get; private set; }
 	public Color ActiveColor { get; set; }
 	public bool Reached { get; private set; }
+	public WaveParameters ParametersChangeOnThreshold { get; private set; }
+	public WaveParameters ParametersChangePerPoint { get; private set; }
 
 	[SerializeField] private Image upperPart = null;
 	[SerializeField] private Image bottomPart = null;
@@ -43,12 +45,14 @@ public class ProgressMarker : MonoBehaviour
 		MessageService.Instance.ShowMessage( message, 2f, ActiveColor );
 	}
 
-	public void Set( Vector2 position, int value, Color activeColor, string message )
+	public void Set( Vector2 position, int value, Color activeColor, string message, WaveParameters parametersChangeOnThreshold, WaveParameters parametersChangePerPoint )
 	{
 		transform.localPosition = position;
 		amountLabel.text = value.ToString( );
 		ActiveColor = activeColor;
 		Theashold = value;
 		this.message = message;
+		ParametersChangeOnThreshold = parametersChangeOnThreshold;
+		ParametersChangePerPoint = parametersChangePerPoint;
 	}
 }
