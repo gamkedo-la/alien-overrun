@@ -8,7 +8,8 @@ using UnityEngine;
 
 public class ModeSelection : MonoBehaviour
 {
-	public bool CreativeMode { get; set; }
+	public bool CreativeMode { get; set; } = false;
+	public float LevelDifficultyModifier { get; set; } = 1.0f;
 
 	void Start( )
 	{

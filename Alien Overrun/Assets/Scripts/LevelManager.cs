@@ -13,10 +13,12 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private GameObject[] skirmishModeOnly = null;
 	[SerializeField] private GameObject[] creativeModeOnly = null;
 
-	[SerializeField] private bool paused = false;
 	public bool Paused { get { return paused; } set { paused = value; } }
+	[SerializeField] private bool paused = false;
 
-	[SerializeField] private bool creativeMode = false;
+	public float LevelDifficultyModifier { get { return dificultyLevelModifier; } set { dificultyLevelModifier = value; } }
+	[SerializeField, Range(0.2f, 5f)] private float dificultyLevelModifier = 1.0f;
+
 	public bool CreativeMode
 	{
 		get { return creativeMode; }
@@ -26,6 +28,7 @@ public class LevelManager : MonoBehaviour
 			SwitchMode( );
 		}
 	}
+	[SerializeField] private bool creativeMode = false;
 
 	[SerializeField] private UnityEvent onWin = null;
 	[SerializeField] private UnityEvent onLose = null;
@@ -52,7 +55,10 @@ public class LevelManager : MonoBehaviour
 		// "Load" info about selected mode
 		ModeSelection modeSelection = FindObjectOfType<ModeSelection>( );
 		if ( modeSelection )
+		{
 			CreativeMode = modeSelection.CreativeMode;
+			LevelDifficultyModifier = modeSelection.LevelDifficultyModifier;
+		}
 
 		SwitchMode( );
 	}

@@ -203,29 +203,37 @@ public class EnemyManager : AbstractListManager
 
 	public void ChangeParametersOnThresholdChange( WaveParameters newParameters )
 	{
-		waveDelay = newParameters.WaveDelay;
-		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent;
-		delayBetweenEnemies = newParameters.DelayBetweenEnemies;
-		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent;
-		enemiesInWave = newParameters.EnemiesInWave;
-		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent;
-		enemyTypePercentChance = newParameters.EnemyTypePercentChance;
-		spawnPointIDPercentChance = newParameters.SpawnPointIDPercentChance;
+		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
+
+		waveDelay = newParameters.WaveDelay * difficulty;
+		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent * difficulty;
+		delayBetweenEnemies = newParameters.DelayBetweenEnemies * difficulty;
+		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent * difficulty;
+		enemiesInWave = newParameters.EnemiesInWave * difficulty;
+		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent * difficulty;
+		enemyTypePercentChance[0] = newParameters.EnemyTypePercentChance[0] * difficulty;
+		enemyTypePercentChance[1] = newParameters.EnemyTypePercentChance[1] * difficulty;
+		enemyTypePercentChance[2] = newParameters.EnemyTypePercentChance[2] * difficulty;
+		spawnPointIDPercentChance[0] = newParameters.SpawnPointIDPercentChance[0] * difficulty;
+		spawnPointIDPercentChance[1] = newParameters.SpawnPointIDPercentChance[1] * difficulty;
+		spawnPointIDPercentChance[2] = newParameters.SpawnPointIDPercentChance[2] * difficulty;
 	}
 
 	public void ChangeParametersOnThreatChange( WaveParameters parametersIncrease, int increase )
 	{
+		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
+
 		waveDelay += parametersIncrease.WaveDelay * increase;
-		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase;
-		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase;
-		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase;
-		enemiesInWave += parametersIncrease.EnemiesInWave * increase;
-		enemiesInWaveMaxOffsetPercent += parametersIncrease.EnemiesInWaveMaxOffsetPercent * increase;
-		enemyTypePercentChance[0] += parametersIncrease.EnemyTypePercentChance[0] * increase;
-		enemyTypePercentChance[1] += parametersIncrease.EnemyTypePercentChance[1] * increase;
-		enemyTypePercentChance[2] += parametersIncrease.EnemyTypePercentChance[2] * increase;
-		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase;
-		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase;
-		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase;
+		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase * difficulty;
+		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase * difficulty;
+		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase * difficulty;
+		enemiesInWave += parametersIncrease.EnemiesInWave * increase * difficulty;
+		enemiesInWaveMaxOffsetPercent += parametersIncrease.EnemiesInWaveMaxOffsetPercent * increase * difficulty;
+		enemyTypePercentChance[0] += parametersIncrease.EnemyTypePercentChance[0] * increase * difficulty;
+		enemyTypePercentChance[1] += parametersIncrease.EnemyTypePercentChance[1] * increase * difficulty;
+		enemyTypePercentChance[2] += parametersIncrease.EnemyTypePercentChance[2] * increase * difficulty;
+		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase * difficulty;
+		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase * difficulty;
+		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase * difficulty;
 	}
 }
