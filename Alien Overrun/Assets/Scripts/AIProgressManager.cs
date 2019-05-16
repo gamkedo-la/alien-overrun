@@ -85,7 +85,7 @@ public class AIProgressManager : MonoBehaviour
 			progressMarkers.Add( pm );
 			float xPos = Utilities.ConvertRange( 0, threatMax, minPos, maxPos, thresholds[i].Value );
 			pm.Set( new Vector2( xPos, 0 ), thresholds[i].Value, thresholds[i].Color, thresholds[i].Message,
-					thresholds[i].ParametersChangeOnThreshold, thresholds[i].ParametersChangePerPoint );
+					thresholds[i].ParametersChangeOnThreshold, thresholds[i].ParametersChangePerPoint, i == thresholds.Length - 1 );
 		}
 
 		currentProgressMarker = progressMarkers[0];
@@ -95,20 +95,22 @@ public class AIProgressManager : MonoBehaviour
 
 	public void AddThreat( int amount )
 	{
+		int oldThreat = threatCurrent;
 		threatCurrent += amount;
 		threatCurrent = Mathf.Clamp( threatCurrent, 0, threatMax );
 
-		EnemyManager.Instance.ChangeParametersOnThreatChange( currentProgressMarker.ParametersChangePerPoint, amount );
+		EnemyManager.Instance.ChangeParametersOnThreatChange( currentProgressMarker.ParametersChangePerPoint, threatCurrent - oldThreat );
 
 		UpdateBar( );
 	}
 
 	public void RemoveThreat( int amount )
 	{
+		int oldThreat = threatCurrent;
 		threatCurrent -= amount;
 		threatCurrent = Mathf.Clamp( threatCurrent, 0, threatMax );
 
-		EnemyManager.Instance.ChangeParametersOnThreatChange( currentProgressMarker.ParametersChangePerPoint, -amount );
+		EnemyManager.Instance.ChangeParametersOnThreatChange( currentProgressMarker.ParametersChangePerPoint, threatCurrent - oldThreat );
 
 		UpdateBar( );
 	}
@@ -129,6 +131,9 @@ public class AIProgressManager : MonoBehaviour
 				EnemyManager.Instance.ChangeParametersOnThresholdChange( pm.ParametersChangeOnThreshold );
 
 				FistTheasholdReached = true;
+
+				if ( pm.LastThreshold )
+					EnemyManager.Instance.LastThresholdReached( );
 
 				foreach ( var p in progressMarkers ) // A bit of duplicate code but just changes the color off all markers
 					if ( p.Reached )

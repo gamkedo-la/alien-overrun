@@ -36,6 +36,7 @@ public class EnemyManager : AbstractListManager
 
 	private Coroutine coroutine;
 	private bool autoSpawning = false;
+	private bool spawningLastWave = false;
 
 	private protected override void Awake( )
 	{
@@ -188,11 +189,16 @@ public class EnemyManager : AbstractListManager
 
 			SpawnNewEnemy( enemyID, spawnPoints[spawnPointID] );
 		}
-		coroutine = StartCoroutine( SpawnWaves( ) );
 
-		// TODO: Once LastTheasholdReached start checking after a delay:
-		// if ( AIProgressManager.Instance.LastTheasholdReached && ItemsList.Count == 0)
-		// and set EndOfWaves = true; if true
+		if ( !spawningLastWave )
+			coroutine = StartCoroutine( SpawnWaves( ) );
+		else
+			EndOfWaves = true;
+	}
+
+	public void LastThresholdReached( )
+	{
+		spawningLastWave = true;
 	}
 
 	public void ChangeParametersOnThresholdChange( WaveParameters newParameters )
