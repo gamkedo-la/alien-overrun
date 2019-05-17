@@ -11,16 +11,21 @@ using UnityEngine.Assertions;
 public enum ResourceType
 {
 	Minerals,
+	Crystals,
 }
 
 public class ResourceManager : AbstractListManager
 {
 	public static ResourceManager Instance { get; private set; }
-
 	public int Minerals { get; private set; }
+	public int Crystals { get; private set; }
 
 	[SerializeField] private TextMeshProUGUI mineralsLabel = null;
+	[SerializeField] private TextMeshProUGUI crystalsLabel = null;
 	[SerializeField] private int startMinerals = 300;
+	[SerializeField] private int startCrystals = 0;
+
+	private const int maxResourcesPossible = 10000;
 
 	private protected override void Awake( )
 	{
@@ -37,19 +42,17 @@ public class ResourceManager : AbstractListManager
 	private void Start( )
 	{
 		Assert.IsNotNull( mineralsLabel );
+		Assert.IsNotNull( crystalsLabel );
 
 		Minerals = startMinerals;
+		Crystals = startCrystals;
 		UpdateLabels( );
 	}
-
-	/*private void FixedUpdate( )
-	{
-		CreativeModeResourceCheck( );
-	}*/
 
 	public void CheatAddResources( )
 	{
 		AddResources( ResourceType.Minerals, 10000 );
+		AddResources( ResourceType.Crystals, 10000 );
 	}
 
 	public void AddResources( ResourceType type, int amount )
@@ -57,7 +60,11 @@ public class ResourceManager : AbstractListManager
 		switch ( type )
 		{
 			case ResourceType.Minerals:
-			Minerals = Mathf.Clamp( Minerals + amount, 0, 10000 );
+			Minerals = Mathf.Clamp( Minerals + amount, 0, maxResourcesPossible );
+			break;
+
+			case ResourceType.Crystals:
+			Crystals = Mathf.Clamp( Crystals + amount, 0, maxResourcesPossible );
 			break;
 
 			default:
@@ -72,7 +79,11 @@ public class ResourceManager : AbstractListManager
 		switch ( type )
 		{
 			case ResourceType.Minerals:
-			Minerals = Mathf.Clamp( Minerals - amount, 0, 10000 );
+			Minerals = Mathf.Clamp( Minerals - amount, 0, maxResourcesPossible );
+			break;
+
+			case ResourceType.Crystals:
+			Crystals = Mathf.Clamp( Crystals - amount, 0, maxResourcesPossible );
 			break;
 
 			default:
@@ -89,6 +100,9 @@ public class ResourceManager : AbstractListManager
 			case ResourceType.Minerals:
 			return Minerals >= amount;
 
+			case ResourceType.Crystals:
+			return Crystals >= amount;
+
 			default:
 			break;
 		}
@@ -96,14 +110,9 @@ public class ResourceManager : AbstractListManager
 		return false;
 	}
 
-	private void CreativeModeResourceCheck( )
-	{
-		if ( LevelManager.Instance.CreativeMode && Minerals < 10000 )
-			Minerals = 10000;
-	}
-
 	private void UpdateLabels( )
 	{
 		mineralsLabel.text = $"Minerals: {Minerals}";
+		crystalsLabel.text = $"Crystals: {Crystals}";
 	}
 }
