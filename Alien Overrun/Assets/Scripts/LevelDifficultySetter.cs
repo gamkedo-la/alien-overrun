@@ -30,7 +30,7 @@ public class LevelDifficultySetter : MonoBehaviour
 	public void SetValue( float value )
 	{
 		modeSelection.LevelDifficultyModifier = value / multiplyerUsed;
-		label.text = string.Format( "{0:0.0}", value / multiplyerUsed );
+		label.text = string.Format( "x{0:0.0}", value / multiplyerUsed );
 
 		foreach ( var image in images )
 			image.color = gradient.Evaluate( Utilities.ConvertRange( slider.minValue, slider.maxValue, 0, 1, value ) );
