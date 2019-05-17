@@ -43,7 +43,7 @@ public class Building : AbstractListableItem
 	[SerializeField] private bool enableOnStart = false;
 
 	private int collisions = 0;
-
+	
 	void Start( )
 	{
 		Assert.IsNotNull( indicator );
@@ -59,7 +59,7 @@ public class Building : AbstractListableItem
 		if ( enableOnStart )
 			EnableBuilding( );
 	}
-
+	
 	protected private virtual void SetOponentListManager( )
 	{
 		OponentFinder[] oponentFinders = gameObject.GetComponentsInChildren<OponentFinder>( );

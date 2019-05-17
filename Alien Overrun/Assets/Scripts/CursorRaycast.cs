@@ -7,6 +7,7 @@ public class CursorRaycast : MonoBehaviour
 {
 	public GameObject hoverSelectionInfoUI;
 	public GameObject lockedSelectionInfoUI;
+	public GameObject editOptionsUI;
 	[Space]
 
 	public Material defaultCursorMaterial;
@@ -49,6 +50,8 @@ public class CursorRaycast : MonoBehaviour
 	}
 	void Update()
 	{
+		UpdateEditOptions();
+
 		CheckSelectionExistence();
 		UpdateCursorPositionAndEntityInfo();
 		SelectionControl();
@@ -80,6 +83,45 @@ public class CursorRaycast : MonoBehaviour
 			{
 				hoverSelectionInfoUI.SetActive(false);
 				rend.material = defaultCursorMaterial;
+			}
+		}
+	}
+
+	private void UpdateEditOptions()
+	{
+		if (lockedSelection.Count > 0 && DoesSelectionContainBuilding())
+		{
+			editOptionsUI.SetActive(true);
+			editOptionsUI.transform.position = cam.WorldToScreenPoint(lockedSelection[0].transform.position);
+
+			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
+		}
+		else
+		{
+			editOptionsUI.SetActive(false);
+			//editOptionsUI.transform.position = Input.mousePosition;
+		}
+	}
+
+	private bool DoesSelectionContainBuilding()
+	{
+		foreach (var sel in lockedSelection)
+			if (sel.GetComponent<Building>() != null) return true;
+
+		return false;
+	}
+
+	private void ToggleRangeIndicatorForSelection(bool value)
+	{
+		foreach (var sel in lockedSelection)
+		{
+			Building building = sel.GetComponent<Building>();
+			if (building != null)
+			{
+				if (value)
+					building.Indicator.ShowRange(true);
+				else
+					building.Indicator.HideRange();
 			}
 		}
 	}
@@ -290,8 +332,10 @@ public class CursorRaycast : MonoBehaviour
 		selectionIndicator.Add(newSelInd);
 		newSelInd.transform.parent = addSel.transform;
 		Building building = addSel.GetComponent<Building>();
+		/*
 		if(building != null)
 			building.Indicator.ShowRange(true);
+			*/
 	}
 
 	public void RemoveFromSelection(GameObject remSel)
