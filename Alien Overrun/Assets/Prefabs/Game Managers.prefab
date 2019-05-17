@@ -359,6 +359,8 @@ GameObject:
   - component: {fileID: 8630490770266569227}
   - component: {fileID: 8630490770266569270}
   - component: {fileID: 8630490770266569269}
+  - component: {fileID: 4105180477166933291}
+  - component: {fileID: 7047177247307094293}
   - component: {fileID: 8630490770266569226}
   - component: {fileID: 8630490770266569268}
   m_Layer: 0
@@ -403,6 +405,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   paused: 0
+  dificultyLevelModifier: 1
   creativeMode: 0
   onWin:
     m_PersistentCalls:
@@ -471,7 +474,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mineralsLabel: {fileID: 0}
-  startMinerals: 200
+  crystalsLabel: {fileID: 0}
+  startMinerals: 150
+  startCrystals: 0
+--- !u!114 &4105180477166933291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630490770266569225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8630da38fd8fd940aee1bd70a016212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7047177247307094293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630490770266569225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69a545fc4ae49be428cdd9c2dccbde28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8630490770266569226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +523,21 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   enemyCount: {fileID: 0}
+  waveNum: 0
+  delayBeforeWave: 2
+  spawnDelayMaxOffsetPercent: 20
+  delayBetweenEnemies: 1
+  delayBetweenEnemiesMaxOffsetPercent: 20
+  enemiesInWave: 5
+  enemiesInWaveMaxOffsetPercent: 20
+  enemyTypePercentChance:
+  - 0.34
+  - 0.33
+  - 0.33
+  spawnPointIDPercentChance:
+  - 0.34
+  - 0.33
+  - 0.33
   radius: 3
   autoSpawningDelay: 0.1
 --- !u!114 &8630490770266569268

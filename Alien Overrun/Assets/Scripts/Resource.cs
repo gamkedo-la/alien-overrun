@@ -42,14 +42,40 @@ public class Resource : AbstractListableItem
 
 	void OnEnable( )
 	{
-		if ( ResourceManager.Instance )
-			ResourceManager.Instance.AddItem( this );
+		switch ( resourceType )
+		{
+			case ResourceType.Minerals:
+			if ( ResourceManagerMineral.Instance )
+				ResourceManagerMineral.Instance.AddItem( this );
+			break;
+
+			case ResourceType.Crystals:
+			if ( ResourceManagerCrystal.Instance )
+				ResourceManagerCrystal.Instance.AddItem( this );
+			break;
+
+			default:
+			break;
+		}
 	}
 
 	void OnDisable( )
 	{
-		if ( ResourceManager.Instance )
-			ResourceManager.Instance.RemoveItem( this );
+		switch ( resourceType )
+		{
+			case ResourceType.Minerals:
+			if ( ResourceManagerMineral.Instance )
+				ResourceManagerMineral.Instance.RemoveItem( this );
+			break;
+
+			case ResourceType.Crystals:
+			if ( ResourceManagerCrystal.Instance )
+				ResourceManagerCrystal.Instance.RemoveItem( this );
+			break;
+
+			default:
+			break;
+		}
 	}
 
 	public void CollectResources( int amount, Vector3 source )

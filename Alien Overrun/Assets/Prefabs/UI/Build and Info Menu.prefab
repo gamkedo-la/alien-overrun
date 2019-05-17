@@ -3977,9 +3977,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   button: {fileID: 139962149825933039}
   buttonText: {fileID: 8174448558012977862}
-  building: {fileID: 4493658589205626782, guid: b060cfbc66fa6554c8262579b01fd05d,
+  building: {fileID: 4844557287612015267, guid: b060cfbc66fa6554c8262579b01fd05d,
     type: 3}
-  buildingPlacer: {fileID: 3301198762692530314, guid: b060cfbc66fa6554c8262579b01fd05d,
+  buildingPlacer: {fileID: 497143050404698723, guid: b060cfbc66fa6554c8262579b01fd05d,
     type: 3}
   pointOfPlane: {fileID: 0}
   requiresFirstThreshold: 1

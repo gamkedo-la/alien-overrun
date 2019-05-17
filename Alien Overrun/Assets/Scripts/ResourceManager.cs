@@ -14,7 +14,7 @@ public enum ResourceType
 	Crystals,
 }
 
-public class ResourceManager : AbstractListManager
+public class ResourceManager : MonoBehaviour
 {
 	public static ResourceManager Instance { get; private set; }
 	public int Minerals { get; private set; }
@@ -27,10 +27,8 @@ public class ResourceManager : AbstractListManager
 
 	private const int maxResourcesPossible = 10000;
 
-	private protected override void Awake( )
+	private void Awake( )
 	{
-		base.Awake( );
-
 		if ( Instance != null && Instance != this )
 			Destroy( gameObject );
 		else
