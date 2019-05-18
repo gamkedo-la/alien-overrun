@@ -8,6 +8,7 @@ public class CursorRaycast : MonoBehaviour
 	public GameObject hoverSelectionInfoUI;
 	public GameObject lockedSelectionInfoUI;
 	public GameObject editOptionsUI;
+	public GameObject selectionMoveObject;
 	[Space]
 
 	public Material defaultCursorMaterial;
@@ -39,6 +40,8 @@ public class CursorRaycast : MonoBehaviour
 
 	private Camera cam = null;
 
+	private Vector3 prevSelectionMoveObjectPos = Vector3.zero;
+
 	void Start()
 	{
 		Vector3 upVector = Vector3.up;
@@ -50,7 +53,7 @@ public class CursorRaycast : MonoBehaviour
 	}
 	void Update()
 	{
-		UpdateEditOptions();
+		UpdateEditOptionsAndMoveObject();
 
 		CheckSelectionExistence();
 		UpdateCursorPositionAndEntityInfo();
@@ -87,26 +90,59 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
-	private void UpdateEditOptions()
+	private bool IsAnyEditOptionsHovered()
+	{
+		for (int i = 0; i < editOptionsUI.transform.childCount - 1; i++)
+		{
+			if (editOptionsUI.transform.GetChild(i).gameObject.GetComponent<EditOptionsButton>().hover)
+				return true;
+		}
+
+		return false;
+	}
+
+	private void UpdateEditOptionsAndMoveObject()
 	{
 		if (lockedSelection.Count > 0 && DoesSelectionContainBuilding())
 		{
 			editOptionsUI.SetActive(true);
 			editOptionsUI.transform.position = cam.WorldToScreenPoint(lockedSelection[0].transform.position);
-
+			
 			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
+
+			editOptionsUI.transform.GetChild(0).gameObject.SetActive(!DoesSelectionContainCastleOrCore() && !DoesSelectionContainResource());//&& lockedSelection.Count <= 1);
 		}
 		else
 		{
 			editOptionsUI.SetActive(false);
 			//editOptionsUI.transform.position = Input.mousePosition;
 		}
+		
+		Ray mRay = cam.ScreenPointToRay(Input.mousePosition);
+		if (plane.Raycast(mRay, out float mouseDistance))
+			selectionMoveObject.transform.position = mRay.GetPoint(mouseDistance);
 	}
 
 	private bool DoesSelectionContainBuilding()
 	{
 		foreach (var sel in lockedSelection)
 			if (sel.GetComponent<Building>() != null) return true;
+
+		return false;
+	}
+
+	private bool DoesSelectionContainResource()
+	{
+		foreach (var sel in lockedSelection)
+			if (sel.GetComponent<Building>() == null) return true;
+
+		return false;
+	}
+
+	public bool DoesSelectionContainCastleOrCore()
+	{
+		foreach (var sel in lockedSelection)
+			if (sel.name.Contains("Castle") || sel.name.Contains("Core")) return true;
 
 		return false;
 	}
@@ -192,8 +228,14 @@ public class CursorRaycast : MonoBehaviour
 
 	private void SelectionControl()
 	{
-		if (Input.GetMouseButtonDown(0))
+		if (Input.GetMouseButtonDown(0) && !IsAnyEditOptionsHovered())
 		{
+			if (selectionMoveObject.transform.childCount > 0)
+			{
+				PlaceMoveSelection(!IsMoveSelectionPlaceable());
+				return;
+			}
+
 			if (hoverSelection != null)
 			{
 				if (lockedSelection.Count > 0)
@@ -402,5 +444,60 @@ public class CursorRaycast : MonoBehaviour
 
 			selectionIndicator.Clear();
 		}
+	}
+
+	public void MoveSelection()
+	{
+		foreach (var sel in lockedSelection)
+		{
+			prevSelectionMoveObjectPos = selectionMoveObject.transform.position;
+			sel.transform.parent = selectionMoveObject.transform;
+
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+				building.DisableBuildingToMoveAgain();
+		}
+
+		BuildingManager.Instance.ShowZones(true);
+	}
+
+	public bool IsMoveSelectionPlaceable()
+	{
+		foreach (var sel in lockedSelection)
+		{
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+			{
+				if (!BuildingManager.Instance.CanPlaceBuiding(building) || !building.CanBePaced())
+					return false;
+			}
+		}
+
+		return true;
+	}
+	
+	public void PlaceMoveSelection( bool reset = false )
+	{
+		if(reset)
+			selectionMoveObject.transform.position = prevSelectionMoveObjectPos;
+
+		foreach (var sel in lockedSelection)
+		{
+			if (reset)
+				sel.transform.position = sel.transform.position;
+			
+			sel.transform.parent = null;
+			
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+				building.EnableBuilding();
+		}
+
+		selectionMoveObject.transform.position = Vector3.zero;
+
+		BuildingManager.Instance.ShowZones(false);
 	}
 }

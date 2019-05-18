@@ -101,6 +101,21 @@ public class Building : AbstractListableItem
 		AIProgressManager.Instance.AddThreat( Threat );
 	}
 
+	public void DisableBuildingToMoveAgain()
+	{
+		BuildingManager.Instance.RemoveItem( this );
+		col.enabled = true;
+
+		foreach (var item in toEnableOnBuild)
+		{
+			item.enabled = false;
+		}
+
+		colP.enabled = false;
+
+		AIProgressManager.Instance.RemoveThreat( Threat );
+	}
+
 	public bool CanBePaced( ) => collisions == 0;
 
 	public void ShowPlaceZone( bool show ) => indicator.ShowZone( show );
