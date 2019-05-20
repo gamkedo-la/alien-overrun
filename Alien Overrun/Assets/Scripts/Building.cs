@@ -139,12 +139,17 @@ public class Building : AbstractListableItem
 			AIProgressManager.Instance.RemoveThreat( Threat );
 	}
 
+	public float GetRepairCost()
+	{
+		return BuildCost * ((float)RepairCostPercent / 100) * (1 - (hp.CurrentHP / hp.MaxHP));
+	}
+
 	public void Repair( )
 	{
 		if ( BuildCost == 0 )
 			return;
 
-		float repairCost = BuildCost * ( (float)RepairCostPercent / 100 ) * ( 1 - ( hp.CurrentHP / hp.MaxHP ) );
+		float repairCost = GetRepairCost();
 
 		if ( ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)repairCost ) )
 		{

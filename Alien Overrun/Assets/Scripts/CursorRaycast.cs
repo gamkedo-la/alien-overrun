@@ -53,9 +53,8 @@ public class CursorRaycast : MonoBehaviour
 	}
 	void Update()
 	{
-		UpdateEditOptionsAndMoveObject();
-
 		CheckSelectionExistence();
+		UpdateEditOptionsAndMoveObject();
 		UpdateCursorPositionAndEntityInfo();
 		SelectionControl();
 	}
@@ -89,7 +88,7 @@ public class CursorRaycast : MonoBehaviour
 			}
 		}
 	}
-
+	
 	private bool IsAnyEditOptionsHovered()
 	{
 		for (int i = 0; i < editOptionsUI.transform.childCount - 1; i++)
@@ -110,7 +109,12 @@ public class CursorRaycast : MonoBehaviour
 
 			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
 
-			editOptionsUI.transform.GetChild(0).gameObject.SetActive(!DoesSelectionContainCastleOrCore() && !DoesSelectionContainResource());//&& lockedSelection.Count <= 1);
+			bool castleOrCore = DoesSelectionContainCastleOrCore();
+			bool resource = DoesSelectionContainResource();
+			editOptionsUI.transform.GetChild(0).gameObject.SetActive(!castleOrCore && !resource);//&& lockedSelection.Count <= 1);
+			editOptionsUI.transform.GetChild(1).gameObject.SetActive(!castleOrCore);
+			editOptionsUI.transform.GetChild(2).gameObject.SetActive(!castleOrCore);
+			editOptionsUI.transform.GetChild(3).gameObject.SetActive(!castleOrCore);
 		}
 		else
 		{
@@ -446,12 +450,29 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
+	public int GetSelectionRepairCost()
+	{
+		int cost = 0;
+
+		foreach (var sel in lockedSelection)
+		{
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+				cost += Mathf.FloorToInt(building.GetRepairCost());
+		}
+
+		return cost;
+	}
+
 	public void RepairSelection( )
 	{
 		foreach ( var sel in lockedSelection )
 		{
 			Building building = sel.GetComponent<Building>( );
-			building.Repair( );
+
+			if(building != null)
+				building.Repair( );
 		}
 	}
 

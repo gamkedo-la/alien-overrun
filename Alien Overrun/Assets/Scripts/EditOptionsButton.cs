@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -35,6 +36,9 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
 	void Update()
 	{
+		if (cursorRaycast.LockedSelection().Count <= 0)
+			transform.parent.gameObject.SetActive(false);
+
 		if (hover && Input.GetMouseButtonDown(0))
 		{
 			if (option == EditOptions.Move)
@@ -64,6 +68,12 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 		}
 
 		hover = usingWorldSpaceCanvas ? false : hover;
+
+		if (option == EditOptions.Repair)
+		{
+			int cost = cursorRaycast.GetSelectionRepairCost();
+			transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost == 0 ? "" : cost.ToString() + " Min");
+		}
 	}
 
 	void OnMouseOver()
