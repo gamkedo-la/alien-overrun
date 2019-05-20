@@ -23,6 +23,9 @@ public class ObjectPlacementTool : EditorWindow
 	private int spawnAmountMax = 10;
 	private float rotationYMin = 0f;
 	private float rotationYMax = 360f;
+	private float swivelZX = 360f;
+	private float swivelZXMin = 360f;
+	private float swivelZXMax = 360f;
 	private float scaleMin = 0.1f;
 	private float scaleMax = 3f;
 	private float minDistance = 1f;
@@ -44,6 +47,9 @@ public class ObjectPlacementTool : EditorWindow
 	private readonly GUIContent rotationYRangeLabel = new GUIContent( "Y Rotation Range", "Min and max Y rotation of the placed objects. Corresponds to the numbers below." );
 	private readonly GUIContent rotationYMinLabel = new GUIContent( "Min. Y Rotation", "Minimum Y rotation of the placed objects." );
 	private readonly GUIContent rotationYMaxLabel = new GUIContent( "Max. Y Rotation", "Maximum Y rotation of the placed objects." );
+	private readonly GUIContent swivelZXRangeLabel = new GUIContent( "X & Z Swivel Range", "Min and max Y/Z swivel of the placed objects. How angled is the object." );
+	private readonly GUIContent swivelZXMinLabel = new GUIContent( "Min. X & Z Swivel", "Minimum X & Z swivel of the placed objects." );
+	private readonly GUIContent swivelZXMaxLabel = new GUIContent( "Max. X & Z Swivel", "Maximum X & Z swivel of the placed objects." );
 	private readonly GUIContent scaleDistanceLabel = new GUIContent( "Scale with objects", "Objects that get big scale will keep more space around them and objects that get assigned smaller scale will proportionally get less free space around them." );
 	private readonly GUIContent useTagLabel = new GUIContent( "Filter Using a Tag", "Will only show the tool (and by extension allow to place) on objects with a selected Tag." );
 	private readonly GUIContent tagToUseLabel = new GUIContent( "Tag", "Will only work on objects that have this Tag." );
@@ -143,6 +149,13 @@ public class ObjectPlacementTool : EditorWindow
 		EditorGUILayout.MinMaxSlider( rotationYRangeLabel, ref rotationYMin, ref rotationYMax, 0f, 360f );
 		rotationYMin = EditorGUILayout.FloatField( rotationYMinLabel, rotationYMin );
 		rotationYMax = EditorGUILayout.FloatField( rotationYMaxLabel, rotationYMax );
+
+		// Swivel
+		EditorGUILayout.Space( );
+		EditorGUILayout.LabelField( "X & Z Swivel", EditorStyles.boldLabel );
+		EditorGUILayout.MinMaxSlider( swivelZXRangeLabel, ref swivelZXMin, ref swivelZXMax, 0f, 360f );
+		swivelZXMin = EditorGUILayout.FloatField( swivelZXMinLabel, swivelZXMin );
+		swivelZXMax = EditorGUILayout.FloatField( swivelZXMinLabel, swivelZXMax );
 
 		// Distance
 		EditorGUILayout.Space( );
@@ -244,7 +257,16 @@ public class ObjectPlacementTool : EditorWindow
 				newObject.transform.rotation = Quaternion.identity;
 				newObject.transform.up = hit.normal;
 				newObject.transform.localScale = Vector3.one * newObjectScale;
-				newObject.transform.Rotate( Vector3.up * Random.Range( rotationYMin, rotationYMax ), Space.Self );
+				newObject.transform.Rotate
+				(
+					new Vector3
+					(
+						Random.Range( swivelZXMin, swivelZXMax ),
+						Random.Range( rotationYMin, rotationYMax ),
+						Random.Range( swivelZXMin, swivelZXMax )
+					),
+					Space.Self
+				);
 
 				Undo.RegisterCreatedObjectUndo( newObject, "Placed " + newObject.name + " using Object Placement Tool" );
 			}
