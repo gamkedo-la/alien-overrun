@@ -38,7 +38,7 @@ public class BeamShooter : MonoBehaviour
 			float damg = damage * Interactions.GetMultiplier( damageType, targetHP.Resistance );
 
 			targetHP.ChangeHP( -damg );
-			Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
+			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );
 		}
 	}
 

@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour
 			{
 				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 				hp.ChangeHP( -damg );
-				Utilities.DrawDebugText( other.transform.position + Vector3.up, damg.ToString( ) );
+				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
 			}
 		}
 

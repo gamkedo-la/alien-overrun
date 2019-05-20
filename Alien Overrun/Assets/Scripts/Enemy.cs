@@ -97,7 +97,7 @@ public class Enemy : AbstractListableItem
 		if ( ResourceManager.Instance && mineralsForKill != 0 )
 		{
 			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
-			Utilities.DrawDebugText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
+			FloatingTextService.Instance.ShowFloatingText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
 		}
 	}
 

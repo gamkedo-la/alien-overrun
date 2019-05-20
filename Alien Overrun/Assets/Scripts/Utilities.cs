@@ -40,44 +40,6 @@ public class Utilities : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Draws a debug text on the screen.
-	/// </summary>
-	/// <param name="position">Position of the text.</param>
-	/// <param name="text">Text to display.</param>
-	/// <param name="size">Text size.</param>
-	/// <param name="color">Text color.</param>
-	/// <param name="duration">Duration before it vanishes.</param>
-	/// <returns>Returns reference to the text's GameObject.</returns>
-	static public GameObject DrawDebugText( Vector3 position, string text, int size = 14, Color? color = null, float duration = 0.5f )
-	{
-		GameObject canvasObj = new GameObject( "Debug Text" );
-		Canvas canvas = canvasObj.AddComponent<Canvas>( );
-		canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-		canvas.pixelPerfect = true;
-
-		GameObject textObj = new GameObject( "Text" );
-		textObj.transform.SetParent( canvasObj.transform );
-
-		ContentSizeFitter fitter = textObj.AddComponent<ContentSizeFitter>( );
-		fitter.horizontalFit = ContentSizeFitter.FitMode.PreferredSize;
-		fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
-
-		Text txt = textObj.AddComponent<Text>( );
-		txt.font = Resources.GetBuiltinResource<Font>( "Arial.ttf" );
-
-		txt.text = text;
-		txt.fontSize = size;
-		txt.color = color != null ? (Color)color : Color.white;
-		txt.alignment = TextAnchor.MiddleCenter;
-
-		textObj.transform.position = Camera.main.WorldToScreenPoint( position );
-
-		Destroy( canvasObj, duration );
-
-		return canvasObj;
-	}
-
-	/// <summary>
 	/// Return a signed angle between 2 vectors.
 	/// </summary>
 	/// <param name="vector1">First vector.</param>

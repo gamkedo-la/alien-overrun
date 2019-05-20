@@ -145,7 +145,6 @@ public class Building : AbstractListableItem
 			return;
 
 		float repairCost = BuildCost * ( (float)RepairCostPercent / 100 ) * ( 1 - ( hp.CurrentHP / hp.MaxHP ) );
-		Debug.Log( repairCost );
 
 		if ( ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)repairCost ) )
 		{

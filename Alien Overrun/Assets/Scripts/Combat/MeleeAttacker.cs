@@ -53,7 +53,7 @@ public class MeleeAttacker : MonoBehaviour
 		float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 
 		hp.ChangeHP( -damg );
-		Utilities.DrawDebugText( target.position + Vector3.up, damg.ToString( ) );
+		FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );
 	}
 
 	private void TryToAttack( )
