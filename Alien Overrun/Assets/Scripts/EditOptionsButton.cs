@@ -17,7 +17,7 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 	public EditOptions option = EditOptions.Move;
 
 	public CursorRaycast cursorRaycast;
-	
+
 	public bool usingWorldSpaceCanvas = false;
 
 	public AudioClip hoverSound;
@@ -25,7 +25,7 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 	[HideInInspector] public bool hover = false;
 
 	private AudioSource aud = null;
-	
+
 	void Start()
 	{
 		aud = GetComponent<AudioSource>();
@@ -55,11 +55,11 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 			}
 			else if (option == EditOptions.Repair)
 			{
-				
+				cursorRaycast.RepairSelection( );
 			}
 			else if (option == EditOptions.Upgrade)
 			{
-				
+
 			}
 		}
 

@@ -107,7 +107,7 @@ public class CursorRaycast : MonoBehaviour
 		{
 			editOptionsUI.SetActive(true);
 			editOptionsUI.transform.position = cam.WorldToScreenPoint(lockedSelection[0].transform.position);
-			
+
 			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
 
 			editOptionsUI.transform.GetChild(0).gameObject.SetActive(!DoesSelectionContainCastleOrCore() && !DoesSelectionContainResource());//&& lockedSelection.Count <= 1);
@@ -117,7 +117,7 @@ public class CursorRaycast : MonoBehaviour
 			editOptionsUI.SetActive(false);
 			//editOptionsUI.transform.position = Input.mousePosition;
 		}
-		
+
 		Ray mRay = cam.ScreenPointToRay(Input.mousePosition);
 		if (plane.Raycast(mRay, out float mouseDistance))
 			selectionMoveObject.transform.position = mRay.GetPoint(mouseDistance);
@@ -446,6 +446,15 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
+	public void RepairSelection( )
+	{
+		foreach ( var sel in lockedSelection )
+		{
+			Building building = sel.GetComponent<Building>( );
+			building.Repair( );
+		}
+	}
+
 	public void MoveSelection()
 	{
 		foreach (var sel in lockedSelection)
@@ -477,7 +486,7 @@ public class CursorRaycast : MonoBehaviour
 
 		return true;
 	}
-	
+
 	public void PlaceMoveSelection( bool reset = false )
 	{
 		if(reset)
@@ -487,9 +496,9 @@ public class CursorRaycast : MonoBehaviour
 		{
 			if (reset)
 				sel.transform.position = sel.transform.position;
-			
+
 			sel.transform.parent = null;
-			
+
 			Building building = sel.GetComponent<Building>();
 
 			if (building != null)

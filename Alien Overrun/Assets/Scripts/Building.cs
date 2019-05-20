@@ -28,6 +28,9 @@ public class Building : AbstractListableItem
 	public int BuildCost { get { return buildCost; } private set { buildCost = value; } }
 	[SerializeField] private int buildCost = 100;
 
+	public int RepairCostPercent { get { return repairCostPercent; } private set { repairCostPercent = value; } }
+	[SerializeField] private int repairCostPercent = 50;
+
 	public int Threat { get { return threat; } private set { threat = value; } }
 	[SerializeField] private int threat = 10;
 
@@ -43,7 +46,8 @@ public class Building : AbstractListableItem
 	[SerializeField] private bool enableOnStart = false;
 
 	private int collisions = 0;
-	
+	private HP hp = null;
+
 	void Start( )
 	{
 		Assert.IsNotNull( indicator );
@@ -58,8 +62,10 @@ public class Building : AbstractListableItem
 
 		if ( enableOnStart )
 			EnableBuilding( );
+
+		hp = GetComponent<HP>( );
 	}
-	
+
 	protected private virtual void SetOponentListManager( )
 	{
 		OponentFinder[] oponentFinders = gameObject.GetComponentsInChildren<OponentFinder>( );
@@ -131,6 +137,21 @@ public class Building : AbstractListableItem
 	{
 		if (BuildingType != BuildingType.Castle)
 			AIProgressManager.Instance.RemoveThreat( Threat );
+	}
+
+	public void Repair( )
+	{
+		if ( BuildCost == 0 )
+			return;
+
+		float repairCost = BuildCost * ( (float)RepairCostPercent / 100 ) * ( 1 - ( hp.CurrentHP / hp.MaxHP ) );
+		Debug.Log( repairCost );
+
+		if ( ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)repairCost ) )
+		{
+			ResourceManager.Instance.UseResources( ResourceType.Minerals, (int)repairCost );
+			hp.ChangeHP( hp.MaxHP );
+		}
 	}
 
 	private bool CollidesWithTags( GameObject gameObject )

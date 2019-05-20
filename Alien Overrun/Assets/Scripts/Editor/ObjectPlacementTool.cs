@@ -23,7 +23,6 @@ public class ObjectPlacementTool : EditorWindow
 	private int spawnAmountMax = 10;
 	private float rotationYMin = 0f;
 	private float rotationYMax = 360f;
-	private float swivelZX = 360f;
 	private float swivelZXMin = 360f;
 	private float swivelZXMax = 360f;
 	private float scaleMin = 0.1f;
