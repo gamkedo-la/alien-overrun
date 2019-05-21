@@ -4,6 +4,7 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.Events;
@@ -12,6 +13,8 @@ public class LevelManager : MonoBehaviour
 {
 	[SerializeField] private GameObject[] skirmishModeOnly = null;
 	[SerializeField] private GameObject[] creativeModeOnly = null;
+	[SerializeField] private Transform mineralSets = null;
+	[SerializeField] private Transform crystalSets = null;
 
 	public bool Paused { get { return paused; } set { paused = value; } }
 	[SerializeField] private bool paused = false;
@@ -51,6 +54,18 @@ public class LevelManager : MonoBehaviour
 		Assert.AreNotEqual( skirmishModeOnly.Length, 0 );
 		Assert.IsNotNull( creativeModeOnly );
 		Assert.AreNotEqual( creativeModeOnly.Length, 0 );
+		Assert.IsNotNull( mineralSets );
+		Assert.IsNotNull( crystalSets );
+
+		Transform[] minerals = mineralSets.Cast<Transform>( ).ToArray( );
+		foreach ( var m in minerals )
+			m.gameObject.SetActive( false );
+		minerals[Random.Range( 0, minerals.Length )].gameObject.SetActive( true );
+
+		Transform[] crystals = crystalSets.Cast<Transform>( ).ToArray( );
+		foreach ( var c in crystals )
+			c.gameObject.SetActive( false );
+		crystals[Random.Range( 0, crystals.Length )].gameObject.SetActive( true );
 
 		// "Load" info about selected mode
 		ModeSelection modeSelection = FindObjectOfType<ModeSelection>( );

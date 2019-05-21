@@ -5,6 +5,7 @@
  **/
 
 using System.Collections;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -18,7 +19,7 @@ public class EnemyManager : AbstractListManager
 	[Header("Objects")]
 	[SerializeField] private GameObject[] enemyPrefabs = null;
 	[SerializeField] private Transform crativeModeSpawnPoint = null;
-	[SerializeField] private Transform[] spawnPoints = null;
+	[SerializeField] private Transform enemySpawnPointSets = null;
 	[SerializeField] private TextMeshProUGUI enemyCount = null;
 	[Header("Current Wave Parameters")]
 	[SerializeField] private int waveNum = 0;
@@ -34,6 +35,7 @@ public class EnemyManager : AbstractListManager
 	[SerializeField] private float radius = 3f;
 	[SerializeField] private float autoSpawningDelay = 0.1f;
 
+	private Transform[] spawnPoints = null;
 	private Coroutine coroutine;
 	private bool autoSpawning = false;
 	private bool spawningLastWave = false;
@@ -55,9 +57,18 @@ public class EnemyManager : AbstractListManager
 		Assert.IsNotNull( enemyPrefabs );
 		Assert.AreNotEqual( enemyPrefabs.Length, 0 );
 		Assert.IsNotNull( crativeModeSpawnPoint );
+		Assert.IsNotNull( enemyCount );
+		Assert.IsNotNull( enemySpawnPointSets );
+
+		Transform[] enemySpawnPoints = enemySpawnPointSets.Cast<Transform>( ).ToArray( );
+		foreach ( var e in enemySpawnPoints )
+			e.gameObject.SetActive( false );
+		int set = Random.Range( 0, enemySpawnPoints.Length );
+		enemySpawnPoints[set].gameObject.SetActive( true );
+		spawnPoints = enemySpawnPoints[set].Cast<Transform>( ).ToArray( );
+
 		Assert.IsNotNull( spawnPoints );
 		Assert.AreNotEqual( spawnPoints.Length, 0 );
-		Assert.IsNotNull( enemyCount );
 
 		StartWaves( );
 	}
@@ -102,14 +113,6 @@ public class EnemyManager : AbstractListManager
 	public void SpawnEnemy( int id )
 	{
 		SpawnNewEnemy( id, crativeModeSpawnPoint );
-	}
-
-	public void NextWaveNow( )
-	{
-		/*StopCoroutine( coroutine );
-		currentWave.WaveDelay = 0;
-		coroutine = StartCoroutine( SpawnWaves( ) );*/
-		Debug.LogError( "NextWaveNow should not be called anymore." );
 	}
 
 	private void SpawnNewEnemy( int id, Transform spawnPoint )
