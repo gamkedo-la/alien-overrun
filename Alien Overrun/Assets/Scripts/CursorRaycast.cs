@@ -434,6 +434,8 @@ public class CursorRaycast : MonoBehaviour
 
 	public void DestroySelection()
 	{
+		ResourceManager.Instance.AddResources(ResourceType.Minerals, GetSelectionDeleteCost());
+
 		foreach (var sel in lockedSelection)
 			Destroy(sel);
 
@@ -465,6 +467,36 @@ public class CursorRaycast : MonoBehaviour
 		return cost;
 	}
 
+	public int GetSelectionMoveCost()
+	{
+		int cost = 0;
+
+		foreach (var sel in lockedSelection)
+		{
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+				cost += Mathf.FloorToInt(building.GetMoveCost());
+		}
+
+		return cost;
+	}
+
+	public int GetSelectionDeleteCost()
+	{
+		int cost = 0;
+
+		foreach (var sel in lockedSelection)
+		{
+			Building building = sel.GetComponent<Building>();
+
+			if (building != null)
+				cost += Mathf.FloorToInt(building.GetDeleteCost());
+		}
+
+		return cost;
+	}
+
 	public void RepairSelection( )
 	{
 		foreach ( var sel in lockedSelection )
@@ -478,18 +510,25 @@ public class CursorRaycast : MonoBehaviour
 
 	public void MoveSelection()
 	{
-		foreach (var sel in lockedSelection)
+		float moveCost = GetSelectionMoveCost();
+
+		if (ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)moveCost))
 		{
-			prevSelectionMoveObjectPos = selectionMoveObject.transform.position;
-			sel.transform.parent = selectionMoveObject.transform;
+			ResourceManager.Instance.UseResources(ResourceType.Minerals, (int)moveCost);
+			
+			foreach (var sel in lockedSelection)
+			{
+				prevSelectionMoveObjectPos = selectionMoveObject.transform.position;
+				sel.transform.parent = selectionMoveObject.transform;
 
-			Building building = sel.GetComponent<Building>();
+				Building building = sel.GetComponent<Building>();
 
-			if (building != null)
-				building.DisableBuildingToMoveAgain();
+				if (building != null)
+					building.DisableBuildingToMoveAgain();
+			}
+
+			BuildingManager.Instance.ShowZones(true);
 		}
-
-		BuildingManager.Instance.ShowZones(true);
 	}
 
 	public bool IsMoveSelectionPlaceable()

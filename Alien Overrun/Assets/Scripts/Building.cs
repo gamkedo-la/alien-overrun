@@ -31,6 +31,12 @@ public class Building : AbstractListableItem
 	public int RepairCostPercent { get { return repairCostPercent; } private set { repairCostPercent = value; } }
 	[SerializeField] private int repairCostPercent = 50;
 
+	public int MoveCostPercent { get { return moveCostPercent; } private set { moveCostPercent = value; } }
+	[SerializeField] private int moveCostPercent = 15;
+
+	public int DeleteCostPercent { get { return deleteCostPercent; } private set { deleteCostPercent = value; } }
+	[SerializeField] private int deleteCostPercent = 50;
+
 	public int Threat { get { return threat; } private set { threat = value; } }
 	[SerializeField] private int threat = 10;
 
@@ -142,6 +148,16 @@ public class Building : AbstractListableItem
 	public float GetRepairCost()
 	{
 		return BuildCost * ((float)RepairCostPercent / 100) * (1 - (hp.CurrentHP / hp.MaxHP));
+	}
+
+	public float GetDeleteCost()
+	{
+		return BuildCost * ((float)DeleteCostPercent / 100) * (hp.CurrentHP / hp.MaxHP);
+	}
+
+	public float GetMoveCost()
+	{
+		return BuildCost * (float)MoveCostPercent / 100; // * (1 - (hp.CurrentHP / hp.MaxHP)); //HP not affecting move cost
 	}
 
 	public void Repair( )

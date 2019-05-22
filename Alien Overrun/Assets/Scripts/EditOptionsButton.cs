@@ -69,11 +69,16 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
 		hover = usingWorldSpaceCanvas ? false : hover;
 
-		if (option == EditOptions.Repair)
-		{
-			int cost = cursorRaycast.GetSelectionRepairCost();
-			transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost == 0 ? "" : cost.ToString() + " Min");
-		}
+		int cost = 0;
+		if (option == EditOptions.Move)
+			cost = -cursorRaycast.GetSelectionMoveCost();
+		else if (option == EditOptions.Delete)
+			cost = cursorRaycast.GetSelectionDeleteCost();
+		else if (option == EditOptions.Repair)
+			cost = -cursorRaycast.GetSelectionRepairCost();
+		//else if (option == EditOptions.Upgrade)
+		
+		transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost == 0 ? "" : cost.ToString() + " Min");
 	}
 
 	void OnMouseOver()
