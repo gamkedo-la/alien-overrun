@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseGame : MonoBehaviour
 {
+    public Animator animator;
     public CanvasGroup[] uiCanvasGroupsToHide;
 	[SerializeField] private float maxSpeed = 4f;
 	[SerializeField] private float minSpeed = 0.2f;
@@ -131,13 +132,15 @@ public class PauseGame : MonoBehaviour
 
 	void HideUI()
     {
+		animator.SetTrigger( "Show" );
+
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
 		{
 			uiCanvasGroup.alpha = 0f;
 			uiCanvasGroup.blocksRaycasts = false;
 		}
 
-        pauseCanvasGroup.alpha = 1f;
+        //pauseCanvasGroup.alpha = 1f;
         pauseCanvasGroup.blocksRaycasts = true;
 
 		EventSystem.current.SetSelectedGameObject( null );
@@ -145,13 +148,15 @@ public class PauseGame : MonoBehaviour
 
     void ShowUI()
     {
+		animator.SetTrigger( "Hide" );
+
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
 		{
 			uiCanvasGroup.alpha = 1f;
 			uiCanvasGroup.blocksRaycasts = true;
 		}
 
-        pauseCanvasGroup.alpha = 0f;
+        //pauseCanvasGroup.alpha = 0f;
         pauseCanvasGroup.blocksRaycasts = false;
 
 		EventSystem.current.SetSelectedGameObject( null );
