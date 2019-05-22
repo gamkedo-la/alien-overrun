@@ -15,6 +15,7 @@ public class HP : MonoBehaviour
 
 	[Header("External objects")]
 	[SerializeField, Tooltip("An optional Slider that acts as a HP Bar.")] private Slider hpBar = null;
+	[SerializeField, Tooltip("An optional Prefab that acts as a corpse when this unit dies.")] private GameObject corpse = null;
 
 	[Header("Tweakable")]
 	[SerializeField] private float maxHP = 10;
@@ -67,6 +68,9 @@ public class HP : MonoBehaviour
 
 		if ( destroyOnNoHP )
 			Destroy( gameObject );
+
+		if ( corpse != null)
+			Instantiate(corpse, gameObject.transform.position, gameObject.transform.rotation);
 	}
 
 	private void SetHPBarVisability( )

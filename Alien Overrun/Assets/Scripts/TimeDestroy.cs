@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class TimeDestroy : MonoBehaviour
 {
-	public float delay = 5f;
+    public float delay = 5f;
 
-    void Start()
-    {
-        
-    }
-	
     void Update()
     {
-		if (delay <= 0f) Destroy(gameObject);
-		else delay -= Time.deltaTime;
+        if (delay <= 0f)
+            Destroy(gameObject);
+
+        delay -= Time.deltaTime;
     }
 }
