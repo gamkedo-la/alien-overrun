@@ -11,7 +11,8 @@ public class CannonballShooter : MonoBehaviour
 {
 	[SerializeField] private Transform spawnPoint = null;
 	[SerializeField] private GameObject projectile = null;
-	[SerializeField] private Transform cannon = null;
+	[SerializeField] private Transform cannonPivotX = null;
+	[SerializeField] private Transform cannonPivotY = null;
 	[Space]
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private int ammoCost = 0;
@@ -30,7 +31,8 @@ public class CannonballShooter : MonoBehaviour
 	{
 		Assert.IsNotNull( projectile );
 		Assert.IsNotNull( spawnPoint );
-		Assert.IsNotNull( cannon );
+		Assert.IsNotNull( cannonPivotX );
+		Assert.IsNotNull( cannonPivotY );
 	}
 
 	void Update( )
@@ -112,7 +114,9 @@ public class CannonballShooter : MonoBehaviour
 		// Cannon rotation
 		Vector3 rotationDir = target.transform.position - transform.position;
 		Quaternion newCannonRotation = Quaternion.LookRotation( rotationDir );
-		cannon.rotation = Quaternion.Euler( 0, newCannonRotation.eulerAngles.y, 0 );
+		cannonPivotY.rotation = Quaternion.Euler( 0, newCannonRotation.eulerAngles.y, 0 );
+		float rotationX = Utilities.ConvertRange( 0, 10, 30, 0, currentDistanceToTarget );
+		cannonPivotX.rotation = Quaternion.Euler( rotationX, cannonPivotX.rotation.eulerAngles.y, cannonPivotX.rotation.eulerAngles.z );
 
 		// and blast off!
 		Vector3 force = dir * ( shootingForcePerDistance * currentDistanceToTarget );

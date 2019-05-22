@@ -24,6 +24,7 @@ public class Indicator : MonoBehaviour
 	[SerializeField] private Material buildingNormalMat = null;
 	[SerializeField] private Material buildingBadMat = null;
 	[SerializeField] private Renderer[] buildingRenderers = null;
+	[SerializeField] private GameObject[] toHideOnBad = null;
 
 	void Start( )
 	{
@@ -40,6 +41,7 @@ public class Indicator : MonoBehaviour
 		Assert.IsNotNull( buildingBadMat );
 		Assert.IsNotNull( buildingRenderers );
 		Assert.AreNotEqual( buildingRenderers.Length, 0 );
+		Assert.AreNotEqual( toHideOnBad.Length, 0 );
 
 		range.transform.localScale = Vector3.one * ( ( oponentFinder.GetAttackDistance( ) + addedDistance ) * 2f );
 		zone.transform.localScale = Vector3.one * ( building.PlaceDistance * 2f );
@@ -77,6 +79,9 @@ public class Indicator : MonoBehaviour
 
 		foreach (var item in buildingRenderers)
 			item.material = buildingNormalMat;
+
+		foreach ( var item in toHideOnBad )
+			item.SetActive( true );
 	}
 
 	private void ShowRangeBad( )
@@ -87,5 +92,8 @@ public class Indicator : MonoBehaviour
 
 		foreach (var item in buildingRenderers)
 			item.material = buildingBadMat;
+
+		foreach ( var item in toHideOnBad )
+			item.SetActive( false );
 	}
 }

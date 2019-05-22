@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &189131395232490235
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8112598139777252716}
+  m_Layer: 0
+  m_Name: Empty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8112598139777252716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189131395232490235}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1358882027325190171}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1358882027088586128
 GameObject:
   m_ObjectHideFlags: 0
@@ -428,6 +458,7 @@ MonoBehaviour:
   buildingType: 1
   buildingName: Core
   buildCost: 100
+  repairCostPercent: 50
   threat: 10
   placeDistance: 5.5
   buildTime: 1
@@ -533,6 +564,7 @@ Transform:
   m_Children:
   - {fileID: 1358882027402909775}
   - {fileID: 1358882027088586131}
+  - {fileID: 8112598139777252716}
   - {fileID: 2233260089617756807}
   m_Father: {fileID: 1358882027215378601}
   m_RootOrder: 0
@@ -896,6 +928,8 @@ MonoBehaviour:
   buildingRenderers:
   - {fileID: 1358882027402909760}
   - {fileID: 1358882027088586132}
+  toHideOnBad:
+  - {fileID: 189131395232490235}
 --- !u!1 &1358882027830205770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1100,7 +1134,7 @@ PrefabInstance:
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
