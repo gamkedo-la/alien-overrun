@@ -17,8 +17,9 @@ public class BuildingPlacer : MonoBehaviour
 	[SerializeField] private GameObject buildingPlacer = null;
 	[SerializeField] private Transform pointOfPlane = null;
 	[SerializeField] private bool requiresFirstThreshold = true;
+    [SerializeField] public AudioClip placeSound;
 
-	private int costM = 0;
+    private int costM = 0;
 	private int costC = 0;
 	private Building buildingToPlace;
 	private Vector3 mouseOffset;
@@ -26,8 +27,9 @@ public class BuildingPlacer : MonoBehaviour
 	private string buildingName;
 	private bool canPlace = false;
 	private Camera cam = null;
+    private AudioSource aud = null;
 
-	void Start ()
+    void Start ()
 	{
 		Assert.IsNotNull( button );
 		Assert.IsNotNull( buttonText );
@@ -41,11 +43,14 @@ public class BuildingPlacer : MonoBehaviour
 		buttonText.text = $"{buildingName}\n[{costM}M {costC}C {building.Threat}F]";
 
 		cam = Camera.main;
-	}
+
+        aud = gameObject.AddComponent<AudioSource>();
+        aud.clip = placeSound;
+    }
 
 	void Update ()
 	{
-		CheckCancelBuild( );
+        CheckCancelBuild( );
 		MoveBuilding( );
 		CheckIfCanPlaceBuilding( );
 		UpdateIndicator( );
@@ -137,12 +142,13 @@ public class BuildingPlacer : MonoBehaviour
 		if ( !canPlace )
 			return;
 
-		buildingToPlace.HideRange( );
+        buildingToPlace.HideRange( );
 		buildingToPlace.EnableBuilding( );
 		buildingToPlace = null;
 		BuildingManager.Instance.ShowZones( false );
 		BuildingManager.Instance.Building = false;
-	}
+        aud.PlayOneShot(placeSound);
+    }
 
 	private void CheckRequirements( )
 	{

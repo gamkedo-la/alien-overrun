@@ -3,7 +3,13 @@ guid: d09c5864461fda0489db29d1f6699c62
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - button: {instanceID: 0}
+  - buttonText: {instanceID: 0}
+  - building: {instanceID: 0}
+  - buildingPlacer: {instanceID: 0}
+  - pointOfPlane: {instanceID: 0}
+  - placeSound: {fileID: 8300000, guid: c984c246adfebbe49bc36cc4f89978e1, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
