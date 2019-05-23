@@ -313,8 +313,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraSlider: {fileID: 5352926302161766990}
   minimapCamera: {fileID: 5352926302709132956}
+  minimapCameraObj: {fileID: 0}
   camZoom: 0
-  minimapRectTransform: {fileID: 0}
+  sensitivity: 0
 --- !u!1 &5352926301293059048
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,17 +687,20 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
+    m_SelectedTrigger: Highlighted
     m_DisabledTrigger: Disabled
   m_Interactable: 1
   m_TargetGraphic: {fileID: 5352926300924238324}
@@ -922,13 +926,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5352926302709132957}
-  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0.45451948, y: -0.54167527, z: 0.54167527, w: 0.45451948}
   m_LocalPosition: {x: 23.5672, y: 162.65944, z: 19.353714}
   m_LocalScale: {x: 0.84939843, y: 0.8494002, z: 0.8494002}
   m_Children: []
   m_Father: {fileID: 5635895430230192497}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: -100, z: 0}
 --- !u!20 &5352926302709132956
 Camera:
   m_ObjectHideFlags: 0
@@ -941,9 +945,10 @@ Camera:
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
-  m_GateFitMode: 2
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
