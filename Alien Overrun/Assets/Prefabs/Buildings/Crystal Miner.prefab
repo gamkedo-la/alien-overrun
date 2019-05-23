@@ -5189,6 +5189,8 @@ MonoBehaviour:
   buildingName: Crystal Miner
   buildCost: 40
   repairCostPercent: 50
+  moveCostPercent: 15
+  deleteCostPercent: 50
   threat: 10
   placeDistance: 0.1
   buildTime: 1
@@ -5212,6 +5214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 4239893724130838568}
+  corpse: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
   resistance: 0
@@ -5300,7 +5303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1358554e31df046f08e815eaeb22b57d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPoint: {fileID: 0}
+  shootPoint: {fileID: 1382129908556445664}
   reloadTime: 0.7
   shootDuration: 0.2
   damage: 5
@@ -14607,11 +14610,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 497143050404529731}
     m_Modifications:
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14667,6 +14665,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -14682,15 +14685,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.55
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.55
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}

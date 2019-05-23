@@ -5047,6 +5047,8 @@ MonoBehaviour:
   buildingName: Mage Tower
   buildCost: 100
   repairCostPercent: 50
+  moveCostPercent: 15
+  deleteCostPercent: 50
   threat: 10
   placeDistance: 0.1
   buildTime: 1
@@ -5070,6 +5072,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 5211465451173816720}
+  corpse: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
   resistance: 0
@@ -5523,6 +5526,8 @@ MonoBehaviour:
   buildingBadMat: {fileID: 2100000, guid: c8593cf6051fd3e42915f8ae78d6511e, type: 2}
   buildingRenderers:
   - {fileID: 1284071209368428010}
+  toHideOnBad:
+  - {fileID: 1284071208901500536}
 --- !u!1 &1284071209885011367
 GameObject:
   m_ObjectHideFlags: 0
@@ -5669,11 +5674,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284071209366134536}
     m_Modifications:
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5729,6 +5729,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -5744,11 +5749,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2084
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -5763,6 +5763,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2084
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
