@@ -69,16 +69,26 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 
 		hover = usingWorldSpaceCanvas ? false : hover;
 
-		int cost = 0;
+		(int Minerals, int Crystals) cost = (0, 0);
 		if (option == EditOptions.Move)
-			cost = -cursorRaycast.GetSelectionMoveCost();
+		{
+			cost = cursorRaycast.GetSelectionMoveCost();
+			cost.Minerals = -cost.Minerals;
+			cost.Crystals = -cost.Crystals;
+		}
 		else if (option == EditOptions.Delete)
+		{
 			cost = cursorRaycast.GetSelectionDeleteCost();
+		}
 		else if (option == EditOptions.Repair)
-			cost = -cursorRaycast.GetSelectionRepairCost();
+		{
+			cost = cursorRaycast.GetSelectionRepairCost();
+			cost.Minerals = -cost.Minerals;
+			cost.Crystals = -cost.Crystals;
+		}
 		//else if (option == EditOptions.Upgrade)
-		
-		transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost == 0 ? "" : cost.ToString() + " Min");
+
+		transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost.Minerals == 0 && cost.Crystals == 0 ? "" : $"{cost.Minerals}M {cost.Crystals}C" + " Min");
 	}
 
 	void OnMouseOver()

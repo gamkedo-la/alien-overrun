@@ -88,7 +88,7 @@ public class CursorRaycast : MonoBehaviour
 			}
 		}
 	}
-	
+
 	private bool IsAnyEditOptionsHovered()
 	{
 		for (int i = 0; i < editOptionsUI.transform.childCount - 1; i++)
@@ -297,7 +297,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				HP hp = hoverSelection.GetComponent<HP>();
 
-				hoverInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost;
+				hoverInfo1.text = $"Building: {building.BuildingName}\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C";
 				hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP + "\nBuild Time: " + building.BuildTime;
 			}
 			else
@@ -319,7 +319,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				HP hp = lockedSelection[0].GetComponent<HP>();
 
-				lockedInfo1.text = "Building: " + building.BuildingName + "\nBuild Cost: " + building.BuildCost + "\nPlace Distance: " + building.PlaceDistance;
+				lockedInfo1.text = $"Building: {building.BuildingName}\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C\nPlace Distance: {building.PlaceDistance}";
 				lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt(hp.MaxHP) + "/" + Mathf.FloorToInt(hp.CurrentHP) + "\nBuild Time: " + building.BuildTime;
 			}
 			else
@@ -334,7 +334,7 @@ public class CursorRaycast : MonoBehaviour
 			int totalBuildings = 0;
 			int totalResources = 0;
 			int totalResourceAmount = 0;
-			int totalBuildCost = 0;
+			(int Minerals, int Crystals) totalBuildCost = (0, 0);
 			float avgMaxHP = 0f;
 			float avgCurrentHP = 0f;
 			foreach (var sel in lockedSelection)
@@ -343,7 +343,8 @@ public class CursorRaycast : MonoBehaviour
 				if (building != null)
 				{
 					totalBuildings++;
-					totalBuildCost += building.BuildCost;
+					totalBuildCost.Minerals += building.BuildCostMinerals;
+					totalBuildCost.Crystals += building.BuildCostCrystals;
 
 					avgMaxHP += sel.GetComponent<HP>().MaxHP;
 					avgCurrentHP += sel.GetComponent<HP>().CurrentHP;
@@ -434,7 +435,8 @@ public class CursorRaycast : MonoBehaviour
 
 	public void DestroySelection()
 	{
-		ResourceManager.Instance.AddResources(ResourceType.Minerals, GetSelectionDeleteCost());
+		ResourceManager.Instance.AddResources(ResourceType.Minerals, GetSelectionDeleteCost().Minerals);
+		ResourceManager.Instance.AddResources(ResourceType.Crystals, GetSelectionDeleteCost().Crystals);
 
 		foreach (var sel in lockedSelection)
 			Destroy(sel);
@@ -452,46 +454,61 @@ public class CursorRaycast : MonoBehaviour
 		}
 	}
 
-	public int GetSelectionRepairCost()
+	public (int Minerals, int Crystals) GetSelectionRepairCost()
 	{
-		int cost = 0;
+		(int Minerals, int Crystals) cost;
+		cost.Minerals = 0;
+		cost.Crystals = 0;
 
 		foreach (var sel in lockedSelection)
 		{
 			Building building = sel.GetComponent<Building>();
 
 			if (building != null)
-				cost += Mathf.FloorToInt(building.GetRepairCost());
+			{
+				cost.Minerals += Mathf.FloorToInt(building.GetRepairCost().Minerals);
+				cost.Crystals += Mathf.FloorToInt(building.GetRepairCost().Crystals);
+			}
 		}
 
 		return cost;
 	}
 
-	public int GetSelectionMoveCost()
+	public (int Minerals, int Crystals) GetSelectionMoveCost()
 	{
-		int cost = 0;
+		(int Minerals, int Crystals) cost;
+		cost.Minerals = 0;
+		cost.Crystals = 0;
 
 		foreach (var sel in lockedSelection)
 		{
 			Building building = sel.GetComponent<Building>();
 
 			if (building != null)
-				cost += Mathf.FloorToInt(building.GetMoveCost());
+			{
+				cost.Minerals += Mathf.FloorToInt( building.GetMoveCost( ).Minerals );
+				cost.Crystals += Mathf.FloorToInt( building.GetMoveCost( ).Crystals );
+			}
 		}
 
 		return cost;
 	}
 
-	public int GetSelectionDeleteCost()
+	public (int Minerals, int Crystals) GetSelectionDeleteCost()
 	{
-		int cost = 0;
+		(int Minerals, int Crystals) cost;
+		cost.Minerals = 0;
+		cost.Crystals = 0;
 
 		foreach (var sel in lockedSelection)
 		{
 			Building building = sel.GetComponent<Building>();
 
 			if (building != null)
-				cost += Mathf.FloorToInt(building.GetDeleteCost());
+			{
+				cost.Minerals += Mathf.FloorToInt( building.GetDeleteCost( ).Minerals );
+				cost.Crystals += Mathf.FloorToInt( building.GetDeleteCost( ).Crystals );
+			}
 		}
 
 		return cost;
@@ -510,12 +527,14 @@ public class CursorRaycast : MonoBehaviour
 
 	public void MoveSelection()
 	{
-		float moveCost = GetSelectionMoveCost();
+		(float Minerals, float Crystals) moveCost = GetSelectionMoveCost();
 
-		if (ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)moveCost))
+		if (ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)moveCost.Minerals) &&
+			ResourceManager.Instance.CheckResources( ResourceType.Crystals, (int)moveCost.Crystals ) )
 		{
-			ResourceManager.Instance.UseResources(ResourceType.Minerals, (int)moveCost);
-			
+			ResourceManager.Instance.UseResources(ResourceType.Minerals, (int)moveCost.Minerals);
+			ResourceManager.Instance.UseResources(ResourceType.Minerals, (int)moveCost.Crystals);
+
 			foreach (var sel in lockedSelection)
 			{
 				prevSelectionMoveObjectPos = selectionMoveObject.transform.position;

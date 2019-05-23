@@ -25,14 +25,17 @@ public class Building : AbstractListableItem
 	public string BuildingName { get { return buildingName; } private set { buildingName = value; } }
 	[SerializeField] private string buildingName = "Building";
 
-	public int BuildCost { get { return buildCost; } private set { buildCost = value; } }
-	[SerializeField] private int buildCost = 100;
+	public int BuildCostMinerals { get { return buildCostMinerals; } private set { buildCostMinerals = value; } }
+	[SerializeField] private int buildCostMinerals = 100;
+
+	public int BuildCostCrystals { get { return buildCostCrystals; } private set { buildCostCrystals = value; } }
+	[SerializeField] private int buildCostCrystals = 0;
 
 	public int RepairCostPercent { get { return repairCostPercent; } private set { repairCostPercent = value; } }
 	[SerializeField] private int repairCostPercent = 50;
 
 	public int MoveCostPercent { get { return moveCostPercent; } private set { moveCostPercent = value; } }
-	[SerializeField] private int moveCostPercent = 15;
+	[SerializeField] private int moveCostPercent = 35;
 
 	public int DeleteCostPercent { get { return deleteCostPercent; } private set { deleteCostPercent = value; } }
 	[SerializeField] private int deleteCostPercent = 50;
@@ -113,12 +116,12 @@ public class Building : AbstractListableItem
 		AIProgressManager.Instance.AddThreat( Threat );
 	}
 
-	public void DisableBuildingToMoveAgain()
+	public void DisableBuildingToMoveAgain( )
 	{
 		BuildingManager.Instance.RemoveItem( this );
 		col.enabled = true;
 
-		foreach (var item in toEnableOnBuild)
+		foreach ( var item in toEnableOnBuild )
 		{
 			item.enabled = false;
 		}
@@ -137,39 +140,44 @@ public class Building : AbstractListableItem
 	public void HideRange( ) => indicator.HideRange( );
 
 	public bool AreWeCloseEnough( Building anotherBuilding )
-		=> Vector3.Distance(transform.position, anotherBuilding.gameObject.transform.position) <= placeDistance;
+		=> Vector3.Distance( transform.position, anotherBuilding.gameObject.transform.position ) <= placeDistance;
 
-	public void BuildingDestroyed()
+	public void BuildingDestroyed( )
 	{
-		if (BuildingType != BuildingType.Castle)
+		if ( BuildingType != BuildingType.Castle )
 			AIProgressManager.Instance.RemoveThreat( Threat );
 	}
 
-	public float GetRepairCost()
+	public (float Minerals, float Crystals) GetRepairCost( )
 	{
-		return BuildCost * ((float)RepairCostPercent / 100) * (1 - (hp.CurrentHP / hp.MaxHP));
+		return ( BuildCostMinerals * ( (float)RepairCostPercent / 100 ) * ( 1 - ( hp.CurrentHP / hp.MaxHP ) ),
+				 BuildCostCrystals * ( (float)RepairCostPercent / 100 ) * ( 1 - ( hp.CurrentHP / hp.MaxHP ) ) );
 	}
 
-	public float GetDeleteCost()
+	public (float Minerals, float Crystals) GetDeleteCost( )
 	{
-		return BuildCost * ((float)DeleteCostPercent / 100) * (hp.CurrentHP / hp.MaxHP);
+		return (BuildCostMinerals * ((float)DeleteCostPercent / 100) * (hp.CurrentHP / hp.MaxHP),
+				BuildCostCrystals * ((float)DeleteCostPercent / 100) * (hp.CurrentHP / hp.MaxHP) );
 	}
 
-	public float GetMoveCost()
+	public (float Minerals, float Crystals) GetMoveCost( )
 	{
-		return BuildCost * (float)MoveCostPercent / 100; // * (1 - (hp.CurrentHP / hp.MaxHP)); //HP not affecting move cost
+		return (BuildCostMinerals * (float)MoveCostPercent / 100f,
+				BuildCostCrystals * (float)MoveCostPercent / 100f);
 	}
 
 	public void Repair( )
 	{
-		if ( BuildCost == 0 )
+		if ( BuildCostMinerals == 0 && BuildCostCrystals == 0)
 			return;
 
-		float repairCost = GetRepairCost();
+		(float Minerals, float Crystals) repairCost = GetRepairCost( );
 
-		if ( ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)repairCost ) )
+		if ( ResourceManager.Instance.CheckResources(ResourceType.Minerals, (int)repairCost.Minerals ) &&
+			 ResourceManager.Instance.CheckResources( ResourceType.Crystals, (int)repairCost.Crystals ) )
 		{
-			ResourceManager.Instance.UseResources( ResourceType.Minerals, (int)repairCost );
+			ResourceManager.Instance.UseResources( ResourceType.Minerals, (int)repairCost.Minerals );
+			ResourceManager.Instance.UseResources( ResourceType.Crystals, (int)repairCost.Crystals );
 			hp.ChangeHP( hp.MaxHP );
 		}
 	}

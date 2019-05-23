@@ -18,7 +18,8 @@ public class BuildingPlacer : MonoBehaviour
 	[SerializeField] private Transform pointOfPlane = null;
 	[SerializeField] private bool requiresFirstThreshold = true;
 
-	private int cost = 50;
+	private int costM = 0;
+	private int costC = 0;
 	private Building buildingToPlace;
 	private Vector3 mouseOffset;
 	private Plane plane;
@@ -35,8 +36,9 @@ public class BuildingPlacer : MonoBehaviour
 		Assert.IsNotNull( pointOfPlane );
 
 		buildingName = building.BuildingName;
-		cost = building.BuildCost;
-		buttonText.text = string.Format( "{0} [{1}]", buildingName, cost );
+		costM = building.BuildCostMinerals;
+		costC = building.BuildCostCrystals;
+		buttonText.text = $"{buildingName}\n[{costM}M {costC}C {building.Threat}F]";
 
 		cam = Camera.main;
 	}
@@ -61,7 +63,8 @@ public class BuildingPlacer : MonoBehaviour
 
 		BuildingManager.Instance.ShowZones( true );
 		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>( );
-		ResourceManager.Instance.UseResources( ResourceType.Minerals, cost );
+		ResourceManager.Instance.UseResources( ResourceType.Minerals, costM );
+		ResourceManager.Instance.UseResources( ResourceType.Crystals, costC );
 
 		Vector3 upVector = Vector3.up;
 		plane = new Plane( upVector, pointOfPlane.position );
@@ -77,7 +80,8 @@ public class BuildingPlacer : MonoBehaviour
 		if ( ! ( Input.GetMouseButtonDown( 1 ) || Input.GetKeyDown( KeyCode.Escape ) ) )
 			return;
 
-		ResourceManager.Instance.AddResources( ResourceType.Minerals, cost );
+		ResourceManager.Instance.AddResources( ResourceType.Minerals, costM );
+		ResourceManager.Instance.AddResources( ResourceType.Crystals, costC );
 		Destroy( buildingToPlace.gameObject );
 		buildingToPlace = null;
 		BuildingManager.Instance.ShowZones( false );
@@ -144,7 +148,9 @@ public class BuildingPlacer : MonoBehaviour
 	{
 		bool canBuild = false;
 
-		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, cost ) && !BuildingManager.Instance.Building )
+		if ( ResourceManager.Instance.CheckResources( ResourceType.Minerals, costM ) &&
+			 ResourceManager.Instance.CheckResources( ResourceType.Crystals, costC ) &&
+			 !BuildingManager.Instance.Building )
 			canBuild = true;
 
 		if ( requiresFirstThreshold && !AIProgressManager.Instance.FistTheasholdReached )

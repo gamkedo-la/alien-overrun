@@ -5045,9 +5045,10 @@ MonoBehaviour:
   indicator: {fileID: 1284071209839644544}
   buildingType: 0
   buildingName: Mage Tower
-  buildCost: 100
+  buildCostMinerals: 50
+  buildCostCrystals: 50
   repairCostPercent: 50
-  moveCostPercent: 15
+  moveCostPercent: 35
   deleteCostPercent: 50
   threat: 10
   placeDistance: 0.1

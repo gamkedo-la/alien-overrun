@@ -32563,8 +32563,11 @@ MonoBehaviour:
   indicator: {fileID: 8559134307143047757}
   buildingType: 2
   buildingName: Castle
-  buildCost: 0
+  buildCostMinerals: 0
+  buildCostCrystals: 0
   repairCostPercent: 50
+  moveCostPercent: 35
+  deleteCostPercent: 50
   threat: 20
   placeDistance: 8
   buildTime: 1
@@ -32595,6 +32598,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3407835740589866077}
+  corpse: {fileID: 0}
   maxHP: 300
   destroyOnNoHP: 1
   resistance: 0
@@ -37449,11 +37453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8559134306675559109}
     m_Modifications:
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -37508,6 +37507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
         type: 3}

@@ -5187,9 +5187,10 @@ MonoBehaviour:
   indicator: {fileID: 497143048857573067}
   buildingType: 0
   buildingName: Crystal Miner
-  buildCost: 40
+  buildCostMinerals: 200
+  buildCostCrystals: 0
   repairCostPercent: 50
-  moveCostPercent: 15
+  moveCostPercent: 35
   deleteCostPercent: 50
   threat: 10
   placeDistance: 0.1
