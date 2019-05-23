@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 5927365913303916990}
   - component: {fileID: 5927365913303916991}
   - component: {fileID: 5927365913303916988}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Cursor Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5927365913303916986}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
   m_LocalScale: {x: 1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 5927365913111098081}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 5927365913565050172}
   - component: {fileID: 5927365913565050171}
   - component: {fileID: 5927365913565050168}
-  m_Layer: 9
+  m_Layer: 5
   m_Name: Cursor Function
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,6 +437,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  mineralSets: {fileID: 0}
+  crystalSets: {fileID: 0}
   paused: 0
   dificultyLevelModifier: 1
   creativeMode: 0
@@ -551,10 +553,7 @@ MonoBehaviour:
   - {fileID: 1894772762418121630, guid: 4222121cfa50dba4d8cb2cd92b2ff886, type: 3}
   - {fileID: 7175263236576491544, guid: 6dd4b3b5a72f8184f8dec6d461011d49, type: 3}
   crativeModeSpawnPoint: {fileID: 0}
-  spawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemySpawnPointSets: {fileID: 0}
   enemyCount: {fileID: 0}
   waveNum: 0
   delayBeforeWave: 2

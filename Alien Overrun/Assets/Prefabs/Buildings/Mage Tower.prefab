@@ -4962,7 +4962,7 @@ GameObject:
   - component: {fileID: 1284071209366225697}
   - component: {fileID: 1284071209366225696}
   - component: {fileID: 1284071209366225699}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mage Tower
   m_TagString: Building
   m_Icon: {fileID: 0}

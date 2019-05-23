@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 319606784815225054}
   - component: {fileID: 7466798410126371413}
   - component: {fileID: 7038132600334028209}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Test Arrow Tower
   m_TagString: Building
   m_Icon: {fileID: 0}
@@ -110,11 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1519ee79ab0931848bbf24e1a38dfe4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 5504477826802673101}
+  indicator: {fileID: 0}
+  buildingType: 0
   buildingName: Test Arrow Tower
-  buildCost: 1000
+  buildCostMinerals: 100
+  buildCostCrystals: 0
+  repairCostPercent: 50
+  moveCostPercent: 35
+  deleteCostPercent: 50
+  threat: 10
+  placeDistance: 6
   buildTime: 1
   col: {fileID: 1399239747142218895}
+  colP: {fileID: 0}
+  toEnableOnBuild: []
+  enableOnStart: 0
 --- !u!114 &319606784815225054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,8 +138,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 0}
+  corpse: {fileID: 0}
   maxHP: 100
   destroyOnNoHP: 1
+  resistance: 0
   onHealthChange:
     m_PersistentCalls:
       m_Calls: []
@@ -152,9 +164,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dacfc718e95bde14a8e72d38ece6eedb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  oponentType: 0
   oponentFindCooldown: 1
-  maxDistance: 5
+  findDistance: 4
+  attackDistance: 2
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
@@ -169,6 +181,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+    m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  onInRange:
+    m_PersistentCalls:
+      m_Calls: []
     m_TypeName: UnityEventTransform, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
   onOponentNoLongetValid:

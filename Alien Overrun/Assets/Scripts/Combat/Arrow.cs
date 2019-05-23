@@ -46,7 +46,7 @@ public class Arrow : MonoBehaviour
 				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
 			}
 		}
-
+		Debug.Log( other.gameObject.name );
 		IamStuck( other.transform );
 	}
 

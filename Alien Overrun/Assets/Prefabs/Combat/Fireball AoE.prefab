@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4295324024884001676}
   - component: {fileID: 2271213051320492973}
   - component: {fileID: 5045186054421790635}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Fireball AoE
   m_TagString: Untagged
   m_Icon: {fileID: 0}

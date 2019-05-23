@@ -5105,7 +5105,7 @@ GameObject:
   - component: {fileID: 497143050404698730}
   - component: {fileID: 497143050404698731}
   - component: {fileID: 4650885039209054546}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Crystal Miner
   m_TagString: Building
   m_Icon: {fileID: 0}

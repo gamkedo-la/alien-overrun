@@ -13048,7 +13048,7 @@ GameObject:
   - component: {fileID: 1284071209366225697}
   - component: {fileID: 1284071209366225696}
   - component: {fileID: 6322095392469391385}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Mineral Miner
   m_TagString: Building
   m_Icon: {fileID: 0}

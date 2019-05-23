@@ -2423,7 +2423,7 @@ GameObject:
   - component: {fileID: 1745960123}
   - component: {fileID: 1745960122}
   - component: {fileID: 8932429585097059654}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Archer Tower
   m_TagString: Building
   m_Icon: {fileID: 0}

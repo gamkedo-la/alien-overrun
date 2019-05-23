@@ -3811,7 +3811,7 @@ GameObject:
   - component: {fileID: 3216330059626059734}
   - component: {fileID: 473719277194874614}
   - component: {fileID: 1922749780054760380}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Fireball Tower
   m_TagString: Building
   m_Icon: {fileID: 0}
