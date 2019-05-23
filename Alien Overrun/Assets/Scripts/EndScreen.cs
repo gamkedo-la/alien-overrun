@@ -8,6 +8,7 @@ using UnityEngine;
 
 public class EndScreen : MonoBehaviour
 {
+	public Animator animator;
 	[SerializeField] private CanvasGroup[] uiCanvasGroupsToHide = null;
 
 	private CanvasGroup pauseCanvasGroup;
@@ -31,6 +32,8 @@ public class EndScreen : MonoBehaviour
 
 	private void HideUI( )
 	{
+		animator.SetTrigger( "Show" );
+
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
 		{
 			uiCanvasGroup.alpha = 0f;
@@ -43,6 +46,8 @@ public class EndScreen : MonoBehaviour
 
 	private void ShowUI( )
 	{
+		animator.SetTrigger( "Hide" );
+
 		foreach ( var uiCanvasGroup in uiCanvasGroupsToHide )
 		{
 			uiCanvasGroup.alpha = 1f;
