@@ -45,7 +45,6 @@ public class BuildingPlacer : MonoBehaviour
 		cam = Camera.main;
 
         aud = gameObject.AddComponent<AudioSource>();
-        aud.clip = placeSound;
     }
 
 	void Update ()
@@ -147,6 +146,7 @@ public class BuildingPlacer : MonoBehaviour
 		buildingToPlace = null;
 		BuildingManager.Instance.ShowZones( false );
 		BuildingManager.Instance.Building = false;
+
 		aud.pitch = Random.Range( 0.9f, 1.1f );
         aud.PlayOneShot(placeSound);
     }
