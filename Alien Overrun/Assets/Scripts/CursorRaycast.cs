@@ -110,11 +110,12 @@ public class CursorRaycast : MonoBehaviour
 			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
 
 			bool castleOrCore = DoesSelectionContainCastleOrCore();
+			bool castle = DoesSelectionContainCastle();
 			bool resource = DoesSelectionContainResource();
-			editOptionsUI.transform.GetChild(0).gameObject.SetActive(!castleOrCore && !resource);//&& lockedSelection.Count <= 1);
+			editOptionsUI.transform.GetChild(0).gameObject.SetActive(false);
 			editOptionsUI.transform.GetChild(1).gameObject.SetActive(!castleOrCore);
-			editOptionsUI.transform.GetChild(2).gameObject.SetActive(!castleOrCore);
-			editOptionsUI.transform.GetChild(3).gameObject.SetActive(!castleOrCore);
+			editOptionsUI.transform.GetChild(2).gameObject.SetActive(!castle);
+			editOptionsUI.transform.GetChild(3).gameObject.SetActive(false);
 		}
 		else
 		{
@@ -151,6 +152,15 @@ public class CursorRaycast : MonoBehaviour
 		return false;
 	}
 
+	public bool DoesSelectionContainCastle( )
+	{
+		foreach ( var sel in lockedSelection )
+			if ( sel.name.Contains( "Castle" ) )
+				return true;
+
+		return false;
+	}
+
 	private void ToggleRangeIndicatorForSelection(bool value)
 	{
 		foreach (var sel in lockedSelection)
@@ -158,10 +168,17 @@ public class CursorRaycast : MonoBehaviour
 			Building building = sel.GetComponent<Building>();
 			if (building != null)
 			{
-				if (value)
-					building.Indicator.ShowRange(true);
+				if ( building.BuildingType != BuildingType.Castle && building.BuildingType != BuildingType.Core )
+				{
+					if ( value )
+						building.Indicator.ShowRange( true );
+					else
+						building.Indicator.HideRange( );
+				}
 				else
-					building.Indicator.HideRange();
+				{
+					building.Indicator.ShowZone( value );
+				}
 			}
 		}
 	}

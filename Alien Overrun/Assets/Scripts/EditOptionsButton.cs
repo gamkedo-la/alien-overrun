@@ -88,7 +88,7 @@ public class EditOptionsButton : MonoBehaviour, IPointerEnterHandler, IPointerEx
 		}
 		//else if (option == EditOptions.Upgrade)
 
-		transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost.Minerals == 0 && cost.Crystals == 0 ? "" : $"{cost.Minerals}M {cost.Crystals}C" + " Min");
+		transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = (cost.Minerals == 0 && cost.Crystals == 0 ? "" : $"{cost.Minerals}M {cost.Crystals}C");
 	}
 
 	void OnMouseOver()
