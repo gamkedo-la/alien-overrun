@@ -5050,6 +5050,7 @@ MonoBehaviour:
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 10
+  color: FFB7AA
   placeDistance: 0.1
   buildTime: 1
   col: {fileID: 1284071209366225711}

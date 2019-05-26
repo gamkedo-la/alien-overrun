@@ -43,6 +43,9 @@ public class Building : AbstractListableItem
 	public int Threat { get { return threat; } private set { threat = value; } }
 	[SerializeField] private int threat = 10;
 
+	public string Color { get { return color; } private set { color = value; } }
+	[SerializeField] private string color = "FFFFFF";
+
 	public float PlaceDistance { get { return placeDistance; } private set { placeDistance = value; } }
 	[SerializeField] private float placeDistance = 6;
 

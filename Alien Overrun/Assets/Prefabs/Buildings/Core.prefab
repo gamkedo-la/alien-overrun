@@ -463,6 +463,7 @@ MonoBehaviour:
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 10
+  color: BAFAFF
   placeDistance: 5.5
   buildTime: 1
   col: {fileID: 4275637041035347146}
@@ -1095,6 +1096,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1358882027325190171}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1149,11 +1155,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}

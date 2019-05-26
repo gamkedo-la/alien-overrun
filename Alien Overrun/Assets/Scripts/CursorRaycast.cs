@@ -314,7 +314,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				HP hp = hoverSelection.GetComponent<HP>();
 
-				hoverInfo1.text = $"Building: {building.BuildingName}\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C";
+				hoverInfo1.text = $"<color=#{building.Color}>{building.BuildingName}</color>\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C";
 				if ( building.BuildingType == BuildingType.Castle || building.BuildingType == BuildingType.Core )
 					hoverInfo1.text += $"\nBuild range: { building.PlaceDistance}";
 				hoverInfo2.text = "Hit Points: " + hp.MaxHP + "/" + hp.CurrentHP;// + "\nBuild Time: " + building.BuildTime;
@@ -338,7 +338,7 @@ public class CursorRaycast : MonoBehaviour
 			{
 				HP hp = lockedSelection[0].GetComponent<HP>();
 
-				lockedInfo1.text = $"Building: {building.BuildingName}\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C";
+				lockedInfo1.text = $"<color=#{building.Color}>{building.BuildingName}</color>\nBuild Cost: {building.BuildCostMinerals}M {building.BuildCostCrystals}C";
 				if ( building.BuildingType == BuildingType.Castle || building.BuildingType == BuildingType.Core )
 					lockedInfo1.text += $"\nBuild range: { building.PlaceDistance}";
 				lockedInfo2.text = "Hit Points: " + Mathf.FloorToInt( hp.MaxHP ) + "/" + Mathf.FloorToInt( hp.CurrentHP );// + "\nBuild Time: " + building.BuildTime;
