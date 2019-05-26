@@ -27,10 +27,13 @@ public class HP : MonoBehaviour
 	[SerializeField] private UnityEvent onHealthChange = null;
 	[SerializeField] private UnityEvent onDeath = null;
 
-	void Start( )
+	void Awake( )
 	{
 		CurrentHP = maxHP;
+	}
 
+	void Start( )
+	{
 		if ( hpBar )
 		{
 			hpBar.maxValue = maxHP;
