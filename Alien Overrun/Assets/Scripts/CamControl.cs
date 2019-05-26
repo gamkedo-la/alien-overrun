@@ -41,6 +41,9 @@ public class CamControl : MonoBehaviour
 
 	void Update ()
 	{
+		Vector3 oldPos = transform.position;
+		Quaternion oldRot = transform.localRotation;
+
 		if ( Input.GetKeyDown( KeyCode.Y ) )
 		{
 			useScaledTime = !useScaledTime;
@@ -132,6 +135,23 @@ public class CamControl : MonoBehaviour
         check.z = Mathf.Clamp(check.z, cameraZMin, cameraZMax);
         transform.position = check;
 
-        cam.LookAt( transform );
+		var hits = Physics.OverlapSphere( cam.position, 1f);
+		bool gotHit = false;
+		foreach ( var hit in hits )
+		{
+			if ( hit.gameObject.CompareTag( Tags.Environment ) )
+			{
+				gotHit = true;
+				break;
+			}
+		}
+
+		if ( gotHit )
+		{
+			transform.position = oldPos;
+			transform.localRotation = oldRot;
+		}
+
+		cam.LookAt( transform );
 	} // end of Update
 } // end of CamControlClass
