@@ -40,7 +40,7 @@ public class BuildingPlacer : MonoBehaviour
 		buildingName = building.BuildingName;
 		costM = building.BuildCostMinerals;
 		costC = building.BuildCostCrystals;
-		buttonText.text = $"{buildingName}\n[{costM}M {costC}C {building.Threat}F]";
+		buttonText.text = $"{buildingName}\n[{costM}M {costC}C";// {building.Threat}F]";
 
 		cam = Camera.main;
 
