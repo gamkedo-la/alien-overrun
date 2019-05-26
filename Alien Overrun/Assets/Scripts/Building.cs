@@ -147,6 +147,12 @@ public class Building : AbstractListableItem
 
 	public void BuildingDestroyed( )
 	{
+		if ( BuildingType == BuildingType.Castle && LevelManager.Instance.CreativeMode )
+		{
+			GetComponent<HP>( ).ChangeHP( 1000 );
+			return;
+		}
+
 		if ( BuildingType != BuildingType.Castle )
 			AIProgressManager.Instance.RemoveThreat( Threat );
 
