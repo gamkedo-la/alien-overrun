@@ -7,11 +7,15 @@ public class PauseGame : MonoBehaviour
     public Animator animator;
     public CanvasGroup[] uiCanvasGroupsToHide;
 	[SerializeField] private float maxSpeed = 4f;
+	[SerializeField] private float maxForceScale = 0.25f;
 	[SerializeField] private float minSpeed = 0.2f;
+	[SerializeField] private float minForceScale = 5f;
 
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
 	private float currentSpeed = 1f;
+
+	static public float ForceScale = 1;
 
     void Start()
     {
@@ -92,12 +96,14 @@ public class PauseGame : MonoBehaviour
 			if (Time.timeScale == 8f)
 			{
 				Time.timeScale = 1f;
+				ForceScale = 1f;
 				currentSpeed = Time.timeScale;
 				Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			}
 			else
 			{
 				Time.timeScale *= 2f;
+				ForceScale = 0.5f;
 				currentSpeed = Time.timeScale;
 				Time.fixedDeltaTime = 0.02f * Time.timeScale;
 			}
@@ -107,6 +113,7 @@ public class PauseGame : MonoBehaviour
 	public void NormalSpeed( )
 	{
 		Time.timeScale = 1f;
+		ForceScale = 1f;
 		currentSpeed = Time.timeScale;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale;
 	}
@@ -114,6 +121,7 @@ public class PauseGame : MonoBehaviour
 	public void SlowSpeed( )
 	{
 		Time.timeScale = minSpeed;
+		ForceScale = minForceScale;
 		currentSpeed = Time.timeScale;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale;
 	}
@@ -121,6 +129,7 @@ public class PauseGame : MonoBehaviour
 	public void FastSpeed( )
 	{
 		Time.timeScale = maxSpeed;
+		ForceScale = maxForceScale;
 		currentSpeed = Time.timeScale;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale;
 	}

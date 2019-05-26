@@ -122,6 +122,6 @@ public class CannonballShooter : MonoBehaviour
 		Vector3 force = dir * ( shootingForcePerDistance * currentDistanceToTarget );
 		//Debug.DrawLine( spawnPoint.position, spawnPoint.position + dir, Color.yellow, 1f );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
-		go.GetComponent<Rigidbody>( ).AddForce( force );
+		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
 	}
 }

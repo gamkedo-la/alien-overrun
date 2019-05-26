@@ -149,6 +149,8 @@ public class Building : AbstractListableItem
 	{
 		if ( BuildingType != BuildingType.Castle )
 			AIProgressManager.Instance.RemoveThreat( Threat );
+
+		Destroy( gameObject );
 	}
 
 	public (float Minerals, float Crystals) GetRepairCost( )

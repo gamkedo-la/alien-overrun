@@ -8,11 +8,11 @@ public class ApplyForce : MonoBehaviour
 
     void Start()
     {
-		GetComponent<Rigidbody>().AddForce(force, ForceMode.VelocityChange);
+		GetComponent<Rigidbody>().AddForce( force * PauseGame.ForceScale, ForceMode.VelocityChange);
     }
-	
+
     void Update()
     {
-        
+
     }
 }

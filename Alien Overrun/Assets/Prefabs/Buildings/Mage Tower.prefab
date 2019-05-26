@@ -5075,7 +5075,7 @@ MonoBehaviour:
   hpBar: {fileID: 5211465451173816720}
   corpse: {fileID: 0}
   maxHP: 100
-  destroyOnNoHP: 1
+  destroyOnNoHP: 0
   resistance: 0
   onHealthChange:
     m_PersistentCalls:

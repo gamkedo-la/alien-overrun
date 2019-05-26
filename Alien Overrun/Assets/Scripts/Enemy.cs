@@ -107,7 +107,7 @@ public class Enemy : AbstractListableItem
 			return;
 
 		DisableNavMesh( );
-		rb.AddForce( collision.contacts[0].normal * -collision.relativeVelocity.sqrMagnitude * 20 );
+		rb.AddForce( collision.contacts[0].normal * -collision.relativeVelocity.sqrMagnitude * 20 * PauseGame.ForceScale );
 	}
 
 	public void DisableNavMesh( )

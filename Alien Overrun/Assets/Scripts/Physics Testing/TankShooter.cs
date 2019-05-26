@@ -105,6 +105,6 @@ public class TankShooter : MonoBehaviour
 	{
 		Instantiate( shootEffect, transform.position + transform.forward * 0.3f, transform.rotation );
 		GameObject go = Instantiate( ammo[currentAmmoID].Projectile, transform.position, Quaternion.identity );
-		go.GetComponent<Rigidbody>( ).AddForce( transform.forward * ammo[currentAmmoID].ShootingForce );
+		go.GetComponent<Rigidbody>( ).AddForce( transform.forward * ammo[currentAmmoID].ShootingForce * PauseGame.ForceScale );
 	}
 }

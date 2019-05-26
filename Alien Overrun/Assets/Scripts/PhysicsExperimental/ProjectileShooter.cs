@@ -91,7 +91,7 @@ public class ProjectileShooter : MonoBehaviour
 
 		Vector3 force = dir * (shootingForce);
 		var go = Instantiate(projectile, spawnPoint.position, Quaternion.identity);
-		go.GetComponent<Rigidbody>().AddForce(force);
+		go.GetComponent<Rigidbody>().AddForce( force * PauseGame.ForceScale );
 	}
 
 	private void OnTriggerStay(Collider other)

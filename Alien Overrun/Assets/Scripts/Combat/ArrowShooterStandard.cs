@@ -91,6 +91,6 @@ public class ArrowShooterStandard : MonoBehaviour
 
 		Vector3 force = dir * ( shootingForce );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
-		go.GetComponent<Rigidbody>( ).AddForce( force );
+		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
 	}
 }
