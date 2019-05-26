@@ -433,6 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skirmishModeOnly:
   - {fileID: 0}
+  - {fileID: 0}
   creativeModeOnly:
   - {fileID: 0}
   - {fileID: 0}
