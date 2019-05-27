@@ -45,6 +45,8 @@ public class AIProgressManager : MonoBehaviour
 	[SerializeField] private float minPos = -191f;
 	[SerializeField] private float maxPos = 191f;
 	[Header( "Threat" )]
+	[SerializeField] private GameObject threatText = null;
+	[SerializeField] private RectTransform threatDestination = null;
 	[SerializeField] private Threshold[] thresholds = null;
 	[SerializeField] private int threatCurrent = 0;
 
@@ -74,6 +76,8 @@ public class AIProgressManager : MonoBehaviour
 		Assert.IsNotNull( threatLabel );
 		Assert.IsNotNull( markersParent );
 		Assert.IsNotNull( progressMarker );
+		Assert.IsNotNull( threatText );
+		Assert.IsNotNull( threatDestination );
 
 		threatMax = thresholds[thresholds.Length - 1].Value;
 		bar.maxValue = threatMax;
@@ -93,7 +97,13 @@ public class AIProgressManager : MonoBehaviour
 		UpdateBar( );
 	}
 
-	public void AddThreat( int amount )
+	public void AddThreat( int amount, Vector3 position )
+	{
+		var go = Instantiate( threatText, Camera.main.WorldToScreenPoint( position ), Quaternion.identity, transform );
+		go.GetComponent<ThreatText>( ).Set( amount, threatDestination.localPosition );
+	}
+
+	public void AddThreatNow( int amount )
 	{
 		int oldThreat = threatCurrent;
 		threatCurrent += amount;
