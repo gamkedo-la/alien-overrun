@@ -20,6 +20,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 	[SerializeField] private float explosionForce = 1000f;
 	[Header("Other")]
 	[SerializeField] private LayerMask ignoreLayer;
+	[SerializeField] private bool autoDestroy = true;
 
 	private float currnetSize = 0;
 	private float currnetTime = 0;
@@ -87,7 +88,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 		currnetSize = startSize + ( ( endSize - startSize ) * ( currnetTime / time ) );
 		transform.localScale = Vector3.one * currnetSize;
 
-		if ( currnetTime >= time )
+		if ( currnetTime >= time && autoDestroy )
 			Destroy( gameObject );
 	}
 }

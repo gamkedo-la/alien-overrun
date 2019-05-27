@@ -490,7 +490,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2, z: 1.5}
+  m_Size: {x: 1.4, y: 2, z: 1.4}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!65 &1654759920721376047
 BoxCollider:
@@ -503,8 +503,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1.3, y: 2, z: 1.3}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.15, y: 1.6849842, z: 1.15}
+  m_Center: {x: 0, y: 0.8424921, z: 0}
 --- !u!54 &1358882027215378605
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -545,9 +545,11 @@ MonoBehaviour:
   color: BAFAFF
   info: Extends area on which you can build.
   placeDistance: 5
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 4275637041035347146}
   colP: {fileID: 1654759920721376047}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 1358882027215378607}
   - {fileID: 1358882027215378603}
@@ -7489,7 +7491,7 @@ Transform:
   m_GameObject: {fileID: 8641460655603199537}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 1, z: 0.9}
   m_Children:
   - {fileID: 6806875382093813711}
   - {fileID: 8849167490167727899}
