@@ -93,6 +93,9 @@ public class BuildingPlacer : MonoBehaviour
 
 		BuildingManager.Instance.ShowZones( true );
 		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>( );
+		if ( buildingToPlace.BuildingType == BuildingType.Castle || buildingToPlace.BuildingType == BuildingType.Core )
+			buildingToPlace.ShowPlaceZone( true );
+
 		ResourceManager.Instance.UseResources( ResourceType.Minerals, costM );
 		ResourceManager.Instance.UseResources( ResourceType.Crystals, costC );
 
@@ -127,6 +130,9 @@ public class BuildingPlacer : MonoBehaviour
 	{
 		if ( buildingToPlace == null )
 			return;
+
+		if ( buildingToPlace.BuildingType == BuildingType.Castle || buildingToPlace.BuildingType == BuildingType.Core )
+			buildingToPlace.ShowPlaceZone( true );
 
 		Ray mRay = cam.ScreenPointToRay( Input.mousePosition );
 		if ( plane.Raycast( mRay, out float mouseDistance ) )

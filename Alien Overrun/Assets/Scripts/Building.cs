@@ -146,7 +146,7 @@ public class Building : AbstractListableItem
 	public void HideRange( ) => indicator.HideRange( );
 
 	public bool AreWeCloseEnough( Building anotherBuilding )
-		=> Vector3.Distance( transform.position, anotherBuilding.gameObject.transform.position ) <= placeDistance;
+		=> Vector3.Distance( transform.position, anotherBuilding.gameObject.transform.position ) <= ( placeDistance + anotherBuilding.placeDistance ) * 0.99f;
 
 	public void BuildingDestroyed( )
 	{

@@ -14,6 +14,7 @@ public class Indicator : MonoBehaviour
 	[SerializeField] private Building building = null;
 	[Space]
 	[SerializeField] private GameObject zone = null;
+	[SerializeField] private Renderer[] zoneRenderers = null;
 	[SerializeField] private GameObject range = null;
 	[SerializeField] private Renderer[] rangeRenderers = null;
 	[Space]
@@ -33,6 +34,7 @@ public class Indicator : MonoBehaviour
 		Assert.IsNotNull( range);
 		Assert.IsNotNull( rangeRenderers );
 		Assert.AreNotEqual( rangeRenderers.Length, 0 );
+		Assert.AreNotEqual( zoneRenderers.Length, 0 );
 		Assert.IsNotNull( zone );
 		Assert.IsNotNull( onMat );
 		Assert.IsNotNull( offMat );
@@ -77,6 +79,9 @@ public class Indicator : MonoBehaviour
 		foreach ( var item in rangeRenderers )
 			item.material = onMat;
 
+		foreach ( var item in zoneRenderers )
+			item.material = zoneMat;
+
 		foreach (var item in buildingRenderers)
 			item.material = buildingNormalMat;
 
@@ -88,6 +93,9 @@ public class Indicator : MonoBehaviour
 	{
 		range.SetActive( true );
 		foreach ( var item in rangeRenderers )
+			item.material = offMat;
+
+		foreach ( var item in zoneRenderers )
 			item.material = offMat;
 
 		foreach (var item in buildingRenderers)

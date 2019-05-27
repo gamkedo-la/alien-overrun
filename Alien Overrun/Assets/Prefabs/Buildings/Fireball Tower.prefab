@@ -49,6 +49,8 @@ MonoBehaviour:
   addedDistance: 0
   building: {fileID: 4325920223682474915}
   zone: {fileID: 2859705688549284629}
+  zoneRenderers:
+  - {fileID: 2359965065751437694}
   range: {fileID: 7349330683505537539}
   rangeRenderers:
   - {fileID: 4404253718381374528}

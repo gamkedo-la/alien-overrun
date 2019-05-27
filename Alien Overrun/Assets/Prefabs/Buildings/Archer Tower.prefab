@@ -7085,6 +7085,8 @@ MonoBehaviour:
   addedDistance: 0
   building: {fileID: 1745960124}
   zone: {fileID: 5841226471190744090}
+  zoneRenderers:
+  - {fileID: 4826392609886148918}
   range: {fileID: 8719591449556498362}
   rangeRenderers:
   - {fileID: 6775988553430648518}
