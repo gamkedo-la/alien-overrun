@@ -12,6 +12,8 @@ using UnityEngine.UI;
 public class BuildingPlacer : MonoBehaviour
 {
 	[SerializeField] private Button button = null;
+	[SerializeField] private GameObject tooltip = null;
+	[SerializeField] private TextMeshProUGUI tooltipInfo = null;
 	[SerializeField] private TextMeshProUGUI buttonText = null;
 	[SerializeField] private Building building = null;
 	[SerializeField] private GameObject buildingPlacer = null;
@@ -32,6 +34,8 @@ public class BuildingPlacer : MonoBehaviour
     void Start ()
 	{
 		Assert.IsNotNull( button );
+		Assert.IsNotNull( tooltipInfo );
+		Assert.IsNotNull( button );
 		Assert.IsNotNull( buttonText );
 		Assert.IsNotNull( building );
 		Assert.IsNotNull( buildingPlacer );
@@ -40,7 +44,8 @@ public class BuildingPlacer : MonoBehaviour
 		buildingName = building.BuildingName;
 		costM = building.BuildCostMinerals;
 		costC = building.BuildCostCrystals;
-		buttonText.text = $"{buildingName}\n[{costM}M {costC}C";// {building.Threat}F]";
+		buttonText.text = $"{buildingName}";//\n[{costM}M {costC}C";// {building.Threat}F]";
+		tooltipInfo.text = $"{building.Info}\n<color=#FAA70D>Mineral cost: {costM}</color>\n<color=#0D91FA>Crystal cost: {costC}</color>\n<color=#FF5353>Generated threat: {building.Threat}</color>";
 
 		cam = Camera.main;
 
@@ -59,6 +64,27 @@ public class BuildingPlacer : MonoBehaviour
 	void FixedUpdate( )
 	{
 		CheckRequirements( );
+	}
+
+	public void OnOverEnter( )
+	{
+		Invoke( "ShowTooltip", 0.25f );
+	}
+
+	public void OnOverExit( )
+	{
+		HideTooltip( );
+	}
+
+	private void ShowTooltip( )
+	{
+		tooltip.SetActive( true );
+	}
+
+	private void HideTooltip( )
+	{
+		CancelInvoke( "ShowTooltip" );
+		tooltip.SetActive( false );
 	}
 
 	public void StartPlaceing( )

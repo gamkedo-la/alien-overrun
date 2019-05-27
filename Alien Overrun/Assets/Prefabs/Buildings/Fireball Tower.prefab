@@ -2939,6 +2939,7 @@ MonoBehaviour:
   deleteCostPercent: 50
   threat: 10
   color: FFB7AA
+  info: Area of effect tower. Powerful but fragile.
   placeDistance: 0.1
   buildTime: 1
   col: {fileID: 2268137669346959139}

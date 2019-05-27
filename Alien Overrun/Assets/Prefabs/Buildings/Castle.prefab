@@ -32570,6 +32570,7 @@ MonoBehaviour:
   deleteCostPercent: 50
   threat: 20
   color: BAFAFF
+  info: Your main building. If it gets destroyed it's game over.
   placeDistance: 8
   buildTime: 1
   col: {fileID: 8559134306675857122}

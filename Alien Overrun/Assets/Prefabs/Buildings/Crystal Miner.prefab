@@ -5194,6 +5194,7 @@ MonoBehaviour:
   deleteCostPercent: 50
   threat: 10
   color: FFEEBA
+  info: Mines Crystal. Place near crystal resources.
   placeDistance: 0.1
   buildTime: 1
   col: {fileID: 497143050404698724}

@@ -13138,6 +13138,7 @@ MonoBehaviour:
   deleteCostPercent: 50
   threat: 10
   color: FFEEBA
+  info: Mines Minerals. Place near mineral resources.
   placeDistance: 0.1
   buildTime: 1
   col: {fileID: 1284071209366225711}
