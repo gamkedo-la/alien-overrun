@@ -13131,7 +13131,7 @@ MonoBehaviour:
   indicator: {fileID: 1284071209839644544}
   buildingType: 0
   buildingName: Mineral Miner
-  buildCostMinerals: 40
+  buildCostMinerals: 80
   buildCostCrystals: 0
   repairCostPercent: 50
   moveCostPercent: 35

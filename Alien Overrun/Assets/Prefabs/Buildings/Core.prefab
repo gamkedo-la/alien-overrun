@@ -536,7 +536,7 @@ MonoBehaviour:
   indicator: {fileID: 1358882027609322584}
   buildingType: 1
   buildingName: Castle Extension
-  buildCostMinerals: 50
+  buildCostMinerals: 200
   buildCostCrystals: 0
   repairCostPercent: 50
   moveCostPercent: 35

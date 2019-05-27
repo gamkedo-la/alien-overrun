@@ -2506,7 +2506,7 @@ MonoBehaviour:
   indicator: {fileID: 5192442636434570255}
   buildingType: 0
   buildingName: Archer Tower
-  buildCostMinerals: 100
+  buildCostMinerals: 150
   buildCostCrystals: 0
   repairCostPercent: 50
   moveCostPercent: 35
