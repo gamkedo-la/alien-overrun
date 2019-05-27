@@ -2515,9 +2515,11 @@ MonoBehaviour:
   color: FFB7AA
   info: Basic defense tower. Shoots arrows.
   placeDistance: 0.1
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 1745960126}
   colP: {fileID: 5930089240187001908}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 1745960123}
   - {fileID: 1745960122}

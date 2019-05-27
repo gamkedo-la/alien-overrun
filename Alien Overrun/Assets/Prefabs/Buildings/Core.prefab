@@ -545,9 +545,11 @@ MonoBehaviour:
   color: BAFAFF
   info: Extends area on which you can build.
   placeDistance: 5
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 4275637041035347146}
   colP: {fileID: 1654759920721376047}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 1358882027215378607}
   - {fileID: 1358882027215378603}

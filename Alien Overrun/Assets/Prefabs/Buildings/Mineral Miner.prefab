@@ -13140,9 +13140,11 @@ MonoBehaviour:
   color: FFEEBA
   info: Mines Minerals. Place near mineral resources.
   placeDistance: 0.1
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 1284071209366225711}
   colP: {fileID: 6557043432218514927}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 1284071209366225697}
   - {fileID: 1284071209366225696}

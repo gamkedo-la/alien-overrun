@@ -4,6 +4,8 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -57,6 +59,7 @@ public class Building : AbstractListableItem
 
 	[SerializeField] private Collider col = null;
 	[SerializeField] private Collider colP = null;
+	[SerializeField] private GameObject placeEffect = null;
 	[SerializeField] private Behaviour[] toEnableOnBuild = null;
 	[SerializeField] private bool enableOnStart = false;
 
@@ -68,6 +71,7 @@ public class Building : AbstractListableItem
 		Assert.IsNotNull( indicator );
 		Assert.IsNotNull( col );
 		Assert.IsNotNull( colP );
+		Assert.IsNotNull( placeEffect );
 		Assert.IsNotNull( toEnableOnBuild );
 		Assert.AreNotEqual( toEnableOnBuild.Length, 0 );
 
@@ -120,6 +124,24 @@ public class Building : AbstractListableItem
 		colP.enabled = true;
 
 		AIProgressManager.Instance.AddThreat( Threat );
+
+		Instantiate( placeEffect, transform.position, Quaternion.identity );
+		StartCoroutine( ShowBuilding( ) );
+	}
+
+	private IEnumerator ShowBuilding()
+	{
+		Vector3 scale = transform.localScale;
+		scale.y = 0;
+		transform.localScale = scale;
+
+		while ( transform.localScale.y < 1 )
+		{
+			scale.y += Time.deltaTime * BuildTime;
+			transform.localScale = scale;
+
+			yield return null;
+		}
 	}
 
 	public void DisableBuildingToMoveAgain( )

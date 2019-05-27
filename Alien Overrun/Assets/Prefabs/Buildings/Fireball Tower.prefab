@@ -2943,9 +2943,11 @@ MonoBehaviour:
   color: FFB7AA
   info: Area of effect tower. Powerful but fragile.
   placeDistance: 0.1
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 2268137669346959139}
   colP: {fileID: 7044298823807578478}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 3216330059626059734}
   - {fileID: 473719277194874614}

@@ -32572,9 +32572,11 @@ MonoBehaviour:
   color: BAFAFF
   info: Your main building. If it gets destroyed it's game over.
   placeDistance: 8
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 8559134306675857122}
   colP: {fileID: 988790643365765924}
+  placeEffect: {fileID: 5431706381516101886, guid: d3b8a1174d6716041840777c86a5e828,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 8559134306675857132}
   - {fileID: 1127692368939077311}

@@ -5198,9 +5198,11 @@ MonoBehaviour:
   color: FFEEBA
   info: Mines Crystal. Place near crystal resources.
   placeDistance: 0.1
-  buildTime: 1
+  buildTime: 5
   col: {fileID: 497143050404698724}
   colP: {fileID: 5604896091339803812}
+  placeEffect: {fileID: 3289253630817488820, guid: 306163ba0541e7b4d8689484669cf00c,
+    type: 3}
   toEnableOnBuild:
   - {fileID: 497143050404698730}
   - {fileID: 497143050404698731}
