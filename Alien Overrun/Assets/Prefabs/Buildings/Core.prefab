@@ -538,10 +538,10 @@ MonoBehaviour:
   buildingName: Castle Extension
   buildCostMinerals: 200
   buildCostCrystals: 0
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 10
+  threat: 15
   color: BAFAFF
   info: Extends area on which you can build.
   placeDistance: 5
@@ -1591,7 +1591,6 @@ GameObject:
   - component: {fileID: 1160152380051074079}
   - component: {fileID: 1643691186294111095}
   - component: {fileID: 200272530884588253}
-  - component: {fileID: 3423376688879737841}
   m_Layer: 0
   m_Name: Window (2)
   m_TagString: Untagged
@@ -2361,20 +2360,6 @@ MonoBehaviour:
   - a: 19
     b: 18
   m_SelectedVertices: 10000000110000001200000013000000
---- !u!64 &3423376688879737841
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2474231769157980508}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!1 &2730560333710430872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,7 +2988,6 @@ GameObject:
   - component: {fileID: 7733123808924382421}
   - component: {fileID: 7906648968235676875}
   - component: {fileID: 921595379989847117}
-  - component: {fileID: 4544839594101799810}
   m_Layer: 0
   m_Name: Window (1)
   m_TagString: Untagged
@@ -3773,20 +3757,6 @@ MonoBehaviour:
   - a: 19
     b: 18
   m_SelectedVertices: 10000000110000001200000013000000
---- !u!64 &4544839594101799810
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4299599680609971952}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!1 &4655349410658498136
 GameObject:
   m_ObjectHideFlags: 0
@@ -5051,7 +5021,6 @@ GameObject:
   - component: {fileID: 6300564572262574350}
   - component: {fileID: 2950636999857801422}
   - component: {fileID: 743491655931360933}
-  - component: {fileID: 8334127465645818373}
   m_Layer: 0
   m_Name: Window (3)
   m_TagString: Untagged
@@ -5821,20 +5790,6 @@ MonoBehaviour:
   - a: 19
     b: 18
   m_SelectedVertices: 10000000110000001200000013000000
---- !u!64 &8334127465645818373
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5758035663345194967}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!1 &6119503348730957418
 GameObject:
   m_ObjectHideFlags: 0
@@ -5924,7 +5879,6 @@ GameObject:
   - component: {fileID: 1570061199289297073}
   - component: {fileID: 8238320535410779786}
   - component: {fileID: 4050534598578455254}
-  - component: {fileID: 7750908284093622922}
   m_Layer: 0
   m_Name: Window
   m_TagString: Untagged
@@ -6694,20 +6648,6 @@ MonoBehaviour:
   - a: 19
     b: 18
   m_SelectedVertices: 10000000110000001200000013000000
---- !u!64 &7750908284093622922
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257750952798100507}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
 --- !u!1 &6917766340300686189
 GameObject:
   m_ObjectHideFlags: 0
@@ -7688,17 +7628,17 @@ PrefabInstance:
     - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.351
+      value: 1.228
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.2
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}

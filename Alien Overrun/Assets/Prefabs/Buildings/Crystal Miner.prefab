@@ -5191,10 +5191,10 @@ MonoBehaviour:
   buildingName: Crystal Miner
   buildCostMinerals: 300
   buildCostCrystals: 0
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 10
+  threat: 20
   color: FFEEBA
   info: Mines Crystal. Place near crystal resources.
   placeDistance: 0.1

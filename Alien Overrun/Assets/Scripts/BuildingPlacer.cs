@@ -18,7 +18,7 @@ public class BuildingPlacer : MonoBehaviour
 	[SerializeField] private Building building = null;
 	[SerializeField] private GameObject buildingPlacer = null;
 	[SerializeField] private Transform pointOfPlane = null;
-	[SerializeField] private bool requiresFirstThreshold = true;
+	[SerializeField] private bool requiresCastle = true;
     [SerializeField] public AudioClip placeSound;
 
     private int costM = 0;
@@ -192,10 +192,10 @@ public class BuildingPlacer : MonoBehaviour
 			 !BuildingManager.Instance.Building )
 			canBuild = true;
 
-		if ( requiresFirstThreshold && !AIProgressManager.Instance.FistTheasholdReached )
+		if ( requiresCastle && !BuildingManager.Instance.CastlePlaced )
 			canBuild = false;
 
-		if ( !requiresFirstThreshold && AIProgressManager.Instance.FistTheasholdReached )
+		if ( !requiresCastle && BuildingManager.Instance.CastlePlaced )
 			canBuild = false;
 
 		button.interactable = canBuild;

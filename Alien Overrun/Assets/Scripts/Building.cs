@@ -123,10 +123,13 @@ public class Building : AbstractListableItem
 
 		colP.enabled = true;
 
-		AIProgressManager.Instance.AddThreat( Threat );
+		AIProgressManager.Instance.AddThreat( Threat, transform.position );
 
 		Instantiate( placeEffect, transform.position, Quaternion.identity );
 		StartCoroutine( ShowBuilding( ) );
+
+		if ( BuildingType == BuildingType.Castle )
+			BuildingManager.Instance.CastlePlaced = true;
 	}
 
 	private IEnumerator ShowBuilding()
@@ -156,7 +159,7 @@ public class Building : AbstractListableItem
 
 		colP.enabled = false;
 
-		AIProgressManager.Instance.RemoveThreat( Threat );
+		//AIProgressManager.Instance.RemoveThreat( Threat );
 	}
 
 	public bool CanBePaced( ) => collisions == 0;
@@ -179,7 +182,7 @@ public class Building : AbstractListableItem
 		}
 
 		if ( BuildingType != BuildingType.Castle )
-			AIProgressManager.Instance.RemoveThreat( Threat );
+			AIProgressManager.Instance.RemoveThreat( Threat, transform.position );
 
 		Destroy( gameObject );
 	}

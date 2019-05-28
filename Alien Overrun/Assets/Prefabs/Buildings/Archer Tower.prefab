@@ -2508,10 +2508,10 @@ MonoBehaviour:
   buildingName: Archer Tower
   buildCostMinerals: 150
   buildCostCrystals: 0
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 10
+  threat: 20
   color: FFB7AA
   info: Basic defense tower. Shoots arrows.
   placeDistance: 0.1
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 865750418544828846}
   corpse: {fileID: 0}
-  maxHP: 100
+  maxHP: 70
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:

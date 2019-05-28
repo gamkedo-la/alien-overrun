@@ -92,5 +92,20 @@ PrefabInstance:
       propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7282946429170335456, guid: 306163ba0541e7b4d8689484669cf00c,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282946429170335456, guid: 306163ba0541e7b4d8689484669cf00c,
+        type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7282946429170335456, guid: 306163ba0541e7b4d8689484669cf00c,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 306163ba0541e7b4d8689484669cf00c, type: 3}

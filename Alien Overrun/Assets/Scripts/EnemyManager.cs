@@ -29,6 +29,8 @@ public class EnemyManager : AbstractListManager
 	[SerializeField] private float delayBetweenEnemiesMaxOffsetPercent = 20f;
 	[SerializeField] private float enemiesInWave = 5;
 	[SerializeField] private float enemiesInWaveMaxOffsetPercent = 20f;
+	[SerializeField] private float chanceForMegaWave = 20;
+	[SerializeField] private float megaWaveMultiplayer = 2.0f;
 	[SerializeField] private float[] enemyTypePercentChance = {0.34f, 0.33f, 0.33f };
 	[SerializeField] private float[] spawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
 	[Header("Spawn Options")]
@@ -150,8 +152,19 @@ public class EnemyManager : AbstractListManager
 		waveNum++;
 
 		// Spawn enemies in current wave
-		int enemyNumOffset = Mathf.CeilToInt( enemiesInWave * ( enemiesInWaveMaxOffsetPercent / 100 ) );
-		int enemisToSpawn = (int)( enemiesInWave + Random.Range( -enemyNumOffset, enemyNumOffset ) );
+		float enemiesNum = enemiesInWave;
+
+		float megaWaveChance = Random.Range( 0f, 100f );
+		if ( megaWaveChance <= chanceForMegaWave )
+		{
+			Debug.Log( "Mega Wave!" );
+			enemiesNum *= megaWaveMultiplayer;
+		}
+		else
+			Debug.Log( megaWaveChance );
+
+		int enemyNumOffset = Mathf.CeilToInt( enemiesNum * ( enemiesInWaveMaxOffsetPercent / 100 ) );
+		int enemisToSpawn = (int)( enemiesNum + Random.Range( -enemyNumOffset, enemyNumOffset ) );
 		for ( int i = 0; i < enemisToSpawn; i++ )
 		{
 			// Wait between spawning each enemy
@@ -214,6 +227,8 @@ public class EnemyManager : AbstractListManager
 		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent * difficulty;
 		enemiesInWave = newParameters.EnemiesInWave * difficulty;
 		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent * difficulty;
+		chanceForMegaWave = newParameters.ChanceForMegaWave;
+		megaWaveMultiplayer = newParameters.MegaWaveMultiplayer;
 		enemyTypePercentChance[0] = newParameters.EnemyTypePercentChance[0] * difficulty;
 		enemyTypePercentChance[1] = newParameters.EnemyTypePercentChance[1] * difficulty;
 		enemyTypePercentChance[2] = newParameters.EnemyTypePercentChance[2] * difficulty;

@@ -4,7 +4,6 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ public class BuildingManager : AbstractListManager
 
 	[SerializeField] private bool building = false;
 	public bool Building { get { return building; } set { building = value; } }
+	public bool CastlePlaced { get; set; }
 
 	private protected override void Awake( )
 	{
@@ -33,9 +33,10 @@ public class BuildingManager : AbstractListManager
 			building.ShowPlaceZone( show );
 	}
 
-	public Vector3 GetNearestCoreCastleOrZero( Vector3 position )
+	public (Vector3 Target, string TargetName) GetNearestCoreCastleOrZero( Vector3 position )
 	{
 		Vector3 returnPos = Vector3.zero;
+		string targetName = "None";
 
 		float distance = 100000000;
 		foreach ( Building building in ItemsList )
@@ -44,9 +45,10 @@ public class BuildingManager : AbstractListManager
 			{
 				distance = Vector3.Distance( building.transform.position, position );
 				returnPos = building.transform.position;
+				targetName = building.name;
 			}
 
-		return returnPos;
+		return (returnPos, targetName);
 	}
 
 	public Building GetNearestCoreCastleOrNull( Vector3 position )

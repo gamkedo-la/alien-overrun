@@ -398,9 +398,9 @@ public class CursorRaycast : MonoBehaviour
 
 		GameObject newSelInd = Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f));
 		selectionIndicator.Add(newSelInd);
-		newSelInd.transform.parent = addSel.transform;
-		Building building = addSel.GetComponent<Building>();
-		/*
+		//newSelInd.transform.parent = addSel.transform;
+		/*Building building = addSel.GetComponent<Building>();
+
 		if(building != null)
 			building.Indicator.ShowRange(true);
 			*/
@@ -459,8 +459,8 @@ public class CursorRaycast : MonoBehaviour
 		ResourceManager.Instance.AddResources(ResourceType.Minerals, GetSelectionDeleteCost().Minerals);
 		ResourceManager.Instance.AddResources(ResourceType.Crystals, GetSelectionDeleteCost().Crystals);
 
-		foreach (var sel in lockedSelection)
-			Destroy(sel);
+		foreach ( var sel in lockedSelection )
+			sel.GetComponent<Building>( )?.BuildingDestroyed( );
 
 		lockedSelection.Clear();
 

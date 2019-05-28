@@ -92,12 +92,12 @@ PrefabInstance:
     - target: {fileID: 1019363802863975604, guid: 16aa9740164cf1a3588c0dcb2e48948a,
         type: 3}
       propertyPath: maxResources
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1019363802863975604, guid: 16aa9740164cf1a3588c0dcb2e48948a,
         type: 3}
       propertyPath: minResources
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1019363802863975604, guid: 16aa9740164cf1a3588c0dcb2e48948a,
         type: 3}

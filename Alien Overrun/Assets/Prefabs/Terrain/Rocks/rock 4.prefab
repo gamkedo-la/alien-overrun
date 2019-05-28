@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 7226361132662295862}
   - component: {fileID: 7226361132662295863}
   - component: {fileID: 7226361132662295856}
-  m_Layer: 9
+  - component: {fileID: -1885376341630413887}
+  m_Layer: 0
   m_Name: rock 4
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -368,3 +369,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 0}
+--- !u!114 &-1885376341630413887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226361132662295857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

@@ -19,7 +19,7 @@ public class MovingMini : MonoBehaviour
         transform.position += posOffset;
         currentPos = transform.position;
 
-		destination = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position ) + posOffset;
+		destination = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position ).Target + posOffset;
 	}
 
     void Update()
