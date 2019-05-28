@@ -868,10 +868,10 @@ MonoBehaviour:
   threatDestination: {fileID: 941440903063564677}
   thresholds:
   - Value: 20
-    Color: {r: 1, g: 0.78683865, b: 0, a: 0.9019608}
+    Color: {r: 1, g: 0.9568607, b: 0, a: 0.9019608}
     Message: Enemies have noticed your presence
     ParametersChangeOnThreshold:
-      DelayBeforeWave: 10
+      DelayBeforeWave: 40
       SpawnDelayMaxOffsetPercent: 10
       DelayBetweenEnemies: 2
       DelayBetweenEnemiesMaxOffsetPercent: 10
@@ -886,9 +886,42 @@ MonoBehaviour:
       - 0
       - 0
     ParametersChangePerPoint:
-      DelayBeforeWave: -0.02
+      DelayBeforeWave: -0.15
       SpawnDelayMaxOffsetPercent: 0
       DelayBetweenEnemies: -0.003
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 0.09
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 0
+  - Value: 100
+    Color: {r: 1, g: 0.8144703, b: 0, a: 0.9019608}
+    Message: Enemies are getting stronger
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 25
+      SpawnDelayMaxOffsetPercent: 20
+      DelayBetweenEnemies: 1
+      DelayBetweenEnemiesMaxOffsetPercent: 20
+      EnemiesInWave: 14
+      EnemiesInWaveMaxOffsetPercent: 20
+      EnemyTypePercentChance:
+      - 0.7
+      - 0.3
+      - 0
+      SpawnPointIDPercentChance:
+      - 0
+      - 1
+      - 0
+    ParametersChangePerPoint:
+      DelayBeforeWave: -0.04
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: -0.001
       DelayBetweenEnemiesMaxOffsetPercent: 0
       EnemiesInWave: 0.05
       EnemiesInWaveMaxOffsetPercent: 0
@@ -900,15 +933,15 @@ MonoBehaviour:
       - 0
       - 0
       - 0
-  - Value: 100
-    Color: {r: 1, g: 0.38475227, b: 0, a: 0.9019608}
+  - Value: 200
+    Color: {r: 1, g: 0.6396225, b: 0, a: 0.9019608}
     Message: Enemies are getting much stronger
     ParametersChangeOnThreshold:
-      DelayBeforeWave: 5
+      DelayBeforeWave: 20
       SpawnDelayMaxOffsetPercent: 20
       DelayBetweenEnemies: 1
       DelayBetweenEnemiesMaxOffsetPercent: 20
-      EnemiesInWave: 12
+      EnemiesInWave: 15
       EnemiesInWaveMaxOffsetPercent: 20
       EnemyTypePercentChance:
       - 0.5
@@ -919,7 +952,7 @@ MonoBehaviour:
       - 0.5
       - 0
     ParametersChangePerPoint:
-      DelayBeforeWave: -0.005
+      DelayBeforeWave: 0
       SpawnDelayMaxOffsetPercent: 0
       DelayBetweenEnemies: -0.001
       DelayBetweenEnemiesMaxOffsetPercent: 0
@@ -930,27 +963,93 @@ MonoBehaviour:
       - 0
       - 0
       SpawnPointIDPercentChance:
-      - -0.00025
-      - -0.00025
-      - 0.0005
+      - 0
+      - 0
+      - 0
   - Value: 300
-    Color: {r: 1, g: 0, b: 0.13088799, a: 0.9019608}
-    Message: Enemies are getting serious
+    Color: {r: 1, g: 0.41117916, b: 0, a: 0.9019608}
+    Message: Enemies are starting to get serious
     ParametersChangeOnThreshold:
-      DelayBeforeWave: 30
+      DelayBeforeWave: 20
+      SpawnDelayMaxOffsetPercent: 20
+      DelayBetweenEnemies: 1
+      DelayBetweenEnemiesMaxOffsetPercent: 20
+      EnemiesInWave: 15
+      EnemiesInWaveMaxOffsetPercent: 20
+      EnemyTypePercentChance:
+      - 0.1
+      - 0.7
+      - 0.2
+      SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 1
+    ParametersChangePerPoint:
+      DelayBeforeWave: 0
       SpawnDelayMaxOffsetPercent: 0
-      DelayBetweenEnemies: 0.3
+      DelayBetweenEnemies: -0.001
       DelayBetweenEnemiesMaxOffsetPercent: 0
-      EnemiesInWave: 40
+      EnemiesInWave: 0.04
       EnemiesInWaveMaxOffsetPercent: 0
       EnemyTypePercentChance:
-      - 0.34
-      - 0.33
-      - 0.33
+      - 0
+      - 0
+      - 0
       SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 0
+  - Value: 400
+    Color: {r: 1, g: 0.20975389, b: 0, a: 0.9019608}
+    Message: Enemies are getting serious
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 20
+      SpawnDelayMaxOffsetPercent: 20
+      DelayBetweenEnemies: 1
+      DelayBetweenEnemiesMaxOffsetPercent: 20
+      EnemiesInWave: 20
+      EnemiesInWaveMaxOffsetPercent: 20
+      EnemyTypePercentChance:
+      - 0.1
+      - 0.3
+      - 0.6
+      SpawnPointIDPercentChance:
+      - 0.33
+      - 0.33
       - 0.34
+    ParametersChangePerPoint:
+      DelayBeforeWave: 0
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: -0.001
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 0.1
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0
+      - 0
+      - 0
+      SpawnPointIDPercentChance:
+      - 0
+      - 0
+      - 0
+  - Value: 500
+    Color: {r: 1, g: 0, b: 0.03486824, a: 0.9019608}
+    Message: Final enemy push!!!
+    ParametersChangeOnThreshold:
+      DelayBeforeWave: 5
+      SpawnDelayMaxOffsetPercent: 0
+      DelayBetweenEnemies: 0.1
+      DelayBetweenEnemiesMaxOffsetPercent: 0
+      EnemiesInWave: 60
+      EnemiesInWaveMaxOffsetPercent: 0
+      EnemyTypePercentChance:
+      - 0.2
+      - 0.3
+      - 0.5
+      SpawnPointIDPercentChance:
       - 0.33
       - 0.33
+      - 0.34
     ParametersChangePerPoint:
       DelayBeforeWave: 0
       SpawnDelayMaxOffsetPercent: 0
