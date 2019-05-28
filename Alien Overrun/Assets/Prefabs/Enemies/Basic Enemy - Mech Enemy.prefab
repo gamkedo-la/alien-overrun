@@ -370,6 +370,8 @@ MonoBehaviour:
   mineralsForKill: 0
   maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
+  timeToDestroyOnNotMoving: 10
+  DebugInfo: 
 --- !u!114 &1894772762418121626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,8 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFindCooldown: 0.2
-  findDistance: 7
-  attackDistance: 4
+  findDistance: 9
+  attackDistance: 6
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
@@ -13722,6 +13724,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8243135363891196994}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -13791,11 +13798,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.375459
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
       objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}

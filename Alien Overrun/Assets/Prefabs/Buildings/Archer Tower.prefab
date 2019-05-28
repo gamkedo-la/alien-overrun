@@ -2511,7 +2511,7 @@ MonoBehaviour:
   repairCostPercent: 50
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 10
+  threat: 20
   color: FFB7AA
   info: Basic defense tower. Shoots arrows.
   placeDistance: 0.1

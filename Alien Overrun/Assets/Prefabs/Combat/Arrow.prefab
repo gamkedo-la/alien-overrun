@@ -122,5 +122,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gfx: {fileID: 4983688142417844953}
-  damage: 5
+  damage: 3
   damageType: 0

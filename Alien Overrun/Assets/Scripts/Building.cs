@@ -156,7 +156,7 @@ public class Building : AbstractListableItem
 
 		colP.enabled = false;
 
-		AIProgressManager.Instance.RemoveThreat( Threat );
+		//AIProgressManager.Instance.RemoveThreat( Threat );
 	}
 
 	public bool CanBePaced( ) => collisions == 0;

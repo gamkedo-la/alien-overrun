@@ -541,7 +541,7 @@ MonoBehaviour:
   repairCostPercent: 50
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 10
+  threat: 15
   color: BAFAFF
   info: Extends area on which you can build.
   placeDistance: 5

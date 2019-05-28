@@ -459,8 +459,8 @@ public class CursorRaycast : MonoBehaviour
 		ResourceManager.Instance.AddResources(ResourceType.Minerals, GetSelectionDeleteCost().Minerals);
 		ResourceManager.Instance.AddResources(ResourceType.Crystals, GetSelectionDeleteCost().Crystals);
 
-		foreach (var sel in lockedSelection)
-			Destroy(sel);
+		foreach ( var sel in lockedSelection )
+			sel.GetComponent<Building>( )?.BuildingDestroyed( );
 
 		lockedSelection.Clear();
 

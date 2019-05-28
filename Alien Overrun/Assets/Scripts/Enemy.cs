@@ -20,12 +20,15 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private int mineralsForKill = 20;
 	[SerializeField] private float maxVelocityMag = 150f;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
+	[SerializeField] private float timeToDestroyOnNotMoving = 10f;
 
 	public string DebugInfo = "";
 
 	private Vector3 destination = Vector3.zero;
+	private Vector3 oldPos = Vector3.zero;
 	private Rigidbody rb = null;
 	private bool isDynamic = false;
+	private bool hold = false;
 
 	void Start ()
 	{
@@ -38,6 +41,8 @@ public class Enemy : AbstractListableItem
 
 		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
 		oponentFinder.SetOponentListManager( BuildingManager.Instance );
+
+		Invoke( "OnDeath", 3 * 60 );
 	}
 
 	void FixedUpdate( )
@@ -51,6 +56,10 @@ public class Enemy : AbstractListableItem
 		// Just in case enemy drops outside of the map
 		if ( transform.position.y < -1000f )
 			Destroy( gameObject );
+		// ...or is immobile
+		if (oldPos == transform.position && !hold)
+			timeToDestroyOnNotMoving -= Time.fixedDeltaTime;
+		oldPos = transform.position;
 	}
 
 	void OnEnable( )
@@ -81,6 +90,7 @@ public class Enemy : AbstractListableItem
 	private void SetDestination( Vector3 destination )
 	{
 		this.destination = destination;
+		hold = false;
 
 		if ( isDynamic )
 			return;
@@ -94,6 +104,7 @@ public class Enemy : AbstractListableItem
 		if ( isDynamic )
 			return;
 
+		hold = true;
 		agent.isStopped = true;
 	}
 
