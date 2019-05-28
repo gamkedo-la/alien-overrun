@@ -21,6 +21,8 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float maxVelocityMag = 150f;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 
+	public string DebugInfo = "";
+
 	private Vector3 destination = Vector3.zero;
 	private Rigidbody rb = null;
 	private bool isDynamic = false;
@@ -32,8 +34,7 @@ public class Enemy : AbstractListableItem
 		Assert.IsNotNull( agent );
 		Assert.IsNotNull( detector );
 
-		destination = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position );
-		agent.SetDestination( destination );
+		SetDestination( );
 
 		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
 		oponentFinder.SetOponentListManager( BuildingManager.Instance );
@@ -65,15 +66,19 @@ public class Enemy : AbstractListableItem
 
 	public void SetDestination( )
 	{
-		SetDestination( BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position ) );
+		string targetName = "";
+		(destination, targetName) = BuildingManager.Instance.GetNearestCoreCastleOrZero( transform.position );
+		DebugInfo = $"Destination: {targetName}";
+		SetDestination( destination );
 	}
 
 	public void SetDestination( Transform target )
 	{
+		DebugInfo = $"Destination: {target.name}";
 		SetDestination( target.position );
 	}
 
-	public void SetDestination( Vector3 destination )
+	private void SetDestination( Vector3 destination )
 	{
 		this.destination = destination;
 

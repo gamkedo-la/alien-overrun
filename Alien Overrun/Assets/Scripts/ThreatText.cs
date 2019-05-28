@@ -11,7 +11,6 @@ using UnityEngine.Assertions;
 public class ThreatText : MonoBehaviour
 {
 	[SerializeField] private TextMeshProUGUI label = null;
-	[SerializeField] private RectTransform rectT = null;
 	[SerializeField] private Vector2 destination = new Vector2(-34, 240);
 	[SerializeField] private float speed = 3;
 

@@ -33,9 +33,10 @@ public class BuildingManager : AbstractListManager
 			building.ShowPlaceZone( show );
 	}
 
-	public Vector3 GetNearestCoreCastleOrZero( Vector3 position )
+	public (Vector3 Target, string TargetName) GetNearestCoreCastleOrZero( Vector3 position )
 	{
 		Vector3 returnPos = Vector3.zero;
+		string targetName = "None";
 
 		float distance = 100000000;
 		foreach ( Building building in ItemsList )
@@ -44,9 +45,10 @@ public class BuildingManager : AbstractListManager
 			{
 				distance = Vector3.Distance( building.transform.position, position );
 				returnPos = building.transform.position;
+				targetName = building.name;
 			}
 
-		return returnPos;
+		return (returnPos, targetName);
 	}
 
 	public Building GetNearestCoreCastleOrNull( Vector3 position )
