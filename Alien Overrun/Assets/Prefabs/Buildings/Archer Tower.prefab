@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 865750418544828846}
   corpse: {fileID: 0}
-  maxHP: 100
+  maxHP: 70
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:

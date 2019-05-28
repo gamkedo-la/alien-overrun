@@ -2935,7 +2935,7 @@ MonoBehaviour:
   buildingType: 0
   buildingName: Fireball Tower
   buildCostMinerals: 0
-  buildCostCrystals: 100
+  buildCostCrystals: 200
   repairCostPercent: 50
   moveCostPercent: 35
   deleteCostPercent: 50
@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3893072889936442765}
   corpse: {fileID: 0}
-  maxHP: 100
+  maxHP: 30
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:
@@ -3060,7 +3060,7 @@ MonoBehaviour:
     type: 3}
   cannonPivotX: {fileID: 499530041351838838}
   cannonPivotY: {fileID: 7568062003479152311}
-  reloadTime: 2
+  reloadTime: 5
   ammoCost: 0
   shootingForcePerDistance: 5.1
   upAngleCorrection: 0

@@ -38,6 +38,22 @@ public class Resource : AbstractListableItem
 		);
 
 		ScaleVisuals( );
+
+		switch ( resourceType )
+		{
+			case ResourceType.Minerals:
+			if ( ResourceManagerMineral.Instance )
+				ResourceManagerMineral.Instance.Add( currentResources );
+			break;
+
+			case ResourceType.Crystals:
+			if ( ResourceManagerCrystal.Instance )
+				ResourceManagerCrystal.Instance.Add( currentResources );
+			break;
+
+			default:
+			break;
+		}
 	}
 
 	void OnEnable( )

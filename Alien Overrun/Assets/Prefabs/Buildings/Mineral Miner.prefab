@@ -13253,7 +13253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1284071210338740561}
-  reloadTime: 0.7
+  reloadTime: 1.5
   shootDuration: 0.2
   damage: 5
   shotColor: {r: 0.98039216, g: 0.6567674, b: 0.05098036, a: 1}

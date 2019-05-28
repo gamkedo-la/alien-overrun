@@ -8,6 +8,8 @@ public class ResourceManagerMineral : AbstractListManager
 {
 	public static ResourceManagerMineral Instance { get; private set; }
 
+	private int onMap = 0;
+
 	private protected override void Awake( )
 	{
 		base.Awake( );
@@ -19,4 +21,16 @@ public class ResourceManagerMineral : AbstractListManager
 	}
 
 	private void OnDestroy( ) { if ( this == Instance ) { Instance = null; } }
+
+	public void Add( int amount )
+	{
+		onMap += amount;
+		CancelInvoke( "Display" );
+		Invoke( "Display", 1f );
+	}
+
+	private void Display()
+	{
+		UnityEngine.Debug.Log( "Minerals on map: " + onMap );
+	}
 }

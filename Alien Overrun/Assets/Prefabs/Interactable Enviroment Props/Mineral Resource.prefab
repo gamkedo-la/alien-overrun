@@ -51,8 +51,8 @@ MonoBehaviour:
     type: 3}
   resourceType: 0
   minResources: 100
-  maxResources: 1000
-  scaleFactor: 0.003
+  maxResources: 500
+  scaleFactor: 0.006
   minNodeSize: 0.4
   onChange:
     m_PersistentCalls:

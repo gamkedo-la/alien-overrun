@@ -5044,8 +5044,8 @@ MonoBehaviour:
   indicator: {fileID: 1284071209839644544}
   buildingType: 0
   buildingName: Mage Tower
-  buildCostMinerals: 50
-  buildCostCrystals: 50
+  buildCostMinerals: 100
+  buildCostCrystals: 100
   repairCostPercent: 50
   moveCostPercent: 35
   deleteCostPercent: 50
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 5211465451173816720}
   corpse: {fileID: 0}
-  maxHP: 100
+  maxHP: 120
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:
@@ -5166,8 +5166,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1284071210338740561}
-  reloadTime: 0.7
-  shootDuration: 0.2
+  reloadTime: 0.5
+  shootDuration: 0.1
   damage: 10
   shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
   damageType: 1
