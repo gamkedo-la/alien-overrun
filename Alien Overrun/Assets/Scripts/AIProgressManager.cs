@@ -114,7 +114,13 @@ public class AIProgressManager : MonoBehaviour
 		UpdateBar( );
 	}
 
-	public void RemoveThreat( int amount )
+	public void RemoveThreat( int amount, Vector3 position )
+	{
+		var go = Instantiate( threatText, Camera.main.WorldToScreenPoint( position ), Quaternion.identity, transform );
+		go.GetComponent<ThreatText>( ).Set( -amount, threatDestination.localPosition );
+	}
+
+	public void RemoveThreatNow( int amount )
 	{
 		int oldThreat = threatCurrent;
 		threatCurrent -= amount;
