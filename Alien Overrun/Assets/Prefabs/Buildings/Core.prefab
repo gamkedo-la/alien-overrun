@@ -538,7 +538,7 @@ MonoBehaviour:
   buildingName: Castle Extension
   buildCostMinerals: 200
   buildCostCrystals: 0
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 15

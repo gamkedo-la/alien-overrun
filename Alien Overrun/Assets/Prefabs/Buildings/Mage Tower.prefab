@@ -5046,7 +5046,7 @@ MonoBehaviour:
   buildingName: Mage Tower
   buildCostMinerals: 100
   buildCostCrystals: 100
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 25

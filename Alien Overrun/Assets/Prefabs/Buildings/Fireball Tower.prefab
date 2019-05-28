@@ -2936,7 +2936,7 @@ MonoBehaviour:
   buildingName: Fireball Tower
   buildCostMinerals: 0
   buildCostCrystals: 200
-  repairCostPercent: 50
+  repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 30
