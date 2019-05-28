@@ -19,6 +19,8 @@ public class WaveParameters
 	public float DelayBetweenEnemiesMaxOffsetPercent = 20f;
 	public float EnemiesInWave = 5;
 	public float EnemiesInWaveMaxOffsetPercent = 20f;
+	public float ChanceForMegaWave = 20;
+	public float MegaWaveMultiplayer = 2.0f;
 	public float[] EnemyTypePercentChance = {0.34f, 0.33f, 0.33f };
 	public float[] SpawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
 }
