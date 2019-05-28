@@ -4,7 +4,6 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ public class BuildingManager : AbstractListManager
 
 	[SerializeField] private bool building = false;
 	public bool Building { get { return building; } set { building = value; } }
+	public bool CastlePlaced { get; set; }
 
 	private protected override void Awake( )
 	{

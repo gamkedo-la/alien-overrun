@@ -423,8 +423,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oponentFindCooldown: 0.2
-  findDistance: 9
-  attackDistance: 6
+  findDistance: 10
+  attackDistance: 8
   onOponentFound:
     m_PersistentCalls:
       m_Calls:

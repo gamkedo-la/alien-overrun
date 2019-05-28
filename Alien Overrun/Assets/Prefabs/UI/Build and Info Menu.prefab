@@ -1449,7 +1449,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 8559134306675857125, guid: 279851a94146f5d49bffda830ee83dfe,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 0
+  requiresCastle: 0
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &466326739169796217
 MonoBehaviour:
@@ -2174,7 +2174,7 @@ MonoBehaviour:
   building: {fileID: 1745960124, guid: 3d36a392e5bcb9a4f95cae09c31153c9, type: 3}
   buildingPlacer: {fileID: 1745960120, guid: 3d36a392e5bcb9a4f95cae09c31153c9, type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &1086199636399729999
 MonoBehaviour:
@@ -4803,7 +4803,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 1284071209366225704, guid: f046066f470d6332a999b9c4748440ec,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &450926011647050440
 MonoBehaviour:
@@ -5343,7 +5343,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 497143050404698723, guid: b060cfbc66fa6554c8262579b01fd05d,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &6956529974264755884
 MonoBehaviour:
@@ -6191,7 +6191,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 1358882027215378614, guid: 790b0da9deaa3bf44b67eeb858effa43,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &4919499125188495100
 MonoBehaviour:
@@ -6934,7 +6934,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 8394160918541279847, guid: 1d6de3901b118164aa7c7e6940f08788,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &447078791303785024
 MonoBehaviour:
@@ -7250,7 +7250,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 1284071209366225704, guid: 01c789e2ac224574e8d6ce14c86cd51d,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &5631666149457936874
 MonoBehaviour:
@@ -8590,7 +8590,7 @@ MonoBehaviour:
   buildingPlacer: {fileID: 1284071209366225704, guid: f046066f470d6332a999b9c4748440ec,
     type: 3}
   pointOfPlane: {fileID: 0}
-  requiresFirstThreshold: 1
+  requiresCastle: 1
   placeSound: {fileID: 8300000, guid: e242e8249871713428405f1ce335ad30, type: 3}
 --- !u!114 &1790515471655993278
 MonoBehaviour:

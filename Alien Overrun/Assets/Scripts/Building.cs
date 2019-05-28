@@ -127,6 +127,9 @@ public class Building : AbstractListableItem
 
 		Instantiate( placeEffect, transform.position, Quaternion.identity );
 		StartCoroutine( ShowBuilding( ) );
+
+		if ( BuildingType == BuildingType.Castle )
+			BuildingManager.Instance.CastlePlaced = true;
 	}
 
 	private IEnumerator ShowBuilding()
