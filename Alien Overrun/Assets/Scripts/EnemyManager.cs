@@ -226,7 +226,6 @@ public class EnemyManager : AbstractListManager
 		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
 
 		delayBeforeWave = newParameters.DelayBeforeWave / difficulty;
-		Debug.Log( delayBeforeWave );
 		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent;
 		delayBetweenEnemies = newParameters.DelayBetweenEnemies / difficulty;
 		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent;
@@ -249,17 +248,17 @@ public class EnemyManager : AbstractListManager
 		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
 
 		delayBeforeWave += parametersIncrease.DelayBeforeWave * increase;
-		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase * difficulty;
-		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase * difficulty;
-		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase * difficulty;
+		spawnDelayMaxOffsetPercent += parametersIncrease.SpawnDelayMaxOffsetPercent * increase;
+		delayBetweenEnemies += parametersIncrease.DelayBetweenEnemies * increase;
+		delayBetweenEnemiesMaxOffsetPercent += parametersIncrease.DelayBetweenEnemiesMaxOffsetPercent * increase;
 		enemiesInWave += parametersIncrease.EnemiesInWave * increase * difficulty;
-		enemiesInWaveMaxOffsetPercent += parametersIncrease.EnemiesInWaveMaxOffsetPercent * increase * difficulty;
-		enemyTypePercentChance[0] += parametersIncrease.EnemyTypePercentChance[0] * increase * difficulty;
-		enemyTypePercentChance[1] += parametersIncrease.EnemyTypePercentChance[1] * increase * difficulty;
-		enemyTypePercentChance[2] += parametersIncrease.EnemyTypePercentChance[2] * increase * difficulty;
-		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase * difficulty;
-		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase * difficulty;
-		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase * difficulty;
+		enemiesInWaveMaxOffsetPercent += parametersIncrease.EnemiesInWaveMaxOffsetPercent * increase;
+		enemyTypePercentChance[0] += parametersIncrease.EnemyTypePercentChance[0] * increase;
+		enemyTypePercentChance[1] += parametersIncrease.EnemyTypePercentChance[1] * increase;
+		enemyTypePercentChance[2] += parametersIncrease.EnemyTypePercentChance[2] * increase;
+		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase;
+		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase;
+		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase;
 	}
 
 	private void PrepareMegaWavesChances( )
