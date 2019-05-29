@@ -5,6 +5,7 @@
  **/
 
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -29,7 +30,7 @@ public class EnemyManager : AbstractListManager
 	[SerializeField] private float delayBetweenEnemiesMaxOffsetPercent = 20f;
 	[SerializeField] private float enemiesInWave = 5;
 	[SerializeField] private float enemiesInWaveMaxOffsetPercent = 20f;
-	[SerializeField] private float chanceForMegaWave = 20;
+	[SerializeField] private bool[] chanceForMegaWave = {true, false, false, false, false, false };
 	[SerializeField] private float megaWaveMultiplayer = 2.0f;
 	[SerializeField] private float[] enemyTypePercentChance = {0.34f, 0.33f, 0.33f };
 	[SerializeField] private float[] spawnPointIDPercentChance = {0.34f, 0.33f, 0.33f };
@@ -41,6 +42,7 @@ public class EnemyManager : AbstractListManager
 	private Coroutine coroutine;
 	private bool autoSpawning = false;
 	private bool spawningLastWave = false;
+	private Queue<bool> megaWaves;
 
 	private protected override void Awake( )
 	{
@@ -154,14 +156,16 @@ public class EnemyManager : AbstractListManager
 		// Spawn enemies in current wave
 		float enemiesNum = enemiesInWave;
 
-		float megaWaveChance = Random.Range( 0f, 100f );
-		if ( megaWaveChance <= chanceForMegaWave )
+		if ( megaWaves.Dequeue( ) )
 		{
 			Debug.Log( "Mega Wave!" );
 			enemiesNum *= megaWaveMultiplayer;
+
+			if ( megaWaves.Count <= 0 )
+				PrepareMegaWavesChances( );
 		}
 		else
-			Debug.Log( megaWaveChance );
+			Debug.Log( "No" );
 
 		int enemyNumOffset = Mathf.CeilToInt( enemiesNum * ( enemiesInWaveMaxOffsetPercent / 100 ) );
 		int enemisToSpawn = (int)( enemiesNum + Random.Range( -enemyNumOffset, enemyNumOffset ) );
@@ -235,6 +239,8 @@ public class EnemyManager : AbstractListManager
 		spawnPointIDPercentChance[0] = newParameters.SpawnPointIDPercentChance[0] * difficulty;
 		spawnPointIDPercentChance[1] = newParameters.SpawnPointIDPercentChance[1] * difficulty;
 		spawnPointIDPercentChance[2] = newParameters.SpawnPointIDPercentChance[2] * difficulty;
+
+		PrepareMegaWavesChances( );
 	}
 
 	public void ChangeParametersOnThreatChange( WaveParameters parametersIncrease, int increase )
@@ -253,5 +259,20 @@ public class EnemyManager : AbstractListManager
 		spawnPointIDPercentChance[0] += parametersIncrease.SpawnPointIDPercentChance[0] * increase * difficulty;
 		spawnPointIDPercentChance[1] += parametersIncrease.SpawnPointIDPercentChance[1] * increase * difficulty;
 		spawnPointIDPercentChance[2] += parametersIncrease.SpawnPointIDPercentChance[2] * increase * difficulty;
+	}
+
+	private void PrepareMegaWavesChances( )
+	{
+		Debug.Log( "Preparing mega waves chances..." );
+		chanceForMegaWave = chanceForMegaWave.OrderBy( x => Random.Range(0, 10000000) ).ToArray( );
+		megaWaves = new Queue<bool>( chanceForMegaWave );
+
+		/*string log = "{";
+		foreach ( var item in chanceForMegaWave )
+		{
+			log += item + ", ";
+		}
+		log += "}";
+		Debug.Log( log );*/
 	}
 }

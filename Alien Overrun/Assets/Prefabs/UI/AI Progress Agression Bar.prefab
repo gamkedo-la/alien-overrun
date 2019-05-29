@@ -877,7 +877,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 10
       EnemiesInWave: 5
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 1
@@ -914,7 +914,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 20
       EnemiesInWave: 14
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.7
@@ -951,7 +951,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 20
       EnemiesInWave: 15
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.5
@@ -988,7 +988,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 20
       EnemiesInWave: 15
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.1
@@ -1025,7 +1025,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 20
       EnemiesInWave: 20
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.1
@@ -1062,7 +1062,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 0
       EnemiesInWave: 60
       EnemiesInWaveMaxOffsetPercent: 0
-      ChanceForMegaWave: 20
+      ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.2
@@ -1079,7 +1079,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 0
       EnemiesInWave: 0
       EnemiesInWaveMaxOffsetPercent: 0
-      ChanceForMegaWave: 0
+      ChanceForMegaWave: 
       MegaWaveMultiplayer: 1
       EnemyTypePercentChance:
       - 0
