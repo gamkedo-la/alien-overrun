@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private GameObject[] creativeModeOnly = null;
 	[SerializeField] private Transform mineralSets = null;
 	[SerializeField] private Transform crystalSets = null;
+	[SerializeField] private Transform terrainSets = null;
 
 	public bool Paused { get { return paused; } set { paused = value; } }
 	[SerializeField] private bool paused = false;
@@ -56,6 +57,7 @@ public class LevelManager : MonoBehaviour
 		Assert.AreNotEqual( creativeModeOnly.Length, 0 );
 		Assert.IsNotNull( mineralSets );
 		Assert.IsNotNull( crystalSets );
+		Assert.IsNotNull( terrainSets );
 
 		Transform[] minerals = mineralSets.Cast<Transform>( ).ToArray( );
 		foreach ( var m in minerals )
@@ -66,6 +68,11 @@ public class LevelManager : MonoBehaviour
 		foreach ( var c in crystals )
 			c.gameObject.SetActive( false );
 		crystals[Random.Range( 0, crystals.Length )].gameObject.SetActive( true );
+
+		Transform[] terrains = terrainSets.Cast<Transform>( ).ToArray( );
+		foreach ( var t in terrains )
+			t.gameObject.SetActive( false );
+		terrains[Random.Range( 0, terrains.Length )].gameObject.SetActive( true );
 
 		// "Load" info about selected mode
 		ModeSelection modeSelection = FindObjectOfType<ModeSelection>( );

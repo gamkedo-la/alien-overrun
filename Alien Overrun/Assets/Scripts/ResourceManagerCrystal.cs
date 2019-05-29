@@ -26,7 +26,7 @@ public class ResourceManagerCrystal : AbstractListManager
 	{
 		onMap += amount;
 		CancelInvoke( "Display" );
-		Invoke( "Display", 1f );
+		//Invoke( "Display", 1f );
 	}
 
 	private void Display( )
