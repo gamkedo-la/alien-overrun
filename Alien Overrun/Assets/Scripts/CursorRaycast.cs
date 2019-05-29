@@ -322,13 +322,13 @@ public class CursorRaycast : MonoBehaviour
 			else
 			{
 				string typeString = "";
-				int type = (int)hoverSelection.transform.parent.gameObject.GetComponent<Resource>().ResourceType;
+				int type = (int)hoverSelection.transform.gameObject.GetComponent<Resource>().ResourceType;
 
 				if (type == 0) typeString = "Mineral";
 				//Set Type Info here when there are more resources types
 
 				hoverInfo1.text = "Resource Type: " + typeString;
-				hoverInfo2.text = "Amount: " + hoverSelection.transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
+				hoverInfo2.text = "Amount: " + hoverSelection.transform.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}
 		}
 		else if (lockedSelection.Count <= 1)
@@ -345,9 +345,9 @@ public class CursorRaycast : MonoBehaviour
 			}
 			else
 			{
-				string typeString = lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().ResourceType.ToString( );
+				string typeString = lockedSelection[0].transform.gameObject.GetComponent<Resource>().ResourceType.ToString( );
 				lockedInfo1.text = "Resource Type: " + typeString;
-				lockedInfo2.text = "Amount: " + lockedSelection[0].transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
+				lockedInfo2.text = "Amount: " + lockedSelection[0].transform.gameObject.GetComponent<Resource>().GetCurrentResources();
 			}
 		}
 		else if (lockedSelection.Count > 1)
@@ -373,7 +373,7 @@ public class CursorRaycast : MonoBehaviour
 				else
 				{
 					totalResources++;
-					totalResourceAmount += sel.transform.parent.gameObject.GetComponent<Resource>().GetCurrentResources();
+					totalResourceAmount += sel.transform.gameObject.GetComponent<Resource>().GetCurrentResources();
 				}
 			}
 
