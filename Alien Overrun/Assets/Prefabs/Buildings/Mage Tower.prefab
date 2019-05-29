@@ -5049,7 +5049,7 @@ MonoBehaviour:
   repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 25
+  threat: 30
   color: FFB7AA
   info: Strong, magic based defense tower.
   placeDistance: 0.1
@@ -5077,7 +5077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 5211465451173816720}
   corpse: {fileID: 0}
-  maxHP: 120
+  maxHP: 150
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:
@@ -5167,7 +5167,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1284071210338740561}
   reloadTime: 0.5
-  shootDuration: 0.1
+  shootDuration: 0.2
   damage: 10
   shotColor: {r: 0.15566039, g: 0.7690695, b: 1, a: 1}
   damageType: 1

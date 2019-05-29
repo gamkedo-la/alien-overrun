@@ -848,9 +848,9 @@ MonoBehaviour:
   miniMineral: {fileID: 6260873649032731697, guid: ebe57c88eed84ce41bba4e5648a97328,
     type: 3}
   resourceType: 0
-  minResources: 200
-  maxResources: 550
-  scaleFactor: 0.006
+  minResources: 400
+  maxResources: 800
+  scaleFactor: 0.004
   minNodeSize: 0.4
   onChange:
     m_PersistentCalls:

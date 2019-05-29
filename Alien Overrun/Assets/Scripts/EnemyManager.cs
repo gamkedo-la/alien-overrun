@@ -156,6 +156,9 @@ public class EnemyManager : AbstractListManager
 		// Spawn enemies in current wave
 		float enemiesNum = enemiesInWave;
 
+		if ( megaWaves.Count <= 0 )
+			PrepareMegaWavesChances( );
+
 		if ( megaWaves.Dequeue( ) )
 		{
 			Debug.Log( "Mega Wave!" );

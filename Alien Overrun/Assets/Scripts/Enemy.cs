@@ -60,6 +60,12 @@ public class Enemy : AbstractListableItem
 		if (oldPos == transform.position && !hold)
 			timeToDestroyOnNotMoving -= Time.fixedDeltaTime;
 		oldPos = transform.position;
+
+		if (timeToDestroyOnNotMoving <= 0)
+		{
+			OnDeath( );
+			Destroy( gameObject );
+		}
 	}
 
 	void OnEnable( )

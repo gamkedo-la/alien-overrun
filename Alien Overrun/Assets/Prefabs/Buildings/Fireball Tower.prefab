@@ -2939,7 +2939,7 @@ MonoBehaviour:
   repairCostPercent: 80
   moveCostPercent: 35
   deleteCostPercent: 50
-  threat: 30
+  threat: 50
   color: FFB7AA
   info: Area of effect tower. Powerful but fragile.
   placeDistance: 0.1

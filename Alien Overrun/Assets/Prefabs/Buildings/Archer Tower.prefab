@@ -2508,7 +2508,7 @@ MonoBehaviour:
   buildingName: Archer Tower
   buildCostMinerals: 150
   buildCostCrystals: 0
-  repairCostPercent: 80
+  repairCostPercent: 70
   moveCostPercent: 35
   deleteCostPercent: 50
   threat: 20
@@ -2539,7 +2539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpBar: {fileID: 865750418544828846}
   corpse: {fileID: 0}
-  maxHP: 70
+  maxHP: 90
   destroyOnNoHP: 0
   resistance: 0
   onHealthChange:
