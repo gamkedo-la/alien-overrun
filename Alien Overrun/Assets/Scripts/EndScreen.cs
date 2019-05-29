@@ -9,6 +9,7 @@ using UnityEngine;
 public class EndScreen : MonoBehaviour
 {
 	public Animator animator;
+	public PauseGame pauseGame;
 	[SerializeField] private CanvasGroup[] uiCanvasGroupsToHide = null;
 
 	private CanvasGroup pauseCanvasGroup;
@@ -28,6 +29,11 @@ public class EndScreen : MonoBehaviour
 	public void Hide( )
 	{
 		ShowUI( );
+	}
+
+	public void Pause( )
+	{
+		//pauseGame.Pause( true );
 	}
 
 	private void HideUI( )
