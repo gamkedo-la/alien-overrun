@@ -179,8 +179,9 @@ public class BuildingPlacer : MonoBehaviour
 		BuildingManager.Instance.ShowZones( false );
 		BuildingManager.Instance.Building = false;
 
-		aud.pitch = Random.Range( 0.9f, 1.1f );
-        aud.PlayOneShot(placeSound);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Building_Placer");
+		//aud.pitch = Random.Range( 0.9f, 1.1f );
+        //aud.PlayOneShot(placeSound);
     }
 
 	private void CheckRequirements( )
