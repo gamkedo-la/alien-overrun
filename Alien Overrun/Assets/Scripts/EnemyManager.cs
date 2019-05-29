@@ -225,20 +225,21 @@ public class EnemyManager : AbstractListManager
 	{
 		float difficulty = LevelManager.Instance.LevelDifficultyModifier;
 
-		delayBeforeWave = newParameters.DelayBeforeWave * difficulty;
-		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent * difficulty;
-		delayBetweenEnemies = newParameters.DelayBetweenEnemies * difficulty;
-		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent * difficulty;
+		delayBeforeWave = newParameters.DelayBeforeWave / difficulty;
+		Debug.Log( delayBeforeWave );
+		spawnDelayMaxOffsetPercent = newParameters.SpawnDelayMaxOffsetPercent;
+		delayBetweenEnemies = newParameters.DelayBetweenEnemies / difficulty;
+		delayBetweenEnemiesMaxOffsetPercent = newParameters.DelayBetweenEnemiesMaxOffsetPercent;
 		enemiesInWave = newParameters.EnemiesInWave * difficulty;
-		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent * difficulty;
+		enemiesInWaveMaxOffsetPercent = newParameters.EnemiesInWaveMaxOffsetPercent;
 		chanceForMegaWave = newParameters.ChanceForMegaWave;
 		megaWaveMultiplayer = newParameters.MegaWaveMultiplayer;
-		enemyTypePercentChance[0] = newParameters.EnemyTypePercentChance[0] * difficulty;
-		enemyTypePercentChance[1] = newParameters.EnemyTypePercentChance[1] * difficulty;
-		enemyTypePercentChance[2] = newParameters.EnemyTypePercentChance[2] * difficulty;
-		spawnPointIDPercentChance[0] = newParameters.SpawnPointIDPercentChance[0] * difficulty;
-		spawnPointIDPercentChance[1] = newParameters.SpawnPointIDPercentChance[1] * difficulty;
-		spawnPointIDPercentChance[2] = newParameters.SpawnPointIDPercentChance[2] * difficulty;
+		enemyTypePercentChance[0] = newParameters.EnemyTypePercentChance[0];
+		enemyTypePercentChance[1] = newParameters.EnemyTypePercentChance[1];
+		enemyTypePercentChance[2] = newParameters.EnemyTypePercentChance[2];
+		spawnPointIDPercentChance[0] = newParameters.SpawnPointIDPercentChance[0];
+		spawnPointIDPercentChance[1] = newParameters.SpawnPointIDPercentChance[1];
+		spawnPointIDPercentChance[2] = newParameters.SpawnPointIDPercentChance[2];
 
 		PrepareMegaWavesChances( );
 	}
