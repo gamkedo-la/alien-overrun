@@ -64,10 +64,12 @@ Assets/ProBuilder*Data/ProBuilderPreferences.asset.meta
 sysinfo.txt
 
 # FMOD
-Alien Overrun/Assets/FMODStudioCache.asset
-Alien Overrun/Assets/FMODStudioCache.asset.meta
 Alien Overrun/fmod.log
 Alien Overrun/fmod_editor.log
+Alien Overrun/Assets/FMODStudioCache.asset
+Alien Overrun/Assets/FMODStudioCache.asset.meta
+Alien Overrun/Assets/Plugins/FMOD/Resources/FMODStudioCache.asset
+Alien Overrun/Assets/StreamingAssets/*.bank
 
 # FMOD studio (In folder FMOD)
 Alien Overrun/Temp Sounds/Alien Overrun_fmod/**.user
@@ -101,3 +103,5 @@ Alien Overrun/Assets/StreamingAssets/Master Bank\.bank\.meta
 Alien Overrun/Assets/StreamingAssets/Master Bank\.strings\.bank
 Alien Overrun/Assets/StreamingAssets/Master Bank\.strings\.bank\.meta
 *.fobj
+/Alien Overrun/Assets/StreamingAssets.meta
+/Alien Overrun/Assets/StreamingAssets.meta
