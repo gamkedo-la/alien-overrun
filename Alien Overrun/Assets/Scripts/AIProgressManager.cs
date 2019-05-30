@@ -54,6 +54,7 @@ public class AIProgressManager : MonoBehaviour
 
 	private List<ProgressMarker> progressMarkers = new List<ProgressMarker>();
 	private int threatMax;
+	private float lastUsedThreat = 0f;
 	private ProgressMarker currentProgressMarker;
 
 	public static AIProgressManager Instance { get; private set; }
@@ -110,6 +111,12 @@ public class AIProgressManager : MonoBehaviour
 		int oldThreat = threatCurrent;
 		threatCurrent += amount;
 		threatCurrent = Mathf.Clamp( threatCurrent, 0, threatMax );
+
+		if ( threatCurrent > lastUsedThreat )
+		{
+			lastUsedThreat = threatCurrent;
+			TimeOfDay.Instance.SetDesiredTimeOfDay( lastUsedThreat / threatMax );
+		}
 
 		EnemyManager.Instance.ChangeParametersOnThreatChange( currentProgressMarker.ParametersChangePerPoint, threatCurrent - oldThreat );
 
