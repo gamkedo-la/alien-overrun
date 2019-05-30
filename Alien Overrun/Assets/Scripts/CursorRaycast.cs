@@ -107,7 +107,7 @@ public class CursorRaycast : MonoBehaviour
 			editOptionsUI.SetActive(true);
 			editOptionsUI.transform.position = cam.WorldToScreenPoint(lockedSelection[0].transform.position);
 
-			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.x >= 0.35f);
+			ToggleRangeIndicatorForSelection(editOptionsUI.transform.GetChild(4).localScale.z >= 0.35f);
 
 			bool castleOrCore = DoesSelectionContainCastleOrCore();
 			bool castle = DoesSelectionContainCastle();
