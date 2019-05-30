@@ -20,7 +20,7 @@ public class TimeOfDay : MonoBehaviour
 	[SerializeField] private Gradient sunColor = null;
 	[SerializeField] private float changeSpeed = 1.0f;
 
-	private float currentProgress = 0f;
+	public float CurrentProgress { get; private set; } = 0f;
 	private float desiredProgress = 0f;
 	private Coroutine coroutine = null;
 
@@ -50,18 +50,18 @@ public class TimeOfDay : MonoBehaviour
 
 	private IEnumerator ChangeTimeOfDay ( )
 	{
-		while ( currentProgress != desiredProgress )
+		while ( CurrentProgress != desiredProgress )
 		{
-			currentProgress += changeSpeed * changeSpeed;
-			currentProgress = Mathf.Clamp( currentProgress, 0, desiredProgress );
+			CurrentProgress += changeSpeed * changeSpeed;
+			CurrentProgress = Mathf.Clamp( CurrentProgress, 0, desiredProgress );
 
-			float angle = Utilities.ConvertRange( 0f, 1f, startSunAngle, endSunAngle, currentProgress );
+			float angle = Utilities.ConvertRange( 0f, 1f, startSunAngle, endSunAngle, CurrentProgress );
 			transform.rotation = Quaternion.Euler( angle, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z );
 
-			float intencity = Utilities.ConvertRange( 0f, 1f, startSunIntensity, endSunIntensity, currentProgress );
+			float intencity = Utilities.ConvertRange( 0f, 1f, startSunIntensity, endSunIntensity, CurrentProgress );
 			sun.intensity = intencity;
 
-			sun.color = sunColor.Evaluate( currentProgress );
+			sun.color = sunColor.Evaluate( CurrentProgress );
 
 			//Debug.Log( currentProgress );
 
