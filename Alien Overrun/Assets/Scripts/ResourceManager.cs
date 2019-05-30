@@ -110,7 +110,7 @@ public class ResourceManager : MonoBehaviour
 
 	private void UpdateLabels( )
 	{
-		mineralsLabel.text = $"Minerals: {Minerals}";
-		crystalsLabel.text = $"Crystals: {Crystals}";
+		mineralsLabel.text = $"<color=#FAA70D>Minerals: <size=30>{Minerals}</size></color>";
+		crystalsLabel.text = $"<color=#0D91FA>Crystals: <size=30>{Crystals}</size></color>";
 	}
 }

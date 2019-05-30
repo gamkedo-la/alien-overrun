@@ -45,7 +45,7 @@ public class BuildingPlacer : MonoBehaviour
 		costM = building.BuildCostMinerals;
 		costC = building.BuildCostCrystals;
 		buttonText.text = $"{buildingName}";//\n[{costM}M {costC}C";// {building.Threat}F]";
-		tooltipInfo.text = $"{building.Info}\n<color=#FAA70D>Mineral cost: {costM}</color>\n<color=#0D91FA>Crystal cost: {costC}</color>\n<color=#FF5353>Generated threat: {building.Threat}</color>";
+		tooltipInfo.text = $"{building.Info}\n<b><color=#FAA70D><size=12>Minerals: {costM}</color>\n<color=#0D91FA>Crystals: {costC}</size></color></b>\n<color=#FF5353>Threat: {building.Threat}</color>";
 
 		cam = Camera.main;
 
