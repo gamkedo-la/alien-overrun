@@ -4706,7 +4706,7 @@ Transform:
   m_GameObject: {fileID: 2159934330631721580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.561, z: 0}
-  m_LocalScale: {x: 0.40929, y: 0.40929, z: 0.40929}
+  m_LocalScale: {x: 0.6787256, y: 0.3637698, z: 0.6787256}
   m_Children: []
   m_Father: {fileID: 1863712184782113919}
   m_RootOrder: 0
@@ -7468,7 +7468,7 @@ Transform:
   m_GameObject: {fileID: 2534562008524941407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.097, y: 3.175, z: 1.15}
-  m_LocalScale: {x: 0.18663624, y: 0.5586173, z: 0.18663624}
+  m_LocalScale: {x: 0.30949888, y: 0.4964893, z: 0.30949888}
   m_Children: []
   m_Father: {fileID: 1863712184782113919}
   m_RootOrder: 2
@@ -12013,7 +12013,7 @@ Transform:
   m_GameObject: {fileID: 3803948703809714884}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.15, y: 3.175, z: 1.15}
-  m_LocalScale: {x: 0.18663624, y: 0.5586173, z: 0.18663624}
+  m_LocalScale: {x: 0.30949888, y: 0.4964893, z: 0.30949888}
   m_Children: []
   m_Father: {fileID: 1863712184782113919}
   m_RootOrder: 4
@@ -20349,7 +20349,7 @@ Transform:
   m_GameObject: {fileID: 5856556318294035504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.15, y: 3.175, z: -1.13}
-  m_LocalScale: {x: 0.18663624, y: 0.5586173, z: 0.18663624}
+  m_LocalScale: {x: 0.30949888, y: 0.4964893, z: 0.30949888}
   m_Children: []
   m_Father: {fileID: 1863712184782113919}
   m_RootOrder: 3
@@ -21592,7 +21592,7 @@ Transform:
   m_GameObject: {fileID: 6430504026888146253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.097, y: 3.175, z: -1.13}
-  m_LocalScale: {x: 0.18663624, y: 0.5586173, z: 0.18663624}
+  m_LocalScale: {x: 0.30949888, y: 0.4964893, z: 0.30949888}
   m_Children: []
   m_Father: {fileID: 1863712184782113919}
   m_RootOrder: 1
@@ -23592,7 +23592,7 @@ MonoBehaviour:
   - {fileID: 8430891954424397415}
   - {fileID: 1392334586713634398}
   - {fileID: 2805155079447325854}
-  renrererChanseToTurnOn: 80
+  renrererChanceToTurnOn: 50
   threshold: 0.5
   maxDelay: 2
 --- !u!1 &6648716340128342373

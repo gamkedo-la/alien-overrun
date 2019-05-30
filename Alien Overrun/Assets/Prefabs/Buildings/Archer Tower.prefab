@@ -749,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 3003135932691153857}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 2.122, z: 0}
-  m_LocalScale: {x: 0.3, y: 1.00923, z: 0.3}
+  m_LocalScale: {x: 0.48195, y: 0.93422544, z: 0.48195}
   m_Children: []
   m_Father: {fileID: 4445329080109589156}
   m_RootOrder: 3
@@ -1737,6 +1737,7 @@ MonoBehaviour:
   - {fileID: 3827333837061024201}
   - {fileID: 3003135932691153857}
   toTurnOnRenderer: []
+  renrererChanceToTurnOn: 50
   threshold: 0.5
   maxDelay: 2
 --- !u!1 &6863539145967195141

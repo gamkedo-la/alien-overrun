@@ -21,12 +21,15 @@ public class TurnOnTheLights : MonoBehaviour
 		Assert.IsNotNull( lightMaterial, $"Please assign <b>OnMaterial</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 		//Assert.AreNotEqual( toTurnOnObject.Length, 0, $"Please assign <b>OnMaterial</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 		//Assert.AreNotEqual( toTurnOnRenderer.Length, 0, $"Please assign <b>OnMaterial</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
+		Invoke( "CheckForNight", 1f );
 	}
 
-	void FixedUpdate ()
+	private void CheckForNight ()
 	{
 		if ( TimeOfDay.Instance.CurrentProgress >= threshold )
 			Invoke( "TurnOn", Random.Range( 0f, maxDelay ) );
+		else
+			Invoke( "CheckForNight", 1f );
 	}
 
 	private void TurnOn()
@@ -35,9 +38,11 @@ public class TurnOnTheLights : MonoBehaviour
 		{
 			float rnd = Random.Range( 0, 100 );
 			bool should = rnd <= renrererChanceToTurnOn;
-			//Debug.Log( $"{rnd}, {should}" );
 			if ( should )
+			{
+				//Debug.Log( $"{rnd}, {should}" );
 				r.material = lightMaterial;
+			}
 		}
 
 		foreach ( var o in toTurnOnObject )

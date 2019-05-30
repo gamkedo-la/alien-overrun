@@ -53,7 +53,7 @@ MonoBehaviour:
   - {fileID: 3266485205926462388}
   - {fileID: 8320152229463794051}
   - {fileID: 9129748133627576068}
-  renrererChanseToTurnOn: 80
+  renrererChanceToTurnOn: 50
   threshold: 0.5
   maxDelay: 2
 --- !u!1 &497143048857573061
@@ -12999,8 +12999,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4663653085842300736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.3, z: 0}
-  m_LocalScale: {x: 0.18663624, y: 0.36425233, z: 0.18663624}
+  m_LocalPosition: {x: 0.078, y: 2.3, z: 0}
+  m_LocalScale: {x: 0.3999294, y: 0.40343183, z: 0.3999294}
   m_Children: []
   m_Father: {fileID: 4232947342525637727}
   m_RootOrder: 0
