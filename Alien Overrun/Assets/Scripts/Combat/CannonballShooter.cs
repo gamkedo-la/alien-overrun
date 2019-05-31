@@ -11,6 +11,7 @@ public class CannonballShooter : MonoBehaviour
 {
 	[SerializeField] private Transform spawnPoint = null;
 	[SerializeField] private GameObject projectile = null;
+	[SerializeField] private GameObject muzzleFlashPrefab = null;	
 	[SerializeField] private Transform cannonPivotX = null;
 	[SerializeField] private Transform cannonPivotY = null;
 	[Space]
@@ -123,5 +124,11 @@ public class CannonballShooter : MonoBehaviour
 		//Debug.DrawLine( spawnPoint.position, spawnPoint.position + dir, Color.yellow, 1f );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
+
+		// muzzle flash particle effect
+		if (muzzleFlashPrefab) {
+			var muzzleFlash = Instantiate( muzzleFlashPrefab, spawnPoint.position, Quaternion.LookRotation(dir));
+		}
+
 	}
 }

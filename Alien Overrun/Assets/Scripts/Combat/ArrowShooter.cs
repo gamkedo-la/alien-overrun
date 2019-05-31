@@ -11,6 +11,7 @@ public class ArrowShooter : MonoBehaviour
 {
 	[SerializeField] private Transform spawnPoint = null;
 	[SerializeField] private GameObject projectile = null;
+	[SerializeField] private GameObject muzzleFlashPrefab = null;
 	[Space]
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private int ammoCost = 0;
@@ -112,5 +113,10 @@ public class ArrowShooter : MonoBehaviour
 		Vector3 force = dir * ( shootingForceToDistance * fireDistance );
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
+
+		// muzzle flash particle effect
+		if (muzzleFlashPrefab) {
+			var muzzleFlash = Instantiate( muzzleFlashPrefab, spawnPoint.position, Quaternion.LookRotation(dir));
+		}
 	}
 }

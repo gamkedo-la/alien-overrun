@@ -10,6 +10,7 @@ using UnityEngine.Assertions;
 public class BeamShooter : MonoBehaviour
 {
 	[SerializeField] private Transform shootPoint = null;
+	[SerializeField] private GameObject muzzleFlashPrefab = null;
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private float shootDuration = 1f;
 	[SerializeField] private float damage = 5f;
@@ -39,6 +40,13 @@ public class BeamShooter : MonoBehaviour
 
 			targetHP.ChangeHP( -damg );
 			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );
+
+			// muzzle flash particle effect
+			if (muzzleFlashPrefab) {
+				Vector3 dir = ( target.position - shootPoint.position ).normalized;
+				var muzzleFlash = Instantiate( muzzleFlashPrefab, shootPoint.position, Quaternion.LookRotation(dir));
+			}
+
 		}
 	}
 

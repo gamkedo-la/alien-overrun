@@ -532,9 +532,12 @@ MonoBehaviour:
   spawnPointPivot: {fileID: 7366581469345107137}
   projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: 2aeff61ae3d08714f943a531dd41059f,
+    type: 3}
   reloadTime: 0.2
   ammoCost: 0
   shootingForce: 100
+  upAngleCorrection: 0
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &2102829497

@@ -5244,6 +5244,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 1284071210338740561}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: deca7832c056b4c42952f25a0b82390a,
+    type: 3}
   reloadTime: 0.5
   shootDuration: 0.2
   damage: 10
@@ -5806,6 +5808,7 @@ MonoBehaviour:
   - {fileID: 6870453782220538757}
   - {fileID: 312390345971342364}
   toTurnOnRenderer: []
+  renrererChanceToTurnOn: 50
   threshold: 0.5
   maxDelay: 2
 --- !u!1 &4418229124935123315

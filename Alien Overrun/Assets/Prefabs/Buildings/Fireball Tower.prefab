@@ -3136,6 +3136,8 @@ MonoBehaviour:
   spawnPoint: {fileID: 3991717196430304264}
   projectile: {fileID: 5654902114113740134, guid: e9fa62eff50cdef4ca0d16585fb1098c,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: e67ac56cc5e54504992496c2577eba7f,
+    type: 3}
   cannonPivotX: {fileID: 499530041351838838}
   cannonPivotY: {fileID: 7568062003479152311}
   reloadTime: 5
