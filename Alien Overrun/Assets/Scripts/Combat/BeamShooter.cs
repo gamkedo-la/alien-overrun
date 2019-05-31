@@ -11,6 +11,7 @@ public class BeamShooter : MonoBehaviour
 {
 	[SerializeField] private Transform shootPoint = null;
 	[SerializeField] private GameObject muzzleFlashPrefab = null;
+	[SerializeField] private float knockBackForce = 250;
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private float shootDuration = 1f;
 	[SerializeField] private float damage = 5f;
@@ -46,6 +47,24 @@ public class BeamShooter : MonoBehaviour
 				Vector3 dir = ( target.position - shootPoint.position ).normalized;
 				var muzzleFlash = Instantiate( muzzleFlashPrefab, shootPoint.position, Quaternion.LookRotation(dir));
 			}
+
+			// knockback
+			Rigidbody rb = target.gameObject.GetComponent<Rigidbody>( );
+			if (rb != null && knockBackForce > 0f) {
+				// for proper directionality: maybe something like
+				// other.contacts[0].point - other.gameObject.transform.position
+				Vector3 knockBackVec = new Vector3(
+					Random.Range(-1 * knockBackForce, knockBackForce),
+					Random.Range(knockBackForce / 2, knockBackForce),
+					Random.Range(-1 * knockBackForce, knockBackForce)); 
+				rb.isKinematic = false;
+				//Debug.Log("KNOCKBACK vec: " + knockBackVec);
+				rb.AddForce(knockBackVec);//, ForceMode.VelocityChange); 
+				// FIXME: need a one time coroutine with the rb's scope maintained
+				// to reset back to normal kinematic control after a short time
+				//Invoke(regainKinematicControl,3f); // rb.isKinematic = true;
+			}
+
 
 		}
 	}
