@@ -43,7 +43,7 @@ public class ProgressMarker : MonoBehaviour
 			return;
 
 		Reached = true;
-		MessageService.Instance.ShowMessage( message, 2f, ActiveColor );
+		MessageService.Instance.ShowMessage( message, 4f, ActiveColor );
 	}
 
 	public void Set( Vector2 position, int value, Color activeColor, string message, WaveParameters parametersChangeOnThreshold, WaveParameters parametersChangePerPoint, bool lastThreshold )
