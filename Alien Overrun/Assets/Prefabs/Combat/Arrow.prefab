@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gfx: {fileID: 4983688142417844953}
   damage: 3
+  knockBackForce: 250
   damageType: 0
 --- !u!1 &6093789136422703801
 GameObject:

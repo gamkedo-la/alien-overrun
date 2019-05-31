@@ -3702,9 +3702,12 @@ MonoBehaviour:
   spawnPointPivot: {fileID: 3114111651757976022}
   projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: 2aeff61ae3d08714f943a531dd41059f,
+    type: 3}
   reloadTime: 1
   ammoCost: 0
   shootingForce: 120
+  upAngleCorrection: 0
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &885858582703292633
@@ -4520,9 +4523,12 @@ MonoBehaviour:
   spawnPointPivot: {fileID: 8040137576174117170}
   projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: 2aeff61ae3d08714f943a531dd41059f,
+    type: 3}
   reloadTime: 1
   ammoCost: 0
   shootingForce: 120
+  upAngleCorrection: 0
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &2059606129466932327
@@ -25571,9 +25577,12 @@ MonoBehaviour:
   spawnPointPivot: {fileID: 1727451741702743171}
   projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: 2aeff61ae3d08714f943a531dd41059f,
+    type: 3}
   reloadTime: 1
   ammoCost: 0
   shootingForce: 120
+  upAngleCorrection: 0
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &7511552700186604266
@@ -26013,9 +26022,12 @@ MonoBehaviour:
   spawnPointPivot: {fileID: 7904915639943964282}
   projectile: {fileID: 4983688142417844953, guid: e34991174edaf2d449e4830833108d3e,
     type: 3}
+  muzzleFlashPrefab: {fileID: 5581974584226724963, guid: 2aeff61ae3d08714f943a531dd41059f,
+    type: 3}
   reloadTime: 1
   ammoCost: 0
   shootingForce: 120
+  upAngleCorrection: 0
   verticalSpread: 3
   horizontalSpread: 3
 --- !u!1 &7511552700698609174
