@@ -11,7 +11,7 @@ public class BeamShooter : MonoBehaviour
 {
 	[SerializeField] private Transform shootPoint = null;
 	[SerializeField] private GameObject muzzleFlashPrefab = null;
-	[SerializeField] private float knockBackForce = 250;
+	//[SerializeField] private float knockBackForce = 250;
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private float shootDuration = 1f;
 	[SerializeField] private float damage = 5f;
@@ -48,7 +48,8 @@ public class BeamShooter : MonoBehaviour
 				var muzzleFlash = Instantiate( muzzleFlashPrefab, shootPoint.position, Quaternion.LookRotation(dir));
 			}
 
-			// knockback
+			/*
+			// knockback - UNUSED: physics can't affect enemies or navmesh breaks
 			Rigidbody rb = target.gameObject.GetComponent<Rigidbody>( );
 			if (rb != null && knockBackForce > 0f) {
 				// for proper directionality: maybe something like
@@ -64,6 +65,7 @@ public class BeamShooter : MonoBehaviour
 				// to reset back to normal kinematic control after a short time
 				//Invoke(regainKinematicControl,3f); // rb.isKinematic = true;
 			}
+			*/
 
 
 		}

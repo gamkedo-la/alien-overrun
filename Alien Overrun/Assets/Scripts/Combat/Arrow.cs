@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
 {
 	[SerializeField] private GameObject gfx = null;
 	[SerializeField] private int damage = 20;
-	[SerializeField] private float knockBackForce = 250;
+	//[SerializeField] private float knockBackForce = 250;
 	[SerializeField] private DamageType damageType = DamageType.Physical;
 
 	private Rigidbody rb;
@@ -47,7 +47,8 @@ public class Arrow : MonoBehaviour
 				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
 			}
 
-			// knockback
+			// knockback - UNUSED: physics can't affect enemies or navmesh breaks
+			/*
 			Rigidbody rb = other.gameObject.GetComponent<Rigidbody>( );
 			if (rb != null && knockBackForce > 0f) {
 				// for proper directionality: maybe something like
@@ -63,6 +64,7 @@ public class Arrow : MonoBehaviour
 				// to reset back to normal kinematic control after a short time
 				//Invoke(regainKinematicControl,3f); // rb.isKinematic = true;
 			}
+			*/
 		}
 
 		IamStuck( other.transform );
