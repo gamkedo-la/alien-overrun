@@ -141,6 +141,7 @@ public class Building : AbstractListableItem
 		while ( transform.localScale.y < 1 )
 		{
 			scale.y += Time.deltaTime * BuildTime;
+			scale.y = Mathf.Clamp( scale.y, 0f, 1f );
 			transform.localScale = scale;
 
 			yield return null;
