@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{c2439767-676d-41c5-b1e6-3a3d69521f77}">
-        <property name="assetPath"/>
+    <object class="AudioFile" id="{c44a3b07-a8bc-4061-b490-b1c06567108e}">
+        <property name="assetPath">
+            <value>scuttlerStep1.wav</value>
+        </property>
         <property name="frequencyInKHz">
-            <value>48</value>
+            <value>44.0999985</value>
         </property>
         <property name="channelCount">
             <value>2</value>
         </property>
         <property name="length">
-            <value>1.4099999999999999</value>
+            <value>0.16335600907029479</value>
         </property>
         <relationship name="masterAssetFolder">
             <destination>{085ec9d7-541d-457e-991f-9930c34adc0e}</destination>
