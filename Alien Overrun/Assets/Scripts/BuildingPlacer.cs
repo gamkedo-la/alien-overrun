@@ -90,6 +90,7 @@ public class BuildingPlacer : MonoBehaviour
 	public void StartPlaceing( )
 	{
 		BuildingManager.Instance.Building = true;
+		AIProgressManager.Instance.NextThreatShow( building.Threat );
 
 		BuildingManager.Instance.ShowZones( true );
 		buildingToPlace = Instantiate( buildingPlacer, transform.position, Quaternion.identity ).GetComponent<Building>( );
@@ -115,6 +116,7 @@ public class BuildingPlacer : MonoBehaviour
 
 		ResourceManager.Instance.AddResources( ResourceType.Minerals, costM );
 		ResourceManager.Instance.AddResources( ResourceType.Crystals, costC );
+		AIProgressManager.Instance.NextThreatHide( );
 		Destroy( buildingToPlace.gameObject );
 		buildingToPlace = null;
 		BuildingManager.Instance.ShowZones( false );
@@ -179,7 +181,9 @@ public class BuildingPlacer : MonoBehaviour
 		BuildingManager.Instance.ShowZones( false );
 		BuildingManager.Instance.Building = false;
 
-        FMODUnity.RuntimeManager.PlayOneShot("event:/Building_Placer");
+		AIProgressManager.Instance.NextThreatHide( );
+
+		FMODUnity.RuntimeManager.PlayOneShot("event:/Building_Placer");
 		//aud.pitch = Random.Range( 0.9f, 1.1f );
         //aud.PlayOneShot(placeSound);
     }

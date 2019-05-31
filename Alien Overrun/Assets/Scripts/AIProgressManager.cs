@@ -39,8 +39,10 @@ public class AIProgressManager : MonoBehaviour
 {
 	[Header("Bar")]
 	[SerializeField] private Slider bar = null;
+	[SerializeField] private Slider underBar = null;
 	[SerializeField] private Image progressImage = null;
 	[SerializeField] private TextMeshProUGUI threatLabel = null;
+	[SerializeField] private TextMeshProUGUI progressLabel = null;
 	[Header("Markers")]
 	[SerializeField] private GameObject progressMarker = null;
 	[SerializeField] private Transform markersParent = null;
@@ -54,7 +56,9 @@ public class AIProgressManager : MonoBehaviour
 
 	private List<ProgressMarker> progressMarkers = new List<ProgressMarker>();
 	private int threatMax;
+	private int threatNext;
 	private float lastUsedThreat = 0f;
+	private float blinkInterval = 0.5f;
 	private ProgressMarker currentProgressMarker;
 
 	public static AIProgressManager Instance { get; private set; }
@@ -75,8 +79,10 @@ public class AIProgressManager : MonoBehaviour
 	void Start( )
 	{
 		Assert.IsNotNull( bar );
+		Assert.IsNotNull( underBar );
 		Assert.IsNotNull( progressImage );
 		Assert.IsNotNull( threatLabel );
+		Assert.IsNotNull( progressLabel );
 		Assert.IsNotNull( markersParent );
 		Assert.IsNotNull( progressMarker );
 		Assert.IsNotNull( threatText );
@@ -85,6 +91,8 @@ public class AIProgressManager : MonoBehaviour
 		threatMax = thresholds[thresholds.Length - 1].Value;
 		bar.maxValue = threatMax;
 		bar.value = 0;
+		underBar.maxValue = threatMax;
+		underBar.value = 0;
 
 		for ( int i = 0; i < thresholds.Length; i++ )
 		{
@@ -104,6 +112,30 @@ public class AIProgressManager : MonoBehaviour
 	{
 		var go = Instantiate( threatText, Camera.main.WorldToScreenPoint( position ), Quaternion.identity, transform );
 		go.GetComponent<ThreatText>( ).Set( amount, threatDestination.localPosition );
+	}
+
+	public void NextThreatShow( int amount )
+	{
+		threatNext = threatCurrent + amount;
+		underBar.value = threatNext;
+		Invoke( "BlinkUnderBar", blinkInterval );
+	}
+
+	private void BlinkUnderBar( )
+	{
+		if ( underBar.value == threatNext )
+			underBar.value = 0;
+		else
+			underBar.value = threatNext;
+
+		Invoke( "BlinkUnderBar", blinkInterval );
+	}
+
+	public void NextThreatHide( )
+	{
+		threatNext = 0;
+		underBar.value = 0;
+		CancelInvoke( "BlinkUnderBar" );
 	}
 
 	public void AddThreatNow( int amount )
@@ -144,6 +176,7 @@ public class AIProgressManager : MonoBehaviour
 	{
 		bar.value = threatCurrent;
 		threatLabel.text = threatCurrent.ToString( );
+		progressLabel.text = $"Game Progress {( (float)threatCurrent / threatMax * 100 ):0}%";
 
 		foreach ( var pm in progressMarkers )
 		{
