@@ -398,7 +398,9 @@ public class CursorRaycast : MonoBehaviour
 
 		GameObject newSelInd = Instantiate(lockedSelectionIndicator, addSel.transform.position, Quaternion.Euler(0f, 0f, 0f));
 		selectionIndicator.Add(newSelInd);
-		//newSelInd.transform.parent = addSel.transform;
+
+		newSelInd.transform.parent = addSel.transform;
+
 		/*Building building = addSel.GetComponent<Building>();
 
 		if(building != null)
