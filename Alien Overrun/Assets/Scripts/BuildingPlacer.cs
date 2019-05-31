@@ -4,6 +4,8 @@
  * Copyright: © 2019 Kornel. All rights reserved. For license see: 'LICENSE.txt'
  **/
 
+using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -150,10 +152,51 @@ public class BuildingPlacer : MonoBehaviour
 			canPlace = BuildingManager.Instance.CanPlaceBuiding( buildingToPlace );
 		else
 			canPlace = true;
+
 		if ( !canPlace )
 			return;
 
 		canPlace = buildingToPlace.CanBePaced( );
+
+		if ( canPlace && building.BuildingType == BuildingType.Castle )
+		{
+			float minRange = building.PlaceDistance;
+			IEnumerable<GameObject> oponents = ResourceManagerMineral.Instance.GetGameObjects( );
+			//Debug.Log( $"{minRange}, {oponents.Count()}" );
+			canPlace = false;
+
+			foreach ( var o in oponents )
+			{
+				if ( Vector3.Distance( buildingToPlace.transform.position, o.transform.position ) <= minRange )
+					canPlace = true;
+			}
+		}
+		else if ( canPlace && building.GetComponent<ResourceMinerTowerMineral>() )
+		{
+			float minRange = building.GetComponent<OponentFinder>().GetAttackDistance();
+			IEnumerable<GameObject> oponents = ResourceManagerMineral.Instance.GetGameObjects( );
+			//Debug.Log( $"{minRange}, {oponents.Count()}" );
+			canPlace = false;
+
+			foreach ( var o in oponents )
+			{
+				if ( Vector3.Distance( buildingToPlace.transform.position, o.transform.position ) <= minRange )
+					canPlace = true;
+			}
+		}
+		else if ( canPlace && building.GetComponent<ResourceMinerTowerCrystal>( ) )
+		{
+			float minRange = building.GetComponent<OponentFinder>( ).GetAttackDistance( );
+			IEnumerable<GameObject> oponents = ResourceManagerCrystal.Instance.GetGameObjects( );
+			//Debug.Log( $"{minRange}, {oponents.Count()}" );
+			canPlace = false;
+
+			foreach ( var o in oponents )
+			{
+				if ( Vector3.Distance( buildingToPlace.transform.position, o.transform.position ) <= minRange )
+					canPlace = true;
+			}
+		}
 	}
 
 	private void UpdateIndicator( )
