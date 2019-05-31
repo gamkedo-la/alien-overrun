@@ -161,14 +161,11 @@ public class EnemyManager : AbstractListManager
 
 		if ( megaWaves.Dequeue( ) )
 		{
-			Debug.Log( "Mega Wave!" );
 			enemiesNum *= megaWaveMultiplayer;
 
 			if ( megaWaves.Count <= 0 )
 				PrepareMegaWavesChances( );
 		}
-		else
-			Debug.Log( "No" );
 
 		int enemyNumOffset = Mathf.CeilToInt( enemiesNum * ( enemiesInWaveMaxOffsetPercent / 100 ) );
 		int enemisToSpawn = (int)( enemiesNum + Random.Range( -enemyNumOffset, enemyNumOffset ) );

@@ -1025,7 +1025,7 @@ MonoBehaviour:
       DelayBetweenEnemiesMaxOffsetPercent: 20
       EnemiesInWave: 20
       EnemiesInWaveMaxOffsetPercent: 20
-      ChanceForMegaWave: 200000000000
+      ChanceForMegaWave: 200100000000
       MegaWaveMultiplayer: 2
       EnemyTypePercentChance:
       - 0.1
@@ -1040,7 +1040,7 @@ MonoBehaviour:
       SpawnDelayMaxOffsetPercent: 0
       DelayBetweenEnemies: -0.001
       DelayBetweenEnemiesMaxOffsetPercent: 0
-      EnemiesInWave: 0.1
+      EnemiesInWave: 0.3
       EnemiesInWaveMaxOffsetPercent: 0
       ChanceForMegaWave: 20
       MegaWaveMultiplayer: 2
@@ -1058,9 +1058,9 @@ MonoBehaviour:
     ParametersChangeOnThreshold:
       DelayBeforeWave: 5
       SpawnDelayMaxOffsetPercent: 0
-      DelayBetweenEnemies: 0.1
+      DelayBetweenEnemies: 0.01
       DelayBetweenEnemiesMaxOffsetPercent: 0
-      EnemiesInWave: 60
+      EnemiesInWave: 120
       EnemiesInWaveMaxOffsetPercent: 0
       ChanceForMegaWave: 200000000000
       MegaWaveMultiplayer: 2
