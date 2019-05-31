@@ -48,6 +48,16 @@ public class BeamShooter : MonoBehaviour
 				var muzzleFlash = Instantiate( muzzleFlashPrefab, shootPoint.position, Quaternion.LookRotation(dir));
 			}
 
+			Enemy baddie = target.gameObject.GetComponent<Enemy>( );
+			if (baddie) {
+					float knockBackForce = 0.25f; // in decreasing game units per frame
+					Vector3 knockBackVec = new Vector3(
+						Random.Range(-1 * knockBackForce, knockBackForce),
+						Random.Range(knockBackForce / 2, knockBackForce),
+						Random.Range(-1 * knockBackForce, knockBackForce)); 				
+					baddie.knockBack(knockBackVec);
+			}
+
 			/*
 			// knockback - UNUSED: physics can't affect enemies or navmesh breaks
 			Rigidbody rb = target.gameObject.GetComponent<Rigidbody>( );

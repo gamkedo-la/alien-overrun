@@ -30,6 +30,9 @@ public class Enemy : AbstractListableItem
 	private bool isDynamic = false;
 	private bool hold = false;
 
+	private Vector3 knockBackVel = Vector3.zero;
+	private float knockBackDampening = 0.9f;
+
 	void Start ()
 	{
 		rb = GetComponent<Rigidbody>( );
@@ -61,11 +64,23 @@ public class Enemy : AbstractListableItem
 			timeToDestroyOnNotMoving -= Time.fixedDeltaTime;
 		oldPos = transform.position;
 
+		// knockback from being hit
+		if (knockBackVel.magnitude > 0.001f) {
+			//Debug.Log("KNOCKBACK USING TRANSFORM!");
+			transform.position = transform.position + knockBackVel;
+			knockBackVel = knockBackVel * knockBackDampening;
+		}
+
 		if (timeToDestroyOnNotMoving <= 0)
 		{
 			OnDeath( );
 			Destroy( gameObject );
 		}
+	}
+
+	public void knockBack(Vector3 kvel) {
+		//Debug.Log("STARTING KNOCKBACK USING TRANSFORM!");
+		knockBackVel = kvel;
 	}
 
 	void OnEnable( )
