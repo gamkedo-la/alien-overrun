@@ -1,0 +1,8 @@
+{c64f29a8-d752-462b-87ae-b067b39681d9} event:/Building_Placer
+{55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/New_Enemy_Alarm
+{a76a7e1c-0dcf-44f2-95cc-1e7004205f21} event:/UI_Button
+{e0101113-ea59-4227-8c8f-fb857f371278} event:/ScuttlerStep
+{c810d578-731c-4c50-88bb-7f581df9af1e} event:/ScuttlerSwoosh
+{ad0b9995-0dd1-4100-b490-4472dc009991} bus:/
+{35ed15f2-f44e-4b13-921b-3757ced979fc} bus:/Reverb
+{00aaf344-7560-40e8-ae84-0c8f7506d453} bank:/Master Bank
