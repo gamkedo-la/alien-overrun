@@ -150,7 +150,7 @@ public class EnemyManager : AbstractListManager
 			yield return new WaitForSeconds( 1 );
 
 		// Next wave
-		MessageService.Instance.ShowMessage( "New enemies approaching...", 1f, Color.red );
+		MessageService.Instance.ShowMessage( "New enemies approaching...", 2f, Color.red );
 		waveNum++;
 
 		// Spawn enemies in current wave
