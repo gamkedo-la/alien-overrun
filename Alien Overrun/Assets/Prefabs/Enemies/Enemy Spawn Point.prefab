@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1909096772}
   - component: {fileID: 1909096771}
   - component: {fileID: 1909096770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -229,7 +229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7206807678049254547}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -262,7 +262,7 @@ GameObject:
   - component: {fileID: 2045962642331431488}
   - component: {fileID: 2393896538419024944}
   - component: {fileID: 6349131982694825175}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +340,7 @@ GameObject:
   - component: {fileID: 3441348555709231395}
   - component: {fileID: 3441348555709231392}
   - component: {fileID: 3441348555709231393}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -560,7 +560,7 @@ GameObject:
   - component: {fileID: 3441348555923410167}
   - component: {fileID: 3441348555923410164}
   - component: {fileID: 3441348555923410165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -777,7 +777,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3441348556013462703}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -810,7 +810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5660691432587056086}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -845,7 +845,7 @@ GameObject:
   - component: {fileID: 4947053649599386493}
   - component: {fileID: 5512731049908289271}
   - component: {fileID: 6587757714530630295}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

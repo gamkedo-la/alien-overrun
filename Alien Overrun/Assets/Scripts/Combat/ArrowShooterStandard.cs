@@ -17,7 +17,7 @@ public class ArrowShooterStandard : MonoBehaviour
 	[SerializeField] private int ammoCost = 0;
 	[Space]
 	[SerializeField, Range(0,300)] private float shootingForce = 3.7f;
-	//[SerializeField] private float upAngleCorrection = -90f;
+	[SerializeField] private float upAngleCorrection = 0f;
 	//[SerializeField] private float arrowTimePerUnit = 0.09f;
 	[SerializeField] private float verticalSpread = 5f;
 	[SerializeField] private float horizontalSpread = 5f;
@@ -86,7 +86,7 @@ public class ArrowShooterStandard : MonoBehaviour
 		spawnPointPivot.rotation = Quaternion.Euler( 0, newCannonRotation.eulerAngles.y, 0 );
 
 		// Some randomness
-		dir = Quaternion.AngleAxis( Random.Range( -horizontalSpread, horizontalSpread ), Vector3.Cross( Vector3.down, dir ) ) * dir;
+		dir = Quaternion.AngleAxis( Random.Range( -horizontalSpread, horizontalSpread ) + upAngleCorrection, Vector3.Cross( Vector3.down, dir ) ) * dir;
 		dir = Quaternion.AngleAxis( Random.Range( -verticalSpread, verticalSpread ), Vector3.Cross( Vector3.right, dir ) ) * dir;
 
 		Vector3 force = dir * ( shootingForce );
