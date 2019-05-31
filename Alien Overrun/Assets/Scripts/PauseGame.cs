@@ -15,6 +15,7 @@ public class PauseGame : MonoBehaviour
     private LevelManager levelManager;
     private CanvasGroup pauseCanvasGroup;
 	private float currentSpeed = 1f;
+	private bool activePause = false;
 
 	static public float ForceScale = 1;
 
@@ -41,12 +42,18 @@ public class PauseGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (levelManager.Paused == false)
+			if (activePause)
+			{
+				Pause( false );
+			}
+            else if (levelManager.Paused == false)
             {
+				Debug.Log( "B" );
                 Pause( false );
             }
             else
             {
+				Debug.Log( "C" );
                 Unpause();
             }
         }
@@ -73,6 +80,8 @@ public class PauseGame : MonoBehaviour
 
     public void Pause( bool activePause )
     {
+		this.activePause = activePause;
+
 		if ( BuildingManager.Instance.Building )
 			return;
 
