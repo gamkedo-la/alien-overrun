@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class playMechSounds : MonoBehaviour
 {
+    public int mechAnimationLoopCount;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        mechAnimationLoopCount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (mechAnimationLoopCount == 3)
+        {
+            mechAnimationLoopCount = 0;
+        }
+    }
+
+    public void increaseMechAnimationLoopCount()
+    {
+        mechAnimationLoopCount++;
     }
 
     public void playMechCreakOneShot()
@@ -23,7 +33,10 @@ public class playMechSounds : MonoBehaviour
 
     public void playMechStepOneShot()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MechStep");
+        if (mechAnimationLoopCount == 1)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MechStep");
+        }
     }
 
 }
