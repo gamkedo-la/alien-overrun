@@ -3044,7 +3044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 3893072889936442765}
-  corpse: {fileID: 0}
+  corpse: {fileID: 7476295876874863766, guid: 0840b71bbf815114c87684a8b2e34f26, type: 3}
   maxHP: 30
   destroyOnNoHP: 0
   resistance: 0

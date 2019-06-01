@@ -5154,7 +5154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 5211465451173816720}
-  corpse: {fileID: 0}
+  corpse: {fileID: 3623788153219403525, guid: 6b1296a9384e65e4da310fad409b9c31, type: 3}
   maxHP: 150
   destroyOnNoHP: 0
   resistance: 0
@@ -5246,6 +5246,7 @@ MonoBehaviour:
   shootPoint: {fileID: 1284071210338740561}
   muzzleFlashPrefab: {fileID: 5581974584226724963, guid: deca7832c056b4c42952f25a0b82390a,
     type: 3}
+  knockBackForce: 0.1
   reloadTime: 0.5
   shootDuration: 0.2
   damage: 10
