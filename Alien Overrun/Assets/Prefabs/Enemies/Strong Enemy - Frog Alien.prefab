@@ -739,7 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hpBar: {fileID: 5622418187181199809}
-  corpse: {fileID: 1124212500758180967, guid: 49e7ec229594b24599604009b07f7637, type: 3}
+  corpse: {fileID: 7909307773335477968, guid: 83dd998931c737f41ad8c89829668fb1, type: 3}
   maxHP: 100
   destroyOnNoHP: 1
   resistance: 1
