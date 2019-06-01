@@ -1,9 +1,13 @@
+{5691d39c-e9f4-4b01-8f78-2a2916c44a77} event:/Archer_Tower_Attack
 {c64f29a8-d752-462b-87ae-b067b39681d9} event:/Building_Placer
+{d8cd69e2-0054-4e3f-b921-b91db94f751b} event:/Bullet_Explosion
+{3a41b68d-190d-4073-8f41-22a290c2f649} event:/Canon_Attack
+{ddd1d418-0f44-4bc5-83bf-f60034c456e4} event:/Mage_Tower_Attacking
 {fccee313-ac2f-4cf8-9181-46d5b8b9b1b9} event:/MechCreak
 {d321f7be-a666-4955-a9f2-8744d6a2101c} event:/MechStep
-{55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/New_Enemy_Alarm
-{e0101113-ea59-4227-8c8f-fb857f371278} event:/ScuttlerStep
-{c810d578-731c-4c50-88bb-7f581df9af1e} event:/ScuttlerSwoosh
+{55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/New_Enemies_Alarm
+{880c749f-5e05-4582-80a2-ae3ccd67f9ec} event:/ScuttlerStep
+{e2989eaf-2cb5-45b7-b329-bc113485bb25} event:/ScuttlerSwoosh
 {a76a7e1c-0dcf-44f2-95cc-1e7004205f21} event:/UI_Button
 {ad0b9995-0dd1-4100-b490-4472dc009991} bus:/
 {35ed15f2-f44e-4b13-921b-3757ced979fc} bus:/Reverb
