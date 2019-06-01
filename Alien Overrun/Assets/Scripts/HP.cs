@@ -34,6 +34,11 @@ public class HP : MonoBehaviour
 
 	void Start( )
 	{
+		SetHPBar( );
+	}
+
+	void SetHPBar( )
+	{
 		if ( hpBar )
 		{
 			hpBar.maxValue = maxHP;
@@ -41,6 +46,14 @@ public class HP : MonoBehaviour
 
 			SetHPBarVisability( );
 		}
+	}
+
+	public void MakeEliteUnit( )
+	{
+		maxHP *= 1.1f;
+		CurrentHP = maxHP;
+
+		SetHPBar( );
 	}
 
 	/// <summary>

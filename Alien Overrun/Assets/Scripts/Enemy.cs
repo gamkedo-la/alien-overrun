@@ -23,6 +23,9 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float timeToDestroyOnNotMoving = 10f;
 	[SerializeField] private float knockBackDampening = 0.95f;
 
+	[Tooltip("The chance of this unit becoming a stronger one, between 0 and 100 percent.")]
+	[Range(0, 100)] [SerializeField] private float eliteUnitChance = 20f;
+
 	public string DebugInfo = "";
 
 	private Vector3 destination = Vector3.zero;
@@ -46,6 +49,14 @@ public class Enemy : AbstractListableItem
 		oponentFinder.SetOponentListManager( BuildingManager.Instance );
 
 		Invoke( "OnDeath", 3 * 60 );
+
+		if ( Random.value <= ( eliteUnitChance / 100 ) )
+		{
+			isElite = true;
+			HP hp = gameObject.GetComponent<HP>( );
+			hp.MakeEliteUnit( );
+			transform.localScale *= 1.5f;
+		}
 	}
 
 	void FixedUpdate( )
