@@ -506,6 +506,7 @@ MonoBehaviour:
   thresholdForNavMeshReEnable: 10
   timeToDestroyOnNotMoving: 10
   knockBackDampening: 0.8
+  eliteUnitChance: 20
   DebugInfo: 
 --- !u!114 &1894772762418121626
 MonoBehaviour:
