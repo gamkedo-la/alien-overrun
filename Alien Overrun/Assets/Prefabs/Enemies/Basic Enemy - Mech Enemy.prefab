@@ -504,6 +504,7 @@ MonoBehaviour:
   maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
   timeToDestroyOnNotMoving: 10
+  knockBackDampening: 0.8
   DebugInfo: 
 --- !u!114 &1894772762418121626
 MonoBehaviour:
@@ -860,6 +861,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 793191563035788276}
   muzzleFlashPrefab: {fileID: 0}
+  knockBackForce: 0.1
   reloadTime: 2
   shootDuration: 0.2
   damage: 2
@@ -1136,6 +1138,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootPoint: {fileID: 6473089806785467986}
   muzzleFlashPrefab: {fileID: 0}
+  knockBackForce: 0.1
   reloadTime: 2
   shootDuration: 0.2
   damage: 2

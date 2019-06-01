@@ -11,7 +11,7 @@ public class BeamShooter : MonoBehaviour
 {
 	[SerializeField] private Transform shootPoint = null;
 	[SerializeField] private GameObject muzzleFlashPrefab = null;
-	//[SerializeField] private float knockBackForce = 250;
+	[SerializeField] private float knockBackForce = 0.1f;
 	[SerializeField] private float reloadTime = 2f;
 	[SerializeField] private float shootDuration = 1f;
 	[SerializeField] private float damage = 5f;
@@ -50,13 +50,16 @@ public class BeamShooter : MonoBehaviour
             }
 
 			Enemy baddie = target.gameObject.GetComponent<Enemy>( );
-			if (baddie) {
-					float knockBackForce = 0.25f; // in decreasing game units per frame
-					Vector3 knockBackVec = new Vector3(
-						Random.Range(-1 * knockBackForce, knockBackForce),
-						Random.Range(knockBackForce / 2, knockBackForce),
-						Random.Range(-1 * knockBackForce, knockBackForce)); 				
-					baddie.knockBack(knockBackVec);
+			if (baddie)
+			{
+				/*float knockBackForce = 0.25f; // in decreasing game units per frame
+				Vector3 knockBackVec = new Vector3(
+					Random.Range(-1 * knockBackForce, knockBackForce),
+					Random.Range(knockBackForce / 2, knockBackForce),
+					Random.Range(-1 * knockBackForce, knockBackForce));*/
+				Vector3 dir = ( target.position - transform.position ).normalized;
+				Vector3 knockBackVec = dir * knockBackForce;
+				baddie.knockBack(knockBackVec);
 			}
 
 			/*
@@ -68,10 +71,10 @@ public class BeamShooter : MonoBehaviour
 				Vector3 knockBackVec = new Vector3(
 					Random.Range(-1 * knockBackForce, knockBackForce),
 					Random.Range(knockBackForce / 2, knockBackForce),
-					Random.Range(-1 * knockBackForce, knockBackForce)); 
+					Random.Range(-1 * knockBackForce, knockBackForce));
 				rb.isKinematic = false;
 				//Debug.Log("KNOCKBACK vec: " + knockBackVec);
-				rb.AddForce(knockBackVec);//, ForceMode.VelocityChange); 
+				rb.AddForce(knockBackVec);//, ForceMode.VelocityChange);
 				// FIXME: need a one time coroutine with the rb's scope maintained
 				// to reset back to normal kinematic control after a short time
 				//Invoke(regainKinematicControl,3f); // rb.isKinematic = true;

@@ -724,6 +724,7 @@ MonoBehaviour:
   maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
   timeToDestroyOnNotMoving: 10
+  knockBackDampening: 0.7
   DebugInfo: 
 --- !u!114 &7175263236576491548
 MonoBehaviour:

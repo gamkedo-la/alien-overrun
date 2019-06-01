@@ -21,6 +21,7 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float maxVelocityMag = 150f;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 	[SerializeField] private float timeToDestroyOnNotMoving = 10f;
+	[SerializeField] private float knockBackDampening = 0.95f;
 
 	public string DebugInfo = "";
 
@@ -31,7 +32,6 @@ public class Enemy : AbstractListableItem
 	private bool hold = false;
 
 	private Vector3 knockBackVel = Vector3.zero;
-	private float knockBackDampening = 0.9f;
 
 	void Start ()
 	{

@@ -11,7 +11,7 @@ public class Arrow : MonoBehaviour
 {
 	[SerializeField] private GameObject line = null;
 	[SerializeField] private int damage = 20;
-	//[SerializeField] private float knockBackForce = 250;
+	[SerializeField] private float knockBackForce = 0.1f;
 	[SerializeField] private DamageType damageType = DamageType.Physical;
 
 	private Rigidbody rb;
@@ -48,13 +48,14 @@ public class Arrow : MonoBehaviour
 			}
 
 			Enemy baddie = other.gameObject.GetComponent<Enemy>( );
-			if (baddie) {
-					float knockBackForce = 0.25f; // in decreasing game units per frame
-					Vector3 knockBackVec = new Vector3(
-						Random.Range(-1 * knockBackForce, knockBackForce),
-						Random.Range(knockBackForce / 2, knockBackForce),
-						Random.Range(-1 * knockBackForce, knockBackForce));
-					baddie.knockBack(knockBackVec);
+			if (baddie)
+			{
+				/*Vector3 knockBackVec = new Vector3(
+					Random.Range(-1 * knockBackForce, knockBackForce),
+					Random.Range(knockBackForce / 2, knockBackForce),
+					Random.Range(-1 * knockBackForce, knockBackForce));*/
+				Vector3 knockBackVec = other.gameObject.transform.forward * -knockBackForce;
+				baddie.knockBack(knockBackVec);
 			}
 
 			// knockback - UNUSED: physics can't affect enemies or navmesh breaks
