@@ -108,7 +108,7 @@ MonoBehaviour:
   startSunAngle: 47
   endSunAngle: 5
   startSunIntensity: 2.5
-  endSunIntensity: 1
+  endSunIntensity: 0
   sunColor:
     serializedVersion: 2
     key0: {r: 0.9811321, g: 0.927741, b: 0.7821289, a: 1}

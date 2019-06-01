@@ -17,6 +17,8 @@ public class TimeOfDay : MonoBehaviour
 	[SerializeField] private float endSunAngle = 5f;
 	[SerializeField] private float startSunIntensity = 2.5f;
 	[SerializeField] private float endSunIntensity = 1.0f;
+	[SerializeField] private float startIntensityM = 1.0f;
+	[SerializeField] private float endIntensityM = 0.4f;
 	[SerializeField] private Gradient sunColor = null;
 	[SerializeField] private float changeSpeed = 1.0f;
 
@@ -63,8 +65,10 @@ public class TimeOfDay : MonoBehaviour
 
 			sun.color = sunColor.Evaluate( CurrentProgress );
 
-			//Debug.Log( currentProgress );
+			if ( CurrentProgress >= 0.5f )
+				RenderSettings.ambientIntensity = Utilities.ConvertRange( 0.5f, 1f, startIntensityM, endIntensityM, CurrentProgress );
 
+			//Debug.Log( currentProgress );
 			yield return null;
 		}
 	}
