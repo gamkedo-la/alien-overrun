@@ -31,14 +31,16 @@ public class ArrowShooterStandard : MonoBehaviour
 		Assert.IsNotNull( projectile );
 		Assert.IsNotNull( spawnPoint );
 		Assert.IsNotNull( spawnPointPivot );
-	}
+
+    }
 
 	void Update( )
 	{
 		timeToNextShot -= Time.deltaTime;
 
 		TryToShoot( );
-	}
+
+    }
 
 	public void OnNewOponenet( Transform oponent )
 	{
@@ -97,7 +99,8 @@ public class ArrowShooterStandard : MonoBehaviour
 		// muzzle flash particle effect
 		if (muzzleFlashPrefab) {
 			var muzzleFlash = Instantiate( muzzleFlashPrefab, spawnPoint.position, Quaternion.LookRotation(dir));
-		}
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Archer_Tower_Attack");
+        }
 
 	}
 }

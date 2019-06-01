@@ -41,14 +41,16 @@ public class AreaOfEffectDamager : MonoBehaviour
 		//Debug.Log( "Collision damage with: " + collision.gameObject.name );
 		DoDamage( collision.gameObject );
 		ApplyForce( collision.gameObject );
-	}
+       
+    }
 
 	private void OnTriggerEnter( Collider other )
 	{
 		//Debug.Log( "Trigger damage with: " + other.gameObject.name );
 		DoDamage( other.gameObject );
 		ApplyForce( other.gameObject );
-	}
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/Bullet_Explosion");
+    }
 
 	private void DoDamage( GameObject other )
 	{
@@ -60,7 +62,8 @@ public class AreaOfEffectDamager : MonoBehaviour
 				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 				hp.ChangeHP( -damg );
 				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
-			}
+
+            }
 		}
 	}
 
@@ -79,7 +82,8 @@ public class AreaOfEffectDamager : MonoBehaviour
 			// Force decreases with distance (current size of the explosion)
 			//float force = maxForce * ( 1.1f - transform.localScale.x / endSize );
 			rb.AddExplosionForce( explosionForce, transform.position - transform.up, endSize, 1, ForceMode.Impulse );
-		}
+
+        }
 	}
 
 	private void Grow( )

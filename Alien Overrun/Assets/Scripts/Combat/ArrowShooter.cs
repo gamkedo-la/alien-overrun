@@ -114,8 +114,10 @@ public class ArrowShooter : MonoBehaviour
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
 
-		// muzzle flash particle effect
-		if (muzzleFlashPrefab) {
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Archer_Tower_Attack");
+
+        // muzzle flash particle effect
+        if (muzzleFlashPrefab) {
 			var muzzleFlash = Instantiate( muzzleFlashPrefab, spawnPoint.position, Quaternion.LookRotation(dir));
 		}
 	}

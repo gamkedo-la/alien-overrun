@@ -46,7 +46,8 @@ public class BeamShooter : MonoBehaviour
 			if (muzzleFlashPrefab) {
 				Vector3 dir = ( target.position - shootPoint.position ).normalized;
 				var muzzleFlash = Instantiate( muzzleFlashPrefab, shootPoint.position, Quaternion.LookRotation(dir));
-			}
+                FMODUnity.RuntimeManager.PlayOneShot("event:/Mage_Tower_Attacking");
+            }
 
 			Enemy baddie = target.gameObject.GetComponent<Enemy>( );
 			if (baddie) {

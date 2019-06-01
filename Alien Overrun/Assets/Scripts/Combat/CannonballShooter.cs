@@ -125,9 +125,12 @@ public class CannonballShooter : MonoBehaviour
 		var go = Instantiate( projectile, spawnPoint.position, Quaternion.identity );
 		go.GetComponent<Rigidbody>( ).AddForce( force * PauseGame.ForceScale );
 
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Canon_Attack");
+
 		// muzzle flash particle effect
 		if (muzzleFlashPrefab) {
 			var muzzleFlash = Instantiate( muzzleFlashPrefab, spawnPoint.position, Quaternion.LookRotation(dir));
+           
 		}
 
 	}

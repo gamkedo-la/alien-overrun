@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
     <object class="Workspace" id="{593577cf-b79e-46de-9e55-b25d4f390a59}">
+        <property name="builtBanksOutputDirectory">
+            <value>FMODBuild</value>
+        </property>
         <relationship name="masterEventFolder">
             <destination>{319b88fe-c8d2-45dd-bfad-6cbeaee4ef97}</destination>
         </relationship>
