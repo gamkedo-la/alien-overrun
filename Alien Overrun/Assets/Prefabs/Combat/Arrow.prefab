@@ -279,9 +279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdd24228feefcdb4c825b6c96c1f7444, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gfx: {fileID: 4983688142417844953}
+  line: {fileID: 2432678397758346311}
   damage: 3
-  knockBackForce: 250
   damageType: 0
 --- !u!1 &6093789136422703801
 GameObject:
