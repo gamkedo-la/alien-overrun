@@ -12,6 +12,7 @@ public class ButtonAnimator : MonoBehaviour
 {
 	[SerializeField] private float bigScale = 1.1f;
 	[SerializeField] private float changeSpeed = 0.5f;
+	[SerializeField] private bool useOnMouse = false;
 
 	Coroutine coroutine = null;
 	Button button = null;
@@ -28,6 +29,18 @@ public class ButtonAnimator : MonoBehaviour
 			isActive = false;
 		else if ( button && button.interactable )
 			isActive = true;
+	}
+
+	private void OnMouseDown( )
+	{
+		if ( useOnMouse )
+			OnOverEnter( );
+	}
+
+	private void OnMouseExit( )
+	{
+		if ( useOnMouse )
+			OnOverExit( );
 	}
 
 	public void OnOverEnter( )
