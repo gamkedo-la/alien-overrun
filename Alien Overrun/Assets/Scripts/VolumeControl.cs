@@ -15,7 +15,8 @@ public class VolumeControl : MonoBehaviour
 	[SerializeField] private Slider volumeSlider = null;
 	[SerializeField] private string exposedPropertyName = "Volume";
 
-	//private FMOD.Studio.Bus masterSoundBus;
+	private FMOD.Studio.Bus musicSoundBus;
+	private FMOD.Studio.Bus sfxSoundBus;
 
 	void Start( )
 	{
@@ -23,7 +24,8 @@ public class VolumeControl : MonoBehaviour
 		Assert.IsNotNull( volumeSlider, $"Please assign <b>VolumeSlider</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 
 		volumeSlider.value = PlayerPrefs.GetFloat( exposedPropertyName, 1f );
-		//masterSoundBus = FMODUnity.RuntimeManager.GetBus( "bus:/master_volume" );
+		sfxSoundBus = FMODUnity.RuntimeManager.GetBus( "bus:/SFX" );
+		musicSoundBus = FMODUnity.RuntimeManager.GetBus( "bus:/Music" );
 	}
 
 	/// <summary>
@@ -41,6 +43,7 @@ public class VolumeControl : MonoBehaviour
 		else
 			audioMixer.SetFloat( exposedPropertyName, -80 ); // No sound
 
-		//masterSoundBus.setVolume( value );
+		sfxSoundBus.setVolume( value );
+		musicSoundBus.setVolume( value );
 	}
 }

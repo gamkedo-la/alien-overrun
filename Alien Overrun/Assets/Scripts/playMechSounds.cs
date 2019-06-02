@@ -1,16 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class playMechSounds : MonoBehaviour
 {
-    public int mechAnimationLoopCount;
+	[SerializeField] private int mechAnimationLoopCount = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        mechAnimationLoopCount = 0;
-    }
+	public void increaseMechAnimationLoopCount( )
+	{
+		mechAnimationLoopCount++;
+		if ( mechAnimationLoopCount == 100 )
+		{
+			mechAnimationLoopCount = 0;
+		}
+	}
 
     // Update is called once per frame
     void Update()
