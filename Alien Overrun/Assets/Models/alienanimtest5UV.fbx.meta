@@ -48,7 +48,8 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: Event increaseMechAnimationLoopCount has a time (1.470820)
+      outside the clip's valid range (0.000000..1.466667). It will never be fired
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -303,7 +304,7 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1.0028319
+      - time: 0.046065018
         functionName: increaseMechAnimationLoopCount
         data: 
         objectReferenceParameter: {instanceID: 0}

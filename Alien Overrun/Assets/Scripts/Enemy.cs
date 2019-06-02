@@ -33,6 +33,7 @@ public class Enemy : AbstractListableItem
 	private Rigidbody rb = null;
 	private bool isDynamic = false;
 	private bool hold = false;
+    private bool isElite = false;
 
 	private Vector3 knockBackVel = Vector3.zero;
 

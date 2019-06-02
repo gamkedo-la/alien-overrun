@@ -15,7 +15,7 @@ public class playMechSounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mechAnimationLoopCount == 3)
+        if (mechAnimationLoopCount == 100)
         {
             mechAnimationLoopCount = 0;
         }
