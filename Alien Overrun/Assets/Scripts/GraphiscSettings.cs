@@ -5,9 +5,17 @@
  **/
 
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GraphiscSettings : MonoBehaviour
 {
+	[SerializeField] private GameObject grass = null;
+	[SerializeField] private Image grassButton = null;
+	[SerializeField] private Image vsyncButton = null;
+	[SerializeField] private Image shakeButton = null;
+	[SerializeField] private Image postButton = null;
+	[SerializeField] private Color onColor = Color.green;
+	[SerializeField] private Color offColor = Color.gray;
 	[SerializeField] private GameObject postProcessObject = null;
 	[SerializeField] private bool vSyncOffonStart = true;
 
@@ -36,10 +44,40 @@ public class GraphiscSettings : MonoBehaviour
 			QualitySettings.vSyncCount = 1;
 		else
 			QualitySettings.vSyncCount = 0;
+
+		if ( QualitySettings.vSyncCount == 0 )
+			vsyncButton.color = onColor;
+		else
+			vsyncButton.color = offColor;
 	}
 
 	public void TogglePostProcess( )
 	{
 		postProcessObject.SetActive( !postProcessObject.activeSelf );
+
+		if ( postProcessObject.activeSelf )
+			postButton.color = onColor;
+		else
+			postButton.color = offColor;
+	}
+
+	public void ToggleGrass( )
+	{
+		grass.SetActive( !grass.activeSelf );
+
+		if ( grass.activeSelf )
+			grassButton.color = onColor;
+		else
+			grassButton.color = offColor;
+	}
+
+	public void ToggleScreenshake( )
+	{
+		ScreenShake.Instance.On = !ScreenShake.Instance.On;
+
+		if ( ScreenShake.Instance.On )
+			shakeButton.color = onColor;
+		else
+			shakeButton.color = offColor;
 	}
 }

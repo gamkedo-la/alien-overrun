@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseGame : MonoBehaviour
 {
     public Animator animator;
     public CanvasGroup[] uiCanvasGroupsToHide;
-    public GameObject grass;
+
 	[SerializeField] private float maxSpeed = 4f;
 	[SerializeField] private float maxForceScale = 0.25f;
 	[SerializeField] private float minSpeed = 0.2f;
@@ -48,12 +49,10 @@ public class PauseGame : MonoBehaviour
 			}
             else if (levelManager.Paused == false)
             {
-				Debug.Log( "B" );
                 Pause( false );
             }
             else
             {
-				Debug.Log( "C" );
                 Unpause();
             }
         }
@@ -126,11 +125,6 @@ public class PauseGame : MonoBehaviour
 		ForceScale = 1f;
 		currentSpeed = Time.timeScale;
 		Time.fixedDeltaTime = 0.02f * Time.timeScale;
-	}
-
-	public void ToggleGrass( )
-	{
-		grass.SetActive( !grass.activeSelf );
 	}
 
 	public void SlowSpeed( )

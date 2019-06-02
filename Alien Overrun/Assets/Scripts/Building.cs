@@ -183,7 +183,14 @@ public class Building : AbstractListableItem
 		}
 
 		if ( BuildingType != BuildingType.Castle )
+		{
 			AIProgressManager.Instance.RemoveThreat( Threat, transform.position );
+			ScreenShake.Instance.DoLow( );
+		}
+		else
+		{
+			ScreenShake.Instance.DoBig( );
+		}
 
 		Destroy( gameObject );
 	}
