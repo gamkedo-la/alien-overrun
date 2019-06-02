@@ -38,7 +38,7 @@ public class EnemyProjectile : MonoBehaviour
 			if ( hp != null )
 			{
 				hp.ChangeHP( -damage );
-				//FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
+				FloatingTextService.Instance.ShowFloatingText( collision.contacts[0].point, damage.ToString( ), 1, Color.white, 2f );
 			}
 		}
 

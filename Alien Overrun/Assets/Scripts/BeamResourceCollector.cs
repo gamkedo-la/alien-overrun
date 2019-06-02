@@ -35,7 +35,7 @@ public class BeamResourceCollector : MonoBehaviour
 			Utilities.DrawLine( shootPoint.position, target.position, shotColor, 0.1f, shootDuration );
 
 			targetResource.CollectResources( damage, transform.position );
-			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damage.ToString( ) );
+			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damage.ToString( ), 1, shotColor, 1f );
 		}
 	}
 

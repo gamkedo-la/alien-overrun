@@ -41,7 +41,6 @@ public class AreaOfEffectDamager : MonoBehaviour
 		//Debug.Log( "Collision damage with: " + collision.gameObject.name );
 		DoDamage( collision.gameObject );
 		ApplyForce( collision.gameObject );
-       
     }
 
 	private void OnTriggerEnter( Collider other )
@@ -61,7 +60,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 			{
 				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 				hp.ChangeHP( -damg );
-				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
+				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ), 1, Color.red, 2f );
 
             }
 		}

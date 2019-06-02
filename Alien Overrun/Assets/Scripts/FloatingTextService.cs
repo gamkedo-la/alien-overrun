@@ -13,6 +13,7 @@ public class FloatingTextService : MonoBehaviour
 {
 	public static FloatingTextService Instance { get; private set; }
 
+	[SerializeField] private GameObject floatingText = null;
 	[SerializeField] private TMP_FontAsset font = null;
 
 	private void Awake( )
@@ -27,7 +28,7 @@ public class FloatingTextService : MonoBehaviour
 
 	void Start( )
 	{
-		Assert.IsNotNull( font, $"Please assign <b>Font</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
+		Assert.IsNotNull( floatingText, $"Please assign <b>Floating Text</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 	}
 
 	/// <summary>
@@ -39,7 +40,7 @@ public class FloatingTextService : MonoBehaviour
 	/// <param name="color">Text color.</param>
 	/// <param name="duration">Duration before it vanishes.</param>
 	/// <returns>Returns reference to the text's GameObject.</returns>
-	public GameObject ShowFloatingText( Vector3 position, string text, int size = 14, Color? color = null, float duration = 0.5f )
+	public GameObject ShowFloatingTextOLD( Vector3 position, string text, int size = 14, Color? color = null, float duration = 0.5f )
 	{
 		GameObject canvasObj = new GameObject( $"Floating Text {Random.Range(0, 10000)}" );
 		Canvas canvas = canvasObj.AddComponent<Canvas>( );
@@ -66,5 +67,13 @@ public class FloatingTextService : MonoBehaviour
 		Destroy( canvasObj, duration );
 
 		return canvasObj;
+	}
+
+	public void ShowFloatingText( Vector3 position, string text, int size, Color color, float multiplyer )
+	{
+		GameObject go = Instantiate( floatingText, position, Quaternion.identity );
+		FloatingText ft = go.GetComponent<FloatingText>( );
+
+		ft.Set( text, color, multiplyer );
 	}
 }

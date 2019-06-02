@@ -44,7 +44,7 @@ public class Arrow : MonoBehaviour
 			{
 				float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
 				hp.ChangeHP( -damg );
-				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ) );
+				FloatingTextService.Instance.ShowFloatingText( other.transform.position + Vector3.up, damg.ToString( ), 1, Color.red, 2f );
 			}
 
 			Enemy baddie = other.gameObject.GetComponent<Enemy>( );

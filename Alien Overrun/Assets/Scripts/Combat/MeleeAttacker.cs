@@ -56,7 +56,7 @@ public class MeleeAttacker : MonoBehaviour
 		Instantiate( effect, transform.position + transform.forward * effectOffsetZ + transform.up * effectOffsetY, Quaternion.identity );
 
 		hp.ChangeHP( -damg );
-		FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );
+		FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ), 1, Color.white, 2f );
 	}
 
 	private void TryToAttack( )

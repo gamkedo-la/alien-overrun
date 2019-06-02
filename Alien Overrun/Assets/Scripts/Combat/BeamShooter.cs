@@ -40,7 +40,7 @@ public class BeamShooter : MonoBehaviour
 			float damg = damage * Interactions.GetMultiplier( damageType, targetHP.Resistance );
 
 			targetHP.ChangeHP( -damg );
-			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );
+			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ), 1, Color.red, 2f );
 
 			// muzzle flash particle effect
 			if (muzzleFlashPrefab) {
