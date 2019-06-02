@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/FMOD Loading.unity
+    guid: b792284e01499554f8c32b7fa2746554
+  - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: aab9f65e7d0b67646a404ce7fc334cfa
   - enabled: 1
