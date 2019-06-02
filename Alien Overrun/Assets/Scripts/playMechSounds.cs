@@ -22,11 +22,6 @@ public class playMechSounds : MonoBehaviour
         }
     }
 
-    public void increaseMechAnimationLoopCount()
-    {
-        mechAnimationLoopCount++;
-    }
-
     public void playMechCreakOneShot()
     {
         if (mechAnimationLoopCount == 1 || mechAnimationLoopCount == 5)
