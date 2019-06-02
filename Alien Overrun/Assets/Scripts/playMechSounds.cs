@@ -15,7 +15,7 @@ public class playMechSounds : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mechAnimationLoopCount == 100)
+        if (mechAnimationLoopCount == 10)
         {
             mechAnimationLoopCount = 0;
         }
@@ -28,12 +28,15 @@ public class playMechSounds : MonoBehaviour
 
     public void playMechCreakOneShot()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/MechCreak");
+        if (mechAnimationLoopCount == 1 || mechAnimationLoopCount == 5)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/MechCreak");
+        }
     }
 
     public void playMechStepOneShot()
     {
-        if (mechAnimationLoopCount == 1)
+        if (mechAnimationLoopCount == 1 || mechAnimationLoopCount == 5)
         {
             FMODUnity.RuntimeManager.PlayOneShot("event:/MechStep");
         }
