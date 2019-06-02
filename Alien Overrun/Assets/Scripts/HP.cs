@@ -50,7 +50,7 @@ public class HP : MonoBehaviour
 
 	public void MakeEliteUnit( )
 	{
-		maxHP *= 1.1f;
+		maxHP *= 2f;
 		CurrentHP = maxHP;
 
 		SetHPBar( );

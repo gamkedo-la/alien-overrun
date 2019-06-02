@@ -12,6 +12,7 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(OponentFinder))]
 public class Enemy : AbstractListableItem
 {
+	[SerializeField] private GameObject[] spikes = null;
 	[SerializeField] private NavMeshAgent agent = null;
 	[SerializeField] private GroundDetect detector = null;
 	[SerializeField] private float minPhysicsReactVelSqr = 3f;
@@ -24,7 +25,7 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float knockBackDampening = 0.95f;
 
 	[Tooltip("The chance of this unit becoming a stronger one, between 0 and 100 percent.")]
-	[Range(0, 100)] [SerializeField] private float eliteUnitChance = 20f;
+	[Range(0, 100)] [SerializeField] private float eliteChance = 10f;
 
 	public string DebugInfo = "";
 
@@ -33,7 +34,6 @@ public class Enemy : AbstractListableItem
 	private Rigidbody rb = null;
 	private bool isDynamic = false;
 	private bool hold = false;
-    private bool isElite = false;
 
 	private Vector3 knockBackVel = Vector3.zero;
 
@@ -51,12 +51,19 @@ public class Enemy : AbstractListableItem
 
 		Invoke( "OnDeath", 3 * 60 );
 
-		if ( Random.value <= ( eliteUnitChance / 100 ) )
+		if ( Random.value <= ( eliteChance / 100 ) )
 		{
-			isElite = true;
 			HP hp = gameObject.GetComponent<HP>( );
 			hp.MakeEliteUnit( );
-			transform.localScale *= 1.5f;
+			transform.localScale *= 1.3f;
+
+			foreach ( var s in spikes )
+				s.SetActive( true );
+		}
+		else
+		{
+			foreach ( var s in spikes )
+				s.SetActive( false );
 		}
 	}
 
