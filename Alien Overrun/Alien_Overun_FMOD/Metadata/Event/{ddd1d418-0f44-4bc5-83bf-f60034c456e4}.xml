@@ -156,9 +156,6 @@
     <object class="MixerBusEffectChain" id="{bbbfdaf9-1df6-423a-bea0-ba052c2ae621}">
         <relationship name="effects">
             <destination>{fda5fe38-4700-44bb-a9da-f42a8e35a7a3}</destination>
-            <destination>{9f8bbde7-a917-447e-a6dd-01914dab62b5}</destination>
-            <destination>{1c904c7d-85dd-4c8d-bb7a-4c8ddf9a2d4b}</destination>
-            <destination>{3aed37cd-d477-43eb-a069-271ab5532e3d}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{7a82b351-a222-4e37-9b50-4207b14629ee}"/>
@@ -202,29 +199,4 @@
         </property>
     </object>
     <object class="MixerBusFader" id="{fda5fe38-4700-44bb-a9da-f42a8e35a7a3}"/>
-    <object class="PitchShifterEffect" id="{9f8bbde7-a917-447e-a6dd-01914dab62b5}">
-        <property name="pitch">
-            <value>1.00000012</value>
-        </property>
-        <relationship name="modulators">
-            <destination>{ccc1b81d-216d-4a2c-b16a-be038cd7113c}</destination>
-        </relationship>
-    </object>
-    <object class="ThreeEQEffect" id="{1c904c7d-85dd-4c8d-bb7a-4c8ddf9a2d4b}">
-        <property name="lowGain">
-            <value>-3</value>
-        </property>
-        <property name="lowCrossover">
-            <value>360</value>
-        </property>
-    </object>
-    <object class="DistortionEffect" id="{3aed37cd-d477-43eb-a069-271ab5532e3d}"/>
-    <object class="RandomizerModulator" id="{ccc1b81d-216d-4a2c-b16a-be038cd7113c}">
-        <property name="nameOfPropertyBeingModulated">
-            <value>pitch</value>
-        </property>
-        <property name="amount">
-            <value>4.5</value>
-        </property>
-    </object>
 </objects>
