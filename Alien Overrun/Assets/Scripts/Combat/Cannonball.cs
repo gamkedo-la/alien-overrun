@@ -25,6 +25,9 @@ public class Cannonball : MonoBehaviour
 		Instantiate( explosion, collision.contacts[0].point, Quaternion.identity );
 		Instantiate( aoeDamage, collision.contacts[0].point, Quaternion.identity );
 
+		if ( transform.position.y < 2.5f )
+			ScorchMarkManager.Instance.PutAt( transform.position );
+
 		trail.transform.SetParent( null );
 		Destroy( trail, 2f );
 		Destroy( gameObject );

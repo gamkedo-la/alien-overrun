@@ -1072,6 +1072,8 @@ MonoBehaviour:
   thresholdForNavMeshReEnable: 10
   timeToDestroyOnNotMoving: 10
   knockBackDampening: 0.8
+  bloodCount: 3
+  bloodSpread: 0.5
   eliteChance: 10
   DebugInfo: 
 --- !u!114 &1894772762418121626

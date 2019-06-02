@@ -11,7 +11,7 @@ public class Smoke : MonoBehaviour
 {
 	[SerializeField] private ParticleSystem ps = null;
 	[SerializeField] private HP hp = null;
-	[SerializeField] private Gradient gradient;
+	[SerializeField] private Gradient gradient = null;
 
 	private ParticleSystem.MainModule main;
 	private ParticleSystem.EmissionModule emision;

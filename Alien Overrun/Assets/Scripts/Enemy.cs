@@ -23,6 +23,8 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
 	[SerializeField] private float timeToDestroyOnNotMoving = 10f;
 	[SerializeField] private float knockBackDampening = 0.95f;
+	[SerializeField] private int bloodCount = 1;
+	[SerializeField] private float bloodSpread = 0.5f;
 
 	[Tooltip("The chance of this unit becoming a stronger one, between 0 and 100 percent.")]
 	[Range(0, 100)] [SerializeField] private float eliteChance = 10f;
@@ -155,6 +157,9 @@ public class Enemy : AbstractListableItem
 			ResourceManager.Instance.AddResources( ResourceType.Minerals, mineralsForKill );
 			FloatingTextService.Instance.ShowFloatingText( transform.position + Vector3.up * 2, "+" + mineralsForKill.ToString( ), 12, Color.green );
 		}
+
+		if ( transform.position.y < 3f )
+			BloodMarkManager.Instance.PutAt( transform.position, bloodCount, bloodSpread );
 	}
 
 	private void OnCollisionEnter( Collision collision )
