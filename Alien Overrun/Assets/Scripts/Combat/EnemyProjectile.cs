@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 
 public class EnemyProjectile : MonoBehaviour
 {
+	[SerializeField] private GameObject exp = null;
 	[SerializeField] private GameObject gfx = null;
 	[SerializeField] private int damage = 20;
 
@@ -41,7 +42,7 @@ public class EnemyProjectile : MonoBehaviour
 			}
 		}
 
-		// TODO: Some explosion
+		Instantiate( exp, collision.contacts[0].point, Quaternion.identity );
 		Destroy( gameObject );
 	}
 }

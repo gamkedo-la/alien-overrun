@@ -6,10 +6,12 @@
 
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.Events;
 
 public class MeleeAttacker : MonoBehaviour
 {
+	[SerializeField] private GameObject effect = null;
+	[SerializeField] private float effectOffsetZ = 1f;
+	[SerializeField] private float effectOffsetY = 1f;
 	[SerializeField] private Animator animator = null;
 	[SerializeField] private float attackDelay = 2f;
 	[SerializeField] private int damage = 10;
@@ -51,6 +53,7 @@ public class MeleeAttacker : MonoBehaviour
 
 		HP hp = target.GetComponent<HP>( );
 		float damg = damage * Interactions.GetMultiplier( damageType, hp.Resistance );
+		Instantiate( effect, transform.position + transform.forward * effectOffsetZ + transform.up * effectOffsetY, Quaternion.identity );
 
 		hp.ChangeHP( -damg );
 		FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damg.ToString( ) );

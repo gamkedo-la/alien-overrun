@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 072eee824d69c604986570cd322fe6b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exp: {fileID: 2502702460817841433, guid: 97f6fbcc6fedc4847b1da5499dd1c176, type: 3}
   gfx: {fileID: 1458710545920529861}
   damage: 2
 --- !u!1 &7445063497955655187

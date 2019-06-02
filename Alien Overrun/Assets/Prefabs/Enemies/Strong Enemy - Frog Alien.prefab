@@ -1997,7 +1997,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   oponentFindCooldown: 0.2
   findDistance: 5
-  attackDistance: 2.64
+  attackDistance: 2
   onOponentFound:
     m_PersistentCalls:
       m_Calls:
@@ -2113,6 +2113,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ecd680b84c4a524c9218033a7b0da38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effect: {fileID: 5542198757292712356, guid: 5beb47e1aad9edf48a0ed5772bf7b05c, type: 3}
+  effectOffsetZ: 1.3
+  effectOffsetY: 1
   animator: {fileID: 4270254657681352561}
   attackDelay: 3
   damage: 10
