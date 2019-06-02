@@ -12894,6 +12894,7 @@ GameObject:
   - component: {fileID: 1284071209366225697}
   - component: {fileID: 1284071209366225696}
   - component: {fileID: 6322095392469391385}
+  - component: {fileID: 2324117939303112678}
   m_Layer: 11
   m_Name: Mineral Miner
   m_TagString: Building
@@ -13137,6 +13138,18 @@ MonoBehaviour:
   shootDuration: 0.5
   damage: 7
   shotColor: {r: 0.98039216, g: 0.6567674, b: 0.05098036, a: 1}
+--- !u!114 &2324117939303112678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284071209366225704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec1d7a6cf925cc040bfdd29a94bafd8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1284071209839644558
 GameObject:
   m_ObjectHideFlags: 0
@@ -18805,11 +18818,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284071209366134536}
     m_Modifications:
-    - target: {fileID: 1386140338353524545, guid: fd49ff8e163b8cf4595da59584ae71e3,
+    - target: {fileID: 3775330057620195778, guid: fd49ff8e163b8cf4595da59584ae71e3,
         type: 3}
-      propertyPath: m_Name
-      value: Smoke
-      objectReference: {fileID: 0}
+      propertyPath: hp
+      value: 
+      objectReference: {fileID: 1284071209366225697}
     - target: {fileID: 1386140338353524574, guid: fd49ff8e163b8cf4595da59584ae71e3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18865,11 +18878,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3775330057620195778, guid: fd49ff8e163b8cf4595da59584ae71e3,
+    - target: {fileID: 1386140338353524545, guid: fd49ff8e163b8cf4595da59584ae71e3,
         type: 3}
-      propertyPath: hp
-      value: 
-      objectReference: {fileID: 1284071209366225697}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd49ff8e163b8cf4595da59584ae71e3, type: 3}
 --- !u!4 &4780074685815744101 stripped
@@ -18994,6 +19007,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
+--- !u!4 &3305919128506284655 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7950254696734341204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3305919128614965603 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4878525846127159607, guid: ac64af75209dedf46b149113279311f3,
@@ -19006,9 +19025,3 @@ MonoBehaviour:
   m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &3305919128506284655 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 7950254696734341204}
-  m_PrefabAsset: {fileID: 0}

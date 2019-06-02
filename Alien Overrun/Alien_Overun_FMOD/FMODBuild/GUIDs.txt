@@ -5,10 +5,14 @@
 {ddd1d418-0f44-4bc5-83bf-f60034c456e4} event:/Mage_Tower_Attacking
 {fccee313-ac2f-4cf8-9181-46d5b8b9b1b9} event:/MechCreak
 {d321f7be-a666-4955-a9f2-8744d6a2101c} event:/MechStep
+{4c2b791a-fc21-46df-9d6a-839b0a8da32a} event:/Music BG
 {55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/New_Enemies_Alarm
 {880c749f-5e05-4582-80a2-ae3ccd67f9ec} event:/ScuttlerStep
 {e2989eaf-2cb5-45b7-b329-bc113485bb25} event:/ScuttlerSwoosh
 {a76a7e1c-0dcf-44f2-95cc-1e7004205f21} event:/UI_Button
+{9c5bf098-536e-4bd2-b695-f71b3d508518} event:/MineralMining
 {ad0b9995-0dd1-4100-b490-4472dc009991} bus:/
+{175e6c46-5168-4e78-b25c-6cbfe38313d8} bus:/Music
+{f94da7da-03c0-4467-a560-41dddac50256} bus:/SFX
 {35ed15f2-f44e-4b13-921b-3757ced979fc} bus:/Reverb
 {00aaf344-7560-40e8-ae84-0c8f7506d453} bank:/Master Bank
