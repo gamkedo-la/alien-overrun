@@ -82,6 +82,21 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 1932018309492745005, guid: 2eaac643b916c7342b9fd11d2fa906bc,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932018309492745005, guid: 2eaac643b916c7342b9fd11d2fa906bc,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1932018309492745005, guid: 2eaac643b916c7342b9fd11d2fa906bc,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1932018309492745006, guid: 2eaac643b916c7342b9fd11d2fa906bc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

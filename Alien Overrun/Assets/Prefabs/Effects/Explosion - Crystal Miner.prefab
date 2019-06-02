@@ -67,6 +67,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5912706999027323917, guid: f6bbc0018339c3248a9536dba0aff7a6,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.minScalar
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912706999027323917, guid: f6bbc0018339c3248a9536dba0aff7a6,
+        type: 3}
+      propertyPath: EmissionModule.m_Bursts.Array.data[0].countCurve.scalar
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 5912706999396419876, guid: f6bbc0018339c3248a9536dba0aff7a6,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
