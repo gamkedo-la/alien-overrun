@@ -54,8 +54,11 @@ public class Arrow : MonoBehaviour
 					Random.Range(-1 * knockBackForce, knockBackForce),
 					Random.Range(knockBackForce / 2, knockBackForce),
 					Random.Range(-1 * knockBackForce, knockBackForce));*/
-				Vector3 knockBackVec = other.gameObject.transform.forward * -knockBackForce;
-				baddie.knockBack(knockBackVec);
+				if ( Random.Range( 0f, 1f ) <= 0.1f )
+				{
+					Vector3 knockBackVec = other.gameObject.transform.forward * -knockBackForce * Random.Range( 0f, 1f );
+					baddie.knockBack( knockBackVec );
+				}
 			}
 
 			// knockback - UNUSED: physics can't affect enemies or navmesh breaks

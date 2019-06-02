@@ -1357,7 +1357,7 @@ MonoBehaviour:
   maxVelocityMag: 15
   thresholdForNavMeshReEnable: 10
   timeToDestroyOnNotMoving: 10
-  knockBackDampening: 0.9
+  knockBackDampening: 0.8
   bloodCount: 1
   bloodSpread: 0.5
   eliteChance: 10

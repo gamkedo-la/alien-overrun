@@ -57,9 +57,12 @@ public class BeamShooter : MonoBehaviour
 					Random.Range(-1 * knockBackForce, knockBackForce),
 					Random.Range(knockBackForce / 2, knockBackForce),
 					Random.Range(-1 * knockBackForce, knockBackForce));*/
-				Vector3 dir = ( target.position - transform.position ).normalized;
-				Vector3 knockBackVec = dir * knockBackForce;
-				baddie.knockBack(knockBackVec);
+				if ( Random.Range( 0f, 1f ) <= 0.1f )
+				{
+					Vector3 dir = ( target.position - transform.position ).normalized;
+					Vector3 knockBackVec = dir * knockBackForce * Random.Range( 0f, 1f );
+					baddie.knockBack( knockBackVec );
+				}
 			}
 
 			/*
