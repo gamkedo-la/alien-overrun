@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EventFolder" id="{6065b8da-0972-4bc9-bdce-6bb4b7c0ae44}">
+        <property name="name">
+            <value>Mage Tower</value>
+        </property>
+        <relationship name="folder">
+            <destination>{8264dc9e-6c5f-4ae0-8b22-852e011b414a}</destination>
+        </relationship>
+    </object>
+</objects>

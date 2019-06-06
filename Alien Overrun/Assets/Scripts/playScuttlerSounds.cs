@@ -18,12 +18,12 @@ public class playScuttlerSounds : MonoBehaviour
 
     public void playScuttlerStepOneShot()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ScuttlerStep");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Enemies/Scuttler/ScuttlerStep");
     }
 
     public void playScuttlerSwooshOneShot()
     {
-        FMODUnity.RuntimeManager.PlayOneShot("event:/ScuttlerSwoosh");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Enemies/Scuttler/ScuttlerSwoosh");
     }
 
 }

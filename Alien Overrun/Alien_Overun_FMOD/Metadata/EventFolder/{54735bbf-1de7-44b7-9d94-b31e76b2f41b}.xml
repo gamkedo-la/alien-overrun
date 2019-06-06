@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="EventFolder" id="{54735bbf-1de7-44b7-9d94-b31e76b2f41b}">
+        <property name="name">
+            <value>Archer Tower</value>
+        </property>
+        <relationship name="folder">
+            <destination>{8264dc9e-6c5f-4ae0-8b22-852e011b414a}</destination>
+        </relationship>
+    </object>
+</objects>

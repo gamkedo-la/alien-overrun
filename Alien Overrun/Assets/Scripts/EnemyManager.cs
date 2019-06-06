@@ -152,7 +152,7 @@ public class EnemyManager : AbstractListManager
 		// Next wave
 		MessageService.Instance.ShowMessage( "New enemies approaching...", 2f, Color.red );
 		waveNum++;
-        FMODUnity.RuntimeManager.PlayOneShot("event:/New_Enemies_Alarm");
+        FMODUnity.RuntimeManager.PlayOneShot("event:/General SFX/New_Enemies_Alarm");
 
 		// Spawn enemies in current wave
 		float enemiesNum = enemiesInWave;

@@ -8,7 +8,7 @@
             <value>2</value>
         </property>
         <relationship name="folder">
-            <destination>{319b88fe-c8d2-45dd-bfad-6cbeaee4ef97}</destination>
+            <destination>{dde03ef1-528e-4169-87ca-19d289ead4ba}</destination>
         </relationship>
         <relationship name="mixer">
             <destination>{53eaec0c-545a-4e1b-8aa6-b8438486e380}</destination>
@@ -30,6 +30,9 @@
         </relationship>
         <relationship name="timeline">
             <destination>{d884a6eb-266c-4ff4-a0c4-9f9b082745ea}</destination>
+        </relationship>
+        <relationship name="tags">
+            <destination>{650ca814-191c-434c-abdb-9cc2a1d2a4ea}</destination>
         </relationship>
         <relationship name="banks">
             <destination>{00aaf344-7560-40e8-ae84-0c8f7506d453}</destination>
@@ -123,7 +126,11 @@
             <destination>{075786bd-dfce-4d9c-90cb-6cc2370ae922}</destination>
         </relationship>
     </object>
-    <object class="MixerBusPanner" id="{3dc98f07-a314-4384-8c2d-7be346de0497}"/>
+    <object class="MixerBusPanner" id="{3dc98f07-a314-4384-8c2d-7be346de0497}">
+        <property name="surroundPanDirection">
+            <value>153.434952</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{96afa58b-b97b-4a07-9309-3620f498ca82}"/>
     <object class="RandomizerModulator" id="{3efde601-29a1-4291-8916-875dfa943c77}">
         <property name="nameOfPropertyBeingModulated">
@@ -165,6 +172,19 @@
     </object>
     <object class="MixerBusPanner" id="{f6e23039-e0b0-4e9d-bc85-c2ff63c0e369}"/>
     <object class="MixerBusFader" id="{a590d8b3-dd3c-42e4-ac72-33576613c57d}"/>
-    <object class="SpatialiserEffect" id="{075786bd-dfce-4d9c-90cb-6cc2370ae922}"/>
+    <object class="SpatialiserEffect" id="{075786bd-dfce-4d9c-90cb-6cc2370ae922}">
+        <property name="minimumDistance">
+            <value>8</value>
+        </property>
+        <property name="extentMode">
+            <value>1</value>
+        </property>
+        <property name="soundSize">
+            <value>7.5</value>
+        </property>
+        <property name="minimumExtent">
+            <value>250</value>
+        </property>
+    </object>
     <object class="MixerBusFader" id="{f2f50905-3017-4763-a920-cab5783d7d0b}"/>
 </objects>

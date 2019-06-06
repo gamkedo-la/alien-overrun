@@ -226,7 +226,7 @@ public class BuildingPlacer : MonoBehaviour
 
 		AIProgressManager.Instance.NextThreatHide( );
 
-		FMODUnity.RuntimeManager.PlayOneShot("event:/Building_Placer");
+		FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Building_Placer");
 		ScreenShake.Instance.DoPlace( );
 		//aud.pitch = Random.Range( 0.9f, 1.1f );
         //aud.PlayOneShot(placeSound);

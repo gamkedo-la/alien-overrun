@@ -48,7 +48,7 @@ public class AreaOfEffectDamager : MonoBehaviour
 		//Debug.Log( "Trigger damage with: " + other.gameObject.name );
 		DoDamage( other.gameObject );
 		ApplyForce( other.gameObject );
-        //FMODUnity.RuntimeManager.PlayOneShot("event:/Bullet_Explosion");
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Bullet_Explosion");
     }
 
 	private void DoDamage( GameObject other )

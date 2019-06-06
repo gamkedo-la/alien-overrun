@@ -6,7 +6,7 @@ public class MinerExistsSoPlaySound : MonoBehaviour
 {
     
     public int NumberOfMineralMiners = 0;
-    private FMOD.Studio.EventInstance MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/MineralMining");
+    private FMOD.Studio.EventInstance MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
     FMOD.Studio.PLAYBACK_STATE MineralMiningSoundPlaybackState;
     // Start is called before the first frame update
     void Start()

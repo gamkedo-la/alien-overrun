@@ -18,6 +18,7 @@ namespace FMODUnity
         static SystemNotInitializedException initException = null;
         static RuntimeManager instance;
 
+        
         [SerializeField]
         FMODPlatform fmodPlatform;
 
@@ -183,10 +184,11 @@ namespace FMODUnity
             }
         }
 
+
         FMOD.RESULT Initialize()
         {
-            #if UNITY_EDITOR
-                #if UNITY_2017_2_OR_NEWER
+        #if UNITY_EDITOR
+        #if UNITY_2017_2_OR_NEWER
             AssemblyReloadEvents.beforeAssemblyReload += HandleBeforeAssemblyReload;
             EditorApplication.playModeStateChanged += HandlePlayModeStateChange;
                 #elif UNITY_2017_1_OR_NEWER

@@ -28,14 +28,14 @@ public class playFrogAlienSounds : MonoBehaviour
 
 	public void playMechCreakOneShot( )
 	{
-		FMODUnity.RuntimeManager.PlayOneShot( "event:/MechCreak" );
+		//FMODUnity.RuntimeManager.PlayOneShot( "event:/MechCreak" );
 	}
 
 	public void playMechStepOneShot( )
 	{
 		if ( mechAnimationLoopCount == 1 )
 		{
-			FMODUnity.RuntimeManager.PlayOneShot( "event:/MechStep" );
+			//FMODUnity.RuntimeManager.PlayOneShot( "event:/MechStep" );
 		}
 	}
 
