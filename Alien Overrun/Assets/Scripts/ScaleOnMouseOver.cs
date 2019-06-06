@@ -43,7 +43,7 @@ public class ScaleOnMouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	void OnMouseOver() {
 		if(enabled && transform.localScale != newScale && aud != null)
-			aud.PlayOneShot(hoverSound);
+			//aud.PlayOneShot(hoverSound);
 		doScale = true;
 	}
 
@@ -54,7 +54,7 @@ public class ScaleOnMouseOver : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
 	public void OnPointerEnter(PointerEventData eventData) {
 		if(enabled && transform.localScale != newScale && aud != null)
-			aud.PlayOneShot(hoverSound);
+			//aud.PlayOneShot(hoverSound);
 		doScale = true;
 	}
 

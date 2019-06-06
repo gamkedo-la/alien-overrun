@@ -12894,7 +12894,7 @@ GameObject:
   - component: {fileID: 1284071209366225697}
   - component: {fileID: 1284071209366225696}
   - component: {fileID: 6322095392469391385}
-  - component: {fileID: 2324117939303112678}
+  - component: {fileID: 4628587342735392101}
   m_Layer: 11
   m_Name: Mineral Miner
   m_TagString: Building
@@ -13138,7 +13138,7 @@ MonoBehaviour:
   shootDuration: 0.5
   damage: 7
   shotColor: {r: 0.98039216, g: 0.6567674, b: 0.05098036, a: 1}
---- !u!114 &2324117939303112678
+--- !u!114 &4628587342735392101
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13147,7 +13147,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1284071209366225704}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec1d7a6cf925cc040bfdd29a94bafd8d, type: 3}
+  m_Script: {fileID: 11500000, guid: 8b798669b6a370440a7362b5456343ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1284071209839644558
@@ -18818,6 +18818,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1284071209366134536}
     m_Modifications:
+    - target: {fileID: 1386140338353524545, guid: fd49ff8e163b8cf4595da59584ae71e3,
+        type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
     - target: {fileID: 3775330057620195778, guid: fd49ff8e163b8cf4595da59584ae71e3,
         type: 3}
       propertyPath: hp
@@ -18877,11 +18882,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1386140338353524545, guid: fd49ff8e163b8cf4595da59584ae71e3,
-        type: 3}
-      propertyPath: m_Name
-      value: Smoke
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd49ff8e163b8cf4595da59584ae71e3, type: 3}
@@ -18970,6 +18970,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -18985,25 +18995,15 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.45
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}

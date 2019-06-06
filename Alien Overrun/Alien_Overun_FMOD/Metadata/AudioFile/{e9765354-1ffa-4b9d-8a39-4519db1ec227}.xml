@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{32340ac2-5afe-4a04-b812-56b54fe1ef4a}">
+    <object class="AudioFile" id="{e9765354-1ffa-4b9d-8a39-4519db1ec227}">
         <property name="assetPath">
-            <value>mineralMining2.wav</value>
+            <value>mineralMining4.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
         </property>
         <property name="frequencyInKHz">
             <value>44.0999985</value>
