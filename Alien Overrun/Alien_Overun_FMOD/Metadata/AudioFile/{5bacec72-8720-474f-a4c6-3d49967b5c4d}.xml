@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{5bacec72-8720-474f-a4c6-3d49967b5c4d}">
+        <property name="assetPath">
+            <value>crystalMining2.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>1.6971201814058956</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{085ec9d7-541d-457e-991f-9930c34adc0e}</destination>
+        </relationship>
+    </object>
+</objects>

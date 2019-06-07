@@ -36,6 +36,8 @@ public class BuildingPlacer : MonoBehaviour
     public int numberOfMineralMiners;
     public FMOD.Studio.EventInstance MineralMiningSound;
 
+    public int numberOfCrystalMiners;
+
     void Start ()
 	{
 		Assert.IsNotNull( button );
@@ -242,6 +244,10 @@ public class BuildingPlacer : MonoBehaviour
             //MineralMiningSound.start();
             FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMining");
             numberOfMineralMiners++;
+        } else if (buildingName == "Crystal Miner" && numberOfCrystalMiners == 0)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Crystal Miner/CrystalMining");
+            numberOfCrystalMiners++;
         }
 		ScreenShake.Instance.DoPlace( );
 		//aud.pitch = Random.Range( 0.9f, 1.1f );
