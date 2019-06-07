@@ -193,6 +193,7 @@ public class Building : AbstractListableItem
 		}
 
 		Destroy( gameObject );
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/BuildingDestroyed");
 	}
 
 	public (float Minerals, float Crystals) GetRepairCost( )

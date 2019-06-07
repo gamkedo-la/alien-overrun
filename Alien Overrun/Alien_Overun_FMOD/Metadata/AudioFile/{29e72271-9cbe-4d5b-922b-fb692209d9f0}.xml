@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{29e72271-9cbe-4d5b-922b-fb692209d9f0}">
+        <property name="assetPath">
+            <value>buildingDestroyed.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>2.1249886621315195</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{085ec9d7-541d-457e-991f-9930c34adc0e}</destination>
+        </relationship>
+    </object>
+</objects>

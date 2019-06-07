@@ -3,6 +3,7 @@
 {ddd1d418-0f44-4bc5-83bf-f60034c456e4} event:/Buildings/Mage Tower/Mage_Tower_Attacking
 {9c5bf098-536e-4bd2-b695-f71b3d508518} event:/Buildings/Mineral Miner/MineralMining
 {c64f29a8-d752-462b-87ae-b067b39681d9} event:/Buildings/Building_Placer
+{afc680c3-9315-47b5-867e-f7eca9035e70} event:/Buildings/BuildingDestroyed
 {d8cd69e2-0054-4e3f-b921-b91db94f751b} event:/Buildings/Bullet_Explosion
 {3a41b68d-190d-4073-8f41-22a290c2f649} event:/Buildings/Canon_Attack
 {e42d22b4-f3da-427d-9ea8-ce57b9f7fb70} event:/Enemies/Frog Alien/frogAlienSteps
