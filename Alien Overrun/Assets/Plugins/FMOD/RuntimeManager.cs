@@ -252,6 +252,9 @@ retry:
             result = lowlevelSystem.setAdvancedSettings(ref advancedSettings);
             CheckInitResult(result, "FMOD.System.setAdvancedSettings");
 
+            result = lowlevelSystem.setDSPBufferSize(2048, 2);
+            CheckInitResult(result, "FMOD.System.setDSPBufferSize");
+
             result = studioSystem.initialize(virtualChannels, studioInitFlags, FMOD.INITFLAGS.NORMAL, IntPtr.Zero);
             if (result != FMOD.RESULT.OK && initResult == FMOD.RESULT.OK)
             {

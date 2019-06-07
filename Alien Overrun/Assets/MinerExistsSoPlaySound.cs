@@ -8,7 +8,7 @@ public class MinerExistsSoPlaySound : MonoBehaviour
     
     public int NumberOfMineralMiners = 0;
     private bool mineralMiningSoundPlaying;
-    
+    private FMOD.Studio.EventInstance MineralMiningSound;
     
 
     private void Awake()
@@ -18,7 +18,7 @@ public class MinerExistsSoPlaySound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
         mineralMiningSoundPlaying = false;
     }
 
@@ -26,14 +26,14 @@ public class MinerExistsSoPlaySound : MonoBehaviour
     void Update()
     {
 
-        if (NumberOfMineralMiners == 1 && !mineralMiningSoundPlaying)
+        if (NumberOfMineralMiners == 1 /*&& !mineralMiningSoundPlaying*/)
         {
-            //FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMining");
+            MineralMiningSound.start();
             mineralMiningSoundPlaying = true;
         }  
         if (NumberOfMineralMiners == 0)
         {
-            //MineralMiningSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
+            MineralMiningSound.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
             mineralMiningSoundPlaying = false;
         }
     }
