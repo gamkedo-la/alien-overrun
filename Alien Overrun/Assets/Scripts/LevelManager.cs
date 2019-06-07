@@ -39,7 +39,9 @@ public class LevelManager : MonoBehaviour
 
 	public static LevelManager Instance { get; private set; }
 
-	private void Awake( )
+    [SerializeField] private GameObject backgroundMusicObject;
+
+    private void Awake( )
 	{
 		if ( Instance != null && Instance != this )
 			Destroy( gameObject );
@@ -58,6 +60,7 @@ public class LevelManager : MonoBehaviour
 		Assert.IsNotNull( mineralSets );
 		Assert.IsNotNull( crystalSets );
 		Assert.IsNotNull( terrainSets );
+        Assert.IsNotNull(backgroundMusicObject);
 
 		Transform[] minerals = mineralSets.Cast<Transform>( ).ToArray( );
 		foreach ( var m in minerals )
@@ -82,6 +85,8 @@ public class LevelManager : MonoBehaviour
 			LevelDifficultyModifier = modeSelection.LevelDifficultyModifier;
 		}
 
+        backgroundMusicObject = GameObject.FindGameObjectWithTag("BackgroundMusic");
+        //Debug.Log(backgroundMusic);
 		SwitchMode( );
 	}
 
@@ -104,6 +109,8 @@ public class LevelManager : MonoBehaviour
 		{
 			CancelInvoke( "CheckGameEnd" );
 			onWin.Invoke( );
+            backgroundMusicObject.GetComponent<AudioSource>().Stop();
+            FMODUnity.RuntimeManager.PlayOneShot("event:/General SFX/winGame");
 		}
 	}
 

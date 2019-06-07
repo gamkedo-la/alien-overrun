@@ -12,6 +12,7 @@
 {880c749f-5e05-4582-80a2-ae3ccd67f9ec} event:/Enemies/Scuttler/ScuttlerStep
 {e2989eaf-2cb5-45b7-b329-bc113485bb25} event:/Enemies/Scuttler/ScuttlerSwoosh
 {55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/General SFX/New_Enemies_Alarm
+{dae79343-2ea6-4b59-8d09-7dda151e4840} event:/General SFX/winGame
 {4c2b791a-fc21-46df-9d6a-839b0a8da32a} event:/Music/Music BG
 {ad0b9995-0dd1-4100-b490-4472dc009991} bus:/
 {175e6c46-5168-4e78-b25c-6cbfe38313d8} bus:/Music
