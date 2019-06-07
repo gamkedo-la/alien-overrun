@@ -1,0 +1,16 @@
+{
+"companyName": "Kornel + Gamkedo",
+"productName": "Alien Overrun",
+"productVersion": "1.0",
+"dataUrl": "HTML5_WebGl_NOPITCHEFFECTS.data.unityweb",
+"wasmCodeUrl": "HTML5_WebGl_NOPITCHEFFECTS.wasm.code.unityweb",
+"wasmFrameworkUrl": "HTML5_WebGl_NOPITCHEFFECTS.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": true,
+"multithreading": false,
+"unityVersion": "2019.1.0f2"
+}

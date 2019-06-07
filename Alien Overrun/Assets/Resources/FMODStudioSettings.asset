@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 0
   HasPlatforms: 1
-  sourceProjectPath: Alien_Overun_FMOD/Alien_Overun_FMOD.fspro
-  SourceProjectPathUnformatted: Alien_Overun_FMOD/Alien_Overun_FMOD.fspro
-  SourceBankPathUnformatted: Alien_Overun_FMOD/FMODBuild
+  sourceProjectPath: Alien_Overun_FMOD\Alien_Overun_FMOD.fspro
+  SourceProjectPathUnformatted: Alien_Overun_FMOD\Alien_Overun_FMOD.fspro
+  SourceBankPathUnformatted: Alien_Overun_FMOD\FMODBuild
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
   ImportType: 0
