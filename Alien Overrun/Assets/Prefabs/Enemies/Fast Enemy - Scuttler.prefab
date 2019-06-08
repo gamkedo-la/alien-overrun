@@ -1266,7 +1266,7 @@ GameObject:
   - component: {fileID: 8615039487376136586}
   - component: {fileID: 6810913062084085645}
   - component: {fileID: 5858976108621812129}
-  - component: {fileID: 2947886933966229159}
+  - component: {fileID: 5116603700545296951}
   m_Layer: 10
   m_Name: Fast Enemy - Scuttler
   m_TagString: Enemy
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c4cb03e506734ca25f51b976aa3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2947886933966229159
+--- !u!114 &5116603700545296951
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1661,8 +1661,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &152822952861153906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1670,6 +1670,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8722484274950471257}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1725,16 +1735,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -1754,6 +1754,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
@@ -1799,21 +1814,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846143672824, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}

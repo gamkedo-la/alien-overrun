@@ -981,7 +981,7 @@ GameObject:
   - component: {fileID: 1894772762418121624}
   - component: {fileID: 5655422220898634323}
   - component: {fileID: 9105506588369247792}
-  - component: {fileID: -5387214590356617586}
+  - component: {fileID: -2287541756523950468}
   m_Layer: 10
   m_Name: Basic Enemy - Mech Enemy
   m_TagString: Enemy
@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mechAnimationLoopCount: 0
---- !u!114 &-5387214590356617586
+--- !u!114 &-2287541756523950468
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1411,8 +1411,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: 
-  PlayEvent: 0
+  Event: event:/Enemies/Mech/MechDying
+  PlayEvent: 2
   StopEvent: 0
   CollisionTag: 
   AllowFadeout: 1
@@ -1420,8 +1420,8 @@ MonoBehaviour:
   Preload: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2341651493574917982
 GameObject:
   m_ObjectHideFlags: 0
@@ -15741,6 +15741,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8243135363891196994}
     m_Modifications:
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Name
+      value: HP Bar
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15810,16 +15820,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.375459
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Name
-      value: HP Bar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846000894522, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
