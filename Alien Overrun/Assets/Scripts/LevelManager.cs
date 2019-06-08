@@ -102,6 +102,7 @@ public class LevelManager : MonoBehaviour
 		{
 			CancelInvoke( "CheckGameEnd" );
 			onLose.Invoke( );
+            FMODUnity.RuntimeManager.PlayOneShot("event:/General SFX/gameOver");
 		}
 
 		// Win

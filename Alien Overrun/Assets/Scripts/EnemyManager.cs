@@ -220,6 +220,7 @@ public class EnemyManager : AbstractListManager
 	public void LastThresholdReached( )
 	{
 		spawningLastWave = true;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/General SFX/FinalWave");
 	}
 
 	public void ChangeParametersOnThresholdChange( WaveParameters newParameters )
