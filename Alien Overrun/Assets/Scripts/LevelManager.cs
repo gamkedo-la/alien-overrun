@@ -60,7 +60,6 @@ public class LevelManager : MonoBehaviour
 		Assert.IsNotNull( mineralSets );
 		Assert.IsNotNull( crystalSets );
 		Assert.IsNotNull( terrainSets );
-        Assert.IsNotNull(backgroundMusicObject);
 
 		Transform[] minerals = mineralSets.Cast<Transform>( ).ToArray( );
 		foreach ( var m in minerals )
@@ -86,6 +85,7 @@ public class LevelManager : MonoBehaviour
 		}
 
         backgroundMusicObject = GameObject.FindGameObjectWithTag("BackgroundMusic");
+        Assert.IsNotNull(backgroundMusicObject);
         //Debug.Log(backgroundMusic);
 		SwitchMode( );
 	}
