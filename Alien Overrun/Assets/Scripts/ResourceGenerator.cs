@@ -5,7 +5,7 @@ public class ResourceGenerator : MonoBehaviour
 	[SerializeField] private ResourceType resourceType = ResourceType.Minerals;
 	[SerializeField] private int amount = 5;
 	[SerializeField] private float interval = 3;
-	[SerializeField] private Color color;
+	[SerializeField] private Color color = Color.white;
 
 	void Start( )
 	{
