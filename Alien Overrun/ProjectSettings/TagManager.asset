@@ -10,6 +10,7 @@ TagManager:
   - Resource
   - BigProjectile
   - TallyManager
+  - BackgroundMusic
   layers:
   - Default
   - TransparentFX
