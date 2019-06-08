@@ -13150,6 +13150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b798669b6a370440a7362b5456343ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buildingPlacerScript: {fileID: 0}
 --- !u!1 &1284071209839644558
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,9 +34,15 @@ public class BuildingPlacer : MonoBehaviour
     private AudioSource aud = null;
 
     public int numberOfMineralMiners;
-    public FMOD.Studio.EventInstance MineralMiningSound;
+    FMOD.Studio.EventInstance MineralMiningSound;
 
     public int numberOfCrystalMiners;
+
+    private void Awake()
+    {
+        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
+        Debug.Log(MineralMiningSound);
+    }
 
     void Start ()
 	{
@@ -60,8 +66,8 @@ public class BuildingPlacer : MonoBehaviour
 
         numberOfMineralMiners = 0;
         //create instance isn't working and I don't know why
-        //MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining"); 
         
+
     }
 
 	void Update ()
@@ -237,12 +243,13 @@ public class BuildingPlacer : MonoBehaviour
 		AIProgressManager.Instance.NextThreatHide( );
 
 		FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Building_Placer");
-        if (buildingName == "Mineral Miner" && numberOfMineralMiners == 0)
+        if (buildingName == "Mineral Miner" /* && numberOfMineralMiners == 0 */)
         {
             //start call to MineralMiningSound isn't working and I don't know why
             //Debug.Log("Dafuq?");
             //MineralMiningSound.start();
-            FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMining");
+            //FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMining");
+            MineralMiningSound.start();
             numberOfMineralMiners++;
         } else if (buildingName == "Crystal Miner" && numberOfCrystalMiners == 0)
         {

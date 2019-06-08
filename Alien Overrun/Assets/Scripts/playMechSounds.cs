@@ -3,8 +3,18 @@
 public class playMechSounds : MonoBehaviour
 {
 	[SerializeField] private int mechAnimationLoopCount = 0;
+    FMOD.Studio.EventInstance MineralMiningSound;
 
+    private void Awake()
+    {
+        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
+    }
     // Update is called once per frame
+
+    private void Start()
+    {
+        MineralMiningSound.start();
+    }
     void Update()
     {
         if (mechAnimationLoopCount == 10)

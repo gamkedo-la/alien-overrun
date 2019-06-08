@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.01.10.00">
-    <object class="AudioFile" id="{4a1db853-59a5-4241-972c-66d9bf86aede}">
+    <object class="AudioFile" id="{4c2ce007-da3a-4765-bb2f-c0204f807a7c}">
         <property name="assetPath">
-            <value>mineralMining3.wav</value>
+            <value>mageTowerAttack1.wav</value>
         </property>
         <property name="isStreaming">
             <value>true</value>
@@ -14,7 +14,7 @@
             <value>2</value>
         </property>
         <property name="length">
-            <value>1.5807256235827665</value>
+            <value>1.5</value>
         </property>
         <relationship name="masterAssetFolder">
             <destination>{085ec9d7-541d-457e-991f-9930c34adc0e}</destination>
