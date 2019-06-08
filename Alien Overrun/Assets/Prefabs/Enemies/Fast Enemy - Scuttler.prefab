@@ -1266,6 +1266,7 @@ GameObject:
   - component: {fileID: 8615039487376136586}
   - component: {fileID: 6810913062084085645}
   - component: {fileID: 5858976108621812129}
+  - component: {fileID: 2947886933966229159}
   m_Layer: 10
   m_Name: Fast Enemy - Scuttler
   m_TagString: Enemy
@@ -1639,6 +1640,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f7c4cb03e506734ca25f51b976aa3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2947886933966229159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8898157746276684155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: 
+  PlayEvent: 2
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1001 &152822952861153906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1793,6 +1817,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac64af75209dedf46b149113279311f3, type: 3}
+--- !u!4 &4731856878527756361 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
+    type: 3}
+  m_PrefabInstance: {fileID: 152822952861153906}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &4731856878435832645 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4878525846127159607, guid: ac64af75209dedf46b149113279311f3,
@@ -1805,9 +1835,3 @@ MonoBehaviour:
   m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &4731856878527756361 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4878525846000894523, guid: ac64af75209dedf46b149113279311f3,
-    type: 3}
-  m_PrefabInstance: {fileID: 152822952861153906}
-  m_PrefabAsset: {fileID: 0}
