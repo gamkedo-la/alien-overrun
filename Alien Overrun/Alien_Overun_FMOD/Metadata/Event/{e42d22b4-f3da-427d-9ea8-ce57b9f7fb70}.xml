@@ -58,7 +58,7 @@
     </object>
     <object class="EventAutomatableProperties" id="{c3603f25-9801-42e9-82af-5b0fd00293a9}">
         <property name="maxVoices">
-            <value>2</value>
+            <value>4</value>
         </property>
         <property name="voiceStealing">
             <value>3</value>
@@ -112,7 +112,7 @@
     </object>
     <object class="EventMixerGroup" id="{4f687c69-fe42-4992-8705-c457753725c5}">
         <property name="volume">
-            <value>-9</value>
+            <value>-4</value>
         </property>
         <property name="name">
             <value>Audio 1</value>

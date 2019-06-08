@@ -30,17 +30,15 @@ public class playMechSounds : MonoBehaviour
 
     private void playMechCreakOneShot()
     {
-        if (mechAnimationLoopCount == 1 || mechAnimationLoopCount == 5)
-        {
+        
             FMODUnity.RuntimeManager.PlayOneShot("event:/Enemies/Mech/MechCreak");
-        }
+       
     }
 
     private void playMechStepOneShot()
     {
-        if (mechAnimationLoopCount == 1 || mechAnimationLoopCount == 5)
-        {
+        
             FMODUnity.RuntimeManager.PlayOneShot("event:/Enemies/Mech/MechStep");
-        }
+       
     }
 }

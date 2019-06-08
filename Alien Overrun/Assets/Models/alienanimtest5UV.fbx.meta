@@ -290,7 +290,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.0029914514
-        functionName: playFrogAlienStep
+        functionName: playStepSound
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
