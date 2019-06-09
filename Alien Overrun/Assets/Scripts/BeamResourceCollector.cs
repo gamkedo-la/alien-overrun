@@ -49,12 +49,12 @@ public class BeamResourceCollector : MonoBehaviour
             switch (targetResource.ResourceType)
             {
                 case ResourceType.Minerals:
-                    //MineralMiningSound.start();
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMiningOneShot");
+                    MineralMiningSoundLoop.start();
+                    //FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMiningOneShot");
                     break;
                 case ResourceType.Crystals:
-                    //CrystalMiningSoundLoop.start();
-                    FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Crystal Miner/CrystalMiningOneShot");
+                    CrystalMiningSoundLoop.start();
+                    //FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Crystal Miner/CrystalMiningOneShot");
                     break;
                 default:
                     break;
