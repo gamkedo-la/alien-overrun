@@ -20,16 +20,16 @@ public class BeamResourceCollector : MonoBehaviour
 	private float timeToNextShot = 0;
 
     public int numberOfMineralMiners;
-    public FMOD.Studio.EventInstance MineralMiningSound;
-    public FMOD.Studio.EventInstance CrystalMiningSound;
+    public FMOD.Studio.EventInstance MineralMiningSoundLoop;
+    public FMOD.Studio.EventInstance CrystalMiningSoundLoop;
 
     public int numberOfCrystalMiners;
 
     void Start( )
 	{
 		Assert.IsNotNull( shootPoint );
-        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
-        CrystalMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Crystal Miner/CrystalMining");
+        MineralMiningSoundLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMiningLoop");
+        CrystalMiningSoundLoop = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Crystal Miner/CrystalMiningLoop");
     }
 
 	void Update( )
@@ -49,10 +49,12 @@ public class BeamResourceCollector : MonoBehaviour
             switch (targetResource.ResourceType)
             {
                 case ResourceType.Minerals:
-                    MineralMiningSound.start();
+                    //MineralMiningSound.start();
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Mineral Miner/MineralMiningOneShot");
                     break;
                 case ResourceType.Crystals:
-                    CrystalMiningSound.start();
+                    //CrystalMiningSoundLoop.start();
+                    FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/Crystal Miner/CrystalMiningOneShot");
                     break;
                 default:
                     break;

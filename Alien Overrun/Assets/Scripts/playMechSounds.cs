@@ -7,7 +7,7 @@ public class playMechSounds : MonoBehaviour
 
     private void Awake()
     {
-        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
+        //MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
     }
     // Update is called once per frame
 

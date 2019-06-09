@@ -1,16 +1,18 @@
 {5691d39c-e9f4-4b01-8f78-2a2916c44a77} event:/Buildings/Archer Tower/Archer_Tower_Attack
-{776e09c8-7840-4374-a801-1873e22153c4} event:/Buildings/Crystal Miner/CrystalMining
+{776e09c8-7840-4374-a801-1873e22153c4} event:/Buildings/Crystal Miner/CrystalMiningLoop
+{495662fe-43e4-40ac-91a0-888c9a00ec6e} event:/Buildings/Crystal Miner/CrystalMiningOneShot
 {ddd1d418-0f44-4bc5-83bf-f60034c456e4} event:/Buildings/Mage Tower/Mage_Tower_Attacking
-{9c5bf098-536e-4bd2-b695-f71b3d508518} event:/Buildings/Mineral Miner/MineralMining
+{9c5bf098-536e-4bd2-b695-f71b3d508518} event:/Buildings/Mineral Miner/MineralMiningLoop
+{77b54e8f-352d-4dc2-bf96-0c09b37706de} event:/Buildings/Mineral Miner/MineralMiningOneShot
 {c64f29a8-d752-462b-87ae-b067b39681d9} event:/Buildings/Building_Placer
 {afc680c3-9315-47b5-867e-f7eca9035e70} event:/Buildings/BuildingDestroyed
 {d8cd69e2-0054-4e3f-b921-b91db94f751b} event:/Buildings/Bullet_Explosion
 {3a41b68d-190d-4073-8f41-22a290c2f649} event:/Buildings/Canon_Attack
 {e42d22b4-f3da-427d-9ea8-ce57b9f7fb70} event:/Enemies/Frog Alien/frogAlienSteps
+{d4a0abb1-4ce0-49dc-98bd-92716f5e795f} event:/Enemies/Mech/MechAttack
 {fccee313-ac2f-4cf8-9181-46d5b8b9b1b9} event:/Enemies/Mech/MechCreak
 {d03370d0-0877-4012-b6bb-fa48a5a9bda5} event:/Enemies/Mech/MechDying
 {d321f7be-a666-4955-a9f2-8744d6a2101c} event:/Enemies/Mech/MechStep
-{d4a0abb1-4ce0-49dc-98bd-92716f5e795f} event:/Enemies/Mech/MechAttack
 {39c6dbad-c4b7-4915-99cc-06452f6af6d1} event:/Enemies/Scuttler/ScuttlerDying
 {880c749f-5e05-4582-80a2-ae3ccd67f9ec} event:/Enemies/Scuttler/ScuttlerStep
 {e2989eaf-2cb5-45b7-b329-bc113485bb25} event:/Enemies/Scuttler/ScuttlerSwoosh

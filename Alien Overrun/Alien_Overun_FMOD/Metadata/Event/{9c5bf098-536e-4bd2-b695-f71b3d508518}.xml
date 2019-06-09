@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.01.10.00">
     <object class="Event" id="{9c5bf098-536e-4bd2-b695-f71b3d508518}">
         <property name="name">
-            <value>MineralMining</value>
+            <value>MineralMiningLoop</value>
         </property>
         <property name="outputFormat">
             <value>2</value>
