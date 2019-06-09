@@ -58,7 +58,7 @@
     </object>
     <object class="EventAutomatableProperties" id="{0955e775-a33c-4e4a-841d-04a30538bd9a}">
         <property name="maxVoices">
-            <value>2</value>
+            <value>8</value>
         </property>
         <property name="voiceStealing">
             <value>3</value>
@@ -97,7 +97,7 @@
     <object class="MixerBusPanner" id="{9e248da2-5e96-462f-ac7b-3e39e64f547a}"/>
     <object class="MultiSound" id="{a7bec28c-fef9-4812-ad3d-f407e1c9e680}">
         <property name="length">
-            <value>1.5</value>
+            <value>0.80000000000000004</value>
         </property>
         <relationship name="modulators">
             <destination>{6467c901-8b98-49aa-85e0-4473c250c525}</destination>
