@@ -58,6 +58,7 @@ public class ArrowShooterStandard : MonoBehaviour
 		{
 			timeToNextShot = reloadTime;
 			Shoot( );
+            Debug.Log(gameObject.name);
             /*if (gameObject.name == "Basic Enemy - Mech Enemy")
             {
                 FMODUnity.RuntimeManager.PlayOneShot("event:/Enemies/Mech/MechAttack");

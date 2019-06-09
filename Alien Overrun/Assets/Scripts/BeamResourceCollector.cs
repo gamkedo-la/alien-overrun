@@ -19,10 +19,18 @@ public class BeamResourceCollector : MonoBehaviour
 	private Resource targetResource = null;
 	private float timeToNextShot = 0;
 
-	void Start( )
+    public int numberOfMineralMiners;
+    public FMOD.Studio.EventInstance MineralMiningSound;
+    public FMOD.Studio.EventInstance CrystalMiningSound;
+
+    public int numberOfCrystalMiners;
+
+    void Start( )
 	{
 		Assert.IsNotNull( shootPoint );
-	}
+        MineralMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Mineral Miner/MineralMining");
+        CrystalMiningSound = FMODUnity.RuntimeManager.CreateInstance("event:/Buildings/Crystal Miner/CrystalMining");
+    }
 
 	void Update( )
 	{
@@ -36,7 +44,20 @@ public class BeamResourceCollector : MonoBehaviour
 
 			targetResource.CollectResources( damage, transform.position );
 			FloatingTextService.Instance.ShowFloatingText( target.position + Vector3.up, damage.ToString( ), 1, shotColor, 1f );
-		}
+
+            Debug.Log(targetResource.ResourceType);
+            switch (targetResource.ResourceType)
+            {
+                case ResourceType.Minerals:
+                    MineralMiningSound.start();
+                    break;
+                case ResourceType.Crystals:
+                    CrystalMiningSound.start();
+                    break;
+                default:
+                    break;
+            }
+        }
 	}
 
 	public void OnNewOponenet ( Transform oponent )
