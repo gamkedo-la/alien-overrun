@@ -211,7 +211,7 @@ ModelImporter:
       takeName: attack_03
       internalID: 3802070710740760561
       firstFrame: 0
-      lastFrame: 153.00002
+      lastFrame: 153
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -230,7 +230,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.42493227
+        functionName: PlayAttackSound
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
