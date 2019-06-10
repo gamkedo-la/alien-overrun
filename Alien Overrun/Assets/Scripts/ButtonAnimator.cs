@@ -35,6 +35,7 @@ public class ButtonAnimator : MonoBehaviour
 	{
 		if ( useOnMouse )
 			OnOverEnter( );
+        
 	}
 
 	private void OnMouseExit( )
