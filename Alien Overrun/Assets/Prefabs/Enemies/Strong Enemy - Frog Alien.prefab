@@ -1828,6 +1828,7 @@ GameObject:
   - component: {fileID: 7175263236576491550}
   - component: {fileID: 4009376468429224405}
   - component: {fileID: 1446909498293444563}
+  - component: {fileID: -5119027054338545320}
   m_Layer: 10
   m_Name: Strong Enemy - Frog Alien
   m_TagString: Enemy
@@ -2200,7 +2201,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24dc5106497e88541996b4d11964478e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mechAnimationLoopCount: 0
+--- !u!114 &-5119027054338545320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7175263236576491544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: event:/Enemies/Frog Alien/FrogAlienDying
+  PlayEvent: 2
+  StopEvent: 0
+  CollisionTag: 
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &7204404372174969272
 GameObject:
   m_ObjectHideFlags: 0
@@ -3141,6 +3164,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525844881799481, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -3156,26 +3189,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846127159593, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109795, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4878525844881799480, guid: ac64af75209dedf46b149113279311f3,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 4878525846143672830, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_IsActive
@@ -3186,7 +3199,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525846493109794, guid: ac64af75209dedf46b149113279311f3,
+    - target: {fileID: 4878525846127159593, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_Layer
       value: 10
@@ -3196,12 +3209,22 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4878525845690293444, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4878525846123486759, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 4878525845690293444, guid: ac64af75209dedf46b149113279311f3,
+    - target: {fileID: 4878525844881799480, guid: ac64af75209dedf46b149113279311f3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4878525846493109794, guid: ac64af75209dedf46b149113279311f3,
         type: 3}
       propertyPath: m_Layer
       value: 10
