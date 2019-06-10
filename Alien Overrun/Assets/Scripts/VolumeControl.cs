@@ -23,9 +23,9 @@ public class VolumeControl : MonoBehaviour
 		Assert.IsNotNull( audioMixer, $"Please assign <b>AudioMixer</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 		Assert.IsNotNull( volumeSlider, $"Please assign <b>VolumeSlider</b> field: <b>{GetType( ).Name}</b> script on <b>{name}</b> object" );
 
-		volumeSlider.value = PlayerPrefs.GetFloat( exposedPropertyName, 1f );
 		sfxSoundBus = FMODUnity.RuntimeManager.GetBus( "bus:/SFX" );
 		musicSoundBus = FMODUnity.RuntimeManager.GetBus( "bus:/Music" );
+		volumeSlider.value = PlayerPrefs.GetFloat( exposedPropertyName, 1f );
 	}
 
 	/// <summary>
