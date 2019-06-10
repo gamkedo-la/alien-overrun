@@ -9,6 +9,7 @@
 {d8cd69e2-0054-4e3f-b921-b91db94f751b} event:/Buildings/Bullet_Explosion
 {3a41b68d-190d-4073-8f41-22a290c2f649} event:/Buildings/Canon_Attack
 {e42d22b4-f3da-427d-9ea8-ce57b9f7fb70} event:/Enemies/Frog Alien/frogAlienSteps
+{a3355894-92a1-48e9-94a7-acc3f4521c7f} event:/Enemies/Frog Alien/FrogAlienDying
 {d4a0abb1-4ce0-49dc-98bd-92716f5e795f} event:/Enemies/Mech/MechAttack
 {fccee313-ac2f-4cf8-9181-46d5b8b9b1b9} event:/Enemies/Mech/MechCreak
 {d03370d0-0877-4012-b6bb-fa48a5a9bda5} event:/Enemies/Mech/MechDying

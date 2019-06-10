@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.01.10.00">
+    <object class="AudioFile" id="{08c064ea-c5fd-4385-8cc6-644da6b8fcd9}">
+        <property name="assetPath">
+            <value>Alien_Frog_Dying.wav</value>
+        </property>
+        <property name="isStreaming">
+            <value>true</value>
+        </property>
+        <property name="frequencyInKHz">
+            <value>44.0999985</value>
+        </property>
+        <property name="channelCount">
+            <value>2</value>
+        </property>
+        <property name="length">
+            <value>2.8238775510204084</value>
+        </property>
+        <relationship name="masterAssetFolder">
+            <destination>{085ec9d7-541d-457e-991f-9930c34adc0e}</destination>
+        </relationship>
+    </object>
+</objects>
