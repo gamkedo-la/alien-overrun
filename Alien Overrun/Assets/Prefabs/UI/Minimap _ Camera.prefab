@@ -315,6 +315,7 @@ MonoBehaviour:
   minimapCamera: {fileID: 5352926302709132956}
   minimapCameraObj: {fileID: 0}
   camZoom: 0
+  zoom: 1
   sensitivity: 0
 --- !u!1 &5352926301293059048
 GameObject:
@@ -401,6 +402,7 @@ GameObject:
   - component: {fileID: 5352926301317232479}
   - component: {fileID: 5352926301317232465}
   - component: {fileID: 5352926301317232478}
+  - component: {fileID: 5661798003680060998}
   m_Layer: 0
   m_Name: Zoom Out Icon
   m_TagString: Untagged
@@ -464,6 +466,36 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5661798003680060998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352926301317232476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5352926300972392999}
+          m_MethodName: ControlCameraZoomOut
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &5352926301613590446
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,6 +871,7 @@ GameObject:
   - component: {fileID: 5352926302597063465}
   - component: {fileID: 5352926302597063467}
   - component: {fileID: 5352926302597063464}
+  - component: {fileID: 379236575526042205}
   m_Layer: 0
   m_Name: Zoom In Icon
   m_TagString: Untagged
@@ -902,6 +935,36 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &379236575526042205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5352926302597063638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5352926300972392999}
+          m_MethodName: ControlCameraZoomIn
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!1 &5352926302709132957
 GameObject:
   m_ObjectHideFlags: 0

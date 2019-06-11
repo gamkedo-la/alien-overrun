@@ -11,6 +11,7 @@ public class MinimapControls : MonoBehaviour
     public Camera minimapCamera;
     public GameObject minimapCameraObj;
     public float camZoom;
+    public float zoom = 1f;
     //Toggle
     private CanvasGroup cg;
     //Pan
@@ -57,7 +58,20 @@ public class MinimapControls : MonoBehaviour
     {
         minimapCamera.orthographicSize = cameraSlider.value;
     }
-    void ToggleMinimap()
+
+	public void ControlCameraZoomIn( )
+	{
+		cameraSlider.value -= zoom;
+		minimapCamera.orthographicSize = cameraSlider.value;
+	}
+
+	public void ControlCameraZoomOut( )
+	{
+		cameraSlider.value += zoom;
+		minimapCamera.orthographicSize = cameraSlider.value;
+	}
+
+	void ToggleMinimap()
     {
         if(cg.alpha == 1)
         {
