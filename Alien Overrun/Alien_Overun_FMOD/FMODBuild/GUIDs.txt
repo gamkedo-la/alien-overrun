@@ -18,6 +18,7 @@
 {39c6dbad-c4b7-4915-99cc-06452f6af6d1} event:/Enemies/Scuttler/ScuttlerDying
 {880c749f-5e05-4582-80a2-ae3ccd67f9ec} event:/Enemies/Scuttler/ScuttlerStep
 {e2989eaf-2cb5-45b7-b329-bc113485bb25} event:/Enemies/Scuttler/ScuttlerSwoosh
+{3f97fa12-a8b5-43a8-9470-da3b6121180d} event:/Enemies/Scuttler/ScuttlerAttack
 {27b0fb2d-bfe7-428f-bd4f-ff19787f7715} event:/General SFX/FinalWave
 {185d2f5b-2cfa-4467-bdbd-ac277d5cab11} event:/General SFX/gameOver
 {55b9ae9a-21a0-4832-92ff-ac82cdc06557} event:/General SFX/New_Enemies_Alarm
