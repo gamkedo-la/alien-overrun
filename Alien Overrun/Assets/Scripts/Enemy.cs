@@ -31,6 +31,7 @@ public class Enemy : AbstractListableItem
 
 	public string DebugInfo = "";
 
+	private float timeToDestroyOnNotMovingCurrent = 10f;
 	private Vector3 destination = Vector3.zero;
 	private Vector3 oldPos = Vector3.zero;
 	private Rigidbody rb = null;
@@ -41,6 +42,8 @@ public class Enemy : AbstractListableItem
 
 	void Start ()
 	{
+		timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving;
+
 		rb = GetComponent<Rigidbody>( );
 		Assert.IsNotNull( rb );
 		Assert.IsNotNull( agent );
@@ -51,7 +54,7 @@ public class Enemy : AbstractListableItem
 		OponentFinder oponentFinder = gameObject.GetComponent<OponentFinder>( );
 		oponentFinder.SetOponentListManager( BuildingManager.Instance );
 
-		Invoke( "OnDeath", 3 * 60 );
+		Invoke( "OnDeath", 7 * 60 );
 
 		if ( Random.value <= ( eliteChance / 100 ) )
 		{
@@ -81,12 +84,16 @@ public class Enemy : AbstractListableItem
 		if ( transform.position.y < -1000f )
 			Destroy( gameObject );
 		// ...or is immobile
-		if (oldPos == transform.position && !hold)
+		if ( oldPos == transform.position && !hold )
 			timeToDestroyOnNotMoving -= Time.fixedDeltaTime;
-		oldPos = transform.position;
+		else
+		{
+			oldPos = transform.position;
+			timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving;
+		}
 
-		// knockback from being hit
-		if (knockBackVel.magnitude > 0.001f) {
+			// knockback from being hit
+			if (knockBackVel.magnitude > 0.001f) {
 			//Debug.Log("KNOCKBACK USING TRANSFORM!");
 			transform.position = transform.position + knockBackVel;
 			knockBackVel = knockBackVel * knockBackDampening;
