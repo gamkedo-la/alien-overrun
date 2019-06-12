@@ -67,8 +67,9 @@ public class HP : MonoBehaviour
 		CurrentHP = CurrentHP < 0 ? 0 : CurrentHP;
 
 		onHealthChange.Invoke( );
+        FMODUnity.RuntimeManager.PlayOneShot("event:/Buildings/BuildingDamage");
 
-		if ( hpBar )
+        if ( hpBar )
 		{
 			hpBar.value = CurrentHP;
 			SetHPBarVisability( );

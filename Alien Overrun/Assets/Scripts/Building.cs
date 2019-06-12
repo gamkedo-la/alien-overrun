@@ -103,6 +103,7 @@ public class Building : AbstractListableItem
 	{
 		if ( CollidesWithTags( other.gameObject ) )
 			collisions++;
+
 	}
 
 	void OnTriggerExit( Collider other )
