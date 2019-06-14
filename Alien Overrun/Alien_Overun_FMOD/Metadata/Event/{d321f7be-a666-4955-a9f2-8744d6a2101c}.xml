@@ -66,6 +66,9 @@
         <property name="voiceStealing">
             <value>3</value>
         </property>
+        <property name="priority">
+            <value>1</value>
+        </property>
         <property name="dopplerEnabled">
             <value>true</value>
         </property>
