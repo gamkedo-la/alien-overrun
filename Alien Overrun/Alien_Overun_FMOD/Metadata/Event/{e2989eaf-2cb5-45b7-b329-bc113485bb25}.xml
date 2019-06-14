@@ -60,6 +60,9 @@
         <property name="maxVoices">
             <value>1</value>
         </property>
+        <property name="dopplerEnabled">
+            <value>true</value>
+        </property>
     </object>
     <object class="MarkerTrack" id="{031e06b3-e54c-4858-a631-e3671f0a3c0d}"/>
     <object class="GroupTrack" id="{c132824b-cd4a-44bb-b698-c7db52823e6c}">

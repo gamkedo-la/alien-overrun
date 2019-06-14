@@ -66,6 +66,9 @@
         <property name="voiceStealing">
             <value>3</value>
         </property>
+        <property name="dopplerEnabled">
+            <value>true</value>
+        </property>
     </object>
     <object class="MarkerTrack" id="{1346944a-32f7-4b2d-8217-3d76ea0e7f13}"/>
     <object class="GroupTrack" id="{50e6a599-eae4-4b7a-b329-d4680ad1de21}">
