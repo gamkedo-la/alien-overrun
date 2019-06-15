@@ -58,7 +58,7 @@ public class ArrowShooterStandard : MonoBehaviour
 		{
 			timeToNextShot = reloadTime;
 			Shoot( );
-            Debug.Log(transform.root.gameObject.name);
+            //Debug.Log(transform.root.gameObject.name);
             //gameObject.
             if (transform.root.gameObject.name == "Basic Enemy - Mech Enemy(Clone)")
             {

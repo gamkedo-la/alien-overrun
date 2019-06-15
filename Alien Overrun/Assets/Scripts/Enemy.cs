@@ -21,7 +21,7 @@ public class Enemy : AbstractListableItem
 	[SerializeField] private int mineralsForKill = 20;
 	[SerializeField] private float maxVelocityMag = 150f;
 	[SerializeField] private float thresholdForNavMeshReEnable = 10f;
-	[SerializeField] private float timeToDestroyOnNotMoving = 10f;
+	[SerializeField] private float timeToDestroyOnNotMoving2 = 60f;
 	[SerializeField] private float knockBackDampening = 0.95f;
 	[SerializeField] private int bloodCount = 1;
 	[SerializeField] private float bloodSpread = 0.5f;
@@ -31,7 +31,7 @@ public class Enemy : AbstractListableItem
 
 	public string DebugInfo = "";
 
-	private float timeToDestroyOnNotMovingCurrent = 10f;
+	private float timeToDestroyOnNotMovingCurrent = 60f;
 	private Vector3 destination = Vector3.zero;
 	private Vector3 oldPos = Vector3.zero;
 	private Rigidbody rb = null;
@@ -42,7 +42,7 @@ public class Enemy : AbstractListableItem
 
 	void Start ()
 	{
-		timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving;
+		timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving2;
 
 		rb = GetComponent<Rigidbody>( );
 		Assert.IsNotNull( rb );
@@ -85,11 +85,11 @@ public class Enemy : AbstractListableItem
 			Destroy( gameObject );
 		// ...or is immobile
 		if ( oldPos == transform.position && !hold )
-			timeToDestroyOnNotMoving -= Time.fixedDeltaTime;
+			timeToDestroyOnNotMovingCurrent -= Time.fixedDeltaTime;
 		else
 		{
 			oldPos = transform.position;
-			timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving;
+			timeToDestroyOnNotMovingCurrent = timeToDestroyOnNotMoving2;
 		}
 
 			// knockback from being hit
@@ -99,7 +99,7 @@ public class Enemy : AbstractListableItem
 			knockBackVel = knockBackVel * knockBackDampening;
 		}
 
-		if (timeToDestroyOnNotMoving <= 0)
+		if (timeToDestroyOnNotMovingCurrent <= 0)
 		{
 			OnDeath( );
 			Destroy( gameObject );
