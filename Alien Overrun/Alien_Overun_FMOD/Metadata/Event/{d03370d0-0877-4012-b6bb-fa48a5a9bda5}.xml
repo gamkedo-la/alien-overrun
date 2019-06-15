@@ -57,6 +57,12 @@
         </relationship>
     </object>
     <object class="EventAutomatableProperties" id="{a32cda4d-303c-475f-864b-b6e2a100cfe3}">
+        <property name="maxVoices">
+            <value>2</value>
+        </property>
+        <property name="voiceStealing">
+            <value>3</value>
+        </property>
         <property name="priority">
             <value>3</value>
         </property>
@@ -129,6 +135,7 @@
     <object class="MixerBusEffectChain" id="{a88736e8-9add-4e02-b360-162169194e37}">
         <relationship name="effects">
             <destination>{ab119a97-10f6-4246-8849-0a3220708919}</destination>
+            <destination>{d5242231-7d00-4304-9521-885abec5b3a2}</destination>
         </relationship>
     </object>
     <object class="MixerBusPanner" id="{e2e85716-e512-4c7a-b388-0fe6d1fbc3fd}"/>
@@ -156,6 +163,11 @@
     </object>
     <object class="MixerBusPanner" id="{912103e5-a017-48ae-967a-aed1206edf3a}"/>
     <object class="MixerBusFader" id="{ab119a97-10f6-4246-8849-0a3220708919}"/>
+    <object class="ThreeEQEffect" id="{d5242231-7d00-4304-9521-885abec5b3a2}">
+        <property name="lowGain">
+            <value>-3</value>
+        </property>
+    </object>
     <object class="AutomationPoint" id="{e89fafc4-3d4e-47d9-8b2b-45b41514f541}">
         <property name="position">
             <value>0</value>
